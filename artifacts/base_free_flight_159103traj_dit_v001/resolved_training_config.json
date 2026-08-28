@@ -1,0 +1,156 @@
+{
+  "schema_version": "hnuter_base_free_flight_training_v001",
+  "created_at_utc": "2026-08-27T04:01:45.342069+00:00",
+  "repository": "/home/z017/research/HNUTER_trajectory_collector",
+  "dataset": {
+    "root": "/home/z017/research/HNUTER_datasets/free_flight_159103traj_dit_v001",
+    "dataset_id": "free_flight_159103traj_dit_v001",
+    "manifest_sha256": "4d38a81a1130becaeaf022cdc18f74ba1f5b1878de04a34819a60cf456cb71fd",
+    "prepared_cache_sha256": "fbf56c788ccb7543931b3fc2c17fa86388893f4be4acad052566ec588bc2cd89",
+    "source_content_sha256": "66cb2cd13519ce74b1921391b09caab7887491c25e3937a60e58a58d9b30be8f",
+    "environment_tree_sha256": "c722a111c5749cafee7dcba116165d1103c0a2bdf53d907ab65c87f4461a6346",
+    "counts": {
+      "environments": 4011,
+      "conditions": 68575,
+      "trajectories": 159103,
+      "by_split": {
+        "train": {
+          "environments": 3211,
+          "conditions": 54763,
+          "trajectories": 127360
+        },
+        "validation": {
+          "environments": 400,
+          "conditions": 6834,
+          "trajectories": 15845
+        },
+        "test": {
+          "environments": 400,
+          "conditions": 6978,
+          "trajectories": 15898
+        }
+      }
+    },
+    "normalization": {
+      "schema_version": "hnuter_dit_normalization_v001",
+      "fit_split": "train",
+      "path_mean": [
+        0.010920059867203236,
+        0.01644107885658741,
+        2.1252710819244385,
+        0.8038119077682495,
+        0.12118414044380188,
+        -0.019888227805495262,
+        -0.1219915896654129,
+        0.8364800810813904,
+        -0.00043844382162205875
+      ],
+      "path_std": [
+        1.6179789304733276,
+        0.8789279460906982,
+        0.4734974801540375,
+        0.2196691781282425,
+        0.4080062806606293,
+        0.35225212574005127,
+        0.4292198121547699,
+        0.21122801303863525,
+        0.23784859478473663
+      ],
+      "environment_feature_mean": [
+        0.01403700653463602,
+        0.20021025836467743,
+        1.1693185567855835,
+        0.3947465419769287,
+        0.5967352390289307,
+        2.0500295162200928
+      ],
+      "environment_feature_std": [
+        1.3161667585372925,
+        1.7166062593460083,
+        1.0,
+        0.2868880033493042,
+        0.6852956414222717,
+        0.870914876461029
+      ],
+      "source_sha256": "aeb08702a1c459e5c7a6bd1f1fd3f85c06a5526ecb4e842692dc5c97ab679ca5"
+    },
+    "integrity_report": {
+      "schema_version": "hnuter_dit_integrity_v001",
+      "passed": true,
+      "source_environment_count_with_accepted_paths": 4011,
+      "source_condition_count_with_accepted_paths": 68575,
+      "trajectory_count": 159103,
+      "endpoint_max_abs_pose9_error": 8.940696716308594e-08,
+      "rotation6d_max_unit_norm_error": 1.1920928955078125e-07,
+      "rotation6d_max_orthogonality_error": 1.0523945093154907e-07,
+      "minimum_clearance_m": -0.0003388889890629798,
+      "temporary_or_partial_file_count": 0,
+      "source_content_sha256": "66cb2cd13519ce74b1921391b09caab7887491c25e3937a60e58a58d9b30be8f"
+    }
+  },
+  "reference": {
+    "root": "/home/z017/research/HNUTER-diffusion",
+    "git_commit": "c7485fef14b1e1036a9ce529093fe8218b57132e",
+    "source_drift_allowed": false,
+    "files": {
+      "se3_diffusion.py": {
+        "path": "/home/z017/research/HNUTER-diffusion/se3_diffusion.py",
+        "sha256": "e78d4292899b623c4af4031bb1b26549a46e09d53223d54db2ef75fe01ab0460",
+        "expected_sha256": "e78d4292899b623c4af4031bb1b26549a46e09d53223d54db2ef75fe01ab0460"
+      },
+      "train_se3_diffusion.py": {
+        "path": "/home/z017/research/HNUTER-diffusion/train_se3_diffusion.py",
+        "sha256": "8e4936975857a12a7afbd9044613281755c4b49d7c7d5837cdd539aad3fac9c8",
+        "expected_sha256": "8e4936975857a12a7afbd9044613281755c4b49d7c7d5837cdd539aad3fac9c8"
+      },
+      "model_presets.py": {
+        "path": "/home/z017/research/HNUTER-diffusion/model_presets.py",
+        "sha256": "4ec20ebc901883133b112a47a51b7351cd8b5b21e6eb0fcd8c95a10fc796af6e",
+        "expected_sha256": "4ec20ebc901883133b112a47a51b7351cd8b5b21e6eb0fcd8c95a10fc796af6e"
+      },
+      "configs/model_presets.json": {
+        "path": "/home/z017/research/HNUTER-diffusion/configs/model_presets.json",
+        "sha256": "c3997150ca9fbc6a5f93d91eaa887b6f4e85c81b8105c6abdf16ab98d7428726",
+        "expected_sha256": "c3997150ca9fbc6a5f93d91eaa887b6f4e85c81b8105c6abdf16ab98d7428726"
+      },
+      "configs/base_training_v001.json": {
+        "path": "/home/z017/research/HNUTER-diffusion/configs/base_training_v001.json",
+        "sha256": "bb9fad1d1143858a63202c74bb5b74dae24ac70e04b079b9870574a8321cb872",
+        "expected_sha256": "bb9fad1d1143858a63202c74bb5b74dae24ac70e04b079b9870574a8321cb872"
+      }
+    }
+  },
+  "architecture": {
+    "model_type": "dit_cross",
+    "preset": "small_environment",
+    "sequence_length": 128,
+    "pose_dimension": 9,
+    "dimension": 256,
+    "depth": 8,
+    "heads": 8,
+    "parameter_count": 11964169,
+    "prediction_type": "velocity",
+    "diffusion_steps": 100,
+    "environment_cross_attention": true,
+    "environment_token_schema": "box_geometry_v001",
+    "hard_clamp_endpoints_at_sampling": true
+  },
+  "training": {
+    "training_steps": 48000,
+    "batch_size": 64,
+    "validation_interval": 2000,
+    "early_stopping_patience": 6,
+    "optimizer": "AdamW",
+    "learning_rate": 0.0002,
+    "warmup_steps": 2000,
+    "minimum_learning_rate_ratio": 0.05,
+    "weight_decay": 0.0001,
+    "gradient_clip": 1.0,
+    "ema_decay": 0.995,
+    "seed": 20260827,
+    "device": "cuda",
+    "amp": true,
+    "reverse_augmentation": "lazy, train split only",
+    "train_samples_after_augmentation": 254720
+  }
+}

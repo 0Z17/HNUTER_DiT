@@ -1,0 +1,8 @@
+{
+  "seed": 20260827,
+  "selection_split": "validation",
+  "criterion": "minimum_validation_loss",
+  "selected_checkpoint": "best.pt",
+  "best_training_step": 48000,
+  "best_validation_loss": 0.02108096976899692
+}

@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HNUTER DiT Trajectory Lab</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-mark"><i></i><i></i><i></i></div>
+      <div><p>HNUTER · GENERATIVE MOTION LAB</p><h1>DiT Trajectory Lab</h1></div>
+    </div>
+    <div class="model-strip">
+      <span id="modelDevice" class="status-dot">MODEL LOADING</span>
+      <b id="modelName">Small Environment DiT</b>
+      <small id="modelMeta">—</small>
+    </div>
+    <div class="header-actions">
+      <button id="downloadScene" class="button ghost">导出场景</button>
+      <button id="downloadPredictions" class="button ghost" disabled>导出轨迹</button>
+    </div>
+  </header>
+
+  <main class="shell">
+    <aside class="panel left-panel">
+      <div class="panel-title"><span>01</span><div><h2>场景与推理</h2><p>ENVIRONMENT + DDIM</p></div></div>
+
+      <label class="field full"><span>场景族</span><select id="family"><option value="random">随机选择</option></select></label>
+      <div class="two-col">
+        <label class="field"><span>场景 seed</span><input id="sceneSeed" type="number" value="42"></label>
+        <label class="field"><span>障碍数量</span><div class="inline-inputs"><input id="countMin" type="number" value="8" min="1" max="32"><i>—</i><input id="countMax" type="number" value="18" min="1" max="32"></div></label>
+      </div>
+      <button id="randomScene" class="button primary full">生成随机场景与端点</button>
+
+      <div class="divider"></div>
+      <div class="section-heading"><h3>起点位姿</h3><button id="randomEndpoints" class="text-button">随机起终点 ↻</button></div>
+      <div class="pose-editor" data-pose-editor="start">
+        <div class="triple"><label>X<input data-axis="x" type="number" step="0.05"></label><label>Y<input data-axis="y" type="number" step="0.05"></label><label>Z<input data-axis="z" type="number" step="0.05"></label></div>
+        <div class="triple angles"><label>ROLL°<input data-axis="roll" type="number" step="1"></label><label>PITCH°<input data-axis="pitch" type="number" step="1"></label><label>YAW°<input data-axis="yaw" type="number" step="1"></label></div>
+      </div>
+
+      <div class="section-heading compact-heading"><h3>终点位姿</h3></div>
+      <div class="pose-editor" data-pose-editor="goal">
+        <div class="triple"><label>X<input data-axis="x" type="number" step="0.05"></label><label>Y<input data-axis="y" type="number" step="0.05"></label><label>Z<input data-axis="z" type="number" step="0.05"></label></div>
+        <div class="triple angles"><label>ROLL°<input data-axis="roll" type="number" step="1"></label><label>PITCH°<input data-axis="pitch" type="number" step="1"></label><label>YAW°<input data-axis="yaw" type="number" step="1"></label></div>
+      </div>
+
+      <div class="divider"></div>
+      <div class="section-heading"><h3>DiT 采样</h3><span class="tag">UNGUIDED BASE</span></div>
+      <div class="two-col">
+        <label class="field"><span>候选数量</span><input id="sampleCount" type="number" value="6" min="1" max="16"></label>
+        <label class="field"><span>DDIM steps</span><select id="ddimSteps"><option>10</option><option selected>25</option><option>50</option><option>100</option></select></label>
+      </div>
+      <label class="field full"><span>推理 seed</span><input id="sampleSeed" type="number" value="20260828"></label>
+      <button id="runModel" class="button infer full"><span>生成 DiT 轨迹</span><i>→</i></button>
+      <div id="inferenceStatus" class="inference-status">等待场景</div>
+    </aside>
+
+    <section class="workspace">
+      <div class="viewport-toolbar">
+        <div class="view-tabs"><button data-view="iso" class="active">透视</button><button data-view="top">顶视</button><button data-view="front">前视</button><button id="resetCamera">复位</button></div>
+        <div class="view-options"><label><input id="showAll" type="checkbox" checked> 全部候选</label><label><input id="animateVehicle" type="checkbox"> 轨迹动画</label></div>
+      </div>
+      <div id="viewport" class="viewport">
+        <canvas id="sceneCanvas"></canvas>
+        <div class="canvas-hint">拖动 BOX / START / GOAL 直接移动 · Alt+拖动调高度 · 双击空白处放置 BOX · 空白处左键旋转 · 右键/Shift 平移</div>
+        <div class="axis"><b class="x">X</b><b class="y">Y</b><b class="z">Z</b></div>
+        <div class="legend"><span><i class="obstacle"></i>OBB</span><span><i class="valid"></i>有效轨迹</span><span><i class="invalid"></i>碰撞/越界</span><span><i class="start"></i>START</span><span><i class="goal"></i>GOAL</span></div>
+        <div id="emptyState" class="empty-state"><b>NO SCENE</b><span>生成随机场景开始测试 DiT</span></div>
+      </div>
+      <div class="workspace-footer"><span id="sceneLabel">—</span><span id="cameraLabel">ISO · 100%</span></div>
+      <div id="trajectoryRail" class="trajectory-rail"><div class="rail-empty">生成轨迹后可在这里切换候选并查看 COAL 指标</div></div>
+    </section>
+
+    <aside class="panel right-panel">
+      <div class="panel-title"><span>02</span><div><h2>场景编辑器</h2><p id="obstacleCount">0 / 32 TOKENS</p></div></div>
+      <div id="validationCard" class="validation-card pending"><b>等待场景</b><span>模型使用与训练一致的 box token contract</span></div>
+
+      <div class="section-heading list-title"><h3>障碍物</h3><button id="addObstacle" class="text-button">＋ 放置 BOX</button></div>
+      <div id="obstacleList" class="obstacle-list"></div>
+
+      <div id="obstacleEditor" class="obstacle-editor" hidden>
+        <div class="editor-header"><div><small>SELECTED</small><b id="obstacleName">—</b></div><button id="deleteObstacle" class="danger">删除</button></div>
+        <span class="editor-label">POSITION / m</span>
+        <div class="triple"><label>X<input data-obstacle="position.0" type="number" step="0.05"></label><label>Y<input data-obstacle="position.1" type="number" step="0.05"></label><label>Z<input data-obstacle="position.2" type="number" step="0.05"></label></div>
+        <span class="editor-label">SIZE / m</span>
+        <div class="triple"><label>X<input data-obstacle="size.0" type="number" min="0.05" step="0.05"></label><label>Y<input data-obstacle="size.1" type="number" min="0.05" step="0.05"></label><label>Z<input data-obstacle="size.2" type="number" min="0.05" step="0.05"></label></div>
+        <label class="field full"><span>YAW / degree</span><input data-obstacle="yaw" type="number" step="1"></label>
+      </div>
+
+      <div class="divider"></div>
+      <div class="section-heading"><h3>本次性能</h3><span id="backendTag" class="tag">COAL</span></div>
+      <div class="metric-grid">
+        <div><b id="validMetric">—</b><span>VALID</span></div>
+        <div><b id="latencyMetric">—</b><span>MS / PATH</span></div>
+        <div><b id="clearanceMetric">—</b><span>MIN CLEARANCE</span></div>
+        <div><b id="lengthMetric">—</b><span>PATH LENGTH</span></div>
+      </div>
+      <div id="selectedDetails" class="selected-details">选择一条生成轨迹查看详细指标</div>
+      <p class="safety-note">研究用途：DiT 输出是几何候选。绿色只表示当前 128 点通过完整 URDF/COAL、边界及姿态检查，不代表可直接上机。</p>
+    </aside>
+  </main>
+
+  <div id="toast" class="toast"></div>
+  <script src="app.js"></script>
+</body>
+</html>
