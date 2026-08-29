@@ -1,0 +1,6 @@
+{
+  "status": "complete",
+  "finished_at_utc": "2026-08-28T14:26:07.875996+00:00",
+  "selected_checkpoint": "models/dit_rel_cross/best.pt",
+  "selected_checkpoint_sha256": "c47f2a1e2ae962a766efb6bb5153b380c51b9c74557efc5cb181f92a1da6a502"
+}

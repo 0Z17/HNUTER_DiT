@@ -1,0 +1,40 @@
+{
+  "schema_version": "hnuter_dit_relative_geometry_training_v002",
+  "created_at_utc": "2026-08-28T13:42:04.467135+00:00",
+  "dataset": "/home/z017/research/HNUTER_datasets/free_flight_159103traj_dit_v001",
+  "output_dir": "/home/z017/research/HNUTER_DiT/artifacts/base_free_flight_159103traj_dit_relgeom_v002",
+  "canonical_frame": "start_goal_yaw_z_up_v001",
+  "architecture": {
+    "model_type": "dit_rel_cross",
+    "sequence_length": 128,
+    "dimension": 256,
+    "depth": 8,
+    "heads": 8,
+    "pairwise_relative_geometry": true
+  },
+  "training": {
+    "dataset": "/home/z017/research/HNUTER_datasets/free_flight_159103traj_dit_v001",
+    "output_dir": "/home/z017/research/HNUTER_DiT/artifacts/base_free_flight_159103traj_dit_relgeom_v002",
+    "training_steps": 48000,
+    "validation_interval": 2000,
+    "validation_max_samples": 0,
+    "early_stopping_patience": 6,
+    "batch_size": 64,
+    "learning_rate": 0.0002,
+    "warmup_steps": 2000,
+    "minimum_learning_rate_ratio": 0.05,
+    "weight_decay": 0.0001,
+    "gradient_clip": 1.0,
+    "ema_decay": 0.995,
+    "collision_weight": 0.002,
+    "collision_safe_distance": 0.04,
+    "collision_sigma": 0.05,
+    "collision_timestep_power": 1.0,
+    "collision_waypoint_stride": 4,
+    "seed": 20260827,
+    "device": "cuda",
+    "disable_amp": false,
+    "force_retrain": true,
+    "audit_only": false
+  }
+}

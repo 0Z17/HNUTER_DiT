@@ -1,0 +1,17 @@
+{
+  "schema_version": "hnuter_collision_sphere_proxy_audit_v001",
+  "source_dataset": "/home/z017/research/HNUTER_datasets/free_flight_159103traj_dit_v001",
+  "split": "train",
+  "selection": "512 trajectories sampled without replacement",
+  "seed": 20260828,
+  "waypoint_stride": 4,
+  "robot_collision_spheres": 42,
+  "sample_count": 512,
+  "proxy_free_rate": 1.0,
+  "clearance_004_rate": 1.0,
+  "minimum_m": 0.06769627332687378,
+  "p05_m": 0.11172005906701088,
+  "median_m": 0.1477653682231903,
+  "mean_m": 0.16358722175937146,
+  "conclusion": "The differentiable sphere-OBB surrogate does not reject the audited safe demonstrations at the configured 0.04 m training margin."
+}

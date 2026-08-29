@@ -20,6 +20,7 @@ import torch.nn.functional as F
 POSE_DIM = 9
 CONDITION_DIM = 18
 OBSTACLE_DIM = 10
+RELATIVE_GEOMETRY_DIM = 13
 
 
 def quaternion_wxyz_to_matrix_numpy(quaternion: np.ndarray) -> np.ndarray:
@@ -53,6 +54,18 @@ def rotation_6d_to_matrix(rotation_6d: Tensor) -> Tensor:
     )
     third = torch.cross(first, second, dim=-1)
     return torch.stack((first, second, third), dim=-1)
+
+
+def quaternion_wxyz_to_matrix_torch(quaternion: Tensor) -> Tensor:
+    quaternion = F.normalize(quaternion, dim=-1, eps=1e-8)
+    w, x, y, z = quaternion.unbind(dim=-1)
+    return torch.stack((
+        1 - 2 * (y * y + z * z), 2 * (x * y - z * w),
+        2 * (x * z + y * w), 2 * (x * y + z * w),
+        1 - 2 * (x * x + z * z), 2 * (y * z - x * w),
+        2 * (x * z - y * w), 2 * (y * z + x * w),
+        1 - 2 * (x * x + y * y),
+    ), dim=-1).reshape(quaternion.shape[:-1] + (3, 3))
 
 
 def matrix_to_quaternion_wxyz(matrix: Tensor) -> Tensor:
@@ -110,17 +123,73 @@ def timestep_embedding(
     return F.pad(embedding, (0, 1)) if dimension % 2 else embedding
 
 
+class PairwiseGeometryCrossAttention(nn.Module):
+    """Cross-attention with pairwise SE(3) geometry in logits and values."""
+
+    def __init__(self, dimension: int, heads: int) -> None:
+        super().__init__()
+        if dimension % heads:
+            raise ValueError("attention dimension must be divisible by heads")
+        self.heads = heads
+        self.head_dimension = dimension // heads
+        self.query = nn.Linear(dimension, dimension)
+        self.key = nn.Linear(dimension, dimension)
+        self.value = nn.Linear(dimension, dimension)
+        self.output = nn.Linear(dimension, dimension)
+        self.relative_bias = nn.Sequential(
+            nn.Linear(RELATIVE_GEOMETRY_DIM, 64), nn.SiLU(),
+            nn.Linear(64, heads),
+        )
+        # Linear value injection can be contracted after attention weighting,
+        # avoiding a [B,H,L,M,Dh] pairwise value tensor.
+        self.relative_value = nn.Parameter(torch.zeros(
+            heads, RELATIVE_GEOMETRY_DIM, self.head_dimension
+        ))
+        nn.init.zeros_(self.relative_bias[-1].weight)
+        nn.init.zeros_(self.relative_bias[-1].bias)
+
+    def _heads(self, value: Tensor) -> Tensor:
+        batch, length, _ = value.shape
+        return value.reshape(batch, length, self.heads, self.head_dimension).transpose(1, 2)
+
+    def forward(
+        self, query: Tensor, environment: Tensor, relative_geometry: Tensor,
+        environment_mask: Tensor | None,
+    ) -> Tensor:
+        q = self._heads(self.query(query))
+        k = self._heads(self.key(environment))
+        v = self._heads(self.value(environment))
+        logits = torch.einsum("bhld,bhmd->bhlm", q, k) / math.sqrt(self.head_dimension)
+        logits = logits + self.relative_bias(relative_geometry).permute(0, 3, 1, 2)
+        if environment_mask is not None:
+            logits = logits.masked_fill(
+                ~environment_mask[:, None, None], -torch.finfo(logits.dtype).max
+            )
+        weights = torch.softmax(logits, dim=-1)
+        attended = torch.einsum("bhlm,bhmd->bhld", weights, v)
+        attended = attended + torch.einsum(
+            "bhlm,blmr,hrd->bhld", weights, relative_geometry,
+            self.relative_value,
+        )
+        attended = attended.transpose(1, 2).reshape(query.shape)
+        return self.output(attended)
+
+
 class DiTBlock(nn.Module):
     def __init__(
         self, dimension: int, heads: int, condition_dim: int,
-        cross_attention: bool,
+        cross_attention: bool, relative_geometry_attention: bool = False,
     ) -> None:
         super().__init__()
         self.norm1 = nn.LayerNorm(dimension, elementwise_affine=False)
         self.self_attention = nn.MultiheadAttention(dimension, heads, batch_first=True)
         self.cross_attention = (
             nn.MultiheadAttention(dimension, heads, batch_first=True)
-            if cross_attention else None
+            if cross_attention and not relative_geometry_attention else None
+        )
+        self.relative_cross_attention = (
+            PairwiseGeometryCrossAttention(dimension, heads)
+            if relative_geometry_attention else None
         )
         self.norm_cross = nn.LayerNorm(dimension, elementwise_affine=False)
         self.norm2 = nn.LayerNorm(dimension, elementwise_affine=False)
@@ -135,6 +204,7 @@ class DiTBlock(nn.Module):
     def forward(
         self, value: Tensor, condition: Tensor,
         environment: Tensor | None, environment_mask: Tensor | None,
+        relative_geometry: Tensor | None = None,
     ) -> Tensor:
         shift1, scale1, gate1, shift2, scale2, gate2 = self.modulation(
             condition
@@ -153,6 +223,14 @@ class DiTBlock(nn.Module):
                 need_weights=False,
             )[0]
             value = value + attended
+        elif self.relative_cross_attention is not None:
+            if environment is None or relative_geometry is None:
+                raise ValueError("relative cross-attention requires environment and geometry")
+            attended = self.relative_cross_attention(
+                self.norm_cross(value), environment, relative_geometry,
+                environment_mask,
+            )
+            value = value + attended
         hidden = self.norm2(value) * (1 + scale2[:, None]) + shift2[:, None]
         return value + gate2[:, None] * self.mlp(hidden)
 
@@ -162,13 +240,22 @@ class ConditionalDiT(nn.Module):
         self, sequence_length: int = 128, path_dim: int = POSE_DIM,
         context_dim: int = CONDITION_DIM, dimension: int = 128,
         depth: int = 4, heads: int = 4, cross_attention: bool = False,
+        relative_geometry_attention: bool = False,
     ) -> None:
         super().__init__()
-        self.model_type = "dit_cross" if cross_attention else "dit"
+        if relative_geometry_attention and not cross_attention:
+            raise ValueError("relative geometry attention requires cross-attention")
+        self.model_type = (
+            "dit_rel_cross" if relative_geometry_attention
+            else "dit_cross" if cross_attention else "dit"
+        )
         self.cross_attention = cross_attention
+        self.relative_geometry_attention = relative_geometry_attention
         self.dimension = dimension
         self.register_buffer("environment_geometry_mean", torch.zeros(6), persistent=False)
         self.register_buffer("environment_geometry_std", torch.ones(6), persistent=False)
+        self.register_buffer("path_geometry_mean", torch.zeros(POSE_DIM), persistent=False)
+        self.register_buffer("path_geometry_std", torch.ones(POSE_DIM), persistent=False)
         self.input = nn.Linear(path_dim, dimension)
         self.position_embedding = nn.Parameter(
             torch.randn(1, sequence_length, dimension) * 0.02
@@ -187,7 +274,10 @@ class ConditionalDiT(nn.Module):
             ) if cross_attention else None
         )
         self.blocks = nn.ModuleList([
-            DiTBlock(dimension, heads, dimension, cross_attention)
+            DiTBlock(
+                dimension, heads, dimension, cross_attention,
+                relative_geometry_attention,
+            )
             for _ in range(depth)
         ])
         self.final_norm = nn.LayerNorm(dimension, elementwise_affine=False)
@@ -222,6 +312,55 @@ class ConditionalDiT(nn.Module):
             raise ValueError("environment geometry std must be positive")
         self.environment_geometry_mean.copy_(mean_tensor)
         self.environment_geometry_std.copy_(std_tensor)
+
+    def configure_path_normalization(
+        self, mean: np.ndarray | Tensor, std: np.ndarray | Tensor,
+    ) -> None:
+        mean_tensor = torch.as_tensor(
+            mean, dtype=self.path_geometry_mean.dtype,
+            device=self.path_geometry_mean.device,
+        )
+        std_tensor = torch.as_tensor(
+            std, dtype=self.path_geometry_std.dtype,
+            device=self.path_geometry_std.device,
+        )
+        if mean_tensor.shape != (POSE_DIM,) or std_tensor.shape != (POSE_DIM,):
+            raise ValueError("path geometry normalization must have shape [9]")
+        if not torch.isfinite(mean_tensor).all() or not torch.isfinite(std_tensor).all():
+            raise ValueError("path normalization must be finite")
+        if not (std_tensor > 0).all():
+            raise ValueError("path geometry std must be positive")
+        self.path_geometry_mean.copy_(mean_tensor)
+        self.path_geometry_std.copy_(std_tensor)
+
+    def pairwise_relative_geometry(
+        self, path: Tensor, obstacles: Tensor,
+    ) -> Tensor:
+        """Build body-frame trajectory/OBB pair features ``[B,L,M,13]``."""
+
+        metric_path = path * self.path_geometry_std + self.path_geometry_mean
+        path_rotation = rotation_6d_to_matrix(metric_path[..., 3:9].float()).to(path.dtype)
+        obstacle_rotation = quaternion_wxyz_to_matrix_torch(
+            obstacles[..., 6:10].float()
+        ).to(path.dtype)
+        delta = obstacles[:, None, :, :3] - metric_path[:, :, None, :3]
+        body_delta = torch.einsum("blmi,blij->blmj", delta, path_rotation)
+        distance = torch.linalg.vector_norm(body_delta, dim=-1, keepdim=True)
+        relative_rotation = torch.matmul(
+            path_rotation.transpose(-1, -2)[:, :, None],
+            obstacle_rotation[:, None],
+        )
+        rotation6 = torch.cat((
+            relative_rotation[..., :, 0], relative_rotation[..., :, 1]
+        ), dim=-1)
+        extents = obstacles[:, None, :, 3:6].expand(
+            -1, path.shape[1], -1, -1
+        )
+        # Metric features are scaled to a numerically compact range; rotation
+        # columns are already bounded by [-1, 1].
+        return torch.cat((
+            body_delta / 3.0, distance / 3.0, extents / 2.0, rotation6
+        ), dim=-1)
 
     def encode_environment(
         self, path: Tensor, obstacles: Tensor | None, obstacle_mask: Tensor | None,
@@ -275,8 +414,21 @@ class ConditionalDiT(nn.Module):
         environment, environment_mask = self.encode_environment(
             path, obstacles, obstacle_mask
         )
+        relative_geometry = None
+        if self.relative_geometry_attention:
+            if obstacles is None:
+                obstacles = torch.zeros(
+                    (len(path), 1, OBSTACLE_DIM), dtype=path.dtype,
+                    device=path.device,
+                )
+            elif obstacles.ndim == 2:
+                obstacles = obstacles[None].expand(len(path), -1, -1)
+            relative_geometry = self.pairwise_relative_geometry(path, obstacles)
         for block in self.blocks:
-            value = block(value, condition, environment, environment_mask)
+            value = block(
+                value, condition, environment, environment_mask,
+                relative_geometry,
+            )
         shift, scale = self.final_modulation(condition).chunk(2, dim=-1)
         value = self.final_norm(value) * (1 + scale[:, None]) + shift[:, None]
         return self.output(value)
@@ -360,10 +512,11 @@ def build_model(
     dit_dimension: int = 128, dit_depth: int = 4, dit_heads: int = 4,
 ) -> nn.Module:
     del unet_channels
-    if model_type not in {"dit", "dit_cross"}:
+    if model_type not in {"dit", "dit_cross", "dit_rel_cross"}:
         raise ValueError(f"unsupported inference model type: {model_type}")
     return ConditionalDiT(
         sequence_length=sequence_length, dimension=dit_dimension,
         depth=dit_depth, heads=dit_heads,
-        cross_attention=model_type == "dit_cross",
+        cross_attention=model_type in {"dit_cross", "dit_rel_cross"},
+        relative_geometry_attention=model_type == "dit_rel_cross",
     )

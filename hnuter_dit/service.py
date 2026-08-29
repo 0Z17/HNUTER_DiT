@@ -25,12 +25,13 @@ from .model import (
     pose7_to_pose9,
     pose9_to_pose7_numpy,
 )
+from .geometry import CANONICAL_FRAME_VERSION, CanonicalFrame
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_MODEL = (
-    PROJECT_ROOT / "artifacts" / "base_free_flight_159103traj_dit_v001"
-    / "models" / "dit_cross" / "best.pt"
+    PROJECT_ROOT / "artifacts" / "base_free_flight_159103traj_dit_relgeom_v002"
+    / "models" / "dit_rel_cross" / "best.pt"
 )
 DEFAULT_COLLECTOR = Path("/home/z017/research/HNUTER_trajectory_collector")
 EXPECTED_PARAMETER_COUNT = 11_964_169
@@ -105,8 +106,8 @@ class DiTModelRuntime:
         checkpoint = torch.load(
             self.checkpoint_path, map_location=self.device, weights_only=False
         )
-        if checkpoint.get("model_type") != "dit_cross":
-            raise RuntimeError("checkpoint 不是 environment-conditioned dit_cross")
+        if checkpoint.get("model_type") not in {"dit_cross", "dit_rel_cross"}:
+            raise RuntimeError("checkpoint 不是受支持的 environment-conditioned DiT")
         if checkpoint.get("prediction_type") != "velocity":
             raise RuntimeError("checkpoint prediction_type 不是 velocity")
         self.model = build_model(
@@ -117,9 +118,16 @@ class DiTModelRuntime:
             checkpoint["environment_feature_mean"],
             checkpoint["environment_feature_std"],
         )
+        if checkpoint.get("model_type") == "dit_rel_cross":
+            self.model.configure_path_normalization(
+                checkpoint["path_mean"], checkpoint["path_std"]
+            )
         self.model.eval()
         self.parameter_count = sum(value.numel() for value in self.model.parameters())
-        if self.parameter_count != EXPECTED_PARAMETER_COUNT:
+        if (
+            checkpoint.get("model_type") == "dit_cross"
+            and self.parameter_count != EXPECTED_PARAMETER_COUNT
+        ):
             raise RuntimeError(
                 f"模型参数量 {self.parameter_count} 与预期 {EXPECTED_PARAMETER_COUNT} 不一致"
             )
@@ -131,6 +139,10 @@ class DiTModelRuntime:
         self.training_step = int(checkpoint["training_step"])
         self.validation_loss = float(checkpoint["validation_loss"])
         self.source_dataset = str(checkpoint["source_dataset"])
+        self.model_type = str(checkpoint["model_type"])
+        self.canonical_frame = checkpoint.get("canonical_frame")
+        if self.model_type == "dit_rel_cross" and self.canonical_frame != CANONICAL_FRAME_VERSION:
+            raise RuntimeError("relative-geometry checkpoint 缺少兼容的 canonical frame")
         self.checkpoint_sha256 = _sha256_file(self.checkpoint_path)
         status_path = self.checkpoint_path.parents[2] / "run_status.json"
         if status_path.is_file():
@@ -143,8 +155,8 @@ class DiTModelRuntime:
 
     def describe(self) -> dict[str, Any]:
         return {
-            "model_type": "dit_cross",
-            "preset": "small_environment",
+            "model_type": self.model_type,
+            "preset": "small_environment_relative_geometry" if self.model_type == "dit_rel_cross" else "small_environment",
             "parameter_count": self.parameter_count,
             "training_step": self.training_step,
             "validation_loss": self.validation_loss,
@@ -159,6 +171,8 @@ class DiTModelRuntime:
             "trajectory_shape": [self.sequence_length, 9],
             "environment_tokens": [32, 10],
             "prediction_type": "velocity",
+            "canonical_frame": self.canonical_frame,
+            "relative_geometry_attention": self.model_type == "dit_rel_cross",
         }
 
     def sample(
@@ -169,13 +183,22 @@ class DiTModelRuntime:
         raw_condition = np.concatenate((
             pose7_to_pose9(start_pose), pose7_to_pose9(goal_pose)
         )).astype(np.float32)
+        frame = None
+        model_condition = raw_condition
+        model_tokens = tokens
+        if self.canonical_frame is not None:
+            frame = CanonicalFrame.from_pose9_condition(raw_condition)
+            model_condition = frame.pose9_to_canonical(
+                raw_condition.reshape(2, 9)
+            ).reshape(18).astype(np.float32)
+            model_tokens = frame.obstacles_to_canonical(tokens).astype(np.float32)
         condition_mean = np.tile(self.path_mean, 2)
         condition_std = np.tile(self.path_std, 2)
-        normalized = (raw_condition - condition_mean) / condition_std
+        normalized = (model_condition - condition_mean) / condition_std
         conditions = torch.from_numpy(
             np.repeat(normalized[None], count, axis=0)
         ).float().to(self.device)
-        obstacle_tensor = torch.from_numpy(tokens).float().to(self.device)
+        obstacle_tensor = torch.from_numpy(model_tokens).float().to(self.device)
         mask_tensor = torch.from_numpy(mask).bool().to(self.device)
         generator = torch.Generator(device=self.device).manual_seed(seed)
         with self.lock:
@@ -190,6 +213,8 @@ class DiTModelRuntime:
                 torch.cuda.synchronize(self.device)
             elapsed = time.perf_counter() - started
         paths9 = normalized_paths.cpu().numpy() * self.path_std + self.path_mean
+        if frame is not None:
+            paths9 = frame.pose9_to_world(paths9)
         paths7 = pose9_to_pose7_numpy(paths9).astype(np.float32)
         paths7[:, 0] = start_pose
         paths7[:, -1] = goal_pose
