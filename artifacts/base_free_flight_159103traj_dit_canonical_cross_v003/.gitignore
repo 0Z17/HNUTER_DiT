@@ -1,0 +1,3 @@
+models/dit_cross/ema.pt
+models/dit_cross/last.pt
+*.tmp

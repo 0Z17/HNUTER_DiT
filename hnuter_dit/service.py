@@ -26,12 +26,13 @@ from .model import (
     pose9_to_pose7_numpy,
 )
 from .geometry import CANONICAL_FRAME_VERSION, CanonicalFrame
+from .guidance import CollisionGuidanceConfig, guide_clean_trajectory
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_MODEL = (
-    PROJECT_ROOT / "artifacts" / "base_free_flight_159103traj_dit_relgeom_v002"
-    / "models" / "dit_rel_cross" / "best.pt"
+    PROJECT_ROOT / "artifacts" / "base_free_flight_159103traj_dit_canonical_cross_v003"
+    / "models" / "dit_cross" / "best.pt"
 )
 DEFAULT_COLLECTOR = Path("/home/z017/research/HNUTER_trajectory_collector")
 EXPECTED_PARAMETER_COUNT = 11_964_169
@@ -173,12 +174,14 @@ class DiTModelRuntime:
             "prediction_type": "velocity",
             "canonical_frame": self.canonical_frame,
             "relative_geometry_attention": self.model_type == "dit_rel_cross",
+            "late_collision_guidance_available": True,
         }
 
     def sample(
         self, tokens: np.ndarray, mask: np.ndarray,
         start_pose: np.ndarray, goal_pose: np.ndarray,
         *, count: int, sampling_steps: int, seed: int,
+        guidance: CollisionGuidanceConfig | None = None,
     ) -> tuple[np.ndarray, float]:
         raw_condition = np.concatenate((
             pose7_to_pose9(start_pose), pose7_to_pose9(goal_pose)
@@ -201,6 +204,30 @@ class DiTModelRuntime:
         obstacle_tensor = torch.from_numpy(model_tokens).float().to(self.device)
         mask_tensor = torch.from_numpy(mask).bool().to(self.device)
         generator = torch.Generator(device=self.device).manual_seed(seed)
+        clean_guidance = None
+        if guidance is not None and guidance.steps > 0:
+            guidance.validate(sampling_steps)
+            guidance_obstacles = obstacle_tensor[None].expand(count, -1, -1)
+            guidance_mask = mask_tensor[None].expand(count, -1)
+            path_mean_tensor = torch.as_tensor(
+                self.path_mean, dtype=torch.float32, device=self.device
+            )
+            path_std_tensor = torch.as_tensor(
+                self.path_std, dtype=torch.float32, device=self.device
+            )
+
+            def clean_guidance(
+                predicted_x0: torch.Tensor, sample_index: int,
+                total_steps: int, timestep: int,
+            ) -> torch.Tensor:
+                del timestep
+                if sample_index < total_steps - guidance.steps:
+                    return predicted_x0
+                guided, _ = guide_clean_trajectory(
+                    predicted_x0, conditions, path_mean_tensor, path_std_tensor,
+                    guidance_obstacles, guidance_mask, guidance,
+                )
+                return guided
         with self.lock:
             if self.device.type == "cuda":
                 torch.cuda.synchronize(self.device)
@@ -208,6 +235,7 @@ class DiTModelRuntime:
             normalized_paths = ddim_sample(
                 self.model, conditions, self.schedule, self.sequence_length,
                 sampling_steps, obstacle_tensor, mask_tensor, generator,
+                clean_guidance=clean_guidance,
             )
             if self.device.type == "cuda":
                 torch.cuda.synchronize(self.device)
@@ -392,12 +420,21 @@ class DiTTrajectoryService:
         count = int(request.get("count", 4))
         sampling_steps = int(request.get("sampling_steps", 25))
         seed = int(request.get("seed", 1))
+        guidance = CollisionGuidanceConfig(
+            mode=str(request.get("guidance_mode", "smooth")),
+            steps=int(request.get("guidance_steps", 8)),
+            step_size_m=float(request.get("guidance_step_size_m", 0.12)),
+            safe_distance_m=float(request.get("guidance_safe_distance_m", 0.04)),
+            sigma_m=float(request.get("guidance_sigma_m", 0.05)),
+            smoothing_passes=int(request.get("guidance_smoothing_passes", 1)),
+        )
         if not 1 <= count <= 16:
             raise ValueError("轨迹数量必须在 [1, 16]")
         if not 2 <= sampling_steps <= self.runtime.diffusion_steps:
             raise ValueError(
                 f"DDIM steps 必须在 [2, {self.runtime.diffusion_steps}]"
             )
+        guidance.validate(sampling_steps)
         validation = self.validate(request)
         if not validation["valid"]:
             raise ValueError("场景或端点无效: " + "; ".join(validation["issues"]))
@@ -411,6 +448,7 @@ class DiTTrajectoryService:
         paths, elapsed = self.runtime.sample(
             tokens, mask, start, goal, count=count,
             sampling_steps=sampling_steps, seed=seed,
+            guidance=guidance,
         )
         checker = self._checker(scene)
         bounds = scene.get("sampling_space", {}).get("position_bounds", {
@@ -432,7 +470,17 @@ class DiTTrajectoryService:
             )
             collision_free = clearance > 0
             valid = bool(np.all(collision_free & in_bounds & attitude_valid))
-            length = float(np.linalg.norm(np.diff(path[:, :3], axis=0), axis=1).sum())
+            segments = np.diff(path[:, :3], axis=0)
+            segment_lengths = np.linalg.norm(segments, axis=1)
+            tangents = segments / np.maximum(segment_lengths[:, None], 1e-9)
+            turn_angles = np.degrees(np.arccos(np.clip(
+                np.sum(tangents[1:] * tangents[:-1], axis=1), -1, 1
+            )))
+            acceleration = np.diff(path[:, :3], n=2, axis=0)
+            jerk = np.diff(path[:, :3], n=3, axis=0)
+            start_goal = path[-1, :3] - path[0, :3]
+            start_goal /= max(float(np.linalg.norm(start_goal)), 1e-9)
+            length = float(segment_lengths.sum())
             trajectories.append({
                 "index": index,
                 "poses_wxyz": path.tolist(),
@@ -441,6 +489,17 @@ class DiTTrajectoryService:
                     "valid": valid,
                     "minimum_clearance_m": float(np.min(clearance)),
                     "path_length_m": length,
+                    "p95_turn_angle_deg": float(np.percentile(turn_angles, 95)),
+                    "maximum_turn_angle_deg": float(np.max(turn_angles)),
+                    "acceleration_rms_m_per_index2": float(
+                        np.sqrt(np.mean(np.square(acceleration)))
+                    ),
+                    "jerk_rms_m_per_index3": float(
+                        np.sqrt(np.mean(np.square(jerk)))
+                    ),
+                    "backtracking_fraction": float(np.mean(
+                        (segments @ start_goal) < 0
+                    )),
                     "collision_sample_count": int(np.count_nonzero(~collision_free)),
                     "out_of_bounds_sample_count": int(np.count_nonzero(~in_bounds)),
                     "attitude_violation_sample_count": int(np.count_nonzero(~attitude_valid)),
@@ -450,7 +509,7 @@ class DiTTrajectoryService:
             })
         valid_count = sum(item["metrics"]["valid"] for item in trajectories)
         return {
-            "schema_version": "hnuter_dit_web_predictions_v001",
+            "schema_version": "hnuter_dit_web_predictions_v002",
             "scene_id": scene.get("environment_id", "edited_scene"),
             "start_pose": start.tolist(),
             "goal_pose": goal.tolist(),
@@ -465,6 +524,30 @@ class DiTTrajectoryService:
                 "milliseconds_per_path": 1000 * elapsed / count,
                 "collision_backend": checker.backend_name,
                 "model_device": str(self.runtime.device),
+                "collision_guidance": {
+                    "enabled": guidance.steps > 0,
+                    "mode": guidance.mode,
+                    "late_ddim_steps": guidance.steps,
+                    "step_size_m": guidance.step_size_m,
+                    "safe_distance_m": guidance.safe_distance_m,
+                    "sigma_m": guidance.sigma_m,
+                    "smoothing_passes": guidance.smoothing_passes,
+                    "control_points": guidance.control_points,
+                    "optimization_steps": guidance.optimization_steps,
+                    "softmin_temperature_m": guidance.softmin_temperature_m,
+                    "cost_weights": {
+                        "collision": 1.0,
+                        "reference": guidance.reference_weight,
+                        "smoothness": guidance.smoothness_weight,
+                        "jerk": guidance.jerk_weight,
+                        "stretch": guidance.stretch_weight,
+                        "tangent": guidance.tangent_weight,
+                    },
+                    "proxy": (
+                        "42 robot spheres against canonical OBBs; smooth "
+                        "control displacement field"
+                    ),
+                },
             },
             "validation": validation,
         }

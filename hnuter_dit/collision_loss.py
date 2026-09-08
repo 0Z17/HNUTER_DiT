@@ -43,6 +43,7 @@ ROBOT_SPHERE_RADII = (
 def sphere_obb_signed_distances(
     path_metric: Tensor, obstacles: Tensor, obstacle_mask: Tensor,
     *, waypoint_stride: int = 4,
+    softmin_temperature: float | None = None,
 ) -> Tensor:
     """Return the minimum robot-sphere/OBB distance at sampled waypoints."""
 
@@ -73,7 +74,13 @@ def sphere_obb_signed_distances(
     signed = signed.masked_fill(
         ~obstacle_mask[:, None, None], torch.finfo(signed.dtype).max
     )
-    return signed.amin(dim=(2, 3))
+    if softmin_temperature is None:
+        return signed.amin(dim=(2, 3))
+    if softmin_temperature <= 0:
+        raise ValueError("softmin_temperature must be positive")
+    return -softmin_temperature * torch.logsumexp(
+        -signed / softmin_temperature, dim=(2, 3)
+    )
 
 
 def collision_auxiliary_loss(

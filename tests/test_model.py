@@ -10,6 +10,7 @@ from hnuter_dit.geometry import (
     CanonicalFrame, canonicalize_condition_batch, canonicalize_obstacles_batch,
     canonicalize_pose9_batch, decanonicalize_pose9_batch,
 )
+from hnuter_dit.guidance import CollisionGuidanceConfig, guide_clean_trajectory
 from hnuter_dit.model import build_model, pose7_to_pose9, pose9_to_pose7_numpy
 
 
@@ -139,3 +140,49 @@ def test_collision_sphere_distance_detects_obstacle_intersection() -> None:
     free = sphere_obb_signed_distances(far_path, obstacle, mask, waypoint_stride=1)
     assert float(colliding.min()) < 0
     assert float(free.min()) > 0
+
+
+def test_collision_sphere_soft_min_is_finite_and_conservative() -> None:
+    pose = torch.tensor([2, 0, 0, 1, 0, 0, 0, 1, 0], dtype=torch.float32)
+    path = pose.repeat(1, 10, 1)
+    obstacle = torch.tensor(
+        [[[0, 0, 0, 1, 1, 1, 1, 0, 0, 0]]], dtype=torch.float32
+    )
+    mask = torch.ones(1, 1, dtype=torch.bool)
+    hard = sphere_obb_signed_distances(path, obstacle, mask, waypoint_stride=1)
+    soft = sphere_obb_signed_distances(
+        path, obstacle, mask, waypoint_stride=1, softmin_temperature=0.02
+    )
+    assert torch.isfinite(soft).all()
+    assert torch.all(soft <= hard + 1e-6)
+
+
+def test_collision_guidance_improves_proxy_clearance_and_preserves_endpoints() -> None:
+    pose = torch.tensor(
+        [-0.35, 0, 0, 1, 0, 0, 0, 1, 0], dtype=torch.float32
+    )
+    path = pose.repeat(1, 12, 1)
+    path[:, 0, 0] = -1.5
+    path[:, -1, 0] = 1.5
+    conditions = torch.cat((path[:, 0], path[:, -1]), dim=-1)
+    obstacle = torch.tensor(
+        [[[0, 0, 0, 1, 1, 1, 1, 0, 0, 0]]], dtype=torch.float32
+    )
+    mask = torch.ones(1, 1, dtype=torch.bool)
+    before = sphere_obb_signed_distances(
+        path, obstacle, mask, waypoint_stride=1
+    ).amin()
+    guided, diagnostics = guide_clean_trajectory(
+        path, conditions, torch.zeros(9), torch.ones(9), obstacle, mask,
+        CollisionGuidanceConfig(
+            steps=1, step_size_m=0.04, smoothing_passes=0
+        ),
+    )
+    after = sphere_obb_signed_distances(
+        guided, obstacle, mask, waypoint_stride=1
+    ).amin()
+    assert float(after) > float(before)
+    assert torch.equal(guided[:, 0], path[:, 0])
+    assert torch.equal(guided[:, -1], path[:, -1])
+    assert torch.equal(guided[..., 3:], path[..., 3:])
+    assert diagnostics["maximum_displacement_m"] <= 0.040001

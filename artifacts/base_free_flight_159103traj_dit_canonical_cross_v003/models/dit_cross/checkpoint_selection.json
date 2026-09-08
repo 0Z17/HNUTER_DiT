@@ -1,0 +1,7 @@
+{
+  "selection_split": "validation",
+  "criterion": "minimum_total_loss",
+  "selected_checkpoint": "best.pt",
+  "best_training_step": 48000,
+  "best_validation_loss": 0.01998806287977664
+}

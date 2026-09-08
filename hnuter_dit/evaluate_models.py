@@ -65,13 +65,15 @@ def rotate_scene(scene: dict[str, Any], angle: float) -> dict[str, Any]:
     return result
 
 
-def select_conditions(dataset: Path, count: int, seed: int) -> list[dict[str, Any]]:
+def select_conditions(
+    dataset: Path, count: int, seed: int, split: str = "test",
+) -> list[dict[str, Any]]:
     rows = [json.loads(line) for line in (
         dataset / "conditions/index.jsonl"
     ).read_text(encoding="utf-8").splitlines()]
     groups: dict[str, list[dict[str, Any]]] = defaultdict(list)
     for row in rows:
-        if row["split"] == "test":
+        if row["split"] == split:
             groups[str(row["family"])].append(row)
     rng = np.random.default_rng(seed)
     selected: list[dict[str, Any]] = []
@@ -96,11 +98,29 @@ def trajectory_metrics(path: np.ndarray, scene: dict[str, Any], checker: Any,
     in_bounds = np.all((path[:, :3] >= lower) & (path[:, :3] <= upper), axis=1)
     attitude_valid = (np.abs(attitudes[:, 0]) <= 40) & (np.abs(attitudes[:, 1]) <= 70)
     collision_free = clearance > 0
+    segments = np.diff(path[:, :3], axis=0)
+    segment_lengths = np.linalg.norm(segments, axis=1)
+    tangents = segments / np.maximum(segment_lengths[:, None], 1e-9)
+    turn_cosines = np.clip(np.sum(tangents[1:] * tangents[:-1], axis=1), -1, 1)
+    turn_angles = np.degrees(np.arccos(turn_cosines))
+    acceleration = np.diff(path[:, :3], n=2, axis=0)
+    jerk = np.diff(path[:, :3], n=3, axis=0)
+    start_goal = path[-1, :3] - path[0, :3]
+    start_goal /= max(float(np.linalg.norm(start_goal)), 1e-9)
+    forward_progress = segments @ start_goal
+    straight_distance = float(np.linalg.norm(path[-1, :3] - path[0, :3]))
+    path_length = float(segment_lengths.sum())
     return {
         "physical_collision_free": bool(np.all(collision_free)),
         "valid": bool(np.all(collision_free & in_bounds & attitude_valid)),
         "minimum_clearance_m": float(clearance.min()),
-        "path_length_m": float(np.linalg.norm(np.diff(path[:, :3], axis=0), axis=1).sum()),
+        "path_length_m": path_length,
+        "path_efficiency": path_length / max(straight_distance, 1e-9),
+        "p95_turn_angle_deg": float(np.percentile(turn_angles, 95)),
+        "maximum_turn_angle_deg": float(turn_angles.max()),
+        "acceleration_rms_m_per_index2": float(np.sqrt(np.mean(np.square(acceleration)))),
+        "jerk_rms_m_per_index3": float(np.sqrt(np.mean(np.square(jerk)))),
+        "backtracking_fraction": float(np.mean(forward_progress < 0)),
     }
 
 

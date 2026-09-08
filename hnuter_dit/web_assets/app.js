@@ -220,11 +220,15 @@ async function runModel() {
       count: Number($("#sampleCount").value),
       sampling_steps: Number($("#ddimSteps").value),
       seed: Number($("#sampleSeed").value),
+      guidance_steps: Number($("#guidanceSteps").value),
+      guidance_step_size_m: Number($("#guidanceStepSize").value),
     });
     state.predictions = result;
     state.selectedTrajectory = Math.max(0, result.trajectories.findIndex((item) => item.metrics.valid));
     $("#downloadPredictions").disabled = false;
-    $("#inferenceStatus").textContent = `${result.summary.valid_count}/${result.summary.requested_count} 条通过 · 神经采样 ${format(result.summary.neural_sampling_time_s, 3)} s`;
+    const guidance = result.summary.collision_guidance;
+    const guidanceLabel = guidance?.enabled ? ` · ${guidance.mode} guidance ${guidance.late_ddim_steps} steps` : "";
+    $("#inferenceStatus").textContent = `${result.summary.valid_count}/${result.summary.requested_count} 条通过 · 神经采样 ${format(result.summary.neural_sampling_time_s, 3)} s${guidanceLabel}`;
     $("#inferenceStatus").className = "inference-status";
     renderTrajectoryRail();
     renderMetrics();
@@ -341,6 +345,9 @@ function renderMetrics() {
     `collision samples = ${metric.collision_sample_count}`,
     `bounds violations = ${metric.out_of_bounds_sample_count}`,
     `attitude violations = ${metric.attitude_violation_sample_count}`,
+    `p95 / max turn = ${format(metric.p95_turn_angle_deg, 1)}° / ${format(metric.maximum_turn_angle_deg, 1)}°`,
+    `accel RMS / jerk RMS = ${format(metric.acceleration_rms_m_per_index2, 5)} / ${format(metric.jerk_rms_m_per_index3, 5)}`,
+    `backtracking = ${format(100 * metric.backtracking_fraction, 2)}%`,
     `max |roll| / |pitch| = ${format(metric.maximum_abs_roll_deg, 1)}° / ${format(metric.maximum_abs_pitch_deg, 1)}°`,
   ].join("<br>");
 }

@@ -48,10 +48,14 @@
       </div>
 
       <div class="divider"></div>
-      <div class="section-heading"><h3>DiT 采样</h3><span class="tag">UNGUIDED BASE</span></div>
+      <div class="section-heading"><h3>DiT 采样</h3><span class="tag">SMOOTH MULTI-COST GUIDANCE</span></div>
       <div class="two-col">
         <label class="field"><span>候选数量</span><input id="sampleCount" type="number" value="6" min="1" max="16"></label>
         <label class="field"><span>DDIM steps</span><select id="ddimSteps"><option>10</option><option selected>25</option><option>50</option><option>100</option></select></label>
+      </div>
+      <div class="two-col">
+        <label class="field"><span>Guidance 后期步数</span><select id="guidanceSteps"><option>0</option><option>3</option><option>5</option><option selected>8</option></select></label>
+        <label class="field"><span>单步最大平滑位移 / m</span><input id="guidanceStepSize" type="number" value="0.12" min="0.005" max="0.20" step="0.005"></label>
       </div>
       <label class="field full"><span>推理 seed</span><input id="sampleSeed" type="number" value="20260828"></label>
       <button id="runModel" class="button infer full"><span>生成 DiT 轨迹</span><i>→</i></button>

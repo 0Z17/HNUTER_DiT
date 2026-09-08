@@ -1,4 +1,4 @@
-"""Training entry point for canonical, geometry-aware HNUTER DiT v002."""
+"""Training entry point for canonical HNUTER DiT variants."""
 
 from __future__ import annotations
 
@@ -354,10 +354,11 @@ def checkpoint_payload(model_type: str, model_state: dict[str, Tensor], step: in
         ),
         "environment_token_schema_version": "box_geometry_canonical_v002",
         "canonical_frame": CANONICAL_FRAME_VERSION,
-        "relative_geometry_attention": True,
-        "relative_geometry_features": [
-            "body_delta_xyz", "distance", "obb_extent_xyz", "relative_rotation_6d"
-        ],
+        "relative_geometry_attention": model_type == "dit_rel_cross",
+        "relative_geometry_features": (
+            ["body_delta_xyz", "distance", "obb_extent_xyz", "relative_rotation_6d"]
+            if model_type == "dit_rel_cross" else []
+        ),
         "collision_auxiliary": {
             "weight": args.collision_weight,
             "safe_distance_m": args.collision_safe_distance,
@@ -379,14 +380,18 @@ def train(args: argparse.Namespace) -> Path:
     data = FrozenDataset.load(args.dataset)
     stats = canonical_statistics(data, args.output_dir / "canonical_statistics.json")
     write_json(args.output_dir / "resolved_training_config.json", {
-        "schema_version": "hnuter_dit_relative_geometry_training_v002",
+        "schema_version": (
+            "hnuter_dit_relative_geometry_training_v002"
+            if args.model_type == "dit_rel_cross"
+            else "hnuter_dit_canonical_cross_attention_training_v003"
+        ),
         "created_at_utc": datetime.now(timezone.utc).isoformat(),
         "dataset": str(args.dataset), "output_dir": str(args.output_dir),
         "canonical_frame": CANONICAL_FRAME_VERSION,
         "architecture": {
-            "model_type": "dit_rel_cross", "sequence_length": 128,
+            "model_type": args.model_type, "sequence_length": 128,
             "dimension": 256, "depth": 8, "heads": 8,
-            "pairwise_relative_geometry": True,
+            "pairwise_relative_geometry": args.model_type == "dit_rel_cross",
         },
         "training": vars(args),
     })
@@ -400,18 +405,19 @@ def train(args: argparse.Namespace) -> Path:
     if device.type == "cuda":
         torch.backends.cudnn.benchmark = True
     model = build_model(
-        "dit_rel_cross", sequence_length=128, dit_dimension=256,
+        args.model_type, sequence_length=128, dit_dimension=256,
         dit_depth=8, dit_heads=8,
     ).to(device)
     assert isinstance(model, ConditionalDiT)
     path_mean = torch.as_tensor(stats["path_mean"], dtype=torch.float32, device=device)
     path_std = torch.as_tensor(stats["path_std"], dtype=torch.float32, device=device)
-    model.configure_path_normalization(path_mean, path_std)
+    if args.model_type == "dit_rel_cross":
+        model.configure_path_normalization(path_mean, path_std)
     model.configure_environment_normalization(
         stats["environment_feature_mean"], stats["environment_feature_std"]
     )
     parameter_count = sum(value.numel() for value in model.parameters())
-    print(f"device={device} model=dit_rel_cross parameters={parameter_count:,}", flush=True)
+    print(f"device={device} model={args.model_type} parameters={parameter_count:,}", flush=True)
     train_indices = np.flatnonzero(data.split_codes == 0)
     validation_indices = np.flatnonzero(data.split_codes == 1)
     if args.validation_max_samples > 0:
@@ -436,7 +442,7 @@ def train(args: argparse.Namespace) -> Path:
         (lambda: torch.autocast("cuda", dtype=torch.float16))
         if use_amp else (lambda: nullcontext())
     )
-    model_dir = args.output_dir / "models" / "dit_rel_cross"
+    model_dir = args.output_dir / "models" / args.model_type
     model_dir.mkdir(parents=True, exist_ok=True)
     best_path, ema_path, last_path = (
         model_dir / "best.pt", model_dir / "ema.pt", model_dir / "last.pt"
@@ -526,7 +532,7 @@ def train(args: argparse.Namespace) -> Path:
             rolling = {"total": 0, "diffusion": 0, "collision": 0}
             rolling_count = 0
             inference = checkpoint_payload(
-                "dit_rel_cross", ema.cpu_state_dict(), step, validation,
+                args.model_type, ema.cpu_state_dict(), step, validation,
                 data, stats, args,
             )
             if validation["total"] < best_validation:
@@ -554,7 +560,7 @@ def train(args: argparse.Namespace) -> Path:
                 print("early stopping", flush=True)
                 break
     write_json(model_dir / "training_history.json", {
-        "model_type": "dit_rel_cross", "parameter_count": parameter_count,
+        "model_type": args.model_type, "parameter_count": parameter_count,
         "train_sample_count_with_reverse_augmentation": 2 * len(train_indices),
         "validation_sample_count": len(validation_indices),
         "best_validation_loss": best_validation, "best_training_step": best_step,
@@ -584,6 +590,10 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--dataset", type=Path, default=DEFAULT_DATASET)
     parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT)
+    parser.add_argument(
+        "--model-type", choices=("dit_cross", "dit_rel_cross"),
+        default="dit_rel_cross",
+    )
     parser.add_argument("--training-steps", type=int, default=48_000)
     parser.add_argument("--validation-interval", type=int, default=2_000)
     parser.add_argument(

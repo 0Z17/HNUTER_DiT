@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "hnuter-dit"
-version = "0.2.0"
+version = "0.3.0"
 description = "Interactive environment-conditioned DiT trajectory inference for HNUTER"
 readme = "README.md"
 requires-python = ">=3.10"
@@ -16,6 +16,8 @@ hnuter-dit-web = "hnuter_dit.web:main"
 hnuter-dit-train-v002 = "hnuter_dit.training:main"
 hnuter-dit-evaluate = "hnuter_dit.evaluate_models:main"
 hnuter-dit-evaluate-obstacle-shift = "hnuter_dit.evaluate_obstacle_shift:main"
+hnuter-dit-evaluate-v003 = "hnuter_dit.evaluate_v003:main"
+hnuter-dit-tune-guidance = "hnuter_dit.tune_guidance:main"
 
 [tool.setuptools.packages.find]
 include = ["hnuter_dit*"]

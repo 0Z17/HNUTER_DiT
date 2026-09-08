@@ -9,7 +9,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 import math
-from typing import Iterable
+from typing import Callable, Iterable
 
 import numpy as np
 import torch
@@ -460,12 +460,13 @@ def hard_clamp_endpoints(path: Tensor, context: Tensor) -> Tensor:
     return result
 
 
-@torch.inference_mode()
+@torch.no_grad()
 def ddim_sample(
     model: nn.Module, conditions: Tensor, schedule: DiffusionSchedule,
     sequence_length: int, sampling_steps: int, obstacles: Tensor,
     obstacle_mask: Tensor, generator: torch.Generator,
     clip_x0: float = 4.0,
+    clean_guidance: Callable[[Tensor, int, int, int], Tensor] | None = None,
 ) -> Tensor:
     path = torch.randn(
         (len(conditions), sequence_length, POSE_DIM),
@@ -492,6 +493,10 @@ def ddim_sample(
         predicted_x0 = hard_clamp_endpoints(
             torch.clamp(predicted_x0, -clip_x0, clip_x0), conditions
         )
+        if clean_guidance is not None:
+            predicted_x0 = clean_guidance(
+                predicted_x0, sample_index, len(indices), int(timestep_value)
+            )
         predicted_noise = (
             path - torch.sqrt(alpha_bar) * predicted_x0
         ) / torch.clamp(torch.sqrt(1 - alpha_bar), min=1e-6)
