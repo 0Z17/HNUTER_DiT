@@ -9,3 +9,4 @@ artifacts/*_smoke/
 artifacts/*_throughput_smoke/
 artifacts/**/models/**/ema.pt
 artifacts/**/models/**/last.pt
+results/

@@ -1,0 +1,1167 @@
+{
+  "schema_version": "industrial_dit_validation_v1",
+  "date": "2026-10-04",
+  "simulation_repository_commit": "c6b19ae21b22224a779c413f24c76df26abb5c05",
+  "model_repository_base": "094eeab",
+  "checkpoint_sha256": "301070cd16c847d749da548bca4d66e409e7ed698346c9b938f3ddf782936dad",
+  "image": "isaaclab-sim:6.0.0-nvblox",
+  "physics_dt_seconds": 0.001,
+  "unit_tests_passed": 86,
+  "source_sha256": {
+    "planner_process.py": "07f53442beb67da5119fdbdb8ddb3d2963fc9f253ac997eaad66b355e3587120",
+    "lidar_condition.py": "a4943f26240dadaf3eeb718b89476a192ae6ad17c8015cf20bb38d7b11cb57bb",
+    "industrial_runner.py": "0a3463cd39014019a2cfc0f520cc58b0dd88f1b4086d9a2faf684e448b63d506",
+    "observation_guard.py": "ae107faf19c57d2d136844bf5d633e8931948b73ec4716dff71aee57838a3a21",
+    "web.py": "65436ead410a87bd2199b5c03d781834d63503f1d30d1218a7f3a3c2f915e80d",
+    "industrial_obstacle.py": "fa86bc05b0006a521b5b6d8dc293be4c2d2ab5d4d8355c7e7285301c77a56657",
+    "evaluate_v003.py": "ea6777e38621be4e19f722d8fe3c039269d3c133c73a7052153cff7df9207466",
+    "model.py": "06866dd8b7f0ea1806a9c29b3d2e2adec265b331536ba6192c448dc6e334d3ed",
+    "online_diffusion.py": "7c7e661961fac20d9ccefcd6f11fee859fb74957a5675d6373adb28bceee4be5",
+    "tune_guidance.py": "fdd3f04f9a4f437db10865157693490d446c9df432feddb097d4a4798a3dc61f",
+    "collision_loss.py": "42da73bf7fa061c6d346866c646db10c9c6c0cbe177a6e462878a936a62cd2be",
+    "path_validation.py": "aa2cbbc87689f86f12e9da53da4795b7fff324e0b6079e509b12c9ea34af6baf",
+    "__main__.py": "dc5fadec60ea288f2446329c8ea1620a8d9eb8ca9ddade1b54d8d38e9f659f99",
+    "training.py": "ec9226917717fd12b45d1b6f27c5cfd0ded7a0682b6d9fb9df12e8d0ec353e13",
+    "online.py": "1b2c3934c8c2eeaa67510c3bde0557f6dd49c76fdf8332a34b43f15db02b124f",
+    "geometry.py": "68d2197da96eb23490a36995b20c1aa055ad9dcb93ab316fef7055315ec1d9d8",
+    "evaluate_obstacle_shift.py": "fcc4b9da32f346f9062fca5692c70e28f43b724f40f9f3bb4759439cdcda84bc",
+    "timed_trajectory.py": "a9cf7f20acd30148ca05ea6015129466b38775248782518d8e013dc12056ad1c",
+    "planner_worker.py": "e312671f0325aaa02463c15305ef81c27fc56e6c5b8170f32bed45c655edc5cf",
+    "__init__.py": "a7ad2138b180f6196a1c5dbacf200c09ffe5a51e2abc60efde8418a27821d8ca",
+    "service.py": "ac9cad181d45ecf251b80c376ee952e6b7c669597b0ed9c7f94636a6752a7981",
+    "guidance.py": "7c5bf72232e9e59431ee1817ed9008844bb116af3daf8901666699c9036f4033",
+    "evaluate_models.py": "e07021cac9a7a7602ae84f202859791cea55985d597000f8edfa1eb8c1f79a7d"
+  },
+  "cases": [
+    {
+      "directory": "results/industrial/baseline_dynamic_seed7",
+      "mode": "baseline",
+      "seed": 7,
+      "passed": false,
+      "completed": true,
+      "error": null,
+      "steps": 28000,
+      "simulation_seconds": 28.0,
+      "loop_wall_seconds": 64.32340959800058,
+      "goal": {
+        "reached": false,
+        "first_goal_time_s": null,
+        "final_distance_m": 2.1661593764564477,
+        "final_speed_mps": 0.016661382755938772
+      },
+      "collision": {
+        "detected": false,
+        "truth_complete": true,
+        "contact_steps": 0,
+        "max_penetration_m": 0.0,
+        "first": null
+      },
+      "planner": {
+        "failed": false,
+        "failure_reason": null,
+        "model_used": true,
+        "fixture_stub": false,
+        "completed_events": 1,
+        "statuses": {
+          "accepted": 1
+        },
+        "guard_reasons": {},
+        "planning_wall_seconds": {
+          "count": 1,
+          "mean": 1.5124429799998325,
+          "maximum": 1.5124429799998325,
+          "total": 1.5124429799998325
+        },
+        "model_inference_wall_seconds": {
+          "count": 1,
+          "mean": 0.8671277770008601,
+          "maximum": 0.8671277770008601,
+          "total": 0.8671277770008601
+        },
+        "cumulative_completed_planning_period_sim_seconds": 0.6950000000000001,
+        "activation_scan_age_sim_seconds": {
+          "count": 1,
+          "mean": 0.6950000000000001,
+          "maximum": 0.6950000000000001,
+          "total": 0.6950000000000001
+        },
+        "model_evaluations": 25,
+        "algorithms": {
+          "unchanged_v003_smooth_guidance_baseline": 1
+        },
+        "checkpoint_sha256": "301070cd16c847d749da548bca4d66e409e7ed698346c9b938f3ddf782936dad",
+        "scope": "Statistics cover recorded completed planning events; in-flight work without an event is not included."
+      },
+      "lidar": {
+        "frames": 280,
+        "total_returns": 1892418,
+        "minimum_returns": 5869,
+        "maximum_returns": 8451
+      },
+      "vehicle": {
+        "first_departure_over_0_2m_s": null,
+        "recorded_rows": 2800,
+        "invalid_rows": 0
+      },
+      "obstacle_interaction": {
+        "motion_axis": "Y",
+        "actual_offset_range_m": [
+          -4.002677917480469,
+          0.00267791748046875
+        ],
+        "reported_max_tracking_error_m": 0.19042719585288978,
+        "blocking_window_5_to_13_s": {
+          "samples": 801,
+          "recorded_time_range_s": [
+            5.0,
+            13.0
+          ],
+          "vehicle_path_length_m": 0.016368732924631355,
+          "max_vehicle_displacement_from_start_m": 0.03345329083793545,
+          "vehicle_left_start_by_more_than_0_2m": false,
+          "minimum_actual_center_distance_m": 0.9995276479571049
+        },
+        "entry_motion_3_to_5_s": {
+          "samples": 201,
+          "recorded_time_range_s": [
+            3.0,
+            5.0
+          ],
+          "vehicle_path_length_m": 0.0006810349493657967,
+          "max_vehicle_displacement_from_start_m": 0.02855405682242367,
+          "vehicle_left_start_by_more_than_0_2m": false,
+          "minimum_actual_center_distance_m": 0.999687338163574
+        },
+        "retreat_motion_13_to_15_s": {
+          "samples": 201,
+          "recorded_time_range_s": [
+            13.0,
+            15.0
+          ],
+          "vehicle_path_length_m": 0.00945927129569728,
+          "max_vehicle_displacement_from_start_m": 0.038530377644649436,
+          "vehicle_left_start_by_more_than_0_2m": false,
+          "minimum_actual_center_distance_m": 1.015497985020156
+        },
+        "overall_minimum_actual_center_distance_m": 0.9995276479571049,
+        "passage": {
+          "classification": "no_recorded_forward_passage",
+          "crossing": null,
+          "interpretation": "Recorded passage timing and route deviation only; center distance is not clearance, and passage is not proof of causal replanning."
+        },
+        "distance_semantics": "Actual logged vehicle-origin to obstacle-center Euclidean distance, not surface/body clearance. Blocking window is commanded timing; inspect actual offset and tracking error."
+      },
+      "label": "baseline_front_2m",
+      "motion_limits": {
+        "max_speed_mps": 0.5,
+        "max_acceleration_mps2": 0.6,
+        "braking_acceleration_mps2": 0.6
+      },
+      "initial_position": [
+        -25.0,
+        -35.0,
+        2.200000047683716
+      ],
+      "goal_position": [
+        -23.0,
+        -35.0,
+        2.2
+      ],
+      "report_sha256": "2f0ebf3533f7ced1118d2ba98fde8a26bdbbe458940fbbcb83af6172e9972f70",
+      "position_tracking_rmse_m": 0.01647136056451719,
+      "unique_condition_scan_hashes": 1,
+      "accepted_trajectory_durations_s": [
+        231.49313792394443
+      ]
+    },
+    {
+      "directory": "results/industrial/baseline_observed_seed7",
+      "mode": "baseline",
+      "seed": 7,
+      "passed": false,
+      "completed": true,
+      "error": null,
+      "steps": 40000,
+      "simulation_seconds": 40.0,
+      "loop_wall_seconds": 73.02666958300142,
+      "goal": {
+        "reached": false,
+        "first_goal_time_s": null,
+        "final_distance_m": 1.9863213552650865,
+        "final_speed_mps": 0.0010784468348361738
+      },
+      "collision": {
+        "detected": false,
+        "truth_complete": true,
+        "contact_steps": 0,
+        "max_penetration_m": 0.0,
+        "first": null
+      },
+      "planner": {
+        "failed": false,
+        "failure_reason": null,
+        "model_used": true,
+        "fixture_stub": false,
+        "completed_events": 1,
+        "statuses": {
+          "no_executable_candidate": 1
+        },
+        "guard_reasons": {},
+        "planning_wall_seconds": {
+          "count": 1,
+          "mean": 1.364038800000344,
+          "maximum": 1.364038800000344,
+          "total": 1.364038800000344
+        },
+        "model_inference_wall_seconds": {
+          "count": 1,
+          "mean": 0.8852374840007542,
+          "maximum": 0.8852374840007542,
+          "total": 0.8852374840007542
+        },
+        "cumulative_completed_planning_period_sim_seconds": 0.7250000000000001,
+        "activation_scan_age_sim_seconds": {
+          "count": 1,
+          "mean": 0.7250000000000001,
+          "maximum": 0.7250000000000001,
+          "total": 0.7250000000000001
+        },
+        "model_evaluations": 25,
+        "algorithms": {
+          "unchanged_v003_smooth_guidance_baseline": 1
+        },
+        "checkpoint_sha256": "301070cd16c847d749da548bca4d66e409e7ed698346c9b938f3ddf782936dad",
+        "scope": "Statistics cover recorded completed planning events; in-flight work without an event is not included."
+      },
+      "lidar": {
+        "frames": 400,
+        "total_returns": 2391225,
+        "minimum_returns": 5864,
+        "maximum_returns": 6712
+      },
+      "vehicle": {
+        "first_departure_over_0_2m_s": null,
+        "recorded_rows": 4000,
+        "invalid_rows": 0
+      },
+      "obstacle_interaction": {
+        "motion_axis": "X",
+        "actual_offset_range_m": [
+          -4.002677917480469,
+          0.00267791748046875
+        ],
+        "reported_max_tracking_error_m": 0.190425288504257,
+        "blocking_window_5_to_13_s": {
+          "samples": 801,
+          "recorded_time_range_s": [
+            5.0,
+            13.0
+          ],
+          "vehicle_path_length_m": 0.0,
+          "max_vehicle_displacement_from_start_m": 0.016335199852294573,
+          "vehicle_left_start_by_more_than_0_2m": false,
+          "minimum_actual_center_distance_m": 0.9863415649559056
+        },
+        "entry_motion_3_to_5_s": {
+          "samples": 201,
+          "recorded_time_range_s": [
+            3.0,
+            5.0
+          ],
+          "vehicle_path_length_m": 0.0,
+          "max_vehicle_displacement_from_start_m": 0.016335199852294573,
+          "vehicle_left_start_by_more_than_0_2m": false,
+          "minimum_actual_center_distance_m": 0.9863739100977009
+        },
+        "retreat_motion_13_to_15_s": {
+          "samples": 201,
+          "recorded_time_range_s": [
+            13.0,
+            15.0
+          ],
+          "vehicle_path_length_m": 0.0,
+          "max_vehicle_displacement_from_start_m": 0.016335199852294573,
+          "vehicle_left_start_by_more_than_0_2m": false,
+          "minimum_actual_center_distance_m": 0.9863415649577498
+        },
+        "overall_minimum_actual_center_distance_m": 0.9863415649559056,
+        "passage": {
+          "classification": "no_recorded_forward_passage",
+          "crossing": null,
+          "interpretation": "Recorded passage timing and route deviation only; center distance is not clearance, and passage is not proof of causal replanning."
+        },
+        "distance_semantics": "Actual logged vehicle-origin to obstacle-center Euclidean distance, not surface/body clearance. Blocking window is commanded timing; inspect actual offset and tracking error."
+      },
+      "label": "baseline_side_2m",
+      "motion_limits": {
+        "max_speed_mps": 0.5,
+        "max_acceleration_mps2": 0.6,
+        "braking_acceleration_mps2": 0.6
+      },
+      "initial_position": [
+        -25.0,
+        -35.0,
+        2.200000047683716
+      ],
+      "goal_position": [
+        -25.0,
+        -33.0,
+        2.2
+      ],
+      "report_sha256": "d7d87e30d6b9a6cbd04ee51dc64a481f86b02be350d577d4af13264eef39fafe",
+      "position_tracking_rmse_m": 0.01622878164104949,
+      "unique_condition_scan_hashes": 1,
+      "accepted_trajectory_durations_s": []
+    },
+    {
+      "directory": "results/industrial/online_dynamic_final_seed7",
+      "mode": "online",
+      "seed": 7,
+      "passed": false,
+      "completed": true,
+      "error": null,
+      "steps": 40000,
+      "simulation_seconds": 40.0,
+      "loop_wall_seconds": 87.94570122499863,
+      "goal": {
+        "reached": false,
+        "first_goal_time_s": null,
+        "final_distance_m": 0.01879585296200022,
+        "final_speed_mps": 0.0019062885831113768
+      },
+      "collision": {
+        "detected": true,
+        "truth_complete": true,
+        "contact_steps": 8656,
+        "max_penetration_m": 0.041118621826171875,
+        "first": {
+          "simulation_time": 4.572,
+          "pairs": [
+            {
+              "shape_a": "/World/DiTEvaluationObstacle/MovingBody/CollisionVisual",
+              "shape_b": "/World/HNUTER/Geometry/drone/l2/l2_mesh/l2_mesh",
+              "distance_m": -0.0004215240478515625
+            },
+            {
+              "shape_a": "/World/DiTEvaluationObstacle/MovingBody/CollisionVisual",
+              "shape_b": "/World/HNUTER/Geometry/drone/l2/l2_mesh/l2_mesh",
+              "distance_m": -0.00046539306640625
+            },
+            {
+              "shape_a": "/World/DiTEvaluationObstacle/MovingBody/CollisionVisual",
+              "shape_b": "/World/HNUTER/Geometry/drone/l2/l2_mesh/l2_mesh",
+              "distance_m": -0.00063323974609375
+            }
+          ]
+        }
+      },
+      "planner": {
+        "failed": false,
+        "failure_reason": null,
+        "model_used": true,
+        "fixture_stub": false,
+        "completed_events": 18,
+        "statuses": {
+          "stale_plan_rejected": 2,
+          "accepted": 2,
+          "kept_valid_trajectory": 5,
+          "no_executable_candidate": 9
+        },
+        "guard_reasons": {
+          "planning_deadline_exceeded": 1,
+          "observed_obstacle": 1,
+          "unknown_centerline": 1
+        },
+        "planning_wall_seconds": {
+          "count": 18,
+          "mean": 0.6097660941665405,
+          "maximum": 2.8908871750008984,
+          "total": 10.97578969499773
+        },
+        "model_inference_wall_seconds": {
+          "count": 18,
+          "mean": 0.2957431967222672,
+          "maximum": 2.578055491001578,
+          "total": 5.323377541000809
+        },
+        "cumulative_completed_planning_period_sim_seconds": 3.998999999999996,
+        "activation_scan_age_sim_seconds": {
+          "count": 18,
+          "mean": 0.22216666666666646,
+          "maximum": 1.58,
+          "total": 3.998999999999996
+        },
+        "model_evaluations": 108,
+        "algorithms": {
+          "low_noise_conditional_ddim_monotone_tangent_preserving_refinement_v3": 18
+        },
+        "checkpoint_sha256": "301070cd16c847d749da548bca4d66e409e7ed698346c9b938f3ddf782936dad",
+        "scope": "Statistics cover recorded completed planning events; in-flight work without an event is not included."
+      },
+      "lidar": {
+        "frames": 400,
+        "total_returns": 2766123,
+        "minimum_returns": 5870,
+        "maximum_returns": 8073
+      },
+      "vehicle": {
+        "first_departure_over_0_2m_s": 3.98,
+        "recorded_rows": 4000,
+        "invalid_rows": 0
+      },
+      "obstacle_interaction": {
+        "motion_axis": "X",
+        "actual_offset_range_m": [
+          -4.002677917480469,
+          0.0002231597900390625
+        ],
+        "reported_max_tracking_error_m": 0.19042719585288978,
+        "blocking_window_5_to_13_s": {
+          "samples": 801,
+          "recorded_time_range_s": [
+            5.0,
+            13.0
+          ],
+          "vehicle_path_length_m": 0.08152402320173464,
+          "max_vehicle_displacement_from_start_m": 0.38836084549954347,
+          "vehicle_left_start_by_more_than_0_2m": true,
+          "minimum_actual_center_distance_m": 0.8008579321377507
+        },
+        "entry_motion_3_to_5_s": {
+          "samples": 201,
+          "recorded_time_range_s": [
+            3.0,
+            5.0
+          ],
+          "vehicle_path_length_m": 0.6410987794673277,
+          "max_vehicle_displacement_from_start_m": 0.3702511508766762,
+          "vehicle_left_start_by_more_than_0_2m": true,
+          "minimum_actual_center_distance_m": 0.8018867149011882
+        },
+        "retreat_motion_13_to_15_s": {
+          "samples": 201,
+          "recorded_time_range_s": [
+            13.0,
+            15.0
+          ],
+          "vehicle_path_length_m": 0.35994583858742035,
+          "max_vehicle_displacement_from_start_m": 0.41568300632047944,
+          "vehicle_left_start_by_more_than_0_2m": true,
+          "minimum_actual_center_distance_m": 0.8126035694972045
+        },
+        "overall_minimum_actual_center_distance_m": 0.8008579321377507,
+        "passage": {
+          "classification": "passed_after_obstacle_retreat",
+          "crossing": {
+            "time_s": 17.06387529902204,
+            "interpolated_vehicle_position": [
+              -25.007207457928505,
+              -33.99999999852717,
+              2.2617748133589175
+            ],
+            "departure_from_straight_route_m": 0.06219382662023762,
+            "actual_obstacle_center_distance_m": 3.993278018236816
+          },
+          "interpretation": "Recorded passage timing and route deviation only; center distance is not clearance, and passage is not proof of causal replanning."
+        },
+        "distance_semantics": "Actual logged vehicle-origin to obstacle-center Euclidean distance, not surface/body clearance. Blocking window is commanded timing; inspect actual offset and tracking error."
+      },
+      "label": "online_side_2m_fast",
+      "motion_limits": {
+        "max_speed_mps": 0.5,
+        "max_acceleration_mps2": 0.6,
+        "braking_acceleration_mps2": 0.6
+      },
+      "initial_position": [
+        -25.0,
+        -35.0,
+        2.200000047683716
+      ],
+      "goal_position": [
+        -25.0,
+        -33.0,
+        2.2
+      ],
+      "report_sha256": "f524674e1d5f7d3e680a2f13110659c138d06229bfda655906ab8cb0556fd66e",
+      "position_tracking_rmse_m": 0.14911691917746328,
+      "unique_condition_scan_hashes": 18,
+      "accepted_trajectory_durations_s": [
+        7.457531101956434,
+        6.058652080957192
+      ]
+    },
+    {
+      "directory": "results/industrial/online_dynamic_3m_seed7",
+      "mode": "online",
+      "seed": 7,
+      "passed": false,
+      "completed": true,
+      "error": null,
+      "steps": 40000,
+      "simulation_seconds": 40.0,
+      "loop_wall_seconds": 104.78016904400101,
+      "goal": {
+        "reached": false,
+        "first_goal_time_s": null,
+        "final_distance_m": 0.33453207902196247,
+        "final_speed_mps": 0.02732710637373319
+      },
+      "collision": {
+        "detected": true,
+        "truth_complete": true,
+        "contact_steps": 7188,
+        "max_penetration_m": 0.004940032958984375,
+        "first": {
+          "simulation_time": 4.764,
+          "pairs": [
+            {
+              "shape_a": "/World/DiTEvaluationObstacle/MovingBody/CollisionVisual",
+              "shape_b": "/World/HNUTER/Geometry/drone/l2/l1/xy3/xy3_mesh/xy3_mesh",
+              "distance_m": -5.7220502640120685e-05
+            }
+          ]
+        }
+      },
+      "planner": {
+        "failed": false,
+        "failure_reason": null,
+        "model_used": true,
+        "fixture_stub": false,
+        "completed_events": 40,
+        "statuses": {
+          "accepted": 10,
+          "kept_valid_trajectory": 13,
+          "no_executable_candidate": 12,
+          "stale_plan_rejected": 1,
+          "prefix_rejected": 4
+        },
+        "guard_reasons": {
+          "observed_obstacle": 1,
+          "unknown_centerline": 8
+        },
+        "planning_wall_seconds": {
+          "count": 40,
+          "mean": 0.7099969585002782,
+          "maximum": 1.5644078080003965,
+          "total": 28.399878340011128
+        },
+        "model_inference_wall_seconds": {
+          "count": 40,
+          "mean": 0.1679493370750606,
+          "maximum": 0.6446483640011138,
+          "total": 6.7179734830024245
+        },
+        "cumulative_completed_planning_period_sim_seconds": 7.932000000000015,
+        "activation_scan_age_sim_seconds": {
+          "count": 40,
+          "mean": 0.19830000000000036,
+          "maximum": 0.45200000000000007,
+          "total": 7.932000000000015
+        },
+        "model_evaluations": 240,
+        "algorithms": {
+          "low_noise_conditional_ddim_monotone_tangent_preserving_refinement_v3": 40
+        },
+        "checkpoint_sha256": "301070cd16c847d749da548bca4d66e409e7ed698346c9b938f3ddf782936dad",
+        "scope": "Statistics cover recorded completed planning events; in-flight work without an event is not included."
+      },
+      "lidar": {
+        "frames": 400,
+        "total_returns": 2847384,
+        "minimum_returns": 5869,
+        "maximum_returns": 8792
+      },
+      "vehicle": {
+        "first_departure_over_0_2m_s": 3.3200000000000003,
+        "recorded_rows": 4000,
+        "invalid_rows": 0
+      },
+      "obstacle_interaction": {
+        "motion_axis": "X",
+        "actual_offset_range_m": [
+          -4.002677917480469,
+          0.0027141571044921875
+        ],
+        "reported_max_tracking_error_m": 0.19042719585288978,
+        "blocking_window_5_to_13_s": {
+          "samples": 801,
+          "recorded_time_range_s": [
+            5.0,
+            13.0
+          ],
+          "vehicle_path_length_m": 0.192358827824755,
+          "max_vehicle_displacement_from_start_m": 0.5785142917130726,
+          "vehicle_left_start_by_more_than_0_2m": true,
+          "minimum_actual_center_distance_m": 0.9217840506591023
+        },
+        "entry_motion_3_to_5_s": {
+          "samples": 201,
+          "recorded_time_range_s": [
+            3.0,
+            5.0
+          ],
+          "vehicle_path_length_m": 0.5396123123693426,
+          "max_vehicle_displacement_from_start_m": 0.5696577060461819,
+          "vehicle_left_start_by_more_than_0_2m": true,
+          "minimum_actual_center_distance_m": 0.9532394372084213
+        },
+        "retreat_motion_13_to_15_s": {
+          "samples": 201,
+          "recorded_time_range_s": [
+            13.0,
+            15.0
+          ],
+          "vehicle_path_length_m": 0.04072026504625965,
+          "max_vehicle_displacement_from_start_m": 0.5825123018016021,
+          "vehicle_left_start_by_more_than_0_2m": true,
+          "minimum_actual_center_distance_m": 0.9482735697138865
+        },
+        "overall_minimum_actual_center_distance_m": 0.9217840506591023,
+        "passage": {
+          "classification": "passed_after_obstacle_retreat",
+          "crossing": {
+            "time_s": 18.62821428830102,
+            "interpolated_vehicle_position": [
+              -24.96115248534008,
+              -33.49999999875668,
+              2.278222884510956
+            ],
+            "departure_from_straight_route_m": 0.08733810924510481,
+            "actual_obstacle_center_distance_m": 4.039612566429658
+          },
+          "interpretation": "Recorded passage timing and route deviation only; center distance is not clearance, and passage is not proof of causal replanning."
+        },
+        "distance_semantics": "Actual logged vehicle-origin to obstacle-center Euclidean distance, not surface/body clearance. Blocking window is commanded timing; inspect actual offset and tracking error."
+      },
+      "label": "online_side_3m_fast",
+      "motion_limits": {
+        "max_speed_mps": 0.5,
+        "max_acceleration_mps2": 0.6,
+        "braking_acceleration_mps2": 0.6
+      },
+      "initial_position": [
+        -25.0,
+        -35.0,
+        2.200000047683716
+      ],
+      "goal_position": [
+        -25.0,
+        -32.0,
+        2.2
+      ],
+      "report_sha256": "c93bc50d8b956fdba9f04cb5e7665c21b23ca60f1b65ad15c63035661ef18d6d",
+      "position_tracking_rmse_m": 0.016501373795012785,
+      "unique_condition_scan_hashes": 40,
+      "accepted_trajectory_durations_s": [
+        11.785894251101974,
+        9.164620263040145,
+        9.406408459375795,
+        9.264023765745366,
+        9.690400494840093,
+        9.750276296407172,
+        15.454433161851384,
+        9.128502957655096,
+        8.36810526017973,
+        8.65666116553394
+      ]
+    },
+    {
+      "directory": "results/industrial/online_slow_3m_seed7",
+      "mode": "online",
+      "seed": 7,
+      "passed": true,
+      "completed": true,
+      "error": null,
+      "steps": 40000,
+      "simulation_seconds": 40.0,
+      "loop_wall_seconds": 91.9792193180001,
+      "goal": {
+        "reached": true,
+        "first_goal_time_s": 30.479,
+        "final_distance_m": 0.06966727983705642,
+        "final_speed_mps": 0.001637154178055681
+      },
+      "collision": {
+        "detected": false,
+        "truth_complete": true,
+        "contact_steps": 0,
+        "max_penetration_m": 0.0,
+        "first": null
+      },
+      "planner": {
+        "failed": false,
+        "failure_reason": null,
+        "model_used": true,
+        "fixture_stub": false,
+        "completed_events": 29,
+        "statuses": {
+          "accepted": 2,
+          "kept_valid_trajectory": 17,
+          "no_executable_candidate": 10
+        },
+        "guard_reasons": {
+          "observed_obstacle": 1,
+          "unknown_centerline": 1
+        },
+        "planning_wall_seconds": {
+          "count": 29,
+          "mean": 0.4882030548275185,
+          "maximum": 0.9951414610004576,
+          "total": 14.157888589998038
+        },
+        "model_inference_wall_seconds": {
+          "count": 29,
+          "mean": 0.1701880713448943,
+          "maximum": 0.658029054000508,
+          "total": 4.935454069001935
+        },
+        "cumulative_completed_planning_period_sim_seconds": 4.718000000000007,
+        "activation_scan_age_sim_seconds": {
+          "count": 29,
+          "mean": 0.16268965517241404,
+          "maximum": 0.46599999999999997,
+          "total": 4.718000000000007
+        },
+        "model_evaluations": 174,
+        "algorithms": {
+          "low_noise_conditional_ddim_monotone_tangent_preserving_refinement_v3": 29
+        },
+        "checkpoint_sha256": "301070cd16c847d749da548bca4d66e409e7ed698346c9b938f3ddf782936dad",
+        "scope": "Statistics cover recorded completed planning events; in-flight work without an event is not included."
+      },
+      "lidar": {
+        "frames": 400,
+        "total_returns": 2789228,
+        "minimum_returns": 5860,
+        "maximum_returns": 8822
+      },
+      "vehicle": {
+        "first_departure_over_0_2m_s": 16.57,
+        "recorded_rows": 4000,
+        "invalid_rows": 0
+      },
+      "obstacle_interaction": {
+        "motion_axis": "X",
+        "actual_offset_range_m": [
+          -4.002677917480469,
+          0.00267791748046875
+        ],
+        "reported_max_tracking_error_m": 0.190425288504257,
+        "blocking_window_5_to_13_s": {
+          "samples": 801,
+          "recorded_time_range_s": [
+            5.0,
+            13.0
+          ],
+          "vehicle_path_length_m": 0.004031476904243795,
+          "max_vehicle_displacement_from_start_m": 0.15978590363669037,
+          "vehicle_left_start_by_more_than_0_2m": false,
+          "minimum_actual_center_distance_m": 1.3420200598492469
+        },
+        "entry_motion_3_to_5_s": {
+          "samples": 201,
+          "recorded_time_range_s": [
+            3.0,
+            5.0
+          ],
+          "vehicle_path_length_m": 0.10663337056283137,
+          "max_vehicle_displacement_from_start_m": 0.15639117840185252,
+          "vehicle_left_start_by_more_than_0_2m": false,
+          "minimum_actual_center_distance_m": 1.3456480058688718
+        },
+        "retreat_motion_13_to_15_s": {
+          "samples": 201,
+          "recorded_time_range_s": [
+            13.0,
+            15.0
+          ],
+          "vehicle_path_length_m": 0.006930073708103043,
+          "max_vehicle_displacement_from_start_m": 0.16549403537782348,
+          "vehicle_left_start_by_more_than_0_2m": false,
+          "minimum_actual_center_distance_m": 1.3420227855096818
+        },
+        "overall_minimum_actual_center_distance_m": 1.3420200598492469,
+        "passage": {
+          "classification": "waited_then_passed_after_obstacle_retreat",
+          "crossing": {
+            "time_s": 23.68148648686368,
+            "interpolated_vehicle_position": [
+              -25.047915432904936,
+              -33.499999999893525,
+              2.2066989428377886
+            ],
+            "departure_from_straight_route_m": 0.04838144506090646,
+            "actual_obstacle_center_distance_m": 3.952097873882963
+          },
+          "interpretation": "Recorded passage timing and route deviation only; center distance is not clearance, and passage is not proof of causal replanning."
+        },
+        "distance_semantics": "Actual logged vehicle-origin to obstacle-center Euclidean distance, not surface/body clearance. Blocking window is commanded timing; inspect actual offset and tracking error."
+      },
+      "label": "online_side_3m_slow_seed7",
+      "motion_limits": {
+        "max_speed_mps": 0.3,
+        "max_acceleration_mps2": 0.4,
+        "braking_acceleration_mps2": 0.6
+      },
+      "initial_position": [
+        -25.0,
+        -35.0,
+        2.200000047683716
+      ],
+      "goal_position": [
+        -25.0,
+        -32.0,
+        2.2
+      ],
+      "report_sha256": "c1263bb6760ce1e0652c2efee1855d3344481f04416efc6f8695cfe4d7817230",
+      "position_tracking_rmse_m": 0.015613448312196902,
+      "unique_condition_scan_hashes": 29,
+      "accepted_trajectory_durations_s": [
+        19.643157085169957,
+        18.684978843739735
+      ]
+    },
+    {
+      "directory": "results/industrial/online_slow_3m_seed19",
+      "mode": "online",
+      "seed": 19,
+      "passed": true,
+      "completed": true,
+      "error": null,
+      "steps": 40000,
+      "simulation_seconds": 40.0,
+      "loop_wall_seconds": 92.89439592099916,
+      "goal": {
+        "reached": true,
+        "first_goal_time_s": 30.811,
+        "final_distance_m": 0.06667295468037014,
+        "final_speed_mps": 0.001615824604625988
+      },
+      "collision": {
+        "detected": false,
+        "truth_complete": true,
+        "contact_steps": 0,
+        "max_penetration_m": 0.0,
+        "first": null
+      },
+      "planner": {
+        "failed": false,
+        "failure_reason": null,
+        "model_used": true,
+        "fixture_stub": false,
+        "completed_events": 29,
+        "statuses": {
+          "stale_plan_rejected": 1,
+          "accepted": 2,
+          "kept_valid_trajectory": 16,
+          "no_executable_candidate": 10
+        },
+        "guard_reasons": {
+          "observed_obstacle": 1,
+          "unknown_centerline": 1
+        },
+        "planning_wall_seconds": {
+          "count": 29,
+          "mean": 0.5148755665173541,
+          "maximum": 1.4456006889995479,
+          "total": 14.93139142900327
+        },
+        "model_inference_wall_seconds": {
+          "count": 29,
+          "mean": 0.18642942834513038,
+          "maximum": 1.0813901540004736,
+          "total": 5.406453422008781
+        },
+        "cumulative_completed_planning_period_sim_seconds": 5.076000000000009,
+        "activation_scan_age_sim_seconds": {
+          "count": 29,
+          "mean": 0.17503448275862102,
+          "maximum": 0.7,
+          "total": 5.076000000000009
+        },
+        "model_evaluations": 174,
+        "algorithms": {
+          "low_noise_conditional_ddim_monotone_tangent_preserving_refinement_v3": 29
+        },
+        "checkpoint_sha256": "301070cd16c847d749da548bca4d66e409e7ed698346c9b938f3ddf782936dad",
+        "scope": "Statistics cover recorded completed planning events; in-flight work without an event is not included."
+      },
+      "lidar": {
+        "frames": 400,
+        "total_returns": 2772851,
+        "minimum_returns": 5799,
+        "maximum_returns": 8827
+      },
+      "vehicle": {
+        "first_departure_over_0_2m_s": 17.56,
+        "recorded_rows": 4000,
+        "invalid_rows": 0
+      },
+      "obstacle_interaction": {
+        "motion_axis": "X",
+        "actual_offset_range_m": [
+          -4.002677917480469,
+          0.00267791748046875
+        ],
+        "reported_max_tracking_error_m": 0.190425288504257,
+        "blocking_window_5_to_13_s": {
+          "samples": 801,
+          "recorded_time_range_s": [
+            5.0,
+            13.0
+          ],
+          "vehicle_path_length_m": 0.0033653133768105354,
+          "max_vehicle_displacement_from_start_m": 0.10770940477395674,
+          "vehicle_left_start_by_more_than_0_2m": false,
+          "minimum_actual_center_distance_m": 1.3957252093336652
+        },
+        "entry_motion_3_to_5_s": {
+          "samples": 201,
+          "recorded_time_range_s": [
+            3.0,
+            5.0
+          ],
+          "vehicle_path_length_m": 0.06929179506971495,
+          "max_vehicle_displacement_from_start_m": 0.10465936027554437,
+          "vehicle_left_start_by_more_than_0_2m": false,
+          "minimum_actual_center_distance_m": 1.398639528109633
+        },
+        "retreat_motion_13_to_15_s": {
+          "samples": 201,
+          "recorded_time_range_s": [
+            13.0,
+            15.0
+          ],
+          "vehicle_path_length_m": 0.00673558995278523,
+          "max_vehicle_displacement_from_start_m": 0.11353634085034683,
+          "vehicle_left_start_by_more_than_0_2m": false,
+          "minimum_actual_center_distance_m": 1.3957273938169756
+        },
+        "overall_minimum_actual_center_distance_m": 1.3957252093336652,
+        "passage": {
+          "classification": "waited_then_passed_after_obstacle_retreat",
+          "crossing": {
+            "time_s": 23.97470270395966,
+            "interpolated_vehicle_position": [
+              -25.046424556456444,
+              -33.499999999645176,
+              2.2223235723632104
+            ],
+            "departure_from_straight_route_m": 0.05151291353401297,
+            "actual_obstacle_center_distance_m": 3.9536460962479545
+          },
+          "interpretation": "Recorded passage timing and route deviation only; center distance is not clearance, and passage is not proof of causal replanning."
+        },
+        "distance_semantics": "Actual logged vehicle-origin to obstacle-center Euclidean distance, not surface/body clearance. Blocking window is commanded timing; inspect actual offset and tracking error."
+      },
+      "label": "online_side_3m_slow_seed19",
+      "motion_limits": {
+        "max_speed_mps": 0.3,
+        "max_acceleration_mps2": 0.4,
+        "braking_acceleration_mps2": 0.6
+      },
+      "initial_position": [
+        -25.0,
+        -35.0,
+        2.200000047683716
+      ],
+      "goal_position": [
+        -25.0,
+        -32.0,
+        2.2
+      ],
+      "report_sha256": "a910160f4446d8405a683d63956193b738b35af9fb96f3645a2d21996d43f479",
+      "position_tracking_rmse_m": 0.015609473034533484,
+      "unique_condition_scan_hashes": 29,
+      "accepted_trajectory_durations_s": [
+        19.6722126225307,
+        19.082862824378537
+      ]
+    },
+    {
+      "directory": "results/industrial/baseline_slow_3m_seed7",
+      "mode": "baseline",
+      "seed": 7,
+      "passed": false,
+      "completed": true,
+      "error": null,
+      "steps": 40000,
+      "simulation_seconds": 40.0,
+      "loop_wall_seconds": 70.86188476499956,
+      "goal": {
+        "reached": false,
+        "first_goal_time_s": null,
+        "final_distance_m": 2.986314680441499,
+        "final_speed_mps": 0.0010784468348361738
+      },
+      "collision": {
+        "detected": false,
+        "truth_complete": true,
+        "contact_steps": 0,
+        "max_penetration_m": 0.0,
+        "first": null
+      },
+      "planner": {
+        "failed": false,
+        "failure_reason": null,
+        "model_used": true,
+        "fixture_stub": false,
+        "completed_events": 1,
+        "statuses": {
+          "no_executable_candidate": 1
+        },
+        "guard_reasons": {},
+        "planning_wall_seconds": {
+          "count": 1,
+          "mean": 1.1202696370000922,
+          "maximum": 1.1202696370000922,
+          "total": 1.1202696370000922
+        },
+        "model_inference_wall_seconds": {
+          "count": 1,
+          "mean": 0.7878502780004055,
+          "maximum": 0.7878502780004055,
+          "total": 0.7878502780004055
+        },
+        "cumulative_completed_planning_period_sim_seconds": 0.589,
+        "activation_scan_age_sim_seconds": {
+          "count": 1,
+          "mean": 0.589,
+          "maximum": 0.589,
+          "total": 0.589
+        },
+        "model_evaluations": 25,
+        "algorithms": {
+          "unchanged_v003_smooth_guidance_baseline": 1
+        },
+        "checkpoint_sha256": "301070cd16c847d749da548bca4d66e409e7ed698346c9b938f3ddf782936dad",
+        "scope": "Statistics cover recorded completed planning events; in-flight work without an event is not included."
+      },
+      "lidar": {
+        "frames": 400,
+        "total_returns": 2352493,
+        "minimum_returns": 5705,
+        "maximum_returns": 6124
+      },
+      "vehicle": {
+        "first_departure_over_0_2m_s": null,
+        "recorded_rows": 4000,
+        "invalid_rows": 0
+      },
+      "obstacle_interaction": {
+        "motion_axis": "X",
+        "actual_offset_range_m": [
+          -4.002677917480469,
+          0.00267791748046875
+        ],
+        "reported_max_tracking_error_m": 0.190425288504257,
+        "blocking_window_5_to_13_s": {
+          "samples": 801,
+          "recorded_time_range_s": [
+            5.0,
+            13.0
+          ],
+          "vehicle_path_length_m": 0.0,
+          "max_vehicle_displacement_from_start_m": 0.016335199852294573,
+          "vehicle_left_start_by_more_than_0_2m": false,
+          "minimum_actual_center_distance_m": 1.4863280609874812
+        },
+        "entry_motion_3_to_5_s": {
+          "samples": 201,
+          "recorded_time_range_s": [
+            3.0,
+            5.0
+          ],
+          "vehicle_path_length_m": 0.0,
+          "max_vehicle_displacement_from_start_m": 0.016335199852294573,
+          "vehicle_left_start_by_more_than_0_2m": false,
+          "minimum_actual_center_distance_m": 1.4863495257309325
+        },
+        "retreat_motion_13_to_15_s": {
+          "samples": 201,
+          "recorded_time_range_s": [
+            13.0,
+            15.0
+          ],
+          "vehicle_path_length_m": 0.0,
+          "max_vehicle_displacement_from_start_m": 0.016335199852294573,
+          "vehicle_left_start_by_more_than_0_2m": false,
+          "minimum_actual_center_distance_m": 1.486328060988705
+        },
+        "overall_minimum_actual_center_distance_m": 1.4863280609874812,
+        "passage": {
+          "classification": "no_recorded_forward_passage",
+          "crossing": null,
+          "interpretation": "Recorded passage timing and route deviation only; center distance is not clearance, and passage is not proof of causal replanning."
+        },
+        "distance_semantics": "Actual logged vehicle-origin to obstacle-center Euclidean distance, not surface/body clearance. Blocking window is commanded timing; inspect actual offset and tracking error."
+      },
+      "label": "baseline_side_3m_slow",
+      "motion_limits": {
+        "max_speed_mps": 0.3,
+        "max_acceleration_mps2": 0.4,
+        "braking_acceleration_mps2": 0.6
+      },
+      "initial_position": [
+        -25.0,
+        -35.0,
+        2.200000047683716
+      ],
+      "goal_position": [
+        -25.0,
+        -32.0,
+        2.2
+      ],
+      "report_sha256": "65b0f14546c5fac3a6e5080abdacf6fc16a9c5c942bdc3a07d0cdcfd2b201748",
+      "position_tracking_rmse_m": 0.01622878164104949,
+      "unique_condition_scan_hashes": 1,
+      "accepted_trajectory_durations_s": []
+    }
+  ],
+  "development_failures": [
+    {
+      "directory": "results/industrial/baseline_open_seed7",
+      "reason": "Infrastructure failure from mixed main-process Torch modules; fixed with isolated inference.",
+      "passed": false,
+      "completed": false,
+      "steps": 1834,
+      "error": "ImportError: cannot import name 'is_opaque_value' from 'torch._library.opaque_object' (/isaac-sim/kit/python/lib/python3.12/site-packages/torch/_library/opaque_object.py)",
+      "final_goal_distance_m": null
+    },
+    {
+      "directory": "results/industrial/online_observed_seed7",
+      "reason": "Initial sampler: shortest candidate had an unknown execution prefix; mission did not move.",
+      "passed": false,
+      "completed": true,
+      "steps": 28000,
+      "error": null,
+      "final_goal_distance_m": 1.9863213552650865
+    },
+    {
+      "directory": "results/industrial/online_observed_v2_seed7",
+      "reason": "Monotone sampler before tangent/resolution corrections; no completed mission.",
+      "passed": false,
+      "completed": true,
+      "steps": 40000,
+      "error": null,
+      "final_goal_distance_m": 1.9424691172899793
+    }
+  ],
+  "render_evidence": {
+    "source_run": "results/industrial/online_dynamic_3m_seed7",
+    "run_passed": false,
+    "images": [
+      "industrial_follow.png",
+      "industrial_fpv.png"
+    ],
+    "scope": "Actual final camera render of a collision-failed run; visibility evidence only."
+  },
+  "limitations": [
+    "Development cases and tuned speed limits, not a held-out success-rate benchmark.",
+    "Moving obstacle schedule is evaluator-only. The planner uses current measured scans, not motion truth or predictions.",
+    "High-speed collisions remain failures even when final position is near the goal.",
+    "Raw results are ignored local artifacts; these compact records and source are versioned.",
+    "Current-scan boxes and finite-resolution centerline checks are not full-volume collision guarantees.",
+    "Simulation-time rates do not establish wall-clock real-time performance; no real hardware validated."
+  ]
+}

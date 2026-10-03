@@ -1,0 +1,123 @@
+{
+  "schema_version": "hnuter_isolated_inference_validation_v1",
+  "date": "2026-10-04",
+  "image": "isaaclab-sim:6.0.0-nvblox",
+  "parent_python": "/isaac-sim/python.sh",
+  "parent_torch_version": "2.10.0+cu128",
+  "parent_torch_module_path": "/isaac-sim/kit/python/lib/python3.12/site-packages/torch/__init__.py",
+  "parent_inference_model_imported": false,
+  "worker": {
+    "python_executable": "/opt/nvblox-venv/bin/python",
+    "torch_version": "2.9.1+cu128",
+    "torch_module_path": "/opt/nvblox-venv/lib/python3.12/site-packages/torch/__init__.py",
+    "cuda_device": "NVIDIA GeForce RTX 4080 Laptop GPU",
+    "model_type": "dit_cross",
+    "parameter_count": 11964169,
+    "training_step": 48000,
+    "checkpoint_sha256": "301070cd16c847d749da548bca4d66e409e7ed698346c9b938f3ddf782936dad",
+    "canonical_frame": "start_goal_yaw_z_up_v001"
+  },
+  "input": {
+    "condition_npz": "results/recorded_condition.npz",
+    "condition_sha256": "9b15698d5af17423c813318cefceb0dc0e4b2538bfe499d2c00811fbcfab38c2",
+    "source": "previous real industrial MID-360 simulated LiDAR scan converted to 32 measured-surface box tokens",
+    "active_tokens": 32,
+    "start_pose_wxyz": [
+      -24.00340461730957,
+      -34.38481140136719,
+      2.690652847290039,
+      1,
+      0,
+      0,
+      0
+    ],
+    "goal_pose_wxyz": [
+      -24.00340461730957,
+      -38.38481140136719,
+      2.690652847290039,
+      1,
+      0,
+      0,
+      0
+    ],
+    "start_goal_distance_m": 4.0,
+    "seed": 7,
+    "count": 8
+  },
+  "startup_seconds": 7.100191379000535,
+  "baseline": {
+    "algorithm": "unchanged_v003_smooth_guidance_baseline",
+    "model_evaluations": 25,
+    "inference_seconds": 3.000583483999435,
+    "ipc_wall_seconds": 3.1481306459991174,
+    "lengths_m": [
+      63.685523986816406,
+      54.734413146972656,
+      52.4765625,
+      55.80724334716797,
+      55.578460693359375,
+      57.404571533203125,
+      54.7778205871582,
+      61.243350982666016
+    ],
+    "finite": true,
+    "endpoint_error_m": 0.0
+  },
+  "online": {
+    "algorithm": "low_noise_conditional_ddim_geometric_prior_refinement_v1",
+    "model_evaluations": 6,
+    "timesteps": [
+      10,
+      8,
+      6,
+      4,
+      2,
+      0
+    ],
+    "inference_seconds": 0.09450748200106318,
+    "ipc_wall_seconds": 0.15580524600045464,
+    "lengths_m": [
+      4.016282081604004,
+      4.364675045013428,
+      4.333850860595703,
+      4.1843767166137695,
+      4.291152477264404,
+      4.252305507659912,
+      4.635058879852295,
+      4.581493377685547
+    ],
+    "finite": true,
+    "endpoint_error_m": 0.0,
+    "prior_source": "hand_designed_straight_and_sine_squared_side_up_curves",
+    "attitude_policy": "endpoint_slerp_only_network_attitude_predictions_discarded",
+    "max_endpoint_attitude_change_deg": 45.0,
+    "control_points": 10,
+    "max_position_correction_m": 0.25,
+    "final_max_prior_correction_m": 0.24870409071445465,
+    "weights_retrained": false,
+    "network_evidence": {
+      "network_velocity_prediction_rms_min": 0.7402235269546509,
+      "network_velocity_prediction_rms_max": 0.8707730770111084,
+      "raw_learned_correction_max_m": 1.1034066677093506,
+      "guidance_displacement_max_m": 1.0165531705297326e-07
+    }
+  },
+  "clean_shutdown": true,
+  "reproduce": "/isaac-sim/python.sh /dit/tools/validate_isolated_planner.py --condition /dit/results/recorded_condition.npz --output /dit/results/isolated_replay --import-parent-torch",
+  "limitations": [
+    "Offline replay of one recorded scan, not flight, dynamic-obstacle avoidance, or collision-freedom validation.",
+    "Start attitude was assumed identity; origin NPZ contained only position.",
+    "Baseline ran first in a new worker; online ran second. Single-request times include warm-up differences and are not a fair steady-state speedup benchmark.",
+    "Online uses explicit geometric priors and constrained SLERP attitude with unchanged weights; this is not newly trained LiDAR-conditioned six-DoF behavior.",
+    "The tested open route produced only about 1e-7 m guidance displacement, so it does not demonstrate collision-guidance effectiveness.",
+    "Unknown and unobserved space remain uncertified; execution requires independent geometric checks and live observation guards.",
+    "Raw NPZ/log evidence remains in ignored results; the reproduction tool accepts any supplied condition NPZ with the documented schema."
+  ],
+  "historical_scope": "This records the initial v1 sampler and process isolation check. The final branch uses v3 with chord-progress and endpoint-tangent constraints; current physical-flight results are recorded separately in industrial_validation.json.",
+  "recorded_baseline_attitude_diagnostic": {
+    "source": "results/recorded_baseline.json",
+    "torch": "2.13.0+cu130",
+    "max_abs_roll_degrees": 165.48382411955097,
+    "max_abs_pitch_degrees": 51.27560075500574
+  }
+}

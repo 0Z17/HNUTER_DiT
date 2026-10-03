@@ -9,7 +9,7 @@ description = "Interactive environment-conditioned DiT trajectory inference for 
 readme = "README.md"
 requires-python = ">=3.10"
 license = {file = "LICENSE"}
-dependencies = ["numpy>=1.24", "torch>=2.0"]
+dependencies = ["numpy>=1.24", "torch>=2.0", "scipy>=1.10"]
 
 [project.scripts]
 hnuter-dit-web = "hnuter_dit.web:main"
