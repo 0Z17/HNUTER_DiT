@@ -1,0 +1,9 @@
+{
+  "hnuter_dit/geometry_evaluation.py": "4388fe4fa8de74df66f3835f7d6502057f3397d470ed264b8d08bf4bd7f5331a",
+  "hnuter_dit/temporal_evaluation.py": "4151cb05586fcc093036643787216711f027302c69f9eda2df83fb4ee0821fa7",
+  "hnuter_dit/temporal_data.py": "4df1dbfa546c7a94382da368a1539b69788d65008f9c504aee0be2383557e0d9",
+  "hnuter_dit/temporal_online.py": "24054be278d06e4c93277aa30f67d89b5c121c81d9c677fd2b8d0ff13db550e3",
+  "hnuter_dit/industrial_runner.py": "d8e0430a4ba456292ab0e6e046aa4a65314ac3fee95f249116a640ad221a597c",
+  "hnuter_dit/flight_video.py": "059f8f3f1842c1f470a4e5c4346f3da64274229938e9c2f7acb293b8bdd01578",
+  "tools/export_flight_video.py": "b57f48b949ec8b36af88d51ade34c16defbdced03e523bcd9606f5deff7c95c3"
+}

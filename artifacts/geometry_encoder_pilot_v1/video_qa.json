@@ -1,0 +1,30 @@
+{
+  "schema": "hnuter_video_qa_v1",
+  "run": "industrial_outgoing",
+  "physics_steps": 30000,
+  "collision_samples": 30000,
+  "contact_steps": 0,
+  "goal_reached": false,
+  "final_goal_distance_m": 0.5248410969681837,
+  "frame_count": 301,
+  "unique_frame_hashes": 301,
+  "first_sim_time": 0.0,
+  "last_sim_time": 30.0,
+  "max_frame_position_vs_physics_difference_m": 0.0,
+  "visually_inspected_frames": [
+    0,
+    60,
+    80,
+    120,
+    300
+  ],
+  "visual_findings": "Silver drone, red propellers and MID360 remain visible; camera follows actual translation while the industrial background and moving obstacle shift; complete end hold is preserved.",
+  "full_mp4_cpu_decode_exit_code": 0,
+  "encoder": "ffmpeg 7.0.2-static",
+  "mp4_file": "industrial_outgoing_qa.mp4",
+  "mp4_sha256": "8a6e203cc9ace759b354bd9faa44d77bcd29a57807958df04ec59b9b674e0a71",
+  "checkpoint_sha256": "524c71e0f959e76b162e07630587fc09d2bc20c7dc5b79e802f0e97ce04289d2",
+  "report_sha256": "ee442512bbed42eefec09074f4fdcab2f52bc59b429c7119b7f7a7bddee37979",
+  "manifest_sha256": "bb64269086af979e2a4c9e89154f24b471a22dfe151ba4657075b8bee78415ed",
+  "scope": "Actual complete 30s physical run, no successful-segment cropping or pose replay; simulation-clock playback, not wall real time."
+}

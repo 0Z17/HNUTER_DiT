@@ -1,0 +1,4808 @@
+{
+  "passed": true,
+  "completed": true,
+  "mode": "temporal",
+  "seed": 7,
+  "scene": "scene_hnuter.usda",
+  "sim_root": "/sim",
+  "physics_dt": 0.001,
+  "requested_duration": 30.0,
+  "dynamic_obstacle": true,
+  "dynamic_profile": "constant_incoming",
+  "goal_reached": true,
+  "nonfinite_state": false,
+  "implementation_sha256": {
+    "planner_process.py": "5ea7b1ef98bdf1c18e6b75119b3fae0563649900a6a388fb70265e574f2de236",
+    "temporal_evaluation.py": "4151cb05586fcc093036643787216711f027302c69f9eda2df83fb4ee0821fa7",
+    "lidar_condition.py": "a4943f26240dadaf3eeb718b89476a192ae6ad17c8015cf20bb38d7b11cb57bb",
+    "industrial_runner.py": "d8e0430a4ba456292ab0e6e046aa4a65314ac3fee95f249116a640ad221a597c",
+    "observation_guard.py": "ae107faf19c57d2d136844bf5d633e8931948b73ec4716dff71aee57838a3a21",
+    "web.py": "65436ead410a87bd2199b5c03d781834d63503f1d30d1218a7f3a3c2f915e80d",
+    "industrial_obstacle.py": "17c0869e88bf3e10586f446ff44b6982beddffb28997eac9e9b29bff7eeb9242",
+    "temporal_training.py": "6f942531ab299c50118b2c3bf0e8bf0d2775d712b92a1aff401edcfbd55b30cd",
+    "evaluate_v003.py": "ea6777e38621be4e19f722d8fe3c039269d3c133c73a7052153cff7df9207466",
+    "model.py": "06866dd8b7f0ea1806a9c29b3d2e2adec265b331536ba6192c448dc6e334d3ed",
+    "online_diffusion.py": "7c7e661961fac20d9ccefcd6f11fee859fb74957a5675d6373adb28bceee4be5",
+    "temporal_inference.py": "9bfb5a8fe54be9d95956f302186b9a60dfbc9a3c4ab429ffe1064ba687dc3694",
+    "tune_guidance.py": "fdd3f04f9a4f437db10865157693490d446c9df432feddb097d4a4798a3dc61f",
+    "collision_loss.py": "42da73bf7fa061c6d346866c646db10c9c6c0cbe177a6e462878a936a62cd2be",
+    "temporal_model.py": "d4684454b2e4676624d4eca6b0b4a14d29db66494a9448d648c2c5521a37fa05",
+    "path_validation.py": "aa2cbbc87689f86f12e9da53da4795b7fff324e0b6079e509b12c9ea34af6baf",
+    "__main__.py": "dc5fadec60ea288f2446329c8ea1620a8d9eb8ca9ddade1b54d8d38e9f659f99",
+    "training.py": "ec9226917717fd12b45d1b6f27c5cfd0ded7a0682b6d9fb9df12e8d0ec353e13",
+    "online.py": "1b2c3934c8c2eeaa67510c3bde0557f6dd49c76fdf8332a34b43f15db02b124f",
+    "geometry.py": "68d2197da96eb23490a36995b20c1aa055ad9dcb93ab316fef7055315ec1d9d8",
+    "evaluate_obstacle_shift.py": "fcc4b9da32f346f9062fca5692c70e28f43b724f40f9f3bb4759439cdcda84bc",
+    "temporal_online.py": "24054be278d06e4c93277aa30f67d89b5c121c81d9c677fd2b8d0ff13db550e3",
+    "temporal_observations.py": "7a259a170f30ac58a00fe243711ba4e3f5113a01aa2cc891a07ecaad70ac0fce",
+    "timed_trajectory.py": "a9cf7f20acd30148ca05ea6015129466b38775248782518d8e013dc12056ad1c",
+    "planner_worker.py": "f129ac16bc6417d5f464302b85c6c783b5a9845cb41962a9fd39740bab4f22bc",
+    "temporal_data.py": "4df1dbfa546c7a94382da368a1539b69788d65008f9c504aee0be2383557e0d9",
+    "__init__.py": "a7ad2138b180f6196a1c5dbacf200c09ffe5a51e2abc60efde8418a27821d8ca",
+    "service.py": "ac9cad181d45ecf251b80c376ee952e6b7c669597b0ed9c7f94636a6752a7981",
+    "geometry_observations.py": "c2775d5a97f52dc06d0712b9646106fc27f4602be1d01fe7fc04a3d2e898010d",
+    "guidance.py": "7c5bf72232e9e59431ee1817ed9008844bb116af3daf8901666699c9036f4033",
+    "temporal_trajectory.py": "a00c604955693dff6296cb52f8f87ee334fd2b47b45d680eb273912e3afd246a",
+    "geometry_evaluation.py": "4388fe4fa8de74df66f3835f7d6502057f3397d470ed264b8d08bf4bd7f5331a",
+    "evaluate_models.py": "e07021cac9a7a7602ae84f202859791cea55985d597000f8edfa1eb8c1f79a7d",
+    "flight_video.py": "059f8f3f1842c1f470a4e5c4346f3da64274229938e9c2f7acb293b8bdd01578"
+  },
+  "temporal_checkpoint": "/temporal-checkpoint.pt",
+  "initial_position": [
+    -25.0,
+    -35.0,
+    2.200000047683716
+  ],
+  "goal_position": [
+    -25.0,
+    -33.0,
+    2.2
+  ],
+  "engine": "newton",
+  "mujoco_version": "3.8.0",
+  "newton_version": "1.2.0",
+  "torch_version": "2.10.0+cu128",
+  "mujoco_cpu": false,
+  "lidar": {
+    "backend": "Newton 1.2 / Warp live collision raycast",
+    "model": "MID-360 envelope approximation",
+    "scan_pattern": "non-repeating low-discrepancy solid-angle coverage; not Livox firing sequence",
+    "scan_timing": "instantaneous snapshot; all hit timestamps equal simulation capture time",
+    "frame_rate_hz": 10.0,
+    "rays_per_frame": 20000,
+    "nominal_points_per_second": 200000.0,
+    "fov_degrees": [
+      360.0,
+      -7.0,
+      52.0
+    ],
+    "range_m": [
+      0.1,
+      40.0
+    ],
+    "mount_body_flu_m": [
+      0.0,
+      0.0,
+      0.13
+    ],
+    "collision_shapes": 155,
+    "robot_self_returns": "excluded",
+    "limitations": [
+      "no optical intensity/noise/reflectivity model",
+      "no measured Livox scan sequence",
+      "no rolling-scan motion distortion or IMU",
+      "collision geometry only; visual-only, particle and deformable obstacles unsupported"
+    ]
+  },
+  "actuator_mapping": {
+    "tilt_rj2": {
+      "array": "joint_target_pos",
+      "index": 10,
+      "runtime_index": 2,
+      "target": "/World/HNUTER/Geometry/drone/r2/rj2",
+      "ctrl_range": [
+        -2.7,
+        2.7
+      ]
+    },
+    "tilt_lj2": {
+      "array": "joint_target_pos",
+      "index": 6,
+      "runtime_index": 0,
+      "target": "/World/HNUTER/Geometry/drone/l2/lj2",
+      "ctrl_range": [
+        -2.7,
+        2.7
+      ]
+    },
+    "tilt_rj1": {
+      "array": "joint_target_pos",
+      "index": 11,
+      "runtime_index": 3,
+      "target": "/World/HNUTER/Geometry/drone/r2/r1/rj1",
+      "ctrl_range": [
+        -2.7,
+        2.7
+      ]
+    },
+    "tilt_lj1": {
+      "array": "joint_target_pos",
+      "index": 7,
+      "runtime_index": 1,
+      "target": "/World/HNUTER/Geometry/drone/l2/l1/lj1",
+      "ctrl_range": [
+        -2.7,
+        2.7
+      ]
+    },
+    "motor_xy1": {
+      "array": "mujoco.ctrl",
+      "index": 0,
+      "runtime_index": 6,
+      "target": "/World/HNUTER/Geometry/drone/r2/r1/xy1/motor_xy1",
+      "ctrl_range": [
+        0.0,
+        50.0
+      ]
+    },
+    "motor_xy2": {
+      "array": "mujoco.ctrl",
+      "index": 1,
+      "runtime_index": 7,
+      "target": "/World/HNUTER/Geometry/drone/r2/r1/xy2/motor_xy2",
+      "ctrl_range": [
+        0.0,
+        50.0
+      ]
+    },
+    "motor_xy3": {
+      "array": "mujoco.ctrl",
+      "index": 2,
+      "runtime_index": 8,
+      "target": "/World/HNUTER/Geometry/drone/l2/l1/xy3/motor_xy3",
+      "ctrl_range": [
+        0.0,
+        50.0
+      ]
+    },
+    "motor_xy4": {
+      "array": "mujoco.ctrl",
+      "index": 3,
+      "runtime_index": 9,
+      "target": "/World/HNUTER/Geometry/drone/l2/l1/xy4/motor_xy4",
+      "ctrl_range": [
+        0.0,
+        50.0
+      ]
+    },
+    "motor_xy5": {
+      "array": "mujoco.ctrl",
+      "index": 4,
+      "runtime_index": 10,
+      "target": "/World/HNUTER/Geometry/drone/xy5/motor_xy5",
+      "ctrl_range": [
+        -20.0,
+        20.0
+      ]
+    }
+  },
+  "steps": 30000,
+  "simulation_seconds": 30.0,
+  "actual_integrated_seconds": 30.00000142492354,
+  "loop_wall_seconds": 59.8693324190026,
+  "final_position": [
+    -25.00057601928711,
+    -33.05958557128906,
+    2.180619239807129
+  ],
+  "final_quaternion": [
+    0.9995893103199427,
+    -0.0012405004223799052,
+    0.028441599945668774,
+    -0.0032782991526014477
+  ],
+  "final_velocity": [
+    -0.0006797269032440463,
+    0.0016525018412822262,
+    -5.790599349115065e-05
+  ],
+  "position_tracking_rmse_m": 0.015690945558903643,
+  "position_tracking_max_error_m": 0.017749300289459823,
+  "attitude_tracking_max_error_rad": 0.019475999591667945,
+  "collision": {
+    "backend": "MuJoCo Warp GPU contacts",
+    "samples": 30000,
+    "collision_detected": false,
+    "contact_steps": 0,
+    "penetration_steps": 0,
+    "first_collision": null,
+    "max_penetration_m": 0.0,
+    "minimum_contact_distance_m": null,
+    "overflow_steps": 0,
+    "unmapped_contacts": 0,
+    "complete": true,
+    "scope": "Robot versus environment only; self contacts excluded; evaluator-only truth"
+  },
+  "lidar_frames": 300,
+  "first_goal_time": 16.599,
+  "goal_settled_seconds": 13.901,
+  "final_goal_distance_m": 0.06266088069694405,
+  "final_speed_mps": 0.001787776301027924,
+  "minimum_goal_distance_m": 0.06262154625275257,
+  "goal_distance_tolerance_m": 0.35,
+  "goal_speed_tolerance_mps": 0.1,
+  "goal_settle_required_seconds": 0.5,
+  "obstacle": {
+    "kind": "physical prismatic position actuator",
+    "body_path": "/World/DiTEvaluationObstacle/MovingBody",
+    "anchor_world": [
+      -25.0,
+      -33.7,
+      2.2
+    ],
+    "motion_axis": "X",
+    "full_extents_m": [
+      0.7,
+      0.7,
+      2.5
+    ],
+    "samples": 3000,
+    "max_position_tracking_error_m": 0.005335617120189795,
+    "position_tracking_rmse_m": 0.0002983391815844747,
+    "latest": {
+      "t": 29.990000000000002,
+      "actual_position": [
+        -18.652629852294922,
+        -33.70000076293945,
+        2.200000047683716
+      ],
+      "target_position": [
+        -18.6525,
+        -33.7,
+        2.2
+      ],
+      "tracking_error_m": 0.00012985454496033645
+    },
+    "scope": "Evaluator fixture; known schedule/geometry never supplied to planner",
+    "profile": "constant_incoming",
+    "target_velocity_mps": 0.25,
+    "target_anchor_time_s": 0.6,
+    "lateral_offset_at_anchor_m": -1.0,
+    "crossing_distance_rule": "1.0 m for X route; 1.3 m for Y route, fixed world-yaw vehicle",
+    "initial_motion": "physical actuator startup from rest; measured transient retained"
+  },
+  "planner": {
+    "mode": "temporal",
+    "input_representation": "voxel",
+    "failed": false,
+    "failure_reason": null,
+    "checkpoint": {
+      "schema": "hnuter_temporal_bspline_dit_v1",
+      "architecture": {
+        "dimension": 128,
+        "depth": 4,
+        "heads": 4,
+        "history_depth": 2
+      },
+      "history_mode": "temporal",
+      "training_step": 1900,
+      "training_state": "trained",
+      "source_dataset": {
+        "schema": "hnuter_temporal_rays_v1",
+        "status": "frozen",
+        "dataset_file": "dataset.npz",
+        "dataset_sha256": "548ba16e446391e800e1081825b714b84448af6683ad71022cc0fde551a8aa35",
+        "samples": 192,
+        "independent_groups": 96,
+        "episodes": 192,
+        "requested_groups": 96,
+        "seed": 107,
+        "windows_per_episode": 1,
+        "workers": 4,
+        "split_codes": {
+          "train": 0,
+          "validation": 1,
+          "test": 2
+        },
+        "split_samples": {
+          "train": 128,
+          "validation": 32,
+          "test": 32
+        },
+        "student_allowlist": [
+          "history_tokens",
+          "history_mask",
+          "history_times",
+          "condition"
+        ],
+        "training_allowlist": [
+          "history_tokens",
+          "history_mask",
+          "history_times",
+          "condition",
+          "positions",
+          "future_times",
+          "episode_id",
+          "group_id",
+          "split",
+          "sample_id"
+        ],
+        "teacher_future_fields": "gt_* and teacher_*: evaluator/label audit only, forbidden model inputs",
+        "target_semantics": "physically_validated_teacher_reference",
+        "data_time_semantics": "fixed physical future times from latest history anchor; positions are the reference commands of the accepted native teacher rollout; teacher_actual_positions stores executed physical positions separately; no arc-length resampling, no terminal goal clamp",
+        "stationary_start_only": true,
+        "maximum_start_speed_mps": 0.03,
+        "limits": {
+          "reference_speed_mps": 0.5,
+          "reference_acceleration_mps2": 0.6
+        },
+        "sensor": {
+          "rays_per_frame": 20000,
+          "history_rate_hz": 5.0,
+          "observation_backend": "MuJoCo mj_multiRay against actual geoms",
+          "direction_pattern": "MID360 envelope approximation, not Livox timing or optics",
+          "no_return": "NaN/unknown"
+        },
+        "teacher_family": "constant_velocity_crossing_wait_go",
+        "quality_gates": {
+          "no_native_contact": true,
+          "native_dt_s": 0.001,
+          "final_goal_m": 0.2,
+          "final_speed_mps": 0.1,
+          "tracking_max_m": 0.12,
+          "actual_max_speed_mps": 0.5
+        },
+        "source_sha256": {
+          "/tmp/hnuter-dit-geometry-20261004/hnuter_dit/temporal_data.py": "4df1dbfa546c7a94382da368a1539b69788d65008f9c504aee0be2383557e0d9",
+          "/tmp/hnuter-dit-geometry-20261004/hnuter_dit/temporal_observations.py": "7a259a170f30ac58a00fe243711ba4e3f5113a01aa2cc891a07ecaad70ac0fce",
+          "/home/z017/research/isaacsim-industrial-reactor/tests/reference/hnuter_control.py": "6b56d4ca7c9a0403a5eca68edb50fb932e26add990b110f3f563747f96c23001",
+          "/home/z017/research/isaacsim-industrial-reactor/robots/hnuter/source/hnuter.xml": "99f616758a3e6596b72db64eb8ee061bf7c92fb430b6aaa7ea81b92c59ecf8db"
+        },
+        "source_snapshots": {
+          "/tmp/hnuter-dit-geometry-20261004/hnuter_dit/temporal_data.py": "source_snapshot/temporal_data.py",
+          "/tmp/hnuter-dit-geometry-20261004/hnuter_dit/temporal_observations.py": "source_snapshot/temporal_observations.py",
+          "/home/z017/research/isaacsim-industrial-reactor/tests/reference/hnuter_control.py": "source_snapshot/hnuter_control.py",
+          "/home/z017/research/isaacsim-industrial-reactor/robots/hnuter/source/hnuter.xml": "source_snapshot/hnuter.xml"
+        },
+        "wall_seconds": 166.22014228199987,
+        "accepted_pairs_with_different_wait": 96,
+        "failures_preserved_in": "collection_audit.json",
+        "root": "/tmp/hnuter-dit-geometry-20261004/results/geometry_pilot/collection96_seed107",
+        "max_training_start_speed_mps": 0.010090433061122894
+      },
+      "normalization": {
+        "control_mean": [
+          0.5699604257499318,
+          -3.6641052154776487e-05,
+          0.002094315776744761
+        ],
+        "control_std": [
+          0.7527995535505075,
+          0.05,
+          0.05
+        ],
+        "condition_mean": [
+          1.9530848115682602,
+          -8.979020950529052e-18,
+          0.0070055341348052025,
+          0.001267751995328581,
+          0.00526458261811058,
+          -0.006557815708220005,
+          0.5297785784568987,
+          -0.4666436014158535,
+          -0.01838020421564579,
+          0.4667139205375861,
+          0.5298752518901892,
+          -0.0008576759719289839
+        ],
+        "condition_std": [
+          0.08731498743681441,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.5004013269721267,
+          0.5008383861023565,
+          0.05,
+          0.50093071581853,
+          0.5004777909403783,
+          0.05
+        ],
+        "environment_mean": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "environment_std": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "fit_split": "train",
+        "train_row_count": 128,
+        "train_indices_sha256": "2a3e97130cab8aa70b45163bc90c921f8337900420f58997cff8ddc630081036"
+      },
+      "input_representation": "voxel",
+      "geometry_config": {
+        "input_representation": "voxel",
+        "schema": "canonical_ray_occupancy_history4x3x64_v1",
+        "tokens_shape": [
+          4,
+          3,
+          64,
+          64,
+          64
+        ],
+        "mask_shape": [
+          4,
+          64,
+          64,
+          64
+        ],
+        "tokens_dtype": "uint8",
+        "roi_radius_m": 8.0,
+        "coordinate_frame": "one current measured body origin and goal-yaw frame",
+        "history_times": [
+          -0.6,
+          -0.4,
+          -0.2,
+          0.0
+        ],
+        "causal": true,
+        "algorithm": "measured endpoint occupancy and sampled measured-return ray traversal",
+        "voxel_size_m": 0.25,
+        "cube_side_m": 16.0,
+        "grid_axis_order": "xyz",
+        "channels": [
+          "occupied",
+          "ray_free_evidence",
+          "unknown"
+        ],
+        "traversal_step_m": 0.125,
+        "endpoint_exclusion_m": 0.4330127018922193,
+        "occupied_overrides_free": true,
+        "unknown_outside_sphere": true,
+        "no_return_rays": "remain unknown, no max-range free ray",
+        "temporal_fusion": false,
+        "signed_distance": false,
+        "limitation": "Sampling may miss grazing cells; free evidence does not certify voxel volume.",
+        "configuration_sha256": "be87e1eb0cee52c48b6a1c0cdd486c78a86cb0a4428b852bbde5d898ce8e7fc0"
+      },
+      "preprocessing_sha256": "be87e1eb0cee52c48b6a1c0cdd486c78a86cb0a4428b852bbde5d898ce8e7fc0",
+      "input_spec": {
+        "input_representation": "voxel",
+        "schema": "canonical_ray_occupancy_history4x3x64_v1",
+        "tokens_shape": [
+          4,
+          3,
+          64,
+          64,
+          64
+        ],
+        "mask_shape": [
+          4,
+          64,
+          64,
+          64
+        ],
+        "tokens_dtype": "uint8"
+      },
+      "training_budget": {
+        "history_mode": "temporal",
+        "input_representation": "voxel",
+        "optimizer": "AdamW",
+        "weight_decay": 0.01,
+        "gradient_clip_norm": 1.0,
+        "steps": 2000,
+        "batch_size": 32,
+        "learning_rate": 0.0002,
+        "seed": 7,
+        "validation_interval": 100,
+        "sampling_steps": 20,
+        "ema_decay": 0.99,
+        "position_weight": 0.2,
+        "velocity_weight": 0.02,
+        "acceleration_weight": 0.002
+      },
+      "checkpoint_sha256": "524c71e0f959e76b162e07630587fc09d2bc20c7dc5b79e802f0e97ce04289d2",
+      "checkpoint_path": "/temporal-checkpoint.pt",
+      "future_times": [
+        0.0,
+        0.125,
+        0.25,
+        0.375,
+        0.5,
+        0.625,
+        0.75,
+        0.875,
+        1.0,
+        1.125,
+        1.25,
+        1.375,
+        1.5,
+        1.625,
+        1.75,
+        1.875,
+        2.0,
+        2.125,
+        2.25,
+        2.375,
+        2.5,
+        2.625,
+        2.75,
+        2.875,
+        3.0,
+        3.125,
+        3.25,
+        3.375,
+        3.5,
+        3.625,
+        3.75,
+        3.875,
+        4.0,
+        4.125,
+        4.25,
+        4.375,
+        4.5,
+        4.625,
+        4.75,
+        4.875,
+        5.0,
+        5.125,
+        5.25,
+        5.375,
+        5.5,
+        5.625,
+        5.75,
+        5.875,
+        6.0,
+        6.125,
+        6.25,
+        6.375,
+        6.5,
+        6.625,
+        6.75,
+        6.875,
+        7.0,
+        7.125,
+        7.25,
+        7.375,
+        7.5,
+        7.625,
+        7.75,
+        7.875,
+        8.0
+      ],
+      "history_times": [
+        -0.6,
+        -0.4,
+        -0.2,
+        0.0
+      ],
+      "start_velocity_support": {
+        "representation": "Exact initial derivative; this alone is not evidence of moving-start training.",
+        "training": "stationary anchors only",
+        "max_training_start_speed_mps": 0.010090433061122894
+      },
+      "position_only": true,
+      "no_retiming": true,
+      "control_points": 16,
+      "spline_degree": 3,
+      "parameter_count": 1931819,
+      "encoder_parameter_count": 119720,
+      "torch_version": "2.9.1+cu128",
+      "device": "cuda",
+      "startup_warmup_seconds": 2.5593510059989057,
+      "torch_module_path": "/opt/nvblox-venv/lib/python3.12/site-packages/torch/__init__.py",
+      "python_executable": "/opt/nvblox-venv/bin/python",
+      "runtime_kind": "temporal",
+      "process_isolated": true,
+      "worker_directory": "/dit/results/geometry_pilot/industrial_incoming/planner_worker/dit-planner-ykmi1dht"
+    },
+    "plans": [
+      {
+        "scan_time": 1.0,
+        "model": {
+          "checkpoint_sha256": "524c71e0f959e76b162e07630587fc09d2bc20c7dc5b79e802f0e97ce04289d2",
+          "schema": "hnuter_temporal_bspline_dit_v1",
+          "input_representation": "voxel",
+          "preprocessing_sha256": "be87e1eb0cee52c48b6a1c0cdd486c78a86cb0a4428b852bbde5d898ce8e7fc0",
+          "training_step": 1900,
+          "training_state": "trained",
+          "source_dataset": {
+            "schema": "hnuter_temporal_rays_v1",
+            "status": "frozen",
+            "dataset_file": "dataset.npz",
+            "dataset_sha256": "548ba16e446391e800e1081825b714b84448af6683ad71022cc0fde551a8aa35",
+            "samples": 192,
+            "independent_groups": 96,
+            "episodes": 192,
+            "requested_groups": 96,
+            "seed": 107,
+            "windows_per_episode": 1,
+            "workers": 4,
+            "split_codes": {
+              "train": 0,
+              "validation": 1,
+              "test": 2
+            },
+            "split_samples": {
+              "train": 128,
+              "validation": 32,
+              "test": 32
+            },
+            "student_allowlist": [
+              "history_tokens",
+              "history_mask",
+              "history_times",
+              "condition"
+            ],
+            "training_allowlist": [
+              "history_tokens",
+              "history_mask",
+              "history_times",
+              "condition",
+              "positions",
+              "future_times",
+              "episode_id",
+              "group_id",
+              "split",
+              "sample_id"
+            ],
+            "teacher_future_fields": "gt_* and teacher_*: evaluator/label audit only, forbidden model inputs",
+            "target_semantics": "physically_validated_teacher_reference",
+            "data_time_semantics": "fixed physical future times from latest history anchor; positions are the reference commands of the accepted native teacher rollout; teacher_actual_positions stores executed physical positions separately; no arc-length resampling, no terminal goal clamp",
+            "stationary_start_only": true,
+            "maximum_start_speed_mps": 0.03,
+            "limits": {
+              "reference_speed_mps": 0.5,
+              "reference_acceleration_mps2": 0.6
+            },
+            "sensor": {
+              "rays_per_frame": 20000,
+              "history_rate_hz": 5.0,
+              "observation_backend": "MuJoCo mj_multiRay against actual geoms",
+              "direction_pattern": "MID360 envelope approximation, not Livox timing or optics",
+              "no_return": "NaN/unknown"
+            },
+            "teacher_family": "constant_velocity_crossing_wait_go",
+            "quality_gates": {
+              "no_native_contact": true,
+              "native_dt_s": 0.001,
+              "final_goal_m": 0.2,
+              "final_speed_mps": 0.1,
+              "tracking_max_m": 0.12,
+              "actual_max_speed_mps": 0.5
+            },
+            "source_sha256": {
+              "/tmp/hnuter-dit-geometry-20261004/hnuter_dit/temporal_data.py": "4df1dbfa546c7a94382da368a1539b69788d65008f9c504aee0be2383557e0d9",
+              "/tmp/hnuter-dit-geometry-20261004/hnuter_dit/temporal_observations.py": "7a259a170f30ac58a00fe243711ba4e3f5113a01aa2cc891a07ecaad70ac0fce",
+              "/home/z017/research/isaacsim-industrial-reactor/tests/reference/hnuter_control.py": "6b56d4ca7c9a0403a5eca68edb50fb932e26add990b110f3f563747f96c23001",
+              "/home/z017/research/isaacsim-industrial-reactor/robots/hnuter/source/hnuter.xml": "99f616758a3e6596b72db64eb8ee061bf7c92fb430b6aaa7ea81b92c59ecf8db"
+            },
+            "source_snapshots": {
+              "/tmp/hnuter-dit-geometry-20261004/hnuter_dit/temporal_data.py": "source_snapshot/temporal_data.py",
+              "/tmp/hnuter-dit-geometry-20261004/hnuter_dit/temporal_observations.py": "source_snapshot/temporal_observations.py",
+              "/home/z017/research/isaacsim-industrial-reactor/tests/reference/hnuter_control.py": "source_snapshot/hnuter_control.py",
+              "/home/z017/research/isaacsim-industrial-reactor/robots/hnuter/source/hnuter.xml": "source_snapshot/hnuter.xml"
+            },
+            "wall_seconds": 166.22014228199987,
+            "accepted_pairs_with_different_wait": 96,
+            "failures_preserved_in": "collection_audit.json",
+            "root": "/tmp/hnuter-dit-geometry-20261004/results/geometry_pilot/collection96_seed107",
+            "max_training_start_speed_mps": 0.010090433061122894
+          },
+          "history_mode": "temporal",
+          "seed": 7,
+          "diffusion_steps": 100,
+          "model_evaluations": 20,
+          "batch_size": 1,
+          "timing_includes_transfer": true,
+          "position_only": true,
+          "retimed": false,
+          "collision_certified": false,
+          "inference_seconds": 0.051467492994561326,
+          "worker_wall_seconds": 0.05449334700097097,
+          "sequence": 1,
+          "process_isolated": true
+        },
+        "history": {
+          "input_representation": "voxel",
+          "schema": "canonical_ray_occupancy_history4x3x64_v1",
+          "tokens_shape": [
+            4,
+            3,
+            64,
+            64,
+            64
+          ],
+          "mask_shape": [
+            4,
+            64,
+            64,
+            64
+          ],
+          "tokens_dtype": "uint8",
+          "roi_radius_m": 8.0,
+          "coordinate_frame": "one current measured body origin and goal-yaw frame",
+          "history_times": [
+            -0.6,
+            -0.4,
+            -0.2,
+            0.0
+          ],
+          "causal": true,
+          "algorithm": "measured endpoint occupancy and sampled measured-return ray traversal",
+          "voxel_size_m": 0.25,
+          "cube_side_m": 16.0,
+          "grid_axis_order": "xyz",
+          "channels": [
+            "occupied",
+            "ray_free_evidence",
+            "unknown"
+          ],
+          "traversal_step_m": 0.125,
+          "endpoint_exclusion_m": 0.4330127018922193,
+          "occupied_overrides_free": true,
+          "unknown_outside_sphere": true,
+          "no_return_rays": "remain unknown, no max-range free ray",
+          "temporal_fusion": false,
+          "signed_distance": false,
+          "limitation": "Sampling may miss grazing cells; free evidence does not certify voxel volume.",
+          "configuration_sha256": "be87e1eb0cee52c48b6a1c0cdd486c78a86cb0a4428b852bbde5d898ce8e7fc0",
+          "frame_statistics": [
+            {
+              "measured_returns": 6234,
+              "occupied_voxels": 299,
+              "free_evidence_voxels": 8444,
+              "unknown_voxels": 253401
+            },
+            {
+              "measured_returns": 6194,
+              "occupied_voxels": 296,
+              "free_evidence_voxels": 8319,
+              "unknown_voxels": 253529
+            },
+            {
+              "measured_returns": 6138,
+              "occupied_voxels": 293,
+              "free_evidence_voxels": 8283,
+              "unknown_voxels": 253568
+            },
+            {
+              "measured_returns": 6136,
+              "occupied_voxels": 260,
+              "free_evidence_voxels": 8240,
+              "unknown_voxels": 253644
+            }
+          ],
+          "query_time": 1.0
+        },
+        "condition": [
+          1.9867401123046875,
+          -2.1062363618072795e-16,
+          0.008453083224594593,
+          0.002383249578997493,
+          0.0019478601170703769,
+          -0.0017562273424118757,
+          -0.0025567403063178062,
+          -0.9998123049736023,
+          -0.019205845892429352,
+          0.9999961853027344,
+          -0.0025358987040817738,
+          -0.0011094417423009872
+        ],
+        "planning_seconds": 0.26488317400071537,
+        "status": "guard_rejected",
+        "future_times": [
+          0.0,
+          0.125,
+          0.25,
+          0.375,
+          0.5,
+          0.625,
+          0.75,
+          0.875,
+          1.0,
+          1.125,
+          1.25,
+          1.375,
+          1.5,
+          1.625,
+          1.75,
+          1.875,
+          2.0,
+          2.125,
+          2.25,
+          2.375,
+          2.5,
+          2.625,
+          2.75,
+          2.875,
+          3.0,
+          3.125,
+          3.25,
+          3.375,
+          3.5,
+          3.625,
+          3.75,
+          3.875,
+          4.0,
+          4.125,
+          4.25,
+          4.375,
+          4.5,
+          4.625,
+          4.75,
+          4.875,
+          5.0,
+          5.125,
+          5.25,
+          5.375,
+          5.5,
+          5.625,
+          5.75,
+          5.875,
+          6.0,
+          6.125,
+          6.25,
+          6.375,
+          6.5,
+          6.625,
+          6.75,
+          6.875,
+          7.0,
+          7.125,
+          7.25,
+          7.375,
+          7.5,
+          7.625,
+          7.75,
+          7.875,
+          8.0
+        ],
+        "canonical_control_points": [
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0004888717085123062,
+            0.0003995610459242016,
+            -0.00036025175359100103
+          ],
+          [
+            -0.020576000213623047,
+            -0.0008703939383849502,
+            0.0008705842774361372
+          ],
+          [
+            0.010961651802062988,
+            0.0002275214355904609,
+            -0.00039061950519680977
+          ],
+          [
+            0.10569179058074951,
+            -0.0004931909497827291,
+            0.0008362965891137719
+          ],
+          [
+            0.2690657377243042,
+            -0.00012659377534873784,
+            0.0010922596557065845
+          ],
+          [
+            0.48196661472320557,
+            -0.00022597613860853016,
+            0.0020032504107803106
+          ],
+          [
+            0.7412040829658508,
+            -0.0003337806847412139,
+            0.002718864008784294
+          ],
+          [
+            1.0089187622070312,
+            -0.00046275719068944454,
+            0.0034967733081430197
+          ],
+          [
+            1.3001245260238647,
+            -0.0005176907870918512,
+            0.004864715039730072
+          ],
+          [
+            1.5478641986846924,
+            -0.0011517731472849846,
+            0.005061686970293522
+          ],
+          [
+            1.7401013374328613,
+            -0.0006499714218080044,
+            0.006126866210252047
+          ],
+          [
+            1.8728809356689453,
+            -0.0006589536787942052,
+            0.006672747898846865
+          ],
+          [
+            1.9402132034301758,
+            -0.0004302326124161482,
+            0.0068308040499687195
+          ],
+          [
+            1.947629690170288,
+            -0.00045504275476559997,
+            0.00707796448841691
+          ],
+          [
+            1.9750406742095947,
+            -0.0007265284657478333,
+            0.0067816004157066345
+          ]
+        ],
+        "derivative_maxima": {
+          "speed": 0.46082308588872123,
+          "acceleration": 0.3756216626434339
+        },
+        "world_control_points": [
+          [
+            -24.999650955200195,
+            -34.98674011230469,
+            2.19154691696167
+          ],
+          [
+            -25.00005060212845,
+            -34.98625131080148,
+            2.191186665208079
+          ],
+          [
+            -24.998776946335514,
+            -35.007315959283694,
+            2.192417501239106
+          ],
+          [
+            -24.999880402454114,
+            -34.975778500644395,
+            2.191156297456473
+          ],
+          [
+            -24.99917633295208,
+            -34.88104823670775,
+            2.1923832135507837
+          ],
+          [
+            -24.99957163283111,
+            -34.71767435649197,
+            2.1926391766173765
+          ],
+          [
+            -24.999509654426944,
+            -34.50477346531856,
+            2.1935501673724502
+          ],
+          [
+            -24.999447394585705,
+            -34.24553598213684,
+            2.194265780970454
+          ],
+          [
+            -24.999365452122387,
+            -33.977821284367785,
+            2.195043690269813
+          ],
+          [
+            -24.99936167965019,
+            -33.686615515393996,
+            2.1964116320014
+          ],
+          [
+            -24.998771121987573,
+            -33.43887573515639,
+            2.1966086039319634
+          ],
+          [
+            -24.999306697308686,
+            -33.246638687535146,
+            2.197673783171922
+          ],
+          [
+            -24.9993210427268,
+            -33.11385908977018,
+            2.198219664860517
+          ],
+          [
+            -24.9995615932068,
+            -33.04652686323145,
+            2.1983777210116386
+          ],
+          [
+            -24.99953808604657,
+            -33.039110372246974,
+            2.198624881450087
+          ],
+          [
+            -24.999271416098633,
+            -33.011699340934136,
+            2.1983285173773766
+          ]
+        ],
+        "activation_time": 1.1400000000000001,
+        "observation_age_sim_seconds": 0.14000000000000012,
+        "activation_position_gap_m": 0.001570514129981541,
+        "activation_velocity_gap_mps": 0.018437980669908687,
+        "activation_attitude_gap_rad": 0.00012873412505481452,
+        "execution_guard": {
+          "allowed": false,
+          "reason": "observed_obstacle",
+          "minimum_clearance_m": -0.19644678039913283,
+          "unknown_fraction": 0.0,
+          "excluded_current_sensor_neighborhood": 34,
+          "ray_evidence": "nearest_emitted_ray_including_misses",
+          "angular_tolerance_degrees": 3.0,
+          "max_transverse_beam_distance_m": 0.05,
+          "certification": "sampled sensor centerline plus 42-sphere observed surface clearance; no full-volume free-space proof"
+        }
+      },
+      {
+        "scan_time": 2.0,
+        "model": {
+          "checkpoint_sha256": "524c71e0f959e76b162e07630587fc09d2bc20c7dc5b79e802f0e97ce04289d2",
+          "schema": "hnuter_temporal_bspline_dit_v1",
+          "input_representation": "voxel",
+          "preprocessing_sha256": "be87e1eb0cee52c48b6a1c0cdd486c78a86cb0a4428b852bbde5d898ce8e7fc0",
+          "training_step": 1900,
+          "training_state": "trained",
+          "source_dataset": {
+            "schema": "hnuter_temporal_rays_v1",
+            "status": "frozen",
+            "dataset_file": "dataset.npz",
+            "dataset_sha256": "548ba16e446391e800e1081825b714b84448af6683ad71022cc0fde551a8aa35",
+            "samples": 192,
+            "independent_groups": 96,
+            "episodes": 192,
+            "requested_groups": 96,
+            "seed": 107,
+            "windows_per_episode": 1,
+            "workers": 4,
+            "split_codes": {
+              "train": 0,
+              "validation": 1,
+              "test": 2
+            },
+            "split_samples": {
+              "train": 128,
+              "validation": 32,
+              "test": 32
+            },
+            "student_allowlist": [
+              "history_tokens",
+              "history_mask",
+              "history_times",
+              "condition"
+            ],
+            "training_allowlist": [
+              "history_tokens",
+              "history_mask",
+              "history_times",
+              "condition",
+              "positions",
+              "future_times",
+              "episode_id",
+              "group_id",
+              "split",
+              "sample_id"
+            ],
+            "teacher_future_fields": "gt_* and teacher_*: evaluator/label audit only, forbidden model inputs",
+            "target_semantics": "physically_validated_teacher_reference",
+            "data_time_semantics": "fixed physical future times from latest history anchor; positions are the reference commands of the accepted native teacher rollout; teacher_actual_positions stores executed physical positions separately; no arc-length resampling, no terminal goal clamp",
+            "stationary_start_only": true,
+            "maximum_start_speed_mps": 0.03,
+            "limits": {
+              "reference_speed_mps": 0.5,
+              "reference_acceleration_mps2": 0.6
+            },
+            "sensor": {
+              "rays_per_frame": 20000,
+              "history_rate_hz": 5.0,
+              "observation_backend": "MuJoCo mj_multiRay against actual geoms",
+              "direction_pattern": "MID360 envelope approximation, not Livox timing or optics",
+              "no_return": "NaN/unknown"
+            },
+            "teacher_family": "constant_velocity_crossing_wait_go",
+            "quality_gates": {
+              "no_native_contact": true,
+              "native_dt_s": 0.001,
+              "final_goal_m": 0.2,
+              "final_speed_mps": 0.1,
+              "tracking_max_m": 0.12,
+              "actual_max_speed_mps": 0.5
+            },
+            "source_sha256": {
+              "/tmp/hnuter-dit-geometry-20261004/hnuter_dit/temporal_data.py": "4df1dbfa546c7a94382da368a1539b69788d65008f9c504aee0be2383557e0d9",
+              "/tmp/hnuter-dit-geometry-20261004/hnuter_dit/temporal_observations.py": "7a259a170f30ac58a00fe243711ba4e3f5113a01aa2cc891a07ecaad70ac0fce",
+              "/home/z017/research/isaacsim-industrial-reactor/tests/reference/hnuter_control.py": "6b56d4ca7c9a0403a5eca68edb50fb932e26add990b110f3f563747f96c23001",
+              "/home/z017/research/isaacsim-industrial-reactor/robots/hnuter/source/hnuter.xml": "99f616758a3e6596b72db64eb8ee061bf7c92fb430b6aaa7ea81b92c59ecf8db"
+            },
+            "source_snapshots": {
+              "/tmp/hnuter-dit-geometry-20261004/hnuter_dit/temporal_data.py": "source_snapshot/temporal_data.py",
+              "/tmp/hnuter-dit-geometry-20261004/hnuter_dit/temporal_observations.py": "source_snapshot/temporal_observations.py",
+              "/home/z017/research/isaacsim-industrial-reactor/tests/reference/hnuter_control.py": "source_snapshot/hnuter_control.py",
+              "/home/z017/research/isaacsim-industrial-reactor/robots/hnuter/source/hnuter.xml": "source_snapshot/hnuter.xml"
+            },
+            "wall_seconds": 166.22014228199987,
+            "accepted_pairs_with_different_wait": 96,
+            "failures_preserved_in": "collection_audit.json",
+            "root": "/tmp/hnuter-dit-geometry-20261004/results/geometry_pilot/collection96_seed107",
+            "max_training_start_speed_mps": 0.010090433061122894
+          },
+          "history_mode": "temporal",
+          "seed": 7,
+          "diffusion_steps": 100,
+          "model_evaluations": 20,
+          "batch_size": 1,
+          "timing_includes_transfer": true,
+          "position_only": true,
+          "retimed": false,
+          "collision_certified": false,
+          "inference_seconds": 0.056867453997256234,
+          "worker_wall_seconds": 0.05988957099907566,
+          "sequence": 2,
+          "process_isolated": true
+        },
+        "history": {
+          "input_representation": "voxel",
+          "schema": "canonical_ray_occupancy_history4x3x64_v1",
+          "tokens_shape": [
+            4,
+            3,
+            64,
+            64,
+            64
+          ],
+          "mask_shape": [
+            4,
+            64,
+            64,
+            64
+          ],
+          "tokens_dtype": "uint8",
+          "roi_radius_m": 8.0,
+          "coordinate_frame": "one current measured body origin and goal-yaw frame",
+          "history_times": [
+            -0.6,
+            -0.4,
+            -0.2,
+            0.0
+          ],
+          "causal": true,
+          "algorithm": "measured endpoint occupancy and sampled measured-return ray traversal",
+          "voxel_size_m": 0.25,
+          "cube_side_m": 16.0,
+          "grid_axis_order": "xyz",
+          "channels": [
+            "occupied",
+            "ray_free_evidence",
+            "unknown"
+          ],
+          "traversal_step_m": 0.125,
+          "endpoint_exclusion_m": 0.4330127018922193,
+          "occupied_overrides_free": true,
+          "unknown_outside_sphere": true,
+          "no_return_rays": "remain unknown, no max-range free ray",
+          "temporal_fusion": false,
+          "signed_distance": false,
+          "limitation": "Sampling may miss grazing cells; free evidence does not certify voxel volume.",
+          "configuration_sha256": "be87e1eb0cee52c48b6a1c0cdd486c78a86cb0a4428b852bbde5d898ce8e7fc0",
+          "frame_statistics": [
+            {
+              "measured_returns": 6087,
+              "occupied_voxels": 273,
+              "free_evidence_voxels": 8191,
+              "unknown_voxels": 253680
+            },
+            {
+              "measured_returns": 6070,
+              "occupied_voxels": 270,
+              "free_evidence_voxels": 8062,
+              "unknown_voxels": 253812
+            },
+            {
+              "measured_returns": 5998,
+              "occupied_voxels": 262,
+              "free_evidence_voxels": 8088,
+              "unknown_voxels": 253794
+            },
+            {
+              "measured_returns": 5991,
+              "occupied_voxels": 247,
+              "free_evidence_voxels": 8106,
+              "unknown_voxels": 253791
+            }
+          ],
+          "query_time": 2.0
+        },
+        "condition": [
+          1.9863014221191406,
+          1.1134925718015581e-16,
+          0.008898687548935413,
+          0.000799069122876972,
+          0.0007409463869407773,
+          -6.594220030819997e-05,
+          -0.0024802228435873985,
+          -0.999811053276062,
+          -0.019278686493635178,
+          0.9999963641166687,
+          -0.0024589216336607933,
+          -0.0011285372311249375
+        ],
+        "planning_seconds": 0.348501288004627,
+        "status": "guard_rejected",
+        "future_times": [
+          0.0,
+          0.125,
+          0.25,
+          0.375,
+          0.5,
+          0.625,
+          0.75,
+          0.875,
+          1.0,
+          1.125,
+          1.25,
+          1.375,
+          1.5,
+          1.625,
+          1.75,
+          1.875,
+          2.0,
+          2.125,
+          2.25,
+          2.375,
+          2.5,
+          2.625,
+          2.75,
+          2.875,
+          3.0,
+          3.125,
+          3.25,
+          3.375,
+          3.5,
+          3.625,
+          3.75,
+          3.875,
+          4.0,
+          4.125,
+          4.25,
+          4.375,
+          4.5,
+          4.625,
+          4.75,
+          4.875,
+          5.0,
+          5.125,
+          5.25,
+          5.375,
+          5.5,
+          5.625,
+          5.75,
+          5.875,
+          6.0,
+          6.125,
+          6.25,
+          6.375,
+          6.5,
+          6.625,
+          6.75,
+          6.875,
+          7.0,
+          7.125,
+          7.25,
+          7.375,
+          7.5,
+          7.625,
+          7.75,
+          7.875,
+          8.0
+        ],
+        "canonical_control_points": [
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.00016391162353102118,
+            0.00015198900655377656,
+            -1.3526605471270159e-05
+          ],
+          [
+            -0.013693451881408691,
+            -0.0007657750975340605,
+            0.0008504153229296207
+          ],
+          [
+            0.029221951961517334,
+            0.0002215902495663613,
+            -0.00042951013892889023
+          ],
+          [
+            0.13242271542549133,
+            -0.0004435435403138399,
+            0.0008424684638157487
+          ],
+          [
+            0.2993697226047516,
+            -6.338668026728556e-05,
+            0.0010928059928119183
+          ],
+          [
+            0.5220006704330444,
+            -0.00017386519175488502,
+            0.0020220763981342316
+          ],
+          [
+            0.7881917953491211,
+            -0.0002943853323813528,
+            0.00278600980527699
+          ],
+          [
+            1.056409478187561,
+            -0.0004230120684951544,
+            0.0036280034109950066
+          ],
+          [
+            1.3453892469406128,
+            -0.0005262137856334448,
+            0.004962497390806675
+          ],
+          [
+            1.5933637619018555,
+            -0.0011886093998327851,
+            0.005122943315654993
+          ],
+          [
+            1.78122878074646,
+            -0.000623211613856256,
+            0.006180033553391695
+          ],
+          [
+            1.9114034175872803,
+            -0.0006101573817431927,
+            0.006705976091325283
+          ],
+          [
+            1.9730782508850098,
+            -0.000369705114280805,
+            0.006878250278532505
+          ],
+          [
+            1.9764254093170166,
+            -0.0003853698435705155,
+            0.0070436433888971806
+          ],
+          [
+            1.9971628189086914,
+            -0.0006443625316023827,
+            0.006783466320484877
+          ]
+        ],
+        "derivative_maxima": {
+          "speed": 0.45839716478889647,
+          "acceleration": 0.30211761878762977
+        },
+        "world_control_points": [
+          [
+            -25.000015258789062,
+            -34.98630142211914,
+            2.191101312637329
+          ],
+          [
+            -25.000167246536442,
+            -34.98613750932803,
+            2.191087786031858
+          ],
+          [
+            -24.999249588884798,
+            -34.99999487988284,
+            2.1919517279602587
+          ],
+          [
+            -25.00023662455527,
+            -34.95707946845623,
+            2.1906718024984
+          ],
+          [
+            -24.999570697976026,
+            -34.853878710104865,
+            2.191943781101145
+          ],
+          [
+            -24.999949572347344,
+            -34.68693170001016,
+            2.192194118630141
+          ],
+          [
+            -24.999837383582502,
+            -34.464300753037136,
+            2.1931233890354633
+          ],
+          [
+            -24.999714818558772,
+            -34.19810962905475,
+            2.193887322442606
+          ],
+          [
+            -24.999584131371513,
+            -33.92989194721233,
+            2.194729316048324
+          ],
+          [
+            -24.99947870970866,
+            -33.6409121792606,
+            2.1960638100281358
+          ],
+          [
+            -24.99881440915157,
+            -33.39293766939521,
+            2.196224255952984
+          ],
+          [
+            -24.999378363756417,
+            -33.205072646212756,
+            2.197281346190721
+          ],
+          [
+            -24.99939041798556,
+            -33.07489800927549,
+            2.1978072887286544
+          ],
+          [
+            -24.999630396466276,
+            -33.01322317413243,
+            2.1979795629158616
+          ],
+          [
+            -24.99961470602408,
+            -33.00987601582086,
+            2.1981449560262263
+          ],
+          [
+            -24.999355554031048,
+            -32.98913860821938,
+            2.197884778957814
+          ]
+        ],
+        "activation_time": 2.188,
+        "observation_age_sim_seconds": 0.18800000000000017,
+        "activation_position_gap_m": 0.0013335656916713293,
+        "activation_velocity_gap_mps": 0.013164015341655415,
+        "activation_attitude_gap_rad": 1.4741549392254282e-05,
+        "execution_guard": {
+          "allowed": false,
+          "reason": "observed_obstacle",
+          "minimum_clearance_m": -0.18972939852243667,
+          "unknown_fraction": 0.0,
+          "excluded_current_sensor_neighborhood": 30,
+          "ray_evidence": "nearest_emitted_ray_including_misses",
+          "angular_tolerance_degrees": 3.0,
+          "max_transverse_beam_distance_m": 0.05,
+          "certification": "sampled sensor centerline plus 42-sphere observed surface clearance; no full-volume free-space proof"
+        }
+      },
+      {
+        "scan_time": 3.0,
+        "model": {
+          "checkpoint_sha256": "524c71e0f959e76b162e07630587fc09d2bc20c7dc5b79e802f0e97ce04289d2",
+          "schema": "hnuter_temporal_bspline_dit_v1",
+          "input_representation": "voxel",
+          "preprocessing_sha256": "be87e1eb0cee52c48b6a1c0cdd486c78a86cb0a4428b852bbde5d898ce8e7fc0",
+          "training_step": 1900,
+          "training_state": "trained",
+          "source_dataset": {
+            "schema": "hnuter_temporal_rays_v1",
+            "status": "frozen",
+            "dataset_file": "dataset.npz",
+            "dataset_sha256": "548ba16e446391e800e1081825b714b84448af6683ad71022cc0fde551a8aa35",
+            "samples": 192,
+            "independent_groups": 96,
+            "episodes": 192,
+            "requested_groups": 96,
+            "seed": 107,
+            "windows_per_episode": 1,
+            "workers": 4,
+            "split_codes": {
+              "train": 0,
+              "validation": 1,
+              "test": 2
+            },
+            "split_samples": {
+              "train": 128,
+              "validation": 32,
+              "test": 32
+            },
+            "student_allowlist": [
+              "history_tokens",
+              "history_mask",
+              "history_times",
+              "condition"
+            ],
+            "training_allowlist": [
+              "history_tokens",
+              "history_mask",
+              "history_times",
+              "condition",
+              "positions",
+              "future_times",
+              "episode_id",
+              "group_id",
+              "split",
+              "sample_id"
+            ],
+            "teacher_future_fields": "gt_* and teacher_*: evaluator/label audit only, forbidden model inputs",
+            "target_semantics": "physically_validated_teacher_reference",
+            "data_time_semantics": "fixed physical future times from latest history anchor; positions are the reference commands of the accepted native teacher rollout; teacher_actual_positions stores executed physical positions separately; no arc-length resampling, no terminal goal clamp",
+            "stationary_start_only": true,
+            "maximum_start_speed_mps": 0.03,
+            "limits": {
+              "reference_speed_mps": 0.5,
+              "reference_acceleration_mps2": 0.6
+            },
+            "sensor": {
+              "rays_per_frame": 20000,
+              "history_rate_hz": 5.0,
+              "observation_backend": "MuJoCo mj_multiRay against actual geoms",
+              "direction_pattern": "MID360 envelope approximation, not Livox timing or optics",
+              "no_return": "NaN/unknown"
+            },
+            "teacher_family": "constant_velocity_crossing_wait_go",
+            "quality_gates": {
+              "no_native_contact": true,
+              "native_dt_s": 0.001,
+              "final_goal_m": 0.2,
+              "final_speed_mps": 0.1,
+              "tracking_max_m": 0.12,
+              "actual_max_speed_mps": 0.5
+            },
+            "source_sha256": {
+              "/tmp/hnuter-dit-geometry-20261004/hnuter_dit/temporal_data.py": "4df1dbfa546c7a94382da368a1539b69788d65008f9c504aee0be2383557e0d9",
+              "/tmp/hnuter-dit-geometry-20261004/hnuter_dit/temporal_observations.py": "7a259a170f30ac58a00fe243711ba4e3f5113a01aa2cc891a07ecaad70ac0fce",
+              "/home/z017/research/isaacsim-industrial-reactor/tests/reference/hnuter_control.py": "6b56d4ca7c9a0403a5eca68edb50fb932e26add990b110f3f563747f96c23001",
+              "/home/z017/research/isaacsim-industrial-reactor/robots/hnuter/source/hnuter.xml": "99f616758a3e6596b72db64eb8ee061bf7c92fb430b6aaa7ea81b92c59ecf8db"
+            },
+            "source_snapshots": {
+              "/tmp/hnuter-dit-geometry-20261004/hnuter_dit/temporal_data.py": "source_snapshot/temporal_data.py",
+              "/tmp/hnuter-dit-geometry-20261004/hnuter_dit/temporal_observations.py": "source_snapshot/temporal_observations.py",
+              "/home/z017/research/isaacsim-industrial-reactor/tests/reference/hnuter_control.py": "source_snapshot/hnuter_control.py",
+              "/home/z017/research/isaacsim-industrial-reactor/robots/hnuter/source/hnuter.xml": "source_snapshot/hnuter.xml"
+            },
+            "wall_seconds": 166.22014228199987,
+            "accepted_pairs_with_different_wait": 96,
+            "failures_preserved_in": "collection_audit.json",
+            "root": "/tmp/hnuter-dit-geometry-20261004/results/geometry_pilot/collection96_seed107",
+            "max_training_start_speed_mps": 0.010090433061122894
+          },
+          "history_mode": "temporal",
+          "seed": 7,
+          "diffusion_steps": 100,
+          "model_evaluations": 20,
+          "batch_size": 1,
+          "timing_includes_transfer": true,
+          "position_only": true,
+          "retimed": false,
+          "collision_certified": false,
+          "inference_seconds": 0.05434195500129135,
+          "worker_wall_seconds": 0.05683120599860558,
+          "sequence": 3,
+          "process_isolated": true
+        },
+        "history": {
+          "input_representation": "voxel",
+          "schema": "canonical_ray_occupancy_history4x3x64_v1",
+          "tokens_shape": [
+            4,
+            3,
+            64,
+            64,
+            64
+          ],
+          "mask_shape": [
+            4,
+            64,
+            64,
+            64
+          ],
+          "tokens_dtype": "uint8",
+          "roi_radius_m": 8.0,
+          "coordinate_frame": "one current measured body origin and goal-yaw frame",
+          "history_times": [
+            -0.6,
+            -0.4,
+            -0.2,
+            0.0
+          ],
+          "causal": true,
+          "algorithm": "measured endpoint occupancy and sampled measured-return ray traversal",
+          "voxel_size_m": 0.25,
+          "cube_side_m": 16.0,
+          "grid_axis_order": "xyz",
+          "channels": [
+            "occupied",
+            "ray_free_evidence",
+            "unknown"
+          ],
+          "traversal_step_m": 0.125,
+          "endpoint_exclusion_m": 0.4330127018922193,
+          "occupied_overrides_free": true,
+          "unknown_outside_sphere": true,
+          "no_return_rays": "remain unknown, no max-range free ray",
+          "temporal_fusion": false,
+          "signed_distance": false,
+          "limitation": "Sampling may miss grazing cells; free evidence does not certify voxel volume.",
+          "configuration_sha256": "be87e1eb0cee52c48b6a1c0cdd486c78a86cb0a4428b852bbde5d898ce8e7fc0",
+          "frame_statistics": [
+            {
+              "measured_returns": 5990,
+              "occupied_voxels": 286,
+              "free_evidence_voxels": 8028,
+              "unknown_voxels": 253830
+            },
+            {
+              "measured_returns": 5955,
+              "occupied_voxels": 273,
+              "free_evidence_voxels": 7829,
+              "unknown_voxels": 254042
+            },
+            {
+              "measured_returns": 5917,
+              "occupied_voxels": 272,
+              "free_evidence_voxels": 7790,
+              "unknown_voxels": 254082
+            },
+            {
+              "measured_returns": 5929,
+              "occupied_voxels": 261,
+              "free_evidence_voxels": 7821,
+              "unknown_voxels": 254062
+            }
+          ],
+          "query_time": 3.0
+        },
+        "condition": [
+          1.9863014221191406,
+          1.1134925718015581e-16,
+          0.008898687548935413,
+          0.0007850425317883492,
+          0.0007370231323875487,
+          -6.559363100677729e-05,
+          -0.0024721201043576,
+          -0.9998111128807068,
+          -0.01927805133163929,
+          0.9999963641166687,
+          -0.0024508116766810417,
+          -0.001128872623667121
+        ],
+        "planning_seconds": 0.34575536900229054,
+        "status": "guard_rejected",
+        "future_times": [
+          0.0,
+          0.125,
+          0.25,
+          0.375,
+          0.5,
+          0.625,
+          0.75,
+          0.875,
+          1.0,
+          1.125,
+          1.25,
+          1.375,
+          1.5,
+          1.625,
+          1.75,
+          1.875,
+          2.0,
+          2.125,
+          2.25,
+          2.375,
+          2.5,
+          2.625,
+          2.75,
+          2.875,
+          3.0,
+          3.125,
+          3.25,
+          3.375,
+          3.5,
+          3.625,
+          3.75,
+          3.875,
+          4.0,
+          4.125,
+          4.25,
+          4.375,
+          4.5,
+          4.625,
+          4.75,
+          4.875,
+          5.0,
+          5.125,
+          5.25,
+          5.375,
+          5.5,
+          5.625,
+          5.75,
+          5.875,
+          6.0,
+          6.125,
+          6.25,
+          6.375,
+          6.5,
+          6.625,
+          6.75,
+          6.875,
+          7.0,
+          7.125,
+          7.25,
+          7.375,
+          7.5,
+          7.625,
+          7.75,
+          7.875,
+          8.0
+        ],
+        "canonical_control_points": [
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.00016103436064440757,
+            0.00015118422743398696,
+            -1.3455103726300877e-05
+          ],
+          [
+            -0.017002224922180176,
+            -0.0007866888772696257,
+            0.0008168878266587853
+          ],
+          [
+            0.024647772312164307,
+            0.00020263811165932566,
+            -0.0004527568817138672
+          ],
+          [
+            0.12678584456443787,
+            -0.0004966300330124795,
+            0.0008323843358084559
+          ],
+          [
+            0.29210031032562256,
+            -0.00010988242866005749,
+            0.0010860367910936475
+          ],
+          [
+            0.5109529495239258,
+            -0.00021677168842870742,
+            0.0020143070723861456
+          ],
+          [
+            0.7749744653701782,
+            -0.00033546052873134613,
+            0.0027710578870028257
+          ],
+          [
+            1.0434682369232178,
+            -0.0004669242771342397,
+            0.003592287888750434
+          ],
+          [
+            1.333931803703308,
+            -0.0005480318795889616,
+            0.004935161210596561
+          ],
+          [
+            1.5802481174468994,
+            -0.001186347915790975,
+            0.0051221102476119995
+          ],
+          [
+            1.7693772315979004,
+            -0.0006552307168021798,
+            0.006166839972138405
+          ],
+          [
+            1.8999786376953125,
+            -0.0006518965819850564,
+            0.006696681026369333
+          ],
+          [
+            1.963355541229248,
+            -0.00041099157533608377,
+            0.006863366812467575
+          ],
+          [
+            1.9686126708984375,
+            -0.0004298694839235395,
+            0.007053951267153025
+          ],
+          [
+            1.9915521144866943,
+            -0.0006911042146384716,
+            0.006799644324928522
+          ]
+        ],
+        "derivative_maxima": {
+          "speed": 0.4600882252788555,
+          "acceleration": 0.3218728749597686
+        },
+        "world_control_points": [
+          [
+            -25.000015258789062,
+            -34.98630142211914,
+            2.191101312637329
+          ],
+          [
+            -25.000166441779424,
+            -34.9861403865971,
+            2.191087857533603
+          ],
+          [
+            -24.99922870052309,
+            -35.003303653084174,
+            2.191918200463988
+          ],
+          [
+            -25.00021770755626,
+            -34.96165364825104,
+            2.1906485557556152
+          ],
+          [
+            -24.999517654785834,
+            -34.859515581373564,
+            2.1919336969731376
+          ],
+          [
+            -24.999903132442654,
+            -34.694201112646255,
+            2.1921873494284227
+          ],
+          [
+            -24.99979456195454,
+            -34.475348474275535,
+            2.1931156197097152
+          ],
+          [
+            -24.999673844898094,
+            -34.21132695934884,
+            2.193872370524332
+          ],
+          [
+            -24.999540318577633,
+            -33.94283318881363,
+            2.1946936005260795
+          ],
+          [
+            -24.99945697963091,
+            -33.65236962266518,
+            2.1960364738479257
+          ],
+          [
+            -24.998816771390132,
+            -33.40605331383241,
+            2.196223422884941
+          ],
+          [
+            -24.999346435697202,
+            -33.216924195606936,
+            2.1972681526094675
+          ],
+          [
+            -24.9993487665506,
+            -33.08632278948777,
+            2.1977979936636984
+          ],
+          [
+            -24.999589184695182,
+            -33.02294588410506,
+            2.1979646794497967
+          ],
+          [
+            -24.999570266401268,
+            -33.01768875458105,
+            2.198155263904482
+          ],
+          [
+            -24.999308855449506,
+            -32.99474931300028,
+            2.1979009569622576
+          ]
+        ],
+        "activation_time": 3.189,
+        "observation_age_sim_seconds": 0.18900000000000006,
+        "activation_position_gap_m": 0.0017489734754365237,
+        "activation_velocity_gap_mps": 0.01708122570486313,
+        "activation_attitude_gap_rad": 4.6715556242499885e-06,
+        "execution_guard": {
+          "allowed": false,
+          "reason": "observed_obstacle",
+          "minimum_clearance_m": -0.2869496870283028,
+          "unknown_fraction": 0.0,
+          "excluded_current_sensor_neighborhood": 31,
+          "ray_evidence": "nearest_emitted_ray_including_misses",
+          "angular_tolerance_degrees": 3.0,
+          "max_transverse_beam_distance_m": 0.05,
+          "certification": "sampled sensor centerline plus 42-sphere observed surface clearance; no full-volume free-space proof"
+        }
+      },
+      {
+        "scan_time": 4.0,
+        "model": {
+          "checkpoint_sha256": "524c71e0f959e76b162e07630587fc09d2bc20c7dc5b79e802f0e97ce04289d2",
+          "schema": "hnuter_temporal_bspline_dit_v1",
+          "input_representation": "voxel",
+          "preprocessing_sha256": "be87e1eb0cee52c48b6a1c0cdd486c78a86cb0a4428b852bbde5d898ce8e7fc0",
+          "training_step": 1900,
+          "training_state": "trained",
+          "source_dataset": {
+            "schema": "hnuter_temporal_rays_v1",
+            "status": "frozen",
+            "dataset_file": "dataset.npz",
+            "dataset_sha256": "548ba16e446391e800e1081825b714b84448af6683ad71022cc0fde551a8aa35",
+            "samples": 192,
+            "independent_groups": 96,
+            "episodes": 192,
+            "requested_groups": 96,
+            "seed": 107,
+            "windows_per_episode": 1,
+            "workers": 4,
+            "split_codes": {
+              "train": 0,
+              "validation": 1,
+              "test": 2
+            },
+            "split_samples": {
+              "train": 128,
+              "validation": 32,
+              "test": 32
+            },
+            "student_allowlist": [
+              "history_tokens",
+              "history_mask",
+              "history_times",
+              "condition"
+            ],
+            "training_allowlist": [
+              "history_tokens",
+              "history_mask",
+              "history_times",
+              "condition",
+              "positions",
+              "future_times",
+              "episode_id",
+              "group_id",
+              "split",
+              "sample_id"
+            ],
+            "teacher_future_fields": "gt_* and teacher_*: evaluator/label audit only, forbidden model inputs",
+            "target_semantics": "physically_validated_teacher_reference",
+            "data_time_semantics": "fixed physical future times from latest history anchor; positions are the reference commands of the accepted native teacher rollout; teacher_actual_positions stores executed physical positions separately; no arc-length resampling, no terminal goal clamp",
+            "stationary_start_only": true,
+            "maximum_start_speed_mps": 0.03,
+            "limits": {
+              "reference_speed_mps": 0.5,
+              "reference_acceleration_mps2": 0.6
+            },
+            "sensor": {
+              "rays_per_frame": 20000,
+              "history_rate_hz": 5.0,
+              "observation_backend": "MuJoCo mj_multiRay against actual geoms",
+              "direction_pattern": "MID360 envelope approximation, not Livox timing or optics",
+              "no_return": "NaN/unknown"
+            },
+            "teacher_family": "constant_velocity_crossing_wait_go",
+            "quality_gates": {
+              "no_native_contact": true,
+              "native_dt_s": 0.001,
+              "final_goal_m": 0.2,
+              "final_speed_mps": 0.1,
+              "tracking_max_m": 0.12,
+              "actual_max_speed_mps": 0.5
+            },
+            "source_sha256": {
+              "/tmp/hnuter-dit-geometry-20261004/hnuter_dit/temporal_data.py": "4df1dbfa546c7a94382da368a1539b69788d65008f9c504aee0be2383557e0d9",
+              "/tmp/hnuter-dit-geometry-20261004/hnuter_dit/temporal_observations.py": "7a259a170f30ac58a00fe243711ba4e3f5113a01aa2cc891a07ecaad70ac0fce",
+              "/home/z017/research/isaacsim-industrial-reactor/tests/reference/hnuter_control.py": "6b56d4ca7c9a0403a5eca68edb50fb932e26add990b110f3f563747f96c23001",
+              "/home/z017/research/isaacsim-industrial-reactor/robots/hnuter/source/hnuter.xml": "99f616758a3e6596b72db64eb8ee061bf7c92fb430b6aaa7ea81b92c59ecf8db"
+            },
+            "source_snapshots": {
+              "/tmp/hnuter-dit-geometry-20261004/hnuter_dit/temporal_data.py": "source_snapshot/temporal_data.py",
+              "/tmp/hnuter-dit-geometry-20261004/hnuter_dit/temporal_observations.py": "source_snapshot/temporal_observations.py",
+              "/home/z017/research/isaacsim-industrial-reactor/tests/reference/hnuter_control.py": "source_snapshot/hnuter_control.py",
+              "/home/z017/research/isaacsim-industrial-reactor/robots/hnuter/source/hnuter.xml": "source_snapshot/hnuter.xml"
+            },
+            "wall_seconds": 166.22014228199987,
+            "accepted_pairs_with_different_wait": 96,
+            "failures_preserved_in": "collection_audit.json",
+            "root": "/tmp/hnuter-dit-geometry-20261004/results/geometry_pilot/collection96_seed107",
+            "max_training_start_speed_mps": 0.010090433061122894
+          },
+          "history_mode": "temporal",
+          "seed": 7,
+          "diffusion_steps": 100,
+          "model_evaluations": 20,
+          "batch_size": 1,
+          "timing_includes_transfer": true,
+          "position_only": true,
+          "retimed": false,
+          "collision_certified": false,
+          "inference_seconds": 0.0498499319946859,
+          "worker_wall_seconds": 0.05158197899436345,
+          "sequence": 4,
+          "process_isolated": true
+        },
+        "history": {
+          "input_representation": "voxel",
+          "schema": "canonical_ray_occupancy_history4x3x64_v1",
+          "tokens_shape": [
+            4,
+            3,
+            64,
+            64,
+            64
+          ],
+          "mask_shape": [
+            4,
+            64,
+            64,
+            64
+          ],
+          "tokens_dtype": "uint8",
+          "roi_radius_m": 8.0,
+          "coordinate_frame": "one current measured body origin and goal-yaw frame",
+          "history_times": [
+            -0.6,
+            -0.4,
+            -0.2,
+            0.0
+          ],
+          "causal": true,
+          "algorithm": "measured endpoint occupancy and sampled measured-return ray traversal",
+          "voxel_size_m": 0.25,
+          "cube_side_m": 16.0,
+          "grid_axis_order": "xyz",
+          "channels": [
+            "occupied",
+            "ray_free_evidence",
+            "unknown"
+          ],
+          "traversal_step_m": 0.125,
+          "endpoint_exclusion_m": 0.4330127018922193,
+          "occupied_overrides_free": true,
+          "unknown_outside_sphere": true,
+          "no_return_rays": "remain unknown, no max-range free ray",
+          "temporal_fusion": false,
+          "signed_distance": false,
+          "limitation": "Sampling may miss grazing cells; free evidence does not certify voxel volume.",
+          "configuration_sha256": "be87e1eb0cee52c48b6a1c0cdd486c78a86cb0a4428b852bbde5d898ce8e7fc0",
+          "frame_statistics": [
+            {
+              "measured_returns": 5883,
+              "occupied_voxels": 262,
+              "free_evidence_voxels": 7701,
+              "unknown_voxels": 254181
+            },
+            {
+              "measured_returns": 5856,
+              "occupied_voxels": 246,
+              "free_evidence_voxels": 7629,
+              "unknown_voxels": 254269
+            },
+            {
+              "measured_returns": 5862,
+              "occupied_voxels": 257,
+              "free_evidence_voxels": 7538,
+              "unknown_voxels": 254349
+            },
+            {
+              "measured_returns": 5898,
+              "occupied_voxels": 252,
+              "free_evidence_voxels": 7660,
+              "unknown_voxels": 254232
+            }
+          ],
+          "query_time": 4.0
+        },
+        "condition": [
+          1.9863014221191406,
+          1.1134925718015581e-16,
+          0.008898687548935413,
+          0.0007855468429625034,
+          0.0007364383200183511,
+          -6.666236731689423e-05,
+          -0.0024725166149437428,
+          -0.9998111128807068,
+          -0.019278550520539284,
+          0.9999963641166687,
+          -0.0024512093514204025,
+          -0.001128785079345107
+        ],
+        "planning_seconds": 0.3186767129955115,
+        "status": "guard_rejected",
+        "future_times": [
+          0.0,
+          0.125,
+          0.25,
+          0.375,
+          0.5,
+          0.625,
+          0.75,
+          0.875,
+          1.0,
+          1.125,
+          1.25,
+          1.375,
+          1.5,
+          1.625,
+          1.75,
+          1.875,
+          2.0,
+          2.125,
+          2.25,
+          2.375,
+          2.5,
+          2.625,
+          2.75,
+          2.875,
+          3.0,
+          3.125,
+          3.25,
+          3.375,
+          3.5,
+          3.625,
+          3.75,
+          3.875,
+          4.0,
+          4.125,
+          4.25,
+          4.375,
+          4.5,
+          4.625,
+          4.75,
+          4.875,
+          5.0,
+          5.125,
+          5.25,
+          5.375,
+          5.5,
+          5.625,
+          5.75,
+          5.875,
+          6.0,
+          6.125,
+          6.25,
+          6.375,
+          6.5,
+          6.625,
+          6.75,
+          6.875,
+          7.0,
+          7.125,
+          7.25,
+          7.375,
+          7.5,
+          7.625,
+          7.75,
+          7.875,
+          8.0
+        ],
+        "canonical_control_points": [
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.00016113781020976603,
+            0.00015106427599675953,
+            -1.367433196719503e-05
+          ],
+          [
+            -0.021198153495788574,
+            -0.0007765780901536345,
+            0.0007912075379863381
+          ],
+          [
+            0.013268530368804932,
+            0.0002188738144468516,
+            -0.00047305691987276077
+          ],
+          [
+            0.10831481218338013,
+            -0.000535039696842432,
+            0.000822242465801537
+          ],
+          [
+            0.26990392804145813,
+            -0.0001495381584390998,
+            0.001082138391211629
+          ],
+          [
+            0.4798234701156616,
+            -0.00025477114832028747,
+            0.0019960578065365553
+          ],
+          [
+            0.7348823547363281,
+            -0.000380712968762964,
+            0.002711904002353549
+          ],
+          [
+            0.9984856843948364,
+            -0.0005122593138366938,
+            0.0034935236908495426
+          ],
+          [
+            1.2898368835449219,
+            -0.0005346841644495726,
+            0.00481063686311245
+          ],
+          [
+            1.535640001296997,
+            -0.0010956006590276957,
+            0.005122988484799862
+          ],
+          [
+            1.7276852130889893,
+            -0.0006543106865137815,
+            0.006115623749792576
+          ],
+          [
+            1.8599154949188232,
+            -0.0006714165210723877,
+            0.006627115420997143
+          ],
+          [
+            1.9281649589538574,
+            -0.000504016992636025,
+            0.00681372731924057
+          ],
+          [
+            1.9351632595062256,
+            -0.0005206222413107753,
+            0.007016005925834179
+          ],
+          [
+            1.9628448486328125,
+            -0.0007411168189719319,
+            0.00681770034134388
+          ]
+        ],
+        "derivative_maxima": {
+          "speed": 0.45943930325437016,
+          "acceleration": 0.383184636686787
+        },
+        "world_control_points": [
+          [
+            -25.000015258789062,
+            -34.98630142211914,
+            2.191101312637329
+          ],
+          [
+            -25.00016632182719,
+            -34.98614028314846,
+            2.191087638305362
+          ],
+          [
+            -24.999238843543377,
+            -35.007499581579985,
+            2.1918925201753154
+          ],
+          [
+            -25.00023403067451,
+            -34.973032890069334,
+            2.1906282557174563
+          ],
+          [
+            -24.999479387016674,
+            -34.877986614049135,
+            2.1919235551031306
+          ],
+          [
+            -24.999863647225727,
+            -34.7163974952344,
+            2.1921834510285407
+          ],
+          [
+            -24.999756801631648,
+            -34.506477953974795,
+            2.1930973704438657
+          ],
+          [
+            -24.999628900446094,
+            -34.251419070329135,
+            2.1938132166396827
+          ],
+          [
+            -24.999495329097385,
+            -33.98781574168895,
+            2.1945948363281786
+          ],
+          [
+            -24.999470666083702,
+            -33.696464542719724,
+            2.1959119495004416
+          ],
+          [
+            -24.998907861326927,
+            -33.45066142928387,
+            2.196224301122129
+          ],
+          [
+            -24.99934767600603,
+            -33.25861621410755,
+            2.1972169363871217
+          ],
+          [
+            -24.99932955437701,
+            -33.12638593241303,
+            2.1977284280583262
+          ],
+          [
+            -24.999496429612318,
+            -33.05813646709404,
+            2.1979150399565697
+          ],
+          [
+            -24.999479770602626,
+            -33.05113816666944,
+            2.1981173185631633
+          ],
+          [
+            -24.9992590633747,
+            -33.02345657923751,
+            2.197919012978673
+          ]
+        ],
+        "activation_time": 4.1770000000000005,
+        "observation_age_sim_seconds": 0.1770000000000005,
+        "activation_position_gap_m": 0.0020310414408765787,
+        "activation_velocity_gap_mps": 0.021623397069807884,
+        "activation_attitude_gap_rad": 6.116450213662998e-06,
+        "execution_guard": {
+          "allowed": false,
+          "reason": "observed_obstacle",
+          "minimum_clearance_m": -0.3006850845690086,
+          "unknown_fraction": 0.2558139534883721,
+          "excluded_current_sensor_neighborhood": 33,
+          "ray_evidence": "nearest_emitted_ray_including_misses",
+          "angular_tolerance_degrees": 3.0,
+          "max_transverse_beam_distance_m": 0.05,
+          "certification": "sampled sensor centerline plus 42-sphere observed surface clearance; no full-volume free-space proof"
+        }
+      },
+      {
+        "scan_time": 5.0,
+        "model": {
+          "checkpoint_sha256": "524c71e0f959e76b162e07630587fc09d2bc20c7dc5b79e802f0e97ce04289d2",
+          "schema": "hnuter_temporal_bspline_dit_v1",
+          "input_representation": "voxel",
+          "preprocessing_sha256": "be87e1eb0cee52c48b6a1c0cdd486c78a86cb0a4428b852bbde5d898ce8e7fc0",
+          "training_step": 1900,
+          "training_state": "trained",
+          "source_dataset": {
+            "schema": "hnuter_temporal_rays_v1",
+            "status": "frozen",
+            "dataset_file": "dataset.npz",
+            "dataset_sha256": "548ba16e446391e800e1081825b714b84448af6683ad71022cc0fde551a8aa35",
+            "samples": 192,
+            "independent_groups": 96,
+            "episodes": 192,
+            "requested_groups": 96,
+            "seed": 107,
+            "windows_per_episode": 1,
+            "workers": 4,
+            "split_codes": {
+              "train": 0,
+              "validation": 1,
+              "test": 2
+            },
+            "split_samples": {
+              "train": 128,
+              "validation": 32,
+              "test": 32
+            },
+            "student_allowlist": [
+              "history_tokens",
+              "history_mask",
+              "history_times",
+              "condition"
+            ],
+            "training_allowlist": [
+              "history_tokens",
+              "history_mask",
+              "history_times",
+              "condition",
+              "positions",
+              "future_times",
+              "episode_id",
+              "group_id",
+              "split",
+              "sample_id"
+            ],
+            "teacher_future_fields": "gt_* and teacher_*: evaluator/label audit only, forbidden model inputs",
+            "target_semantics": "physically_validated_teacher_reference",
+            "data_time_semantics": "fixed physical future times from latest history anchor; positions are the reference commands of the accepted native teacher rollout; teacher_actual_positions stores executed physical positions separately; no arc-length resampling, no terminal goal clamp",
+            "stationary_start_only": true,
+            "maximum_start_speed_mps": 0.03,
+            "limits": {
+              "reference_speed_mps": 0.5,
+              "reference_acceleration_mps2": 0.6
+            },
+            "sensor": {
+              "rays_per_frame": 20000,
+              "history_rate_hz": 5.0,
+              "observation_backend": "MuJoCo mj_multiRay against actual geoms",
+              "direction_pattern": "MID360 envelope approximation, not Livox timing or optics",
+              "no_return": "NaN/unknown"
+            },
+            "teacher_family": "constant_velocity_crossing_wait_go",
+            "quality_gates": {
+              "no_native_contact": true,
+              "native_dt_s": 0.001,
+              "final_goal_m": 0.2,
+              "final_speed_mps": 0.1,
+              "tracking_max_m": 0.12,
+              "actual_max_speed_mps": 0.5
+            },
+            "source_sha256": {
+              "/tmp/hnuter-dit-geometry-20261004/hnuter_dit/temporal_data.py": "4df1dbfa546c7a94382da368a1539b69788d65008f9c504aee0be2383557e0d9",
+              "/tmp/hnuter-dit-geometry-20261004/hnuter_dit/temporal_observations.py": "7a259a170f30ac58a00fe243711ba4e3f5113a01aa2cc891a07ecaad70ac0fce",
+              "/home/z017/research/isaacsim-industrial-reactor/tests/reference/hnuter_control.py": "6b56d4ca7c9a0403a5eca68edb50fb932e26add990b110f3f563747f96c23001",
+              "/home/z017/research/isaacsim-industrial-reactor/robots/hnuter/source/hnuter.xml": "99f616758a3e6596b72db64eb8ee061bf7c92fb430b6aaa7ea81b92c59ecf8db"
+            },
+            "source_snapshots": {
+              "/tmp/hnuter-dit-geometry-20261004/hnuter_dit/temporal_data.py": "source_snapshot/temporal_data.py",
+              "/tmp/hnuter-dit-geometry-20261004/hnuter_dit/temporal_observations.py": "source_snapshot/temporal_observations.py",
+              "/home/z017/research/isaacsim-industrial-reactor/tests/reference/hnuter_control.py": "source_snapshot/hnuter_control.py",
+              "/home/z017/research/isaacsim-industrial-reactor/robots/hnuter/source/hnuter.xml": "source_snapshot/hnuter.xml"
+            },
+            "wall_seconds": 166.22014228199987,
+            "accepted_pairs_with_different_wait": 96,
+            "failures_preserved_in": "collection_audit.json",
+            "root": "/tmp/hnuter-dit-geometry-20261004/results/geometry_pilot/collection96_seed107",
+            "max_training_start_speed_mps": 0.010090433061122894
+          },
+          "history_mode": "temporal",
+          "seed": 7,
+          "diffusion_steps": 100,
+          "model_evaluations": 20,
+          "batch_size": 1,
+          "timing_includes_transfer": true,
+          "position_only": true,
+          "retimed": false,
+          "collision_certified": false,
+          "inference_seconds": 0.04958956600603415,
+          "worker_wall_seconds": 0.0512715479999315,
+          "sequence": 5,
+          "process_isolated": true
+        },
+        "history": {
+          "input_representation": "voxel",
+          "schema": "canonical_ray_occupancy_history4x3x64_v1",
+          "tokens_shape": [
+            4,
+            3,
+            64,
+            64,
+            64
+          ],
+          "mask_shape": [
+            4,
+            64,
+            64,
+            64
+          ],
+          "tokens_dtype": "uint8",
+          "roi_radius_m": 8.0,
+          "coordinate_frame": "one current measured body origin and goal-yaw frame",
+          "history_times": [
+            -0.6,
+            -0.4,
+            -0.2,
+            0.0
+          ],
+          "causal": true,
+          "algorithm": "measured endpoint occupancy and sampled measured-return ray traversal",
+          "voxel_size_m": 0.25,
+          "cube_side_m": 16.0,
+          "grid_axis_order": "xyz",
+          "channels": [
+            "occupied",
+            "ray_free_evidence",
+            "unknown"
+          ],
+          "traversal_step_m": 0.125,
+          "endpoint_exclusion_m": 0.4330127018922193,
+          "occupied_overrides_free": true,
+          "unknown_outside_sphere": true,
+          "no_return_rays": "remain unknown, no max-range free ray",
+          "temporal_fusion": false,
+          "signed_distance": false,
+          "limitation": "Sampling may miss grazing cells; free evidence does not certify voxel volume.",
+          "configuration_sha256": "be87e1eb0cee52c48b6a1c0cdd486c78a86cb0a4428b852bbde5d898ce8e7fc0",
+          "frame_statistics": [
+            {
+              "measured_returns": 5934,
+              "occupied_voxels": 251,
+              "free_evidence_voxels": 7747,
+              "unknown_voxels": 254146
+            },
+            {
+              "measured_returns": 5926,
+              "occupied_voxels": 249,
+              "free_evidence_voxels": 7542,
+              "unknown_voxels": 254353
+            },
+            {
+              "measured_returns": 5918,
+              "occupied_voxels": 257,
+              "free_evidence_voxels": 7659,
+              "unknown_voxels": 254228
+            },
+            {
+              "measured_returns": 5972,
+              "occupied_voxels": 247,
+              "free_evidence_voxels": 7747,
+              "unknown_voxels": 254150
+            }
+          ],
+          "query_time": 5.0
+        },
+        "condition": [
+          1.9863014221191406,
+          1.1134925718015581e-16,
+          0.008898687548935413,
+          0.0007875310257077217,
+          0.0007349667721427977,
+          -6.829526682849973e-05,
+          -0.0024724705144762993,
+          -0.999811053276062,
+          -0.019279392436146736,
+          0.9999963641166687,
+          -0.002451142994686961,
+          -0.0011297953315079212
+        ],
+        "planning_seconds": 0.5610366039982182,
+        "status": "trajectory_rejected",
+        "future_times": [
+          0.0,
+          0.125,
+          0.25,
+          0.375,
+          0.5,
+          0.625,
+          0.75,
+          0.875,
+          1.0,
+          1.125,
+          1.25,
+          1.375,
+          1.5,
+          1.625,
+          1.75,
+          1.875,
+          2.0,
+          2.125,
+          2.25,
+          2.375,
+          2.5,
+          2.625,
+          2.75,
+          2.875,
+          3.0,
+          3.125,
+          3.25,
+          3.375,
+          3.5,
+          3.625,
+          3.75,
+          3.875,
+          4.0,
+          4.125,
+          4.25,
+          4.375,
+          4.5,
+          4.625,
+          4.75,
+          4.875,
+          5.0,
+          5.125,
+          5.25,
+          5.375,
+          5.5,
+          5.625,
+          5.75,
+          5.875,
+          6.0,
+          6.125,
+          6.25,
+          6.375,
+          6.5,
+          6.625,
+          6.75,
+          6.875,
+          7.0,
+          7.125,
+          7.25,
+          7.375,
+          7.5,
+          7.625,
+          7.75,
+          7.875,
+          8.0
+        ],
+        "canonical_control_points": [
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.00016154482727870345,
+            0.0001507624110672623,
+            -1.4009286132932175e-05
+          ],
+          [
+            -0.002794504165649414,
+            -0.0009541534818708897,
+            0.001173479831777513
+          ],
+          [
+            -0.00031960010528564453,
+            2.5413435650989413e-05,
+            -0.0003100479952991009
+          ],
+          [
+            -0.0005220174789428711,
+            -0.0005454301135614514,
+            0.0004812220577150583
+          ],
+          [
+            6.276369094848633e-05,
+            -8.331684512086213e-05,
+            0.0001369980163872242
+          ],
+          [
+            0.0013255476951599121,
+            -0.00012182661885162815,
+            0.00038473180029541254
+          ],
+          [
+            0.0019745826721191406,
+            -0.00024970434606075287,
+            0.00022346421610563993
+          ],
+          [
+            -0.00020390748977661133,
+            -0.0002389105356996879,
+            0.0002369784051552415
+          ],
+          [
+            -0.0015496611595153809,
+            -0.00011640317825367674,
+            0.00030021637212485075
+          ],
+          [
+            0.004505038261413574,
+            -0.00036869835457764566,
+            3.288756124675274e-05
+          ],
+          [
+            -0.001587212085723877,
+            -0.00014036253560334444,
+            0.00021296855993568897
+          ],
+          [
+            0.0061261653900146484,
+            -6.481751915998757e-05,
+            0.00027290533762425184
+          ],
+          [
+            0.0669240951538086,
+            7.892546273069456e-05,
+            0.0004045912064611912
+          ],
+          [
+            0.12491056323051453,
+            8.455065108137205e-05,
+            0.0007679914124310017
+          ],
+          [
+            0.20570603013038635,
+            -7.467925024684519e-05,
+            0.0008775456808507442
+          ]
+        ],
+        "rejection_reason": "temporal acceleration limit exceeded: 0.820746 > 0.6",
+        "activation_time": 5.3,
+        "observation_age_sim_seconds": 0.2999999999999998
+      },
+      {
+        "scan_time": 6.0,
+        "model": {
+          "checkpoint_sha256": "524c71e0f959e76b162e07630587fc09d2bc20c7dc5b79e802f0e97ce04289d2",
+          "schema": "hnuter_temporal_bspline_dit_v1",
+          "input_representation": "voxel",
+          "preprocessing_sha256": "be87e1eb0cee52c48b6a1c0cdd486c78a86cb0a4428b852bbde5d898ce8e7fc0",
+          "training_step": 1900,
+          "training_state": "trained",
+          "source_dataset": {
+            "schema": "hnuter_temporal_rays_v1",
+            "status": "frozen",
+            "dataset_file": "dataset.npz",
+            "dataset_sha256": "548ba16e446391e800e1081825b714b84448af6683ad71022cc0fde551a8aa35",
+            "samples": 192,
+            "independent_groups": 96,
+            "episodes": 192,
+            "requested_groups": 96,
+            "seed": 107,
+            "windows_per_episode": 1,
+            "workers": 4,
+            "split_codes": {
+              "train": 0,
+              "validation": 1,
+              "test": 2
+            },
+            "split_samples": {
+              "train": 128,
+              "validation": 32,
+              "test": 32
+            },
+            "student_allowlist": [
+              "history_tokens",
+              "history_mask",
+              "history_times",
+              "condition"
+            ],
+            "training_allowlist": [
+              "history_tokens",
+              "history_mask",
+              "history_times",
+              "condition",
+              "positions",
+              "future_times",
+              "episode_id",
+              "group_id",
+              "split",
+              "sample_id"
+            ],
+            "teacher_future_fields": "gt_* and teacher_*: evaluator/label audit only, forbidden model inputs",
+            "target_semantics": "physically_validated_teacher_reference",
+            "data_time_semantics": "fixed physical future times from latest history anchor; positions are the reference commands of the accepted native teacher rollout; teacher_actual_positions stores executed physical positions separately; no arc-length resampling, no terminal goal clamp",
+            "stationary_start_only": true,
+            "maximum_start_speed_mps": 0.03,
+            "limits": {
+              "reference_speed_mps": 0.5,
+              "reference_acceleration_mps2": 0.6
+            },
+            "sensor": {
+              "rays_per_frame": 20000,
+              "history_rate_hz": 5.0,
+              "observation_backend": "MuJoCo mj_multiRay against actual geoms",
+              "direction_pattern": "MID360 envelope approximation, not Livox timing or optics",
+              "no_return": "NaN/unknown"
+            },
+            "teacher_family": "constant_velocity_crossing_wait_go",
+            "quality_gates": {
+              "no_native_contact": true,
+              "native_dt_s": 0.001,
+              "final_goal_m": 0.2,
+              "final_speed_mps": 0.1,
+              "tracking_max_m": 0.12,
+              "actual_max_speed_mps": 0.5
+            },
+            "source_sha256": {
+              "/tmp/hnuter-dit-geometry-20261004/hnuter_dit/temporal_data.py": "4df1dbfa546c7a94382da368a1539b69788d65008f9c504aee0be2383557e0d9",
+              "/tmp/hnuter-dit-geometry-20261004/hnuter_dit/temporal_observations.py": "7a259a170f30ac58a00fe243711ba4e3f5113a01aa2cc891a07ecaad70ac0fce",
+              "/home/z017/research/isaacsim-industrial-reactor/tests/reference/hnuter_control.py": "6b56d4ca7c9a0403a5eca68edb50fb932e26add990b110f3f563747f96c23001",
+              "/home/z017/research/isaacsim-industrial-reactor/robots/hnuter/source/hnuter.xml": "99f616758a3e6596b72db64eb8ee061bf7c92fb430b6aaa7ea81b92c59ecf8db"
+            },
+            "source_snapshots": {
+              "/tmp/hnuter-dit-geometry-20261004/hnuter_dit/temporal_data.py": "source_snapshot/temporal_data.py",
+              "/tmp/hnuter-dit-geometry-20261004/hnuter_dit/temporal_observations.py": "source_snapshot/temporal_observations.py",
+              "/home/z017/research/isaacsim-industrial-reactor/tests/reference/hnuter_control.py": "source_snapshot/hnuter_control.py",
+              "/home/z017/research/isaacsim-industrial-reactor/robots/hnuter/source/hnuter.xml": "source_snapshot/hnuter.xml"
+            },
+            "wall_seconds": 166.22014228199987,
+            "accepted_pairs_with_different_wait": 96,
+            "failures_preserved_in": "collection_audit.json",
+            "root": "/tmp/hnuter-dit-geometry-20261004/results/geometry_pilot/collection96_seed107",
+            "max_training_start_speed_mps": 0.010090433061122894
+          },
+          "history_mode": "temporal",
+          "seed": 7,
+          "diffusion_steps": 100,
+          "model_evaluations": 20,
+          "batch_size": 1,
+          "timing_includes_transfer": true,
+          "position_only": true,
+          "retimed": false,
+          "collision_certified": false,
+          "inference_seconds": 0.055878147999465,
+          "worker_wall_seconds": 0.06020637499750592,
+          "sequence": 6,
+          "process_isolated": true
+        },
+        "history": {
+          "input_representation": "voxel",
+          "schema": "canonical_ray_occupancy_history4x3x64_v1",
+          "tokens_shape": [
+            4,
+            3,
+            64,
+            64,
+            64
+          ],
+          "mask_shape": [
+            4,
+            64,
+            64,
+            64
+          ],
+          "tokens_dtype": "uint8",
+          "roi_radius_m": 8.0,
+          "coordinate_frame": "one current measured body origin and goal-yaw frame",
+          "history_times": [
+            -0.6,
+            -0.4,
+            -0.2,
+            0.0
+          ],
+          "causal": true,
+          "algorithm": "measured endpoint occupancy and sampled measured-return ray traversal",
+          "voxel_size_m": 0.25,
+          "cube_side_m": 16.0,
+          "grid_axis_order": "xyz",
+          "channels": [
+            "occupied",
+            "ray_free_evidence",
+            "unknown"
+          ],
+          "traversal_step_m": 0.125,
+          "endpoint_exclusion_m": 0.4330127018922193,
+          "occupied_overrides_free": true,
+          "unknown_outside_sphere": true,
+          "no_return_rays": "remain unknown, no max-range free ray",
+          "temporal_fusion": false,
+          "signed_distance": false,
+          "limitation": "Sampling may miss grazing cells; free evidence does not certify voxel volume.",
+          "configuration_sha256": "be87e1eb0cee52c48b6a1c0cdd486c78a86cb0a4428b852bbde5d898ce8e7fc0",
+          "frame_statistics": [
+            {
+              "measured_returns": 5951,
+              "occupied_voxels": 254,
+              "free_evidence_voxels": 7839,
+              "unknown_voxels": 254051
+            },
+            {
+              "measured_returns": 5936,
+              "occupied_voxels": 251,
+              "free_evidence_voxels": 7681,
+              "unknown_voxels": 254212
+            },
+            {
+              "measured_returns": 5930,
+              "occupied_voxels": 262,
+              "free_evidence_voxels": 7845,
+              "unknown_voxels": 254037
+            },
+            {
+              "measured_returns": 5977,
+              "occupied_voxels": 255,
+              "free_evidence_voxels": 7815,
+              "unknown_voxels": 254074
+            }
+          ],
+          "query_time": 6.0
+        },
+        "condition": [
+          1.9863014221191406,
+          1.1134925718015581e-16,
+          0.008898687548935413,
+          0.0007910942658782005,
+          0.000733125489205122,
+          -7.0381531259045e-05,
+          -0.002472346182912588,
+          -0.999811053276062,
+          -0.019280655309557915,
+          0.9999963641166687,
+          -0.002450971631333232,
+          -0.0011321501806378365
+        ],
+        "planning_seconds": 0.34009277999575716,
+        "status": "trajectory_rejected",
+        "future_times": [
+          0.0,
+          0.125,
+          0.25,
+          0.375,
+          0.5,
+          0.625,
+          0.75,
+          0.875,
+          1.0,
+          1.125,
+          1.25,
+          1.375,
+          1.5,
+          1.625,
+          1.75,
+          1.875,
+          2.0,
+          2.125,
+          2.25,
+          2.375,
+          2.5,
+          2.625,
+          2.75,
+          2.875,
+          3.0,
+          3.125,
+          3.25,
+          3.375,
+          3.5,
+          3.625,
+          3.75,
+          3.875,
+          4.0,
+          4.125,
+          4.25,
+          4.375,
+          4.5,
+          4.625,
+          4.75,
+          4.875,
+          5.0,
+          5.125,
+          5.25,
+          5.375,
+          5.5,
+          5.625,
+          5.75,
+          5.875,
+          6.0,
+          6.125,
+          6.25,
+          6.375,
+          6.5,
+          6.625,
+          6.75,
+          6.875,
+          7.0,
+          7.125,
+          7.25,
+          7.375,
+          7.5,
+          7.625,
+          7.75,
+          7.875,
+          8.0
+        ],
+        "canonical_control_points": [
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0001622757554287091,
+            0.00015038471610751003,
+            -1.4437237041420303e-05
+          ],
+          [
+            -0.00046497583389282227,
+            -0.0008893399499356747,
+            0.0010452739661559463
+          ],
+          [
+            0.002988159656524658,
+            2.0000032236566767e-05,
+            -0.00043685012497007847
+          ],
+          [
+            0.0023923516273498535,
+            -0.00055322190746665,
+            0.000368470442481339
+          ],
+          [
+            0.004180848598480225,
+            -8.597470150562003e-05,
+            3.7073856219649315e-05
+          ],
+          [
+            0.00607985258102417,
+            -0.00013328841305337846,
+            0.0002977144904434681
+          ],
+          [
+            0.008304119110107422,
+            -0.00032876929617486894,
+            0.00016951863653957844
+          ],
+          [
+            0.004088997840881348,
+            -0.0002990387729369104,
+            0.00010604294948279858
+          ],
+          [
+            0.009037375450134277,
+            -0.0001945518743013963,
+            0.00038007053080946207
+          ],
+          [
+            0.03354930877685547,
+            -0.000554750207811594,
+            -9.370362386107445e-05
+          ],
+          [
+            0.05280989408493042,
+            -0.00027870136545971036,
+            0.0003245773259550333
+          ],
+          [
+            0.12473127245903015,
+            -0.0002409289008937776,
+            0.0005853972397744656
+          ],
+          [
+            0.29967403411865234,
+            -0.00017271604156121612,
+            0.001063670264557004
+          ],
+          [
+            0.43162715435028076,
+            -0.00028663311968557537,
+            0.0015573219861835241
+          ],
+          [
+            0.6414094567298889,
+            -0.0001576752692926675,
+            0.0022850281093269587
+          ]
+        ],
+        "rejection_reason": "temporal speed limit exceeded: 1.0227 > 0.5",
+        "activation_time": 6.1850000000000005,
+        "observation_age_sim_seconds": 0.1850000000000005
+      },
+      {
+        "scan_time": 7.0,
+        "model": {
+          "checkpoint_sha256": "524c71e0f959e76b162e07630587fc09d2bc20c7dc5b79e802f0e97ce04289d2",
+          "schema": "hnuter_temporal_bspline_dit_v1",
+          "input_representation": "voxel",
+          "preprocessing_sha256": "be87e1eb0cee52c48b6a1c0cdd486c78a86cb0a4428b852bbde5d898ce8e7fc0",
+          "training_step": 1900,
+          "training_state": "trained",
+          "source_dataset": {
+            "schema": "hnuter_temporal_rays_v1",
+            "status": "frozen",
+            "dataset_file": "dataset.npz",
+            "dataset_sha256": "548ba16e446391e800e1081825b714b84448af6683ad71022cc0fde551a8aa35",
+            "samples": 192,
+            "independent_groups": 96,
+            "episodes": 192,
+            "requested_groups": 96,
+            "seed": 107,
+            "windows_per_episode": 1,
+            "workers": 4,
+            "split_codes": {
+              "train": 0,
+              "validation": 1,
+              "test": 2
+            },
+            "split_samples": {
+              "train": 128,
+              "validation": 32,
+              "test": 32
+            },
+            "student_allowlist": [
+              "history_tokens",
+              "history_mask",
+              "history_times",
+              "condition"
+            ],
+            "training_allowlist": [
+              "history_tokens",
+              "history_mask",
+              "history_times",
+              "condition",
+              "positions",
+              "future_times",
+              "episode_id",
+              "group_id",
+              "split",
+              "sample_id"
+            ],
+            "teacher_future_fields": "gt_* and teacher_*: evaluator/label audit only, forbidden model inputs",
+            "target_semantics": "physically_validated_teacher_reference",
+            "data_time_semantics": "fixed physical future times from latest history anchor; positions are the reference commands of the accepted native teacher rollout; teacher_actual_positions stores executed physical positions separately; no arc-length resampling, no terminal goal clamp",
+            "stationary_start_only": true,
+            "maximum_start_speed_mps": 0.03,
+            "limits": {
+              "reference_speed_mps": 0.5,
+              "reference_acceleration_mps2": 0.6
+            },
+            "sensor": {
+              "rays_per_frame": 20000,
+              "history_rate_hz": 5.0,
+              "observation_backend": "MuJoCo mj_multiRay against actual geoms",
+              "direction_pattern": "MID360 envelope approximation, not Livox timing or optics",
+              "no_return": "NaN/unknown"
+            },
+            "teacher_family": "constant_velocity_crossing_wait_go",
+            "quality_gates": {
+              "no_native_contact": true,
+              "native_dt_s": 0.001,
+              "final_goal_m": 0.2,
+              "final_speed_mps": 0.1,
+              "tracking_max_m": 0.12,
+              "actual_max_speed_mps": 0.5
+            },
+            "source_sha256": {
+              "/tmp/hnuter-dit-geometry-20261004/hnuter_dit/temporal_data.py": "4df1dbfa546c7a94382da368a1539b69788d65008f9c504aee0be2383557e0d9",
+              "/tmp/hnuter-dit-geometry-20261004/hnuter_dit/temporal_observations.py": "7a259a170f30ac58a00fe243711ba4e3f5113a01aa2cc891a07ecaad70ac0fce",
+              "/home/z017/research/isaacsim-industrial-reactor/tests/reference/hnuter_control.py": "6b56d4ca7c9a0403a5eca68edb50fb932e26add990b110f3f563747f96c23001",
+              "/home/z017/research/isaacsim-industrial-reactor/robots/hnuter/source/hnuter.xml": "99f616758a3e6596b72db64eb8ee061bf7c92fb430b6aaa7ea81b92c59ecf8db"
+            },
+            "source_snapshots": {
+              "/tmp/hnuter-dit-geometry-20261004/hnuter_dit/temporal_data.py": "source_snapshot/temporal_data.py",
+              "/tmp/hnuter-dit-geometry-20261004/hnuter_dit/temporal_observations.py": "source_snapshot/temporal_observations.py",
+              "/home/z017/research/isaacsim-industrial-reactor/tests/reference/hnuter_control.py": "source_snapshot/hnuter_control.py",
+              "/home/z017/research/isaacsim-industrial-reactor/robots/hnuter/source/hnuter.xml": "source_snapshot/hnuter.xml"
+            },
+            "wall_seconds": 166.22014228199987,
+            "accepted_pairs_with_different_wait": 96,
+            "failures_preserved_in": "collection_audit.json",
+            "root": "/tmp/hnuter-dit-geometry-20261004/results/geometry_pilot/collection96_seed107",
+            "max_training_start_speed_mps": 0.010090433061122894
+          },
+          "history_mode": "temporal",
+          "seed": 7,
+          "diffusion_steps": 100,
+          "model_evaluations": 20,
+          "batch_size": 1,
+          "timing_includes_transfer": true,
+          "position_only": true,
+          "retimed": false,
+          "collision_certified": false,
+          "inference_seconds": 0.0497388259973377,
+          "worker_wall_seconds": 0.053475398002774455,
+          "sequence": 7,
+          "process_isolated": true
+        },
+        "history": {
+          "input_representation": "voxel",
+          "schema": "canonical_ray_occupancy_history4x3x64_v1",
+          "tokens_shape": [
+            4,
+            3,
+            64,
+            64,
+            64
+          ],
+          "mask_shape": [
+            4,
+            64,
+            64,
+            64
+          ],
+          "tokens_dtype": "uint8",
+          "roi_radius_m": 8.0,
+          "coordinate_frame": "one current measured body origin and goal-yaw frame",
+          "history_times": [
+            -0.6,
+            -0.4,
+            -0.2,
+            0.0
+          ],
+          "causal": true,
+          "algorithm": "measured endpoint occupancy and sampled measured-return ray traversal",
+          "voxel_size_m": 0.25,
+          "cube_side_m": 16.0,
+          "grid_axis_order": "xyz",
+          "channels": [
+            "occupied",
+            "ray_free_evidence",
+            "unknown"
+          ],
+          "traversal_step_m": 0.125,
+          "endpoint_exclusion_m": 0.4330127018922193,
+          "occupied_overrides_free": true,
+          "unknown_outside_sphere": true,
+          "no_return_rays": "remain unknown, no max-range free ray",
+          "temporal_fusion": false,
+          "signed_distance": false,
+          "limitation": "Sampling may miss grazing cells; free evidence does not certify voxel volume.",
+          "configuration_sha256": "be87e1eb0cee52c48b6a1c0cdd486c78a86cb0a4428b852bbde5d898ce8e7fc0",
+          "frame_statistics": [
+            {
+              "measured_returns": 5947,
+              "occupied_voxels": 260,
+              "free_evidence_voxels": 7829,
+              "unknown_voxels": 254055
+            },
+            {
+              "measured_returns": 5958,
+              "occupied_voxels": 271,
+              "free_evidence_voxels": 7789,
+              "unknown_voxels": 254084
+            },
+            {
+              "measured_returns": 5976,
+              "occupied_voxels": 283,
+              "free_evidence_voxels": 7906,
+              "unknown_voxels": 253955
+            },
+            {
+              "measured_returns": 5991,
+              "occupied_voxels": 275,
+              "free_evidence_voxels": 7826,
+              "unknown_voxels": 254043
+            }
+          ],
+          "query_time": 7.0
+        },
+        "condition": [
+          1.9863014221191406,
+          1.1134925718015581e-16,
+          0.008898687548935413,
+          0.0007955845212563872,
+          0.0007314010872505605,
+          -7.229179027490318e-05,
+          -0.002472148509696126,
+          -0.999811053276062,
+          -0.019282033666968346,
+          0.9999963641166687,
+          -0.002450704574584961,
+          -0.001135674538090825
+        ],
+        "planning_seconds": 0.32481270899734227,
+        "status": "guard_rejected",
+        "future_times": [
+          0.0,
+          0.125,
+          0.25,
+          0.375,
+          0.5,
+          0.625,
+          0.75,
+          0.875,
+          1.0,
+          1.125,
+          1.25,
+          1.375,
+          1.5,
+          1.625,
+          1.75,
+          1.875,
+          2.0,
+          2.125,
+          2.25,
+          2.375,
+          2.5,
+          2.625,
+          2.75,
+          2.875,
+          3.0,
+          3.125,
+          3.25,
+          3.375,
+          3.5,
+          3.625,
+          3.75,
+          3.875,
+          4.0,
+          4.125,
+          4.25,
+          4.375,
+          4.5,
+          4.625,
+          4.75,
+          4.875,
+          5.0,
+          5.125,
+          5.25,
+          5.375,
+          5.5,
+          5.625,
+          5.75,
+          5.875,
+          6.0,
+          6.125,
+          6.25,
+          6.375,
+          6.5,
+          6.625,
+          6.75,
+          6.875,
+          7.0,
+          7.125,
+          7.25,
+          7.375,
+          7.5,
+          7.625,
+          7.75,
+          7.875,
+          8.0
+        ],
+        "canonical_control_points": [
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0001631968334550038,
+            0.0001500309881521389,
+            -1.4829085557721555e-05
+          ],
+          [
+            -0.01024717092514038,
+            -0.0009376835078001022,
+            0.0007743333699181676
+          ],
+          [
+            -0.0037140846252441406,
+            -3.451647353358567e-05,
+            -0.000621710205450654
+          ],
+          [
+            -0.008898675441741943,
+            -0.0005919226678088307,
+            0.00029882160015404224
+          ],
+          [
+            0.011116564273834229,
+            -7.698702393099666e-05,
+            0.00020726514048874378
+          ],
+          [
+            0.12858834862709045,
+            -0.00015390034241136163,
+            0.000849221833050251
+          ],
+          [
+            0.32398372888565063,
+            -0.000591253861784935,
+            0.001405227929353714
+          ],
+          [
+            0.5063841938972473,
+            -0.0008455871138721704,
+            0.0013684765435755253
+          ],
+          [
+            0.7992203235626221,
+            -0.00039215272408910096,
+            0.002976443152874708
+          ],
+          [
+            1.0163112878799438,
+            -0.0008857827633619308,
+            0.003120472887530923
+          ],
+          [
+            1.1883245706558228,
+            -0.0005429681623354554,
+            0.0041364021599292755
+          ],
+          [
+            1.3217012882232666,
+            -0.0005652403924614191,
+            0.004784327931702137
+          ],
+          [
+            1.4223887920379639,
+            -0.0002051924675470218,
+            0.004936239216476679
+          ],
+          [
+            1.4586440324783325,
+            -0.00046843953896313906,
+            0.0054566580802202225
+          ],
+          [
+            1.5023088455200195,
+            -0.0007176506333053112,
+            0.00507755670696497
+          ]
+        ],
+        "derivative_maxima": {
+          "speed": 0.4393582714195085,
+          "acceleration": 0.40473595497712334
+        },
+        "world_control_points": [
+          [
+            -25.000015258789062,
+            -34.98630142211914,
+            2.191101312637329
+          ],
+          [
+            -25.00016528852353,
+            -34.98613822413315,
+            2.1910864835517714
+          ],
+          [
+            -24.999077654000168,
+            -34.99654860024727,
+            2.1918756460072473
+          ],
+          [
+            -24.99998077084717,
+            -34.99001550700943,
+            2.1904796024318784
+          ],
+          [
+            -24.999423404480993,
+            -34.99520010210777,
+            2.191400134237483
+          ],
+          [
+            -24.999938186367565,
+            -34.975184858437046,
+            2.191308577777818
+          ],
+          [
+            -24.999860370629566,
+            -34.85771307467811,
+            2.1919505344703794
+          ],
+          [
+            -24.999421516080776,
+            -34.66231769778507,
+            2.192506540566683
+          ],
+          [
+            -24.999165781626346,
+            -34.479917234732646,
+            2.1924697891809046
+          ],
+          [
+            -24.999616966445792,
+            -34.187081101592625,
+            2.194077755790204
+          ],
+          [
+            -24.999121668711393,
+            -33.96999014107378,
+            2.19422178552486
+          ],
+          [
+            -24.999463161904508,
+            -33.79797685566947,
+            2.1952377147972584
+          ],
+          [
+            -24.99943986507299,
+            -33.66460013827706,
+            2.1958856405690312
+          ],
+          [
+            -24.9997991395154,
+            -33.56391263169944,
+            2.196037551853806
+          ],
+          [
+            -24.99953561393084,
+            -33.527657393282404,
+            2.1965579707175493
+          ],
+          [
+            -24.999286067402938,
+            -33.483992582156446,
+            2.196178869344294
+          ]
+        ],
+        "activation_time": 7.182,
+        "observation_age_sim_seconds": 0.18200000000000038,
+        "activation_position_gap_m": 0.0010322728742621502,
+        "activation_velocity_gap_mps": 0.01175158089629357,
+        "activation_attitude_gap_rad": 6.089162200896776e-06,
+        "execution_guard": {
+          "allowed": false,
+          "reason": "observed_obstacle",
+          "minimum_clearance_m": -0.0891700705460762,
+          "unknown_fraction": 0.0,
+          "excluded_current_sensor_neighborhood": 56,
+          "ray_evidence": "nearest_emitted_ray_including_misses",
+          "angular_tolerance_degrees": 3.0,
+          "max_transverse_beam_distance_m": 0.05,
+          "certification": "sampled sensor centerline plus 42-sphere observed surface clearance; no full-volume free-space proof"
+        }
+      },
+      {
+        "scan_time": 8.0,
+        "model": {
+          "checkpoint_sha256": "524c71e0f959e76b162e07630587fc09d2bc20c7dc5b79e802f0e97ce04289d2",
+          "schema": "hnuter_temporal_bspline_dit_v1",
+          "input_representation": "voxel",
+          "preprocessing_sha256": "be87e1eb0cee52c48b6a1c0cdd486c78a86cb0a4428b852bbde5d898ce8e7fc0",
+          "training_step": 1900,
+          "training_state": "trained",
+          "source_dataset": {
+            "schema": "hnuter_temporal_rays_v1",
+            "status": "frozen",
+            "dataset_file": "dataset.npz",
+            "dataset_sha256": "548ba16e446391e800e1081825b714b84448af6683ad71022cc0fde551a8aa35",
+            "samples": 192,
+            "independent_groups": 96,
+            "episodes": 192,
+            "requested_groups": 96,
+            "seed": 107,
+            "windows_per_episode": 1,
+            "workers": 4,
+            "split_codes": {
+              "train": 0,
+              "validation": 1,
+              "test": 2
+            },
+            "split_samples": {
+              "train": 128,
+              "validation": 32,
+              "test": 32
+            },
+            "student_allowlist": [
+              "history_tokens",
+              "history_mask",
+              "history_times",
+              "condition"
+            ],
+            "training_allowlist": [
+              "history_tokens",
+              "history_mask",
+              "history_times",
+              "condition",
+              "positions",
+              "future_times",
+              "episode_id",
+              "group_id",
+              "split",
+              "sample_id"
+            ],
+            "teacher_future_fields": "gt_* and teacher_*: evaluator/label audit only, forbidden model inputs",
+            "target_semantics": "physically_validated_teacher_reference",
+            "data_time_semantics": "fixed physical future times from latest history anchor; positions are the reference commands of the accepted native teacher rollout; teacher_actual_positions stores executed physical positions separately; no arc-length resampling, no terminal goal clamp",
+            "stationary_start_only": true,
+            "maximum_start_speed_mps": 0.03,
+            "limits": {
+              "reference_speed_mps": 0.5,
+              "reference_acceleration_mps2": 0.6
+            },
+            "sensor": {
+              "rays_per_frame": 20000,
+              "history_rate_hz": 5.0,
+              "observation_backend": "MuJoCo mj_multiRay against actual geoms",
+              "direction_pattern": "MID360 envelope approximation, not Livox timing or optics",
+              "no_return": "NaN/unknown"
+            },
+            "teacher_family": "constant_velocity_crossing_wait_go",
+            "quality_gates": {
+              "no_native_contact": true,
+              "native_dt_s": 0.001,
+              "final_goal_m": 0.2,
+              "final_speed_mps": 0.1,
+              "tracking_max_m": 0.12,
+              "actual_max_speed_mps": 0.5
+            },
+            "source_sha256": {
+              "/tmp/hnuter-dit-geometry-20261004/hnuter_dit/temporal_data.py": "4df1dbfa546c7a94382da368a1539b69788d65008f9c504aee0be2383557e0d9",
+              "/tmp/hnuter-dit-geometry-20261004/hnuter_dit/temporal_observations.py": "7a259a170f30ac58a00fe243711ba4e3f5113a01aa2cc891a07ecaad70ac0fce",
+              "/home/z017/research/isaacsim-industrial-reactor/tests/reference/hnuter_control.py": "6b56d4ca7c9a0403a5eca68edb50fb932e26add990b110f3f563747f96c23001",
+              "/home/z017/research/isaacsim-industrial-reactor/robots/hnuter/source/hnuter.xml": "99f616758a3e6596b72db64eb8ee061bf7c92fb430b6aaa7ea81b92c59ecf8db"
+            },
+            "source_snapshots": {
+              "/tmp/hnuter-dit-geometry-20261004/hnuter_dit/temporal_data.py": "source_snapshot/temporal_data.py",
+              "/tmp/hnuter-dit-geometry-20261004/hnuter_dit/temporal_observations.py": "source_snapshot/temporal_observations.py",
+              "/home/z017/research/isaacsim-industrial-reactor/tests/reference/hnuter_control.py": "source_snapshot/hnuter_control.py",
+              "/home/z017/research/isaacsim-industrial-reactor/robots/hnuter/source/hnuter.xml": "source_snapshot/hnuter.xml"
+            },
+            "wall_seconds": 166.22014228199987,
+            "accepted_pairs_with_different_wait": 96,
+            "failures_preserved_in": "collection_audit.json",
+            "root": "/tmp/hnuter-dit-geometry-20261004/results/geometry_pilot/collection96_seed107",
+            "max_training_start_speed_mps": 0.010090433061122894
+          },
+          "history_mode": "temporal",
+          "seed": 7,
+          "diffusion_steps": 100,
+          "model_evaluations": 20,
+          "batch_size": 1,
+          "timing_includes_transfer": true,
+          "position_only": true,
+          "retimed": false,
+          "collision_certified": false,
+          "inference_seconds": 0.052200856996933,
+          "worker_wall_seconds": 0.05428008199669421,
+          "sequence": 8,
+          "process_isolated": true
+        },
+        "history": {
+          "input_representation": "voxel",
+          "schema": "canonical_ray_occupancy_history4x3x64_v1",
+          "tokens_shape": [
+            4,
+            3,
+            64,
+            64,
+            64
+          ],
+          "mask_shape": [
+            4,
+            64,
+            64,
+            64
+          ],
+          "tokens_dtype": "uint8",
+          "roi_radius_m": 8.0,
+          "coordinate_frame": "one current measured body origin and goal-yaw frame",
+          "history_times": [
+            -0.6,
+            -0.4,
+            -0.2,
+            0.0
+          ],
+          "causal": true,
+          "algorithm": "measured endpoint occupancy and sampled measured-return ray traversal",
+          "voxel_size_m": 0.25,
+          "cube_side_m": 16.0,
+          "grid_axis_order": "xyz",
+          "channels": [
+            "occupied",
+            "ray_free_evidence",
+            "unknown"
+          ],
+          "traversal_step_m": 0.125,
+          "endpoint_exclusion_m": 0.4330127018922193,
+          "occupied_overrides_free": true,
+          "unknown_outside_sphere": true,
+          "no_return_rays": "remain unknown, no max-range free ray",
+          "temporal_fusion": false,
+          "signed_distance": false,
+          "limitation": "Sampling may miss grazing cells; free evidence does not certify voxel volume.",
+          "configuration_sha256": "be87e1eb0cee52c48b6a1c0cdd486c78a86cb0a4428b852bbde5d898ce8e7fc0",
+          "frame_statistics": [
+            {
+              "measured_returns": 5989,
+              "occupied_voxels": 253,
+              "free_evidence_voxels": 7927,
+              "unknown_voxels": 253964
+            },
+            {
+              "measured_returns": 5988,
+              "occupied_voxels": 271,
+              "free_evidence_voxels": 7890,
+              "unknown_voxels": 253983
+            },
+            {
+              "measured_returns": 6019,
+              "occupied_voxels": 279,
+              "free_evidence_voxels": 8035,
+              "unknown_voxels": 253830
+            },
+            {
+              "measured_returns": 6028,
+              "occupied_voxels": 263,
+              "free_evidence_voxels": 8039,
+              "unknown_voxels": 253842
+            }
+          ],
+          "query_time": 8.0
+        },
+        "condition": [
+          1.9863014221191406,
+          1.1134925718015581e-16,
+          0.008898687548935413,
+          0.0007997090579010546,
+          0.0007302117883227766,
+          -7.330997323151678e-05,
+          -0.0024719033390283585,
+          -0.9998109936714172,
+          -0.019283149391412735,
+          0.9999963641166687,
+          -0.0024503946769982576,
+          -0.001138958614319563
+        ],
+        "planning_seconds": 0.34388903999933973,
+        "status": "guard_rejected",
+        "future_times": [
+          0.0,
+          0.125,
+          0.25,
+          0.375,
+          0.5,
+          0.625,
+          0.75,
+          0.875,
+          1.0,
+          1.125,
+          1.25,
+          1.375,
+          1.5,
+          1.625,
+          1.75,
+          1.875,
+          2.0,
+          2.125,
+          2.25,
+          2.375,
+          2.5,
+          2.625,
+          2.75,
+          2.875,
+          3.0,
+          3.125,
+          3.25,
+          3.375,
+          3.5,
+          3.625,
+          3.75,
+          3.875,
+          4.0,
+          4.125,
+          4.25,
+          4.375,
+          4.5,
+          4.625,
+          4.75,
+          4.875,
+          5.0,
+          5.125,
+          5.25,
+          5.375,
+          5.5,
+          5.625,
+          5.75,
+          5.875,
+          6.0,
+          6.125,
+          6.25,
+          6.375,
+          6.5,
+          6.625,
+          6.75,
+          6.875,
+          7.0,
+          7.125,
+          7.25,
+          7.375,
+          7.5,
+          7.625,
+          7.75,
+          7.875,
+          8.0
+        ],
+        "canonical_control_points": [
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.00016404288180638105,
+            0.00014978703984525055,
+            -1.5037943740026094e-05
+          ],
+          [
+            -0.020352423191070557,
+            -0.0008544735610485077,
+            0.0008470342727378011
+          ],
+          [
+            0.004114806652069092,
+            0.0002462161937728524,
+            -0.0004198600072413683
+          ],
+          [
+            0.0910193920135498,
+            -0.00048153253737837076,
+            0.0007950118742883205
+          ],
+          [
+            0.2527316212654114,
+            -0.00011111338244518265,
+            0.0010561267845332623
+          ],
+          [
+            0.4634246528148651,
+            -0.00021765197743661702,
+            0.0019737917464226484
+          ],
+          [
+            0.7201899886131287,
+            -0.00034529902040958405,
+            0.0026758932508528233
+          ],
+          [
+            0.9896434545516968,
+            -0.00048711508861742914,
+            0.003447454422712326
+          ],
+          [
+            1.278721809387207,
+            -0.000503630843013525,
+            0.004821522161364555
+          ],
+          [
+            1.5273469686508179,
+            -0.0011294176802039146,
+            0.0050243837758898735
+          ],
+          [
+            1.721567153930664,
+            -0.0006461360026150942,
+            0.006094582378864288
+          ],
+          [
+            1.8548681735992432,
+            -0.0006622201763093472,
+            0.006644940469413996
+          ],
+          [
+            1.9249162673950195,
+            -0.0004581440589390695,
+            0.00681089935824275
+          ],
+          [
+            1.9345002174377441,
+            -0.0004947083070874214,
+            0.007081873249262571
+          ],
+          [
+            1.9615612030029297,
+            -0.0007542429957538843,
+            0.006786238867789507
+          ]
+        ],
+        "derivative_maxima": {
+          "speed": 0.4590197011923284,
+          "acceleration": 0.35291144888877396
+        },
+        "world_control_points": [
+          [
+            -25.000015258789062,
+            -34.98630142211914,
+            2.191101312637329
+          ],
+          [
+            -25.000165044568725,
+            -34.986137378086674,
+            2.191086274693589
+          ],
+          [
+            -24.999160941575575,
+            -35.006653851873686,
+            2.191948346910067
+          ],
+          [
+            -25.00026144337284,
+            -34.982186613575756,
+            2.1906814526300877
+          ],
+          [
+            -24.999533027039742,
+            -34.89528203380741,
+            2.1918963245116174
+          ],
+          [
+            -24.999902203919564,
+            -34.73356980171476,
+            2.1921574394218624
+          ],
+          [
+            -24.999794046778426,
+            -34.52287677098995,
+            2.1930751043837517
+          ],
+          [
+            -24.99966442726136,
+            -34.266111436179855,
+            2.193777205888182
+          ],
+          [
+            -24.99952054124871,
+            -33.99665797133867,
+            2.1945487670600414
+          ],
+          [
+            -24.999501804791258,
+            -33.70757961663856,
+            2.1959228347986937
+          ],
+          [
+            -24.998874108012917,
+            -33.45895446218959,
+            2.196125696413219
+          ],
+          [
+            -24.999355897688922,
+            -33.2647342732029,
+            2.1971958950161934
+          ],
+          [
+            -24.99933878949535,
+            -33.13143325366181,
+            2.197746253106743
+          ],
+          [
+            -24.9995423275025,
+            -33.06138515830039,
+            2.197912211995572
+          ],
+          [
+            -24.999505689630343,
+            -33.05180120853883,
+            2.1981831858865917
+          ],
+          [
+            -24.9992459470589,
+            -33.02474022496819,
+            2.1978875515051186
+          ]
+        ],
+        "activation_time": 8.18,
+        "observation_age_sim_seconds": 0.17999999999999972,
+        "activation_position_gap_m": 0.0020414640171202477,
+        "activation_velocity_gap_mps": 0.021602272075264484,
+        "activation_attitude_gap_rad": 3.0101820937914017e-06,
+        "execution_guard": {
+          "allowed": false,
+          "reason": "observed_obstacle",
+          "minimum_clearance_m": 0.13037263453786607,
+          "unknown_fraction": 0.0,
+          "excluded_current_sensor_neighborhood": 34,
+          "ray_evidence": "nearest_emitted_ray_including_misses",
+          "angular_tolerance_degrees": 3.0,
+          "max_transverse_beam_distance_m": 0.05,
+          "certification": "sampled sensor centerline plus 42-sphere observed surface clearance; no full-volume free-space proof"
+        }
+      },
+      {
+        "scan_time": 9.0,
+        "model": {
+          "checkpoint_sha256": "524c71e0f959e76b162e07630587fc09d2bc20c7dc5b79e802f0e97ce04289d2",
+          "schema": "hnuter_temporal_bspline_dit_v1",
+          "input_representation": "voxel",
+          "preprocessing_sha256": "be87e1eb0cee52c48b6a1c0cdd486c78a86cb0a4428b852bbde5d898ce8e7fc0",
+          "training_step": 1900,
+          "training_state": "trained",
+          "source_dataset": {
+            "schema": "hnuter_temporal_rays_v1",
+            "status": "frozen",
+            "dataset_file": "dataset.npz",
+            "dataset_sha256": "548ba16e446391e800e1081825b714b84448af6683ad71022cc0fde551a8aa35",
+            "samples": 192,
+            "independent_groups": 96,
+            "episodes": 192,
+            "requested_groups": 96,
+            "seed": 107,
+            "windows_per_episode": 1,
+            "workers": 4,
+            "split_codes": {
+              "train": 0,
+              "validation": 1,
+              "test": 2
+            },
+            "split_samples": {
+              "train": 128,
+              "validation": 32,
+              "test": 32
+            },
+            "student_allowlist": [
+              "history_tokens",
+              "history_mask",
+              "history_times",
+              "condition"
+            ],
+            "training_allowlist": [
+              "history_tokens",
+              "history_mask",
+              "history_times",
+              "condition",
+              "positions",
+              "future_times",
+              "episode_id",
+              "group_id",
+              "split",
+              "sample_id"
+            ],
+            "teacher_future_fields": "gt_* and teacher_*: evaluator/label audit only, forbidden model inputs",
+            "target_semantics": "physically_validated_teacher_reference",
+            "data_time_semantics": "fixed physical future times from latest history anchor; positions are the reference commands of the accepted native teacher rollout; teacher_actual_positions stores executed physical positions separately; no arc-length resampling, no terminal goal clamp",
+            "stationary_start_only": true,
+            "maximum_start_speed_mps": 0.03,
+            "limits": {
+              "reference_speed_mps": 0.5,
+              "reference_acceleration_mps2": 0.6
+            },
+            "sensor": {
+              "rays_per_frame": 20000,
+              "history_rate_hz": 5.0,
+              "observation_backend": "MuJoCo mj_multiRay against actual geoms",
+              "direction_pattern": "MID360 envelope approximation, not Livox timing or optics",
+              "no_return": "NaN/unknown"
+            },
+            "teacher_family": "constant_velocity_crossing_wait_go",
+            "quality_gates": {
+              "no_native_contact": true,
+              "native_dt_s": 0.001,
+              "final_goal_m": 0.2,
+              "final_speed_mps": 0.1,
+              "tracking_max_m": 0.12,
+              "actual_max_speed_mps": 0.5
+            },
+            "source_sha256": {
+              "/tmp/hnuter-dit-geometry-20261004/hnuter_dit/temporal_data.py": "4df1dbfa546c7a94382da368a1539b69788d65008f9c504aee0be2383557e0d9",
+              "/tmp/hnuter-dit-geometry-20261004/hnuter_dit/temporal_observations.py": "7a259a170f30ac58a00fe243711ba4e3f5113a01aa2cc891a07ecaad70ac0fce",
+              "/home/z017/research/isaacsim-industrial-reactor/tests/reference/hnuter_control.py": "6b56d4ca7c9a0403a5eca68edb50fb932e26add990b110f3f563747f96c23001",
+              "/home/z017/research/isaacsim-industrial-reactor/robots/hnuter/source/hnuter.xml": "99f616758a3e6596b72db64eb8ee061bf7c92fb430b6aaa7ea81b92c59ecf8db"
+            },
+            "source_snapshots": {
+              "/tmp/hnuter-dit-geometry-20261004/hnuter_dit/temporal_data.py": "source_snapshot/temporal_data.py",
+              "/tmp/hnuter-dit-geometry-20261004/hnuter_dit/temporal_observations.py": "source_snapshot/temporal_observations.py",
+              "/home/z017/research/isaacsim-industrial-reactor/tests/reference/hnuter_control.py": "source_snapshot/hnuter_control.py",
+              "/home/z017/research/isaacsim-industrial-reactor/robots/hnuter/source/hnuter.xml": "source_snapshot/hnuter.xml"
+            },
+            "wall_seconds": 166.22014228199987,
+            "accepted_pairs_with_different_wait": 96,
+            "failures_preserved_in": "collection_audit.json",
+            "root": "/tmp/hnuter-dit-geometry-20261004/results/geometry_pilot/collection96_seed107",
+            "max_training_start_speed_mps": 0.010090433061122894
+          },
+          "history_mode": "temporal",
+          "seed": 7,
+          "diffusion_steps": 100,
+          "model_evaluations": 20,
+          "batch_size": 1,
+          "timing_includes_transfer": true,
+          "position_only": true,
+          "retimed": false,
+          "collision_certified": false,
+          "inference_seconds": 0.04935050100175431,
+          "worker_wall_seconds": 0.05192194700066466,
+          "sequence": 9,
+          "process_isolated": true
+        },
+        "history": {
+          "input_representation": "voxel",
+          "schema": "canonical_ray_occupancy_history4x3x64_v1",
+          "tokens_shape": [
+            4,
+            3,
+            64,
+            64,
+            64
+          ],
+          "mask_shape": [
+            4,
+            64,
+            64,
+            64
+          ],
+          "tokens_dtype": "uint8",
+          "roi_radius_m": 8.0,
+          "coordinate_frame": "one current measured body origin and goal-yaw frame",
+          "history_times": [
+            -0.6,
+            -0.4,
+            -0.2,
+            0.0
+          ],
+          "causal": true,
+          "algorithm": "measured endpoint occupancy and sampled measured-return ray traversal",
+          "voxel_size_m": 0.25,
+          "cube_side_m": 16.0,
+          "grid_axis_order": "xyz",
+          "channels": [
+            "occupied",
+            "ray_free_evidence",
+            "unknown"
+          ],
+          "traversal_step_m": 0.125,
+          "endpoint_exclusion_m": 0.4330127018922193,
+          "occupied_overrides_free": true,
+          "unknown_outside_sphere": true,
+          "no_return_rays": "remain unknown, no max-range free ray",
+          "temporal_fusion": false,
+          "signed_distance": false,
+          "limitation": "Sampling may miss grazing cells; free evidence does not certify voxel volume.",
+          "configuration_sha256": "be87e1eb0cee52c48b6a1c0cdd486c78a86cb0a4428b852bbde5d898ce8e7fc0",
+          "frame_statistics": [
+            {
+              "measured_returns": 6018,
+              "occupied_voxels": 256,
+              "free_evidence_voxels": 8186,
+              "unknown_voxels": 253702
+            },
+            {
+              "measured_returns": 6018,
+              "occupied_voxels": 267,
+              "free_evidence_voxels": 8169,
+              "unknown_voxels": 253708
+            },
+            {
+              "measured_returns": 6047,
+              "occupied_voxels": 271,
+              "free_evidence_voxels": 8275,
+              "unknown_voxels": 253598
+            },
+            {
+              "measured_returns": 6065,
+              "occupied_voxels": 251,
+              "free_evidence_voxels": 8290,
+              "unknown_voxels": 253603
+            }
+          ],
+          "query_time": 9.0
+        },
+        "condition": [
+          1.9863014221191406,
+          1.1134925718015581e-16,
+          0.008898687548935413,
+          0.0008018185617402196,
+          0.0007299691787920892,
+          -7.298892887774855e-05,
+          -0.002471649320796132,
+          -0.9998109936714172,
+          -0.0192835945636034,
+          0.9999963641166687,
+          -0.0024501013103872538,
+          -0.001140971202403307
+        ],
+        "planning_seconds": 0.35065776300325524,
+        "status": "accepted",
+        "future_times": [
+          0.0,
+          0.125,
+          0.25,
+          0.375,
+          0.5,
+          0.625,
+          0.75,
+          0.875,
+          1.0,
+          1.125,
+          1.25,
+          1.375,
+          1.5,
+          1.625,
+          1.75,
+          1.875,
+          2.0,
+          2.125,
+          2.25,
+          2.375,
+          2.5,
+          2.625,
+          2.75,
+          2.875,
+          3.0,
+          3.125,
+          3.25,
+          3.375,
+          3.5,
+          3.625,
+          3.75,
+          3.875,
+          4.0,
+          4.125,
+          4.25,
+          4.375,
+          4.5,
+          4.625,
+          4.75,
+          4.875,
+          5.0,
+          5.125,
+          5.25,
+          5.375,
+          5.5,
+          5.625,
+          5.75,
+          5.875,
+          6.0,
+          6.125,
+          6.25,
+          6.375,
+          6.5,
+          6.625,
+          6.75,
+          6.875,
+          7.0,
+          7.125,
+          7.25,
+          7.375,
+          7.5,
+          7.625,
+          7.75,
+          7.875,
+          8.0
+        ],
+        "canonical_control_points": [
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.00016447559755761176,
+            0.00014973727229516953,
+            -1.4972088138165418e-05
+          ],
+          [
+            -0.02063828706741333,
+            -0.0008275930304080248,
+            0.0008288142271339893
+          ],
+          [
+            0.008014798164367676,
+            0.00024415779625996947,
+            -0.00044531747698783875
+          ],
+          [
+            0.10000178217887878,
+            -0.0004970095469616354,
+            0.0008112565847113729
+          ],
+          [
+            0.26279041171073914,
+            -0.0001086873744498007,
+            0.0010825807694345713
+          ],
+          [
+            0.4744868278503418,
+            -0.00021633155120071024,
+            0.0020005961414426565
+          ],
+          [
+            0.7327871322631836,
+            -0.000355180207407102,
+            0.0027012056671082973
+          ],
+          [
+            1.0014934539794922,
+            -0.0005182198947295547,
+            0.003440291155129671
+          ],
+          [
+            1.292007327079773,
+            -0.0005121040157973766,
+            0.004852789454162121
+          ],
+          [
+            1.5387241840362549,
+            -0.001145929447375238,
+            0.005032242275774479
+          ],
+          [
+            1.732783555984497,
+            -0.0006419856799766421,
+            0.006123888306319714
+          ],
+          [
+            1.8655855655670166,
+            -0.0006592811550945044,
+            0.006673118099570274
+          ],
+          [
+            1.9346864223480225,
+            -0.000465514836832881,
+            0.006848199293017387
+          ],
+          [
+            1.9441092014312744,
+            -0.0004932859446853399,
+            0.007095946930348873
+          ],
+          [
+            1.9700183868408203,
+            -0.0007450346602126956,
+            0.006821214221417904
+          ]
+        ],
+        "derivative_maxima": {
+          "speed": 0.4602603475462833,
+          "acceleration": 0.33593309092322465
+        },
+        "world_control_points": [
+          [
+            -25.000015258789062,
+            -34.98630142211914,
+            2.191101312637329
+          ],
+          [
+            -25.00016499479785,
+            -34.98613694537131,
+            2.191086340549191
+          ],
+          [
+            -24.999187824302226,
+            -35.006939715543524,
+            2.191930126864463
+          ],
+          [
+            -25.000259355015547,
+            -34.97828662207939,
+            2.1906559951603413
+          ],
+          [
+            -24.99951748102734,
+            -34.88629964376125,
+            2.1919125692220405
+          ],
+          [
+            -24.999904552655824,
+            -34.72351101125109,
+            2.1921838934067637
+          ],
+          [
+            -24.999795282224913,
+            -34.511814595944664,
+            2.1931019087787718
+          ],
+          [
+            -24.99965444930297,
+            -34.25351429260608,
+            2.1938025183044374
+          ],
+          [
+            -24.999489345410776,
+            -33.98480797215017,
+            2.1945416037924588
+          ],
+          [
+            -24.999493229558983,
+            -33.69429409901148,
+            2.1959541020914912
+          ],
+          [
+            -24.998857508845855,
+            -33.44757724693133,
+            2.1961335549131036
+          ],
+          [
+            -24.999359961847038,
+            -33.253517871117516,
+            2.197225200943649
+          ],
+          [
+            -24.999341646185446,
+            -33.120715861671776,
+            2.1977744307368994
+          ],
+          [
+            -24.99953488167017,
+            -33.051615003404294,
+            2.1979495119303465
+          ],
+          [
+            -24.999507038176425,
+            -33.04219222453466,
+            2.198197259567678
+          ],
+          [
+            -24.999255090426264,
+            -33.016283041059815,
+            2.197922526858747
+          ]
+        ],
+        "activation_time": 9.185,
+        "observation_age_sim_seconds": 0.1850000000000005,
+        "activation_position_gap_m": 0.002159795180187744,
+        "activation_velocity_gap_mps": 0.021978772551448585,
+        "activation_attitude_gap_rad": 2.157943339035622e-06,
+        "execution_guard": {
+          "allowed": true,
+          "reason": "clear_observed_prefix",
+          "minimum_clearance_m": 0.3732625724017924,
+          "unknown_fraction": 0.0,
+          "excluded_current_sensor_neighborhood": 33,
+          "ray_evidence": "nearest_emitted_ray_including_misses",
+          "angular_tolerance_degrees": 3.0,
+          "max_transverse_beam_distance_m": 0.05,
+          "certification": "sampled sensor centerline plus 42-sphere observed surface clearance; no full-volume free-space proof"
+        },
+        "trajectory_duration": 8.0,
+        "consumed_prediction_seconds": 0.1850000000000005,
+        "reference_sim_time": 9.0
+      }
+    ],
+    "guard_events": [
+      {
+        "time": 15.8,
+        "kind": "guard",
+        "allowed": false,
+        "reason": "unknown_centerline",
+        "minimum_clearance_m": 1.6197235630565774,
+        "unknown_fraction": 1.0,
+        "excluded_current_sensor_neighborhood": 161,
+        "ray_evidence": "nearest_emitted_ray_including_misses",
+        "angular_tolerance_degrees": 3.0,
+        "max_transverse_beam_distance_m": 0.05,
+        "certification": "sampled sensor centerline plus 42-sphere observed surface clearance; no full-volume free-space proof"
+      }
+    ],
+    "accepted_plans": 1,
+    "guard_rejections": 6,
+    "guard_interventions": 1,
+    "horizon_completions": 0,
+    "time_in_state_seconds": {
+      "history_warmup": 0.6,
+      "moving_start_unsupported": 0.9999999999999979,
+      "inference_pending": 1.7260000000000018,
+      "guard_rejected": 4.943999999999999,
+      "trajectory_rejected": 1.5149999999999997,
+      "model_reference": 6.615,
+      "braking": 0.4980000000000011,
+      "unknown_centerline": 0.0019999999999988916,
+      "goal_neighborhood_hold": 13.099000000000004
+    },
+    "planning_seconds_mean": 0.3553672711107841,
+    "planning_seconds_max": 0.5610366039982182,
+    "geometric_paths": [
+      [
+        [
+          -25.000015258789062,
+          -34.98630142211914,
+          2.191101312637329
+        ],
+        [
+          -25.000036387033,
+          -34.98733686822316,
+          2.1911390549282443
+        ],
+        [
+          -24.99995285628372,
+          -34.989955019265835,
+          2.1912416931701033
+        ],
+        [
+          -24.999818029460645,
+          -34.993122910288434,
+          2.1913659735679456
+        ],
+        [
+          -24.99968526948321,
+          -34.99580757633225,
+          2.1914686423268135
+        ],
+        [
+          -24.999607932456566,
+          -34.99697612858994,
+          2.1915064521567724
+        ],
+        [
+          -24.999620703411892,
+          -34.995804333069266,
+          2.1914539795363064
+        ],
+        [
+          -24.99969889472792,
+          -34.99213146285962,
+          2.191342479226463
+        ],
+        [
+          -24.999806043741103,
+          -34.985928380656354,
+          2.1912144466714403
+        ],
+        [
+          -24.999905687787873,
+          -34.97716594915488,
+          2.1911123773154335
+        ],
+        [
+          -24.999961401299018,
+          -34.96581501075063,
+          2.1910787229295816
+        ],
+        [
+          -24.999952259497256,
+          -34.95183792499605,
+          2.1911376854059146
+        ],
+        [
+          -24.999896750327963,
+          -34.935175482743325,
+          2.1912670640123464
+        ],
+        [
+          -24.999819533305182,
+          -34.91576509743989,
+          2.1914373919117676
+        ],
+        [
+          -24.99974526794295,
+          -34.89354418253315,
+          2.1916192022670686
+        ],
+        [
+          -24.999698535346603,
+          -34.86845065549653,
+          2.1917831166106434
+        ],
+        [
+          -24.99969233536569,
+          -34.840496880305636,
+          2.19191280897788
+        ],
+        [
+          -24.999715950669177,
+          -34.80984767945752,
+          2.1920186835425666
+        ],
+        [
+          -24.999755759900005,
+          -34.77668654307767,
+          2.1921144174230744
+        ],
+        [
+          -24.999798141701124,
+          -34.741196961291585,
+          2.192213687737774
+        ],
+        [
+          -24.999829559760524,
+          -34.70356162710656,
+          2.1923300700409856
+        ],
+        [
+          -24.999842666122706,
+          -34.663905230726606,
+          2.1924697495154395
+        ],
+        [
+          -24.99984038733774,
+          -34.62225616051447,
+          2.1926266411370494
+        ],
+        [
+          -24.99982661867201,
+          -34.57863372515846,
+          2.19279350300372
+        ],
+        [
+          -24.9998052553919,
+          -34.53305723334696,
+          2.1929630932133555
+        ],
+        [
+          -24.99978015640592,
+          -34.48554868741949,
+          2.1931282588717824
+        ],
+        [
+          -24.99975362974069,
+          -34.436244990101684,
+          2.193285643806722
+        ],
+        [
+          -24.999725885427544,
+          -34.38543847856867,
+          2.193437027958993
+        ],
+        [
+          -24.99969698457591,
+          -34.33343252319092,
+          2.1935845558458595
+        ],
+        [
+          -24.999666988295218,
+          -34.28053049433893,
+          2.1937303719845853
+        ],
+        [
+          -24.99963598323365,
+          -34.22702922559945,
+          2.193876672947723
+        ],
+        [
+          -24.999604764857885,
+          -34.17304412454792,
+          2.194027100083065
+        ],
+        [
+          -24.99957491229583,
+          -34.118490016340616,
+          2.1941868920645597
+        ],
+        [
+          -24.99954804522998,
+          -34.06327134596338,
+          2.194361370228025
+        ],
+        [
+          -24.999525783342815,
+          -34.007292558402,
+          2.1945558559092775
+        ],
+        [
+          -24.99950952783944,
+          -33.95047489163618,
+          2.1947751162331337
+        ],
+        [
+          -24.999496458152162,
+          -33.89306408499629,
+          2.1950132089643066
+        ],
+        [
+          -24.99947993513632,
+          -33.83559938801152,
+          2.1952545052933083
+        ],
+        [
+          -24.999453182063835,
+          -33.778630625390825,
+          2.195483027403137
+        ],
+        [
+          -24.999409422206632,
+          -33.72270762184319,
+          2.195682797476794
+        ],
+        [
+          -24.999342720754438,
+          -33.66836173068485,
+          2.195839156609054
+        ],
+        [
+          -24.999259003742825,
+          -33.61586408227122,
+          2.1959560265795317
+        ],
+        [
+          -24.99917296499196,
+          -33.56529344471919,
+          2.1960510643975057
+        ],
+        [
+          -24.999099503868337,
+          -33.516724076528256,
+          2.1961422490722007
+        ],
+        [
+          -24.999053519738446,
+          -33.4702302361979,
+          2.1962475596128384
+        ],
+        [
+          -24.999048319097714,
+          -33.42588606145941,
+          2.1963833065504472
+        ],
+        [
+          -24.99908031395709,
+          -33.38376440913906,
+          2.196548104019063
+        ],
+        [
+          -24.999135740743718,
+          -33.3439373645713,
+          2.1967299075752744
+        ],
+        [
+          -24.99920069604418,
+          -33.306477002488165,
+          2.1969165262974757
+        ],
+        [
+          -24.9992612764451,
+          -33.27145539762168,
+          2.1970957692640622
+        ],
+        [
+          -24.99930509885662,
+          -33.23894071075755,
+          2.197256477350891
+        ],
+        [
+          -24.99933219667135,
+          -33.208969137481716,
+          2.1973959181236915
+        ],
+        [
+          -24.999348666332246,
+          -33.181561264562156,
+          2.1975154739564764
+        ],
+        [
+          -24.999360645330995,
+          -33.156737573090275,
+          2.197616555081787
+        ],
+        [
+          -24.999374271159283,
+          -33.134518544157494,
+          2.1977005717321654
+        ],
+        [
+          -24.99939468371574,
+          -33.11491519952153,
+          2.1977692746798647
+        ],
+        [
+          -24.99942065209434,
+          -33.09787815197196,
+          2.1978265894435935
+        ],
+        [
+          -24.99944843978906,
+          -33.08333425580656,
+          2.19787729685705
+        ],
+        [
+          -24.99947430429785,
+          -33.07121030846764,
+          2.1979261798007528
+        ],
+        [
+          -24.99949450311863,
+          -33.06143310739747,
+          2.19797802115522
+        ],
+        [
+          -24.999504473506313,
+          -33.05373892624232,
+          2.198034133364615
+        ],
+        [
+          -24.999495516849265,
+          -33.04690337092012,
+          2.1980783300814624
+        ],
+        [
+          -24.999457633919004,
+          -33.039399943644455,
+          2.1980889220673068
+        ],
+        [
+          -24.999380825012384,
+          -33.02970203637209,
+          2.1980442180753377
+        ],
+        [
+          -24.999255090426264,
+          -33.016283041059815,
+          2.197922526858747
+        ]
+      ]
+    ],
+    "temporal_checkpoint_loaded": true,
+    "temporal_checkpoint_used": true,
+    "model_inference_calls": 9,
+    "executed_model_reference": true,
+    "prediction_contract": "position-only cubic B-spline; fixed 8 s at scan time; measured attitude held",
+    "start_velocity_support": {
+      "training": "stationary anchors only",
+      "maximum_runtime_start_speed_mps": 0.03
+    },
+    "motion_limits": {
+      "max_speed_mps": 0.5,
+      "max_acceleration_mps2": 0.6
+    },
+    "input_scope": "Four past measured LiDAR frames and ego state only; no future obstacle truth",
+    "safety_scope": "Current observed-surface/centerline guard; stationary predictions do not certify unobserved free space"
+  },
+  "wall_seconds_including_cleanup": 61.1869543540015
+}

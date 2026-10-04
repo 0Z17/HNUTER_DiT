@@ -153,15 +153,22 @@ class PlannerProcess:
             raise ValueError('seed must be an integer')
         if isinstance(steps, bool) or not isinstance(steps, (int, np.integer)) or not 1 <= steps <= 100:
             raise ValueError('temporal sampling steps must be an integer in [1,100]')
-        tokens = np.asarray(encoding['history_tokens'], dtype=np.float32)
+        representation = self._description.get('input_representation', 'box')
+        if representation == 'box':
+            token_shape, mask_shape = (4, 32, 10), (4, 32)
+        else:
+            from .geometry_observations import input_spec
+            spec = input_spec(representation)
+            token_shape, mask_shape = tuple(spec['tokens_shape']), tuple(spec['mask_shape'])
+        tokens = np.asarray(encoding['history_tokens'], dtype=None if representation == 'voxel' else np.float32)
         mask = np.asarray(encoding['history_mask'])
         times = np.asarray(encoding['history_times'], dtype=np.float64)
         condition = np.asarray(encoding['condition'], dtype=np.float32)
-        if (tokens.shape != (4,32,10) or mask.shape != (4,32) or mask.dtype != np.dtype(bool) or condition.shape != (12,) or
+        if (tokens.shape != token_shape or mask.shape != mask_shape or mask.dtype != np.dtype(bool) or condition.shape != (12,) or
                 times.shape != (4,) or not np.isfinite(tokens).all() or not np.isfinite(condition).all() or
                 not np.allclose(times, [-.6,-.4,-.2,0.], atol=1e-8, rtol=0)):
             raise ValueError('invalid temporal four-frame conditioning or relative timestamps')
-        arrays, metadata = self._request(dict(mode='temporal', history_tokens=tokens,
+        arrays, metadata = self._request(dict(mode='temporal', input_representation=representation, history_tokens=tokens,
             history_mask=mask, history_times=times, condition=condition,
             seed=np.int64(seed), count=np.int64(1), steps=np.int64(steps)),
             ('positions', 'velocities', 'accelerations', 'future_times', 'control_points'))

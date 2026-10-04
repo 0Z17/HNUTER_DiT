@@ -10,6 +10,9 @@ import numpy as np
 from scipy.interpolate import BSpline
 import torch
 from torch import nn
+from torch.nn import functional as F
+
+from .geometry_observations import input_spec, GRID_SIZE, POINT_COUNT, ROI_RADIUS
 
 from .model import DiTBlock, timestep_embedding
 
@@ -74,7 +77,7 @@ def fit_control_points(positions, initial_velocity):
     return controls.astype(np.float32)
 
 
-def normalization_from_training(controls, condition, history_tokens, history_mask, train_indices):
+def normalization_from_training(controls, condition, history_tokens, history_mask, train_indices, input_representation="box"):
     """Fit normalization only on explicit training rows and bind their identity."""
     indices = np.asarray(train_indices, dtype=np.int64)
     if indices.ndim != 1 or not len(indices) or len(np.unique(indices)) != len(indices):
@@ -82,7 +85,8 @@ def normalization_from_training(controls, condition, history_tokens, history_mas
     controls, condition = np.asarray(controls), np.asarray(condition)
     tokens, mask = np.asarray(history_tokens), np.asarray(history_mask, dtype=bool)
     free = controls[indices, FIXED_CONTROLS:].astype(np.float64)
-    active = tokens[indices][mask[indices]][:, :6].astype(np.float64)
+    # Geometry uses a fixed metric ROI scale, never a fit across held-out rows.
+    active = tokens[indices][mask[indices]][:, :6].astype(np.float64) if input_representation == "box" else np.empty((0,6))
     current = condition[indices].astype(np.float64)
     if not len(active):
         environment_mean, environment_std = np.zeros(6), np.ones(6)
@@ -107,7 +111,7 @@ class TemporalDiT(nn.Module):
     supplied. ``latest`` uses identical trainable architecture but masks every
     earlier frame, providing the controlled single-frame training ablation.
     """
-    def __init__(self, dimension=128, depth=4, heads=4, history_depth=2, history_mode="temporal"):
+    def __init__(self, dimension=128, depth=4, heads=4, history_depth=2, history_mode="temporal", input_representation="box"):
         super().__init__()
         if history_mode not in ("temporal", "latest"):
             raise ValueError("history_mode must be temporal or latest")
@@ -116,6 +120,8 @@ class TemporalDiT(nn.Module):
         self.architecture = dict(dimension=int(dimension), depth=int(depth), heads=int(heads),
                                  history_depth=int(history_depth))
         self.history_mode = history_mode
+        self.input_representation = input_representation
+        self.input_spec = input_spec(input_representation)
         for name, shape, initial in (("control_mean", 3, 0.), ("control_std", 3, 1.),
                 ("condition_mean", 12, 0.), ("condition_std", 12, 1.),
                 ("environment_mean", 6, 0.), ("environment_std", 6, 1.)):
@@ -127,7 +133,22 @@ class TemporalDiT(nn.Module):
         self.position_embedding = nn.Parameter(torch.randn(1, FREE_CONTROLS, dimension) * .02)
         self.time_mlp = nn.Sequential(nn.Linear(64, dimension), nn.SiLU(), nn.Linear(dimension, dimension))
         self.condition_mlp = nn.Sequential(nn.Linear(12, dimension), nn.SiLU(), nn.Linear(dimension, dimension))
-        self.box_mlp = nn.Sequential(nn.Linear(10, dimension), nn.SiLU(), nn.Linear(dimension, dimension))
+        if input_representation == "box":
+            # Preserve names and initialization order for v1 box checkpoints.
+            self.box_mlp = nn.Sequential(nn.Linear(10, dimension), nn.SiLU(), nn.Linear(dimension, dimension))
+        elif input_representation == "point":
+            self.point_mlp = nn.Sequential(nn.Linear(3, 64), nn.SiLU(), nn.Linear(64, dimension))
+        else:
+            self.voxel_cnn = nn.Sequential(nn.Conv3d(3, 8, 4, stride=4), nn.SiLU(),
+                nn.Conv3d(8, 32, 3, stride=2, padding=1), nn.SiLU(),
+                nn.Conv3d(32, dimension, 3, stride=2, padding=1), nn.SiLU())
+        if input_representation != "box":
+            self.spatial_mlp = nn.Linear(3, dimension)
+            # CNN receptive-field centers follow its exact kernel/stride/pad;
+            # the point pools use uniform 4m cells. Do not label them alike.
+            axis = torch.linspace(-.75,.75,4) if input_representation == "point" else torch.tensor([-7.5,-3.5,.5,4.5])/ROI_RADIUS
+            centers = torch.stack(torch.meshgrid(*[axis]*3, indexing="ij"), dim=-1).reshape(64,3)
+            self.register_buffer("spatial_centers", centers, persistent=False)
         self.age_mlp = nn.Sequential(nn.Linear(1, dimension), nn.SiLU(), nn.Linear(dimension, dimension))
         self.null_observation = nn.Parameter(torch.zeros(1, 1, dimension))
         self.history_blocks = nn.ModuleList([nn.TransformerEncoderLayer(dimension, heads,
@@ -157,10 +178,16 @@ class TemporalDiT(nn.Module):
                 raise ValueError("normalization standard deviations must be positive")
             target.copy_(source)
 
+    def encoder_parameter_count(self):
+        names = ("box_mlp",) if self.input_representation == "box" else (
+            ("point_mlp", "spatial_mlp") if self.input_representation == "point" else ("voxel_cnn", "spatial_mlp"))
+        return sum(p.numel() for name in names for p in getattr(self, name).parameters())
+
     def encode_history(self, history_tokens, history_mask, history_times):
         batch = len(history_tokens)
-        if history_tokens.shape != (batch, 4, 32, 10) or history_mask.shape != (batch, 4, 32):
-            raise ValueError("expected history_tokens[B,4,32,10] and history_mask[B,4,32]")
+        if (tuple(history_tokens.shape) != (batch, *self.input_spec['tokens_shape'])
+                or tuple(history_mask.shape) != (batch, *self.input_spec['mask_shape'])):
+            raise ValueError("history tokens/mask shapes do not match " + self.input_representation)
         if history_times.shape == (4,):
             history_times = history_times[None].expand(batch, -1)
         if history_times.shape != (batch, 4):
@@ -169,14 +196,39 @@ class TemporalDiT(nn.Module):
         if self.history_mode == "latest":
             mask = mask.clone()
             mask[:, :-1] = False
-        normalized = history_tokens.clone()
-        normalized[..., :6] = (normalized[..., :6] - self.environment_mean) / self.environment_std
-        normalized = torch.where(mask[..., None], normalized, torch.zeros_like(normalized))
-        value = self.box_mlp(normalized) + self.age_mlp(history_times[..., None])[:, :, None]
-        value = value.reshape(batch, 128, -1)
-        valid = mask.reshape(batch, 128)
-        # Always-valid learned null token avoids all-masked attention NaNs. It
-        # signifies absent evidence; no missing return is filled as free space.
+        if self.input_representation == "box":
+            normalized = history_tokens.clone()
+            normalized[..., :6] = (normalized[..., :6] - self.environment_mean) / self.environment_std
+            normalized = torch.where(mask[..., None], normalized, torch.zeros_like(normalized))
+            value = self.box_mlp(normalized)
+            valid = mask
+        elif self.input_representation == "point":
+            normalized = history_tokens / ROI_RADIUS
+            normalized = torch.where(mask[..., None], normalized, torch.zeros_like(normalized))
+            features = self.point_mlp(normalized).reshape(batch*4, POINT_COUNT, -1)
+            cell = ((normalized+1)*2).floor().long().clamp(0,3)
+            cell_id = (cell[...,0]*16 + cell[...,1]*4 + cell[...,2]).reshape(batch*4,POINT_COUNT)
+            active = mask.reshape(batch*4, POINT_COUNT)
+            features = features.masked_fill(~active[...,None], -torch.inf)
+            pooled = features.new_full((batch*4,64,features.shape[-1]), -torch.inf)
+            pooled.scatter_reduce_(1, cell_id[...,None].expand_as(features), features, reduce="amax", include_self=True)
+            counts = torch.zeros((batch*4,64), device=features.device, dtype=torch.int64)
+            counts.scatter_add_(1, cell_id, active.long())
+            valid = (counts > 0).reshape(batch,4,64)
+            value = torch.where(valid[...,None], pooled.reshape(batch,4,64,-1), 0.)
+            value = value + self.spatial_mlp(self.spatial_centers)[None,None]
+        else:
+            volume = history_tokens.to(self.input.weight.dtype).reshape(batch*4,3,GRID_SIZE,GRID_SIZE,GRID_SIZE)
+            value = self.voxel_cnn(volume).flatten(2).transpose(1,2).reshape(batch,4,64,-1)
+            # Match the CNN receptive fields, including their padded edges.
+            known = mask.reshape(batch*4,1,GRID_SIZE,GRID_SIZE,GRID_SIZE).float()
+            known = F.max_pool3d(known, 4, 4)
+            known = F.max_pool3d(known, 3, 2, 1)
+            valid = F.max_pool3d(known, 3, 2, 1).bool().reshape(batch,4,64)
+            value = value + self.spatial_mlp(self.spatial_centers)[None,None]
+        value = value + self.age_mlp(history_times[..., None])[:, :, None]
+        value = value.reshape(batch, -1, value.shape[-1])
+        valid = valid.reshape(batch, -1)
         value = torch.cat((self.null_observation.expand(batch, -1, -1), value), dim=1)
         valid = torch.cat((torch.ones((batch, 1), dtype=torch.bool, device=valid.device), valid), dim=1)
         for block in self.history_blocks:

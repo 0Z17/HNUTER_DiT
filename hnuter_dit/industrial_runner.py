@@ -225,6 +225,8 @@ def arguments(argv=None):
     parser.add_argument("--mujoco-cpu", action="store_true")
     parser.add_argument("--camera", choices=("follow", "fpv"), default="follow")
     parser.add_argument("--capture-views", action="store_true")
+    parser.add_argument("--record-video", action="store_true", help="Record actual rendered frames and a physics-clock manifest")
+    parser.add_argument("--video-fps", type=int, choices=(10, 20), default=10, help="Frames per simulation second")
     parser.add_argument("--real-time", action="store_true", help="Throttle only when simulation is faster than wall time")
     args = parser.parse_args(argv)
     if not math.isfinite(args.duration) or args.duration < DT:
@@ -262,7 +264,7 @@ def main(argv=None):
     import hashlib
     report['implementation_sha256'] = {path.name: hashlib.sha256(path.read_bytes()).hexdigest()
         for path in (root/'hnuter_dit').glob('*.py')}
-    app = planner = bridge = capture = contacts = obstacle = ns = timeline = last_frame = goal_progress = None
+    app = planner = bridge = capture = video = contacts = obstacle = ns = timeline = last_frame = goal_progress = None
     rows, lidar_summary = [], []
     step = 0
     exit_code = 1
@@ -355,6 +357,9 @@ def main(argv=None):
         if args.capture_views:
             from tools.capture_views import ViewCapture
             capture = ViewCapture()
+        if args.record_video:
+            from hnuter_dit.flight_video import FlightVideoCapture
+            video = FlightVideoCapture(output / 'video', fps=args.video_fps, physics_dt=DT, camera=args.camera)
         if not args.headless and not bind_camera(usd_stage, args.camera):
             raise RuntimeError(f"Could not bind {args.camera} camera")
         if not np.isclose(SimulationManager.get_physics_dt(), DT) or not np.isclose(ns.sim_dt, DT):
@@ -366,6 +371,14 @@ def main(argv=None):
         app.update()
         if ns.simulation_step_count != 0:
             raise RuntimeError("Uncontrolled physics step during initialization")
+        if video:
+            ns.update_fabric()
+            for _ in range(24):
+                app.update()
+                if ns.simulation_step_count != 0:
+                    raise RuntimeError("Video warmup unexpectedly advanced physics")
+            video.save(physics_step=0, simulation_time=0., state=initial,
+                       planner_status='history_warmup', goal_distance_m=float(np.linalg.norm(origin-goal)))
         report.update(initial_position=origin.tolist(), goal_position=goal.tolist(),
                       engine=SimulationManager.get_active_physics_engine(),
                       mujoco_version=mujoco.__version__, newton_version=newton.__version__,
@@ -423,9 +436,25 @@ def main(argv=None):
             if ns.simulation_step_count != step or not np.isclose(ns.sim_time - previous_time, DT):
                 raise RuntimeError("Physics did not advance exactly one 1 ms step")
             last_contact = contacts.sample(step * DT)
-            if not args.headless and step % 33 == 0:
+            if video and video.due(step):
+                ns.update_fabric()
+                # Flush render readback while holding the integrated physical
+                # state fixed. time_step_app=False forbids hidden integration.
+                for _ in range(2):
+                    app.update()
+                    if ns.simulation_step_count != step:
+                        raise RuntimeError("Video rendering unexpectedly advanced physics")
+                video_state = bridge.read_state()
+                video.save(physics_step=step, simulation_time=step*DT, state=video_state,
+                           planner_status=getattr(planner, 'last_command_category',
+                               planner.events[-1]['status'] if planner.events else 'initializing'),
+                           goal_distance_m=float(np.linalg.norm(video_state['position']-goal)),
+                           collision_detected=contacts.first_collision is not None)
+            elif not args.headless and step % 33 == 0:
                 ns.update_fabric()
                 app.update()
+                if ns.simulation_step_count != step:
+                    raise RuntimeError("Viewport rendering unexpectedly advanced physics")
             if step % 1000 == 0:
                 print("INDUSTRIAL_PROGRESS " + json.dumps({"t": step * DT, "position": state["position"].tolist(),
                                                           "goal_distance_m": goal_distance,
@@ -473,13 +502,13 @@ def main(argv=None):
         exit_code = 1
         traceback.print_exc()
     finally:
-        for name, resource in (("planner", planner), ("capture", capture)):
+        for name, resource in (("planner", planner), ("capture", capture), ("video", video)):
             if resource is None:
                 continue
             try:
                 result = resource.close()
-                if name == "planner":
-                    report["planner"] = result
+                if name in ("planner", "video"):
+                    report[name] = result
             except BaseException as exc:
                 report.setdefault("cleanup_errors", []).append(f"{name}: {exc}")
                 report["passed"] = False

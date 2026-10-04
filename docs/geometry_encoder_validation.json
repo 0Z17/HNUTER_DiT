@@ -1,0 +1,1629 @@
+{
+  "schema": "geometry_encoder_pilot_summary_v1",
+  "date": "2026-10-04",
+  "evaluation_report": {
+    "path": "/home/z017/research/HNUTER_DiT/results/geometry_pilot/heldout/report.json",
+    "source_path": "/home/z017/research/HNUTER_DiT/results/geometry_pilot/heldout/report.json",
+    "sha256": "91927e66883c0881714b2f678017e2b60d0dd2b93b87d5085d6ec431475f472c"
+  },
+  "selection_report": {
+    "path": "/home/z017/research/HNUTER_DiT/results/geometry_pilot/validation_selection/report.json",
+    "source_path": "/tmp/hnuter-dit-geometry-20261004/results/geometry_pilot/validation_selection/report.json",
+    "sha256": "d056e17aaa84e9b409816dfe3e4df447e7ecfbeb1c6870b5c5b1d79f39fd8b4a"
+  },
+  "preregistered_protocol": {
+    "path": "/home/z017/research/HNUTER_DiT/docs/geometry_encoder_protocol.json",
+    "sha256": "532dcafda250746aba59d74413b45c041f63116b0fcd598228c6a6146d0c208c",
+    "content": {
+      "schema": "geometry_encoder_pilot_protocol_v1",
+      "date": "2026-10-04",
+      "base_commit": "d2d0fbc293061f7c6fc5c432ba6be4ee8fe1d5bb",
+      "dataset": {
+        "groups_requested": 96,
+        "collection_seed": 107,
+        "rays_per_frame": 20000,
+        "history_times_s": [
+          -0.6,
+          -0.4,
+          -0.2,
+          0
+        ],
+        "split": "64/16/16 complete groups if all teachers accepted",
+        "fresh_from_previous_pilot": true
+      },
+      "representations": [
+        "box",
+        "point",
+        "voxel"
+      ],
+      "shared_training": {
+        "steps": 2000,
+        "batch_size": 32,
+        "seed": 7,
+        "learning_rate": 0.0002,
+        "ema_decay": 0.99,
+        "validation_interval": 100,
+        "sampling_steps": 20,
+        "dimension": 128,
+        "depth": 4,
+        "heads": 4,
+        "history_depth": 2,
+        "checkpoint_selection": "minimum validation sampled-position RMSE"
+      },
+      "evaluation": {
+        "sampling_seed": 20404,
+        "candidates_per_condition": 1,
+        "same_group_same_seed": true,
+        "future_truth_for_scoring_only": true,
+        "max_speed_mps": 0.5,
+        "max_acceleration_mps2": 0.6,
+        "fixed_horizon_seconds": 8,
+        "no_retiming": true,
+        "native_episodes_per_representation": 8,
+        "native_selection": "first eight test episodes in frozen dataset order",
+        "ablation": "repeat latest frame through history for point and voxel",
+        "bootstrap_unit": "complete paired group"
+      },
+      "industrial_selection": {
+        "eligible": [
+          "point",
+          "voxel"
+        ],
+        "split": "validation only",
+        "primary_metric": "feasible_safe_progress rate",
+        "tie_break": "lower sampled-position RMSE, then point",
+        "freeze_before_test": true
+      },
+      "industrial": {
+        "goal_world": [
+          -25,
+          -33,
+          2.2
+        ],
+        "duration_s": 30,
+        "seed": 7,
+        "profiles": [
+          "constant_incoming",
+          "constant_outgoing"
+        ],
+        "same_limits": true,
+        "video_profile": "constant_outgoing",
+        "camera": "follow",
+        "video_fps": 10,
+        "video_time": "simulation time; not wall-clock real-time evidence"
+      },
+      "scope": "small encoder comparison only; no automatic scale-up; per-frame measured voxelization is not nvblox TSDF fusion",
+      "contact_work": "future interface direction only; no contact task trained or claimed"
+    },
+    "source_path": "/tmp/hnuter-dit-geometry-20261004/docs/geometry_encoder_protocol.json"
+  },
+  "dataset": {
+    "schema": "hnuter_temporal_rays_v1",
+    "status": "frozen",
+    "dataset_file": "dataset.npz",
+    "dataset_sha256": "548ba16e446391e800e1081825b714b84448af6683ad71022cc0fde551a8aa35",
+    "samples": 192,
+    "independent_groups": 96,
+    "episodes": 192,
+    "requested_groups": 96,
+    "seed": 107,
+    "windows_per_episode": 1,
+    "workers": 4,
+    "split_codes": {
+      "train": 0,
+      "validation": 1,
+      "test": 2
+    },
+    "split_samples": {
+      "train": 128,
+      "validation": 32,
+      "test": 32
+    },
+    "student_allowlist": [
+      "history_tokens",
+      "history_mask",
+      "history_times",
+      "condition"
+    ],
+    "training_allowlist": [
+      "history_tokens",
+      "history_mask",
+      "history_times",
+      "condition",
+      "positions",
+      "future_times",
+      "episode_id",
+      "group_id",
+      "split",
+      "sample_id"
+    ],
+    "teacher_future_fields": "gt_* and teacher_*: evaluator/label audit only, forbidden model inputs",
+    "target_semantics": "physically_validated_teacher_reference",
+    "data_time_semantics": "fixed physical future times from latest history anchor; positions are the reference commands of the accepted native teacher rollout; teacher_actual_positions stores executed physical positions separately; no arc-length resampling, no terminal goal clamp",
+    "stationary_start_only": true,
+    "maximum_start_speed_mps": 0.03,
+    "limits": {
+      "reference_speed_mps": 0.5,
+      "reference_acceleration_mps2": 0.6
+    },
+    "sensor": {
+      "rays_per_frame": 20000,
+      "history_rate_hz": 5.0,
+      "observation_backend": "MuJoCo mj_multiRay against actual geoms",
+      "direction_pattern": "MID360 envelope approximation, not Livox timing or optics",
+      "no_return": "NaN/unknown"
+    },
+    "teacher_family": "constant_velocity_crossing_wait_go",
+    "quality_gates": {
+      "no_native_contact": true,
+      "native_dt_s": 0.001,
+      "final_goal_m": 0.2,
+      "final_speed_mps": 0.1,
+      "tracking_max_m": 0.12,
+      "actual_max_speed_mps": 0.5
+    },
+    "source_sha256": {
+      "/tmp/hnuter-dit-geometry-20261004/hnuter_dit/temporal_data.py": "4df1dbfa546c7a94382da368a1539b69788d65008f9c504aee0be2383557e0d9",
+      "/tmp/hnuter-dit-geometry-20261004/hnuter_dit/temporal_observations.py": "7a259a170f30ac58a00fe243711ba4e3f5113a01aa2cc891a07ecaad70ac0fce",
+      "/home/z017/research/isaacsim-industrial-reactor/tests/reference/hnuter_control.py": "6b56d4ca7c9a0403a5eca68edb50fb932e26add990b110f3f563747f96c23001",
+      "/home/z017/research/isaacsim-industrial-reactor/robots/hnuter/source/hnuter.xml": "99f616758a3e6596b72db64eb8ee061bf7c92fb430b6aaa7ea81b92c59ecf8db"
+    },
+    "source_snapshots": {
+      "/tmp/hnuter-dit-geometry-20261004/hnuter_dit/temporal_data.py": "source_snapshot/temporal_data.py",
+      "/tmp/hnuter-dit-geometry-20261004/hnuter_dit/temporal_observations.py": "source_snapshot/temporal_observations.py",
+      "/home/z017/research/isaacsim-industrial-reactor/tests/reference/hnuter_control.py": "source_snapshot/hnuter_control.py",
+      "/home/z017/research/isaacsim-industrial-reactor/robots/hnuter/source/hnuter.xml": "source_snapshot/hnuter.xml"
+    },
+    "wall_seconds": 166.22014228199987,
+    "accepted_pairs_with_different_wait": 96,
+    "failures_preserved_in": "collection_audit.json"
+  },
+  "relocation": {
+    "from_root": "/tmp/hnuter-dit-geometry-20261004",
+    "to_root": "/home/z017/research/HNUTER_DiT",
+    "source_json_modified": false
+  },
+  "selected_new_encoder": {
+    "representation": "voxel",
+    "rule": "validation only: highest group-balanced feasible-safe-progress rate; then lowest position RMSE; then point before voxel",
+    "selected_before_test": true,
+    "validation_rate": 0.65625,
+    "box_validation_rate": 0.625,
+    "validation_gain_over_box": 0.03125,
+    "improvement_over_box_observed": true,
+    "selection_is_not_success_certificate": true
+  },
+  "variants": {
+    "box": {
+      "checkpoint_sha256": "067b08e6cda8790599c13c05b9442ec8de91969ed5c452c67669076beaa9579e",
+      "summary": {
+        "feasible_safe_progress_rate": 0.6875,
+        "safe_rate": 1.0,
+        "feasible_rate": 0.78125,
+        "adequate_progress_rate": 0.8125,
+        "proxy_collision_rate": 0.0,
+        "goal_within_035m_rate": 0.5,
+        "teacher_low_progress_class_rate": 0.21875,
+        "samples": 32,
+        "groups": 16,
+        "goal_progress_m_mean": 0.987512641052197,
+        "timed_proxy_minimum_clearance_m_mean": 0.3985339682508313,
+        "maximum_speed_mps_mean": 0.32775830464492006,
+        "maximum_acceleration_mps2_mean": 0.4399848667438584,
+        "sampling_seconds_mean": 0.03409631393765267,
+        "sampling_seconds_p95": 0.03574863054745947,
+        "group_balanced_feasible_safe_progress_rate": 0.6875,
+        "by_teacher_progress": {
+          "low_progress_at_most_020m": {
+            "samples": 7,
+            "feasible_safe_progress_rate": 0.7142857142857143,
+            "proxy_collision_rate": 0.0
+          },
+          "moving_more_than_020m": {
+            "samples": 25,
+            "feasible_safe_progress_rate": 0.68,
+            "proxy_collision_rate": 0.0
+          }
+        },
+        "position_rmse_m": 0.030437597954493273
+      },
+      "checkpoint": "/home/z017/research/HNUTER_DiT/results/geometry_pilot/box_s7_2000/best.pt",
+      "source_checkpoint_path": "/tmp/hnuter-dit-geometry-20261004/results/geometry_pilot/box_s7_2000/best.pt",
+      "selected_training_step": 1700,
+      "training_budget": {
+        "history_mode": "temporal",
+        "input_representation": "box",
+        "optimizer": "AdamW",
+        "weight_decay": 0.01,
+        "gradient_clip_norm": 1.0,
+        "steps": 2000,
+        "batch_size": 32,
+        "learning_rate": 0.0002,
+        "seed": 7,
+        "validation_interval": 100,
+        "sampling_steps": 20,
+        "ema_decay": 0.99,
+        "position_weight": 0.2,
+        "velocity_weight": 0.02,
+        "acceleration_weight": 0.002
+      },
+      "parameter_count": 1830019,
+      "encoder_parameter_count": 17920,
+      "shared_architecture": {
+        "dimension": 128,
+        "depth": 4,
+        "heads": 4,
+        "history_depth": 2
+      },
+      "geometry_config": {
+        "input_representation": "box",
+        "schema": "canonical_observed_box_history4x32_v1",
+        "tokens_shape": [
+          4,
+          32,
+          10
+        ],
+        "mask_shape": [
+          4,
+          32
+        ],
+        "tokens_dtype": "float32",
+        "roi_radius_m": 8.0,
+        "coordinate_frame": "one current measured body origin and goal-yaw frame",
+        "history_times": [
+          -0.6,
+          -0.4,
+          -0.2,
+          0.0
+        ],
+        "causal": true,
+        "algorithm": "world AABB median partitions",
+        "padding_m": 0.12,
+        "configuration_sha256": "5118bb677d7975b2af3e07458f7cfd1518c7da8005510142bf7f9fc0a81461da"
+      },
+      "geometry_config_sha256": "10a8e5b038912b05952ce3f01681cd172cda8b5643dfc98e86069044bfa9a4d5",
+      "preprocessing_split_batch_seconds": 0.00026938300288747996,
+      "preprocessing_timing_scope": "loads already saved box tokens; excludes their collection-time construction",
+      "validation_summary": {
+        "feasible_safe_progress_rate": 0.625,
+        "safe_rate": 1.0,
+        "feasible_rate": 0.84375,
+        "adequate_progress_rate": 0.78125,
+        "proxy_collision_rate": 0.0,
+        "goal_within_035m_rate": 0.5,
+        "teacher_low_progress_class_rate": 0.1875,
+        "samples": 32,
+        "groups": 16,
+        "goal_progress_m_mean": 1.0527897729566091,
+        "timed_proxy_minimum_clearance_m_mean": 0.39917087506680393,
+        "maximum_speed_mps_mean": 0.36322045380341883,
+        "maximum_acceleration_mps2_mean": 0.36849864671219135,
+        "sampling_seconds_mean": 0.03454866056199535,
+        "sampling_seconds_p95": 0.03631968269801291,
+        "group_balanced_feasible_safe_progress_rate": 0.625,
+        "by_teacher_progress": {
+          "low_progress_at_most_020m": {
+            "samples": 6,
+            "feasible_safe_progress_rate": 0.16666666666666666,
+            "proxy_collision_rate": 0.0
+          },
+          "moving_more_than_020m": {
+            "samples": 26,
+            "feasible_safe_progress_rate": 0.7307692307692307,
+            "proxy_collision_rate": 0.0
+          }
+        },
+        "position_rmse_m": 0.11709720800154733
+      }
+    },
+    "point": {
+      "checkpoint_sha256": "aa3955a7dd2b7c7b5af3fbd911203a35fac11f89d34925b97d78150b2f006cbd",
+      "summary": {
+        "feasible_safe_progress_rate": 0.0,
+        "safe_rate": 0.625,
+        "feasible_rate": 0.0,
+        "adequate_progress_rate": 0.40625,
+        "proxy_collision_rate": 0.34375,
+        "goal_within_035m_rate": 0.125,
+        "teacher_low_progress_class_rate": 0.21875,
+        "samples": 32,
+        "groups": 16,
+        "goal_progress_m_mean": 0.5803573289585966,
+        "timed_proxy_minimum_clearance_m_mean": 0.1150841304020947,
+        "maximum_speed_mps_mean": 1.9658676254238387,
+        "maximum_acceleration_mps2_mean": 8.281255141868753,
+        "sampling_seconds_mean": 0.03457337949998873,
+        "sampling_seconds_p95": 0.03562759560008999,
+        "group_balanced_feasible_safe_progress_rate": 0.0,
+        "by_teacher_progress": {
+          "low_progress_at_most_020m": {
+            "samples": 7,
+            "feasible_safe_progress_rate": 0.0,
+            "proxy_collision_rate": 0.42857142857142855
+          },
+          "moving_more_than_020m": {
+            "samples": 25,
+            "feasible_safe_progress_rate": 0.0,
+            "proxy_collision_rate": 0.32
+          }
+        },
+        "position_rmse_m": 0.7698306902255171
+      },
+      "checkpoint": "/home/z017/research/HNUTER_DiT/results/geometry_pilot/point_s7_2000/best.pt",
+      "source_checkpoint_path": "/tmp/hnuter-dit-geometry-20261004/results/geometry_pilot/point_s7_2000/best.pt",
+      "selected_training_step": 300,
+      "training_budget": {
+        "history_mode": "temporal",
+        "input_representation": "point",
+        "optimizer": "AdamW",
+        "weight_decay": 0.01,
+        "gradient_clip_norm": 1.0,
+        "steps": 2000,
+        "batch_size": 32,
+        "learning_rate": 0.0002,
+        "seed": 7,
+        "validation_interval": 100,
+        "sampling_steps": 20,
+        "ema_decay": 0.99,
+        "position_weight": 0.2,
+        "velocity_weight": 0.02,
+        "acceleration_weight": 0.002
+      },
+      "parameter_count": 1821187,
+      "encoder_parameter_count": 9088,
+      "shared_architecture": {
+        "dimension": 128,
+        "depth": 4,
+        "heads": 4,
+        "history_depth": 2
+      },
+      "geometry_config": {
+        "input_representation": "point",
+        "schema": "canonical_measured_point_history4x512_v1",
+        "tokens_shape": [
+          4,
+          512,
+          3
+        ],
+        "mask_shape": [
+          4,
+          512
+        ],
+        "tokens_dtype": "float32",
+        "roi_radius_m": 8.0,
+        "coordinate_frame": "one current measured body origin and goal-yaw frame",
+        "history_times": [
+          -0.6,
+          -0.4,
+          -0.2,
+          0.0
+        ],
+        "causal": true,
+        "algorithm": "lexicographic unique measured endpoints, evenly spaced rank subsampling",
+        "max_points": 512,
+        "missing_returns": "unknown, mask false",
+        "spatial_pool": "4x4x4 learned PointNet max pools, with xyz features",
+        "configuration_sha256": "c42d956ee6c5df8c0180b853e416bd41e855eda4b78f47bfc36e84f3fe9b39a6"
+      },
+      "geometry_config_sha256": "f0ebac6edc86373f87104601e711bfe71658b5ae20f7b0930c9ee2fd982d1e23",
+      "preprocessing_split_batch_seconds": 0.3528426609991584,
+      "preprocessing_timing_scope": "reconstructs split raw rays and encodes history on CPU as one batch",
+      "validation_summary": {
+        "feasible_safe_progress_rate": 0.0,
+        "safe_rate": 0.59375,
+        "feasible_rate": 0.0,
+        "adequate_progress_rate": 0.53125,
+        "proxy_collision_rate": 0.40625,
+        "goal_within_035m_rate": 0.3125,
+        "teacher_low_progress_class_rate": 0.1875,
+        "samples": 32,
+        "groups": 16,
+        "goal_progress_m_mean": 0.9013406513215245,
+        "timed_proxy_minimum_clearance_m_mean": 0.10972080338911591,
+        "maximum_speed_mps_mean": 1.8452750280096257,
+        "maximum_acceleration_mps2_mean": 7.673859464654035,
+        "sampling_seconds_mean": 0.03503981006247159,
+        "sampling_seconds_p95": 0.03627039390012214,
+        "group_balanced_feasible_safe_progress_rate": 0.0,
+        "by_teacher_progress": {
+          "low_progress_at_most_020m": {
+            "samples": 6,
+            "feasible_safe_progress_rate": 0.0,
+            "proxy_collision_rate": 0.8333333333333334
+          },
+          "moving_more_than_020m": {
+            "samples": 26,
+            "feasible_safe_progress_rate": 0.0,
+            "proxy_collision_rate": 0.3076923076923077
+          }
+        },
+        "position_rmse_m": 0.726095257820508
+      }
+    },
+    "point_frozen_history": {
+      "checkpoint_sha256": "aa3955a7dd2b7c7b5af3fbd911203a35fac11f89d34925b97d78150b2f006cbd",
+      "summary": {
+        "feasible_safe_progress_rate": 0.0,
+        "safe_rate": 0.625,
+        "feasible_rate": 0.0,
+        "adequate_progress_rate": 0.40625,
+        "proxy_collision_rate": 0.34375,
+        "goal_within_035m_rate": 0.125,
+        "teacher_low_progress_class_rate": 0.21875,
+        "samples": 32,
+        "groups": 16,
+        "goal_progress_m_mean": 0.5792382829142616,
+        "timed_proxy_minimum_clearance_m_mean": 0.11588475678341555,
+        "maximum_speed_mps_mean": 1.966569416449203,
+        "maximum_acceleration_mps2_mean": 8.284112831457522,
+        "sampling_seconds_mean": 0.03452058281345671,
+        "sampling_seconds_p95": 0.03547458350294619,
+        "group_balanced_feasible_safe_progress_rate": 0.0,
+        "by_teacher_progress": {
+          "low_progress_at_most_020m": {
+            "samples": 7,
+            "feasible_safe_progress_rate": 0.0,
+            "proxy_collision_rate": 0.42857142857142855
+          },
+          "moving_more_than_020m": {
+            "samples": 25,
+            "feasible_safe_progress_rate": 0.0,
+            "proxy_collision_rate": 0.32
+          }
+        },
+        "position_rmse_m": 0.7699346776889548
+      }
+    },
+    "voxel": {
+      "checkpoint_sha256": "524c71e0f959e76b162e07630587fc09d2bc20c7dc5b79e802f0e97ce04289d2",
+      "summary": {
+        "feasible_safe_progress_rate": 0.65625,
+        "safe_rate": 1.0,
+        "feasible_rate": 0.75,
+        "adequate_progress_rate": 0.8125,
+        "proxy_collision_rate": 0.0,
+        "goal_within_035m_rate": 0.5,
+        "teacher_low_progress_class_rate": 0.21875,
+        "samples": 32,
+        "groups": 16,
+        "goal_progress_m_mean": 0.9996563549737363,
+        "timed_proxy_minimum_clearance_m_mean": 0.395472217688064,
+        "maximum_speed_mps_mean": 0.352061103727237,
+        "maximum_acceleration_mps2_mean": 0.49978748914816024,
+        "sampling_seconds_mean": 0.03622450859347737,
+        "sampling_seconds_p95": 0.03741441119818774,
+        "group_balanced_feasible_safe_progress_rate": 0.65625,
+        "by_teacher_progress": {
+          "low_progress_at_most_020m": {
+            "samples": 7,
+            "feasible_safe_progress_rate": 0.42857142857142855,
+            "proxy_collision_rate": 0.0
+          },
+          "moving_more_than_020m": {
+            "samples": 25,
+            "feasible_safe_progress_rate": 0.72,
+            "proxy_collision_rate": 0.0
+          }
+        },
+        "position_rmse_m": 0.02862818239987876
+      },
+      "checkpoint": "/home/z017/research/HNUTER_DiT/results/geometry_pilot/voxel_s7_2000/best.pt",
+      "source_checkpoint_path": "/tmp/hnuter-dit-geometry-20261004/results/geometry_pilot/voxel_s7_2000/best.pt",
+      "selected_training_step": 1900,
+      "training_budget": {
+        "history_mode": "temporal",
+        "input_representation": "voxel",
+        "optimizer": "AdamW",
+        "weight_decay": 0.01,
+        "gradient_clip_norm": 1.0,
+        "steps": 2000,
+        "batch_size": 32,
+        "learning_rate": 0.0002,
+        "seed": 7,
+        "validation_interval": 100,
+        "sampling_steps": 20,
+        "ema_decay": 0.99,
+        "position_weight": 0.2,
+        "velocity_weight": 0.02,
+        "acceleration_weight": 0.002
+      },
+      "parameter_count": 1931819,
+      "encoder_parameter_count": 119720,
+      "shared_architecture": {
+        "dimension": 128,
+        "depth": 4,
+        "heads": 4,
+        "history_depth": 2
+      },
+      "geometry_config": {
+        "input_representation": "voxel",
+        "schema": "canonical_ray_occupancy_history4x3x64_v1",
+        "tokens_shape": [
+          4,
+          3,
+          64,
+          64,
+          64
+        ],
+        "mask_shape": [
+          4,
+          64,
+          64,
+          64
+        ],
+        "tokens_dtype": "uint8",
+        "roi_radius_m": 8.0,
+        "coordinate_frame": "one current measured body origin and goal-yaw frame",
+        "history_times": [
+          -0.6,
+          -0.4,
+          -0.2,
+          0.0
+        ],
+        "causal": true,
+        "algorithm": "measured endpoint occupancy and sampled measured-return ray traversal",
+        "voxel_size_m": 0.25,
+        "cube_side_m": 16.0,
+        "grid_axis_order": "xyz",
+        "channels": [
+          "occupied",
+          "ray_free_evidence",
+          "unknown"
+        ],
+        "traversal_step_m": 0.125,
+        "endpoint_exclusion_m": 0.4330127018922193,
+        "occupied_overrides_free": true,
+        "unknown_outside_sphere": true,
+        "no_return_rays": "remain unknown, no max-range free ray",
+        "temporal_fusion": false,
+        "signed_distance": false,
+        "limitation": "Sampling may miss grazing cells; free evidence does not certify voxel volume.",
+        "configuration_sha256": "be87e1eb0cee52c48b6a1c0cdd486c78a86cb0a4428b852bbde5d898ce8e7fc0"
+      },
+      "geometry_config_sha256": "3513b1ea5156c457fc1963ccc538b4c1bdcfcf172418625580a00e24c4afd566",
+      "preprocessing_split_batch_seconds": 3.765396458002215,
+      "preprocessing_timing_scope": "reconstructs split raw rays and encodes history on CPU as one batch",
+      "validation_summary": {
+        "feasible_safe_progress_rate": 0.65625,
+        "safe_rate": 1.0,
+        "feasible_rate": 0.8125,
+        "adequate_progress_rate": 0.78125,
+        "proxy_collision_rate": 0.0,
+        "goal_within_035m_rate": 0.5,
+        "teacher_low_progress_class_rate": 0.1875,
+        "samples": 32,
+        "groups": 16,
+        "goal_progress_m_mean": 1.0814041439839812,
+        "timed_proxy_minimum_clearance_m_mean": 0.40242979026821396,
+        "maximum_speed_mps_mean": 0.42488812825690436,
+        "maximum_acceleration_mps2_mean": 0.5586838448249067,
+        "sampling_seconds_mean": 0.036305122343947005,
+        "sampling_seconds_p95": 0.037062313055139386,
+        "group_balanced_feasible_safe_progress_rate": 0.65625,
+        "by_teacher_progress": {
+          "low_progress_at_most_020m": {
+            "samples": 6,
+            "feasible_safe_progress_rate": 0.16666666666666666,
+            "proxy_collision_rate": 0.0
+          },
+          "moving_more_than_020m": {
+            "samples": 26,
+            "feasible_safe_progress_rate": 0.7692307692307693,
+            "proxy_collision_rate": 0.0
+          }
+        },
+        "position_rmse_m": 0.09342330217233402
+      }
+    },
+    "voxel_frozen_history": {
+      "checkpoint_sha256": "524c71e0f959e76b162e07630587fc09d2bc20c7dc5b79e802f0e97ce04289d2",
+      "summary": {
+        "feasible_safe_progress_rate": 0.21875,
+        "safe_rate": 0.71875,
+        "feasible_rate": 0.6875,
+        "adequate_progress_rate": 0.59375,
+        "proxy_collision_rate": 0.28125,
+        "goal_within_035m_rate": 0.375,
+        "teacher_low_progress_class_rate": 0.21875,
+        "samples": 32,
+        "groups": 16,
+        "goal_progress_m_mean": 0.9099270183889535,
+        "timed_proxy_minimum_clearance_m_mean": 0.19158054683062153,
+        "maximum_speed_mps_mean": 0.3355714762705377,
+        "maximum_acceleration_mps2_mean": 0.5137452516156911,
+        "sampling_seconds_mean": 0.035069626406766474,
+        "sampling_seconds_p95": 0.03586800715165737,
+        "group_balanced_feasible_safe_progress_rate": 0.21875,
+        "by_teacher_progress": {
+          "low_progress_at_most_020m": {
+            "samples": 7,
+            "feasible_safe_progress_rate": 0.0,
+            "proxy_collision_rate": 0.5714285714285714
+          },
+          "moving_more_than_020m": {
+            "samples": 25,
+            "feasible_safe_progress_rate": 0.28,
+            "proxy_collision_rate": 0.2
+          }
+        },
+        "position_rmse_m": 0.7811101919320157
+      }
+    }
+  },
+  "paired_comparisons": {
+    "point_minus_box": {
+      "groups": 16,
+      "difference": -0.6875,
+      "bootstrap_95_percent_interval": [
+        -0.84375,
+        -0.5
+      ],
+      "bootstrap_unit": "entire paired scene group",
+      "bootstrap_seed": 4103
+    },
+    "voxel_minus_box": {
+      "groups": 16,
+      "difference": -0.03125,
+      "bootstrap_95_percent_interval": [
+        -0.125,
+        0.0625
+      ],
+      "bootstrap_unit": "entire paired scene group",
+      "bootstrap_seed": 4103
+    }
+  },
+  "history_ablations": {
+    "point": {
+      "groups": 16,
+      "difference": 0.0,
+      "bootstrap_95_percent_interval": [
+        0.0,
+        0.0
+      ],
+      "bootstrap_unit": "entire paired scene group",
+      "bootstrap_seed": 4103
+    },
+    "voxel": {
+      "groups": 16,
+      "difference": 0.4375,
+      "bootstrap_95_percent_interval": [
+        0.28125,
+        0.625
+      ],
+      "bootstrap_unit": "entire paired scene group",
+      "bootstrap_seed": 4103
+    }
+  },
+  "native_execution": {
+    "box": {
+      "episodes": 8,
+      "expected_episodes": 8,
+      "complete": true,
+      "failed_or_incomplete_episodes": 0,
+      "contact_known_episodes": 8,
+      "contact_unknown_episodes": 0,
+      "collision_rate": 0.0,
+      "collision_rate_denominator": "episodes with explicit actual-contact evidence only; failures remain unknown",
+      "maximum_tracking_error_m": 0.02084216023910398,
+      "physical_validation_passed": true,
+      "goal_reached_rate": 0.5,
+      "note": "Fixed 8-second physical prefix; a valid learned wait need not reach the goal within this horizon."
+    },
+    "point": {
+      "episodes": 8,
+      "expected_episodes": 8,
+      "complete": true,
+      "failed_or_incomplete_episodes": 0,
+      "contact_known_episodes": 8,
+      "contact_unknown_episodes": 0,
+      "collision_rate": 0.375,
+      "collision_rate_denominator": "episodes with explicit actual-contact evidence only; failures remain unknown",
+      "maximum_tracking_error_m": 0.3300556112502267,
+      "physical_validation_passed": false,
+      "goal_reached_rate": 0.0,
+      "note": "Fixed 8-second physical prefix; a valid learned wait need not reach the goal within this horizon."
+    },
+    "voxel": {
+      "episodes": 8,
+      "expected_episodes": 8,
+      "complete": true,
+      "failed_or_incomplete_episodes": 0,
+      "contact_known_episodes": 8,
+      "contact_unknown_episodes": 0,
+      "collision_rate": 0.0,
+      "collision_rate_denominator": "episodes with explicit actual-contact evidence only; failures remain unknown",
+      "maximum_tracking_error_m": 0.020070899842226632,
+      "physical_validation_passed": true,
+      "goal_reached_rate": 0.5,
+      "note": "Fixed 8-second physical prefix; a valid learned wait need not reach the goal within this horizon."
+    }
+  },
+  "industrial": {
+    "status": "complete",
+    "system_passed": false,
+    "runs": [
+      {
+        "passed": true,
+        "completed": true,
+        "mode": "temporal",
+        "goal_reached": true,
+        "dynamic_profile": "constant_incoming",
+        "dynamic_obstacle": true,
+        "steps": 30000,
+        "simulation_seconds": 30.0,
+        "loop_wall_seconds": 59.8693324190026,
+        "first_goal_time": 16.599,
+        "final_goal_distance_m": 0.06266088069694405,
+        "final_speed_mps": 0.001787776301027924,
+        "collision": {
+          "backend": "MuJoCo Warp GPU contacts",
+          "samples": 30000,
+          "collision_detected": false,
+          "contact_steps": 0,
+          "penetration_steps": 0,
+          "first_collision": null,
+          "max_penetration_m": 0.0,
+          "minimum_contact_distance_m": null,
+          "overflow_steps": 0,
+          "unmapped_contacts": 0,
+          "complete": true,
+          "scope": "Robot versus environment only; self contacts excluded; evaluator-only truth"
+        },
+        "seed": 7,
+        "requested_duration": 30.0,
+        "physics_dt": 0.001,
+        "goal_position": [
+          -25.0,
+          -33.0,
+          2.2
+        ],
+        "error": null,
+        "stop_reason": null,
+        "video": null,
+        "report_path": "/home/z017/research/HNUTER_DiT/results/geometry_pilot/industrial_incoming/report.json",
+        "source_report_path": "/home/z017/research/HNUTER_DiT/results/geometry_pilot/industrial_incoming/report.json",
+        "report_sha256": "10c8ced41586ab699b54060451fa597e7d14ec020abf09a4ec161873df707995",
+        "checkpoint_matches_selection": true,
+        "protocol_checks": {
+          "seed": true,
+          "requested_duration": true,
+          "goal": true,
+          "profile": true,
+          "physics_dt": true,
+          "speed_limit": true,
+          "acceleration_limit": true
+        },
+        "protocol_compliant": true,
+        "plan_status_counts": {
+          "accepted": 1,
+          "guard_rejected": 6,
+          "trajectory_rejected": 2
+        },
+        "planner": {
+          "failed": false,
+          "failure_reason": null,
+          "accepted_plans": 1,
+          "guard_rejections": 6,
+          "guard_interventions": 1,
+          "horizon_completions": 0,
+          "time_in_state_seconds": {
+            "history_warmup": 0.6,
+            "moving_start_unsupported": 0.9999999999999979,
+            "inference_pending": 1.7260000000000018,
+            "guard_rejected": 4.943999999999999,
+            "trajectory_rejected": 1.5149999999999997,
+            "model_reference": 6.615,
+            "braking": 0.4980000000000011,
+            "unknown_centerline": 0.0019999999999988916,
+            "goal_neighborhood_hold": 13.099000000000004
+          },
+          "planning_seconds_mean": 0.3553672711107841,
+          "planning_seconds_max": 0.5610366039982182,
+          "temporal_checkpoint_used": true,
+          "checkpoint": {
+            "schema": "hnuter_temporal_bspline_dit_v1",
+            "architecture": {
+              "dimension": 128,
+              "depth": 4,
+              "heads": 4,
+              "history_depth": 2
+            },
+            "history_mode": "temporal",
+            "training_step": 1900,
+            "training_state": "trained",
+            "source_dataset": {
+              "schema": "hnuter_temporal_rays_v1",
+              "status": "frozen",
+              "dataset_file": "dataset.npz",
+              "dataset_sha256": "548ba16e446391e800e1081825b714b84448af6683ad71022cc0fde551a8aa35",
+              "samples": 192,
+              "independent_groups": 96,
+              "episodes": 192,
+              "requested_groups": 96,
+              "seed": 107,
+              "windows_per_episode": 1,
+              "workers": 4,
+              "split_codes": {
+                "train": 0,
+                "validation": 1,
+                "test": 2
+              },
+              "split_samples": {
+                "train": 128,
+                "validation": 32,
+                "test": 32
+              },
+              "student_allowlist": [
+                "history_tokens",
+                "history_mask",
+                "history_times",
+                "condition"
+              ],
+              "training_allowlist": [
+                "history_tokens",
+                "history_mask",
+                "history_times",
+                "condition",
+                "positions",
+                "future_times",
+                "episode_id",
+                "group_id",
+                "split",
+                "sample_id"
+              ],
+              "teacher_future_fields": "gt_* and teacher_*: evaluator/label audit only, forbidden model inputs",
+              "target_semantics": "physically_validated_teacher_reference",
+              "data_time_semantics": "fixed physical future times from latest history anchor; positions are the reference commands of the accepted native teacher rollout; teacher_actual_positions stores executed physical positions separately; no arc-length resampling, no terminal goal clamp",
+              "stationary_start_only": true,
+              "maximum_start_speed_mps": 0.03,
+              "limits": {
+                "reference_speed_mps": 0.5,
+                "reference_acceleration_mps2": 0.6
+              },
+              "sensor": {
+                "rays_per_frame": 20000,
+                "history_rate_hz": 5.0,
+                "observation_backend": "MuJoCo mj_multiRay against actual geoms",
+                "direction_pattern": "MID360 envelope approximation, not Livox timing or optics",
+                "no_return": "NaN/unknown"
+              },
+              "teacher_family": "constant_velocity_crossing_wait_go",
+              "quality_gates": {
+                "no_native_contact": true,
+                "native_dt_s": 0.001,
+                "final_goal_m": 0.2,
+                "final_speed_mps": 0.1,
+                "tracking_max_m": 0.12,
+                "actual_max_speed_mps": 0.5
+              },
+              "source_sha256": {
+                "/tmp/hnuter-dit-geometry-20261004/hnuter_dit/temporal_data.py": "4df1dbfa546c7a94382da368a1539b69788d65008f9c504aee0be2383557e0d9",
+                "/tmp/hnuter-dit-geometry-20261004/hnuter_dit/temporal_observations.py": "7a259a170f30ac58a00fe243711ba4e3f5113a01aa2cc891a07ecaad70ac0fce",
+                "/home/z017/research/isaacsim-industrial-reactor/tests/reference/hnuter_control.py": "6b56d4ca7c9a0403a5eca68edb50fb932e26add990b110f3f563747f96c23001",
+                "/home/z017/research/isaacsim-industrial-reactor/robots/hnuter/source/hnuter.xml": "99f616758a3e6596b72db64eb8ee061bf7c92fb430b6aaa7ea81b92c59ecf8db"
+              },
+              "source_snapshots": {
+                "/tmp/hnuter-dit-geometry-20261004/hnuter_dit/temporal_data.py": "source_snapshot/temporal_data.py",
+                "/tmp/hnuter-dit-geometry-20261004/hnuter_dit/temporal_observations.py": "source_snapshot/temporal_observations.py",
+                "/home/z017/research/isaacsim-industrial-reactor/tests/reference/hnuter_control.py": "source_snapshot/hnuter_control.py",
+                "/home/z017/research/isaacsim-industrial-reactor/robots/hnuter/source/hnuter.xml": "source_snapshot/hnuter.xml"
+              },
+              "wall_seconds": 166.22014228199987,
+              "accepted_pairs_with_different_wait": 96,
+              "failures_preserved_in": "collection_audit.json",
+              "root": "/tmp/hnuter-dit-geometry-20261004/results/geometry_pilot/collection96_seed107",
+              "max_training_start_speed_mps": 0.010090433061122894
+            },
+            "normalization": {
+              "control_mean": [
+                0.5699604257499318,
+                -3.6641052154776487e-05,
+                0.002094315776744761
+              ],
+              "control_std": [
+                0.7527995535505075,
+                0.05,
+                0.05
+              ],
+              "condition_mean": [
+                1.9530848115682602,
+                -8.979020950529052e-18,
+                0.0070055341348052025,
+                0.001267751995328581,
+                0.00526458261811058,
+                -0.006557815708220005,
+                0.5297785784568987,
+                -0.4666436014158535,
+                -0.01838020421564579,
+                0.4667139205375861,
+                0.5298752518901892,
+                -0.0008576759719289839
+              ],
+              "condition_std": [
+                0.08731498743681441,
+                0.05,
+                0.05,
+                0.05,
+                0.05,
+                0.05,
+                0.5004013269721267,
+                0.5008383861023565,
+                0.05,
+                0.50093071581853,
+                0.5004777909403783,
+                0.05
+              ],
+              "environment_mean": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "environment_std": [
+                1.0,
+                1.0,
+                1.0,
+                1.0,
+                1.0,
+                1.0
+              ],
+              "fit_split": "train",
+              "train_row_count": 128,
+              "train_indices_sha256": "2a3e97130cab8aa70b45163bc90c921f8337900420f58997cff8ddc630081036"
+            },
+            "input_representation": "voxel",
+            "geometry_config": {
+              "input_representation": "voxel",
+              "schema": "canonical_ray_occupancy_history4x3x64_v1",
+              "tokens_shape": [
+                4,
+                3,
+                64,
+                64,
+                64
+              ],
+              "mask_shape": [
+                4,
+                64,
+                64,
+                64
+              ],
+              "tokens_dtype": "uint8",
+              "roi_radius_m": 8.0,
+              "coordinate_frame": "one current measured body origin and goal-yaw frame",
+              "history_times": [
+                -0.6,
+                -0.4,
+                -0.2,
+                0.0
+              ],
+              "causal": true,
+              "algorithm": "measured endpoint occupancy and sampled measured-return ray traversal",
+              "voxel_size_m": 0.25,
+              "cube_side_m": 16.0,
+              "grid_axis_order": "xyz",
+              "channels": [
+                "occupied",
+                "ray_free_evidence",
+                "unknown"
+              ],
+              "traversal_step_m": 0.125,
+              "endpoint_exclusion_m": 0.4330127018922193,
+              "occupied_overrides_free": true,
+              "unknown_outside_sphere": true,
+              "no_return_rays": "remain unknown, no max-range free ray",
+              "temporal_fusion": false,
+              "signed_distance": false,
+              "limitation": "Sampling may miss grazing cells; free evidence does not certify voxel volume.",
+              "configuration_sha256": "be87e1eb0cee52c48b6a1c0cdd486c78a86cb0a4428b852bbde5d898ce8e7fc0"
+            },
+            "preprocessing_sha256": "be87e1eb0cee52c48b6a1c0cdd486c78a86cb0a4428b852bbde5d898ce8e7fc0",
+            "input_spec": {
+              "input_representation": "voxel",
+              "schema": "canonical_ray_occupancy_history4x3x64_v1",
+              "tokens_shape": [
+                4,
+                3,
+                64,
+                64,
+                64
+              ],
+              "mask_shape": [
+                4,
+                64,
+                64,
+                64
+              ],
+              "tokens_dtype": "uint8"
+            },
+            "training_budget": {
+              "history_mode": "temporal",
+              "input_representation": "voxel",
+              "optimizer": "AdamW",
+              "weight_decay": 0.01,
+              "gradient_clip_norm": 1.0,
+              "steps": 2000,
+              "batch_size": 32,
+              "learning_rate": 0.0002,
+              "seed": 7,
+              "validation_interval": 100,
+              "sampling_steps": 20,
+              "ema_decay": 0.99,
+              "position_weight": 0.2,
+              "velocity_weight": 0.02,
+              "acceleration_weight": 0.002
+            },
+            "checkpoint_sha256": "524c71e0f959e76b162e07630587fc09d2bc20c7dc5b79e802f0e97ce04289d2",
+            "checkpoint_path": "/temporal-checkpoint.pt",
+            "future_times": [
+              0.0,
+              0.125,
+              0.25,
+              0.375,
+              0.5,
+              0.625,
+              0.75,
+              0.875,
+              1.0,
+              1.125,
+              1.25,
+              1.375,
+              1.5,
+              1.625,
+              1.75,
+              1.875,
+              2.0,
+              2.125,
+              2.25,
+              2.375,
+              2.5,
+              2.625,
+              2.75,
+              2.875,
+              3.0,
+              3.125,
+              3.25,
+              3.375,
+              3.5,
+              3.625,
+              3.75,
+              3.875,
+              4.0,
+              4.125,
+              4.25,
+              4.375,
+              4.5,
+              4.625,
+              4.75,
+              4.875,
+              5.0,
+              5.125,
+              5.25,
+              5.375,
+              5.5,
+              5.625,
+              5.75,
+              5.875,
+              6.0,
+              6.125,
+              6.25,
+              6.375,
+              6.5,
+              6.625,
+              6.75,
+              6.875,
+              7.0,
+              7.125,
+              7.25,
+              7.375,
+              7.5,
+              7.625,
+              7.75,
+              7.875,
+              8.0
+            ],
+            "history_times": [
+              -0.6,
+              -0.4,
+              -0.2,
+              0.0
+            ],
+            "start_velocity_support": {
+              "representation": "Exact initial derivative; this alone is not evidence of moving-start training.",
+              "training": "stationary anchors only",
+              "max_training_start_speed_mps": 0.010090433061122894
+            },
+            "position_only": true,
+            "no_retiming": true,
+            "control_points": 16,
+            "spline_degree": 3,
+            "parameter_count": 1931819,
+            "encoder_parameter_count": 119720,
+            "torch_version": "2.9.1+cu128",
+            "device": "cuda",
+            "startup_warmup_seconds": 2.5593510059989057,
+            "torch_module_path": "/opt/nvblox-venv/lib/python3.12/site-packages/torch/__init__.py",
+            "python_executable": "/opt/nvblox-venv/bin/python",
+            "runtime_kind": "temporal",
+            "process_isolated": true,
+            "worker_directory": "/dit/results/geometry_pilot/industrial_incoming/planner_worker/dit-planner-ykmi1dht"
+          },
+          "motion_limits": {
+            "max_speed_mps": 0.5,
+            "max_acceleration_mps2": 0.6
+          }
+        }
+      },
+      {
+        "passed": false,
+        "completed": true,
+        "mode": "temporal",
+        "goal_reached": false,
+        "dynamic_profile": "constant_outgoing",
+        "dynamic_obstacle": true,
+        "steps": 30000,
+        "simulation_seconds": 30.0,
+        "loop_wall_seconds": 108.20130467000126,
+        "first_goal_time": null,
+        "final_goal_distance_m": 0.5248410969681837,
+        "final_speed_mps": 0.0017775295774511383,
+        "collision": {
+          "backend": "MuJoCo Warp GPU contacts",
+          "samples": 30000,
+          "collision_detected": false,
+          "contact_steps": 0,
+          "penetration_steps": 0,
+          "first_collision": null,
+          "max_penetration_m": 0.0,
+          "minimum_contact_distance_m": null,
+          "overflow_steps": 0,
+          "unmapped_contacts": 0,
+          "complete": true,
+          "scope": "Robot versus environment only; self contacts excluded; evaluator-only truth"
+        },
+        "seed": 7,
+        "requested_duration": 30.0,
+        "physics_dt": 0.001,
+        "goal_position": [
+          -25.0,
+          -33.0,
+          2.2
+        ],
+        "error": null,
+        "stop_reason": null,
+        "video": {
+          "schema": "hnuter_actual_flight_video_v1",
+          "camera": "follow",
+          "width": 960,
+          "height": 540,
+          "fps": 10,
+          "physics_dt": 0.001,
+          "step_interval": 100,
+          "frame_count": 301,
+          "first_simulation_time": 0.0,
+          "last_simulation_time": 30.0,
+          "complete_sequence": true,
+          "source": "Actual actuator-driven Newton/MuJoCo flight; RGB rendered during the controlled run.",
+          "playback": "One video second equals one simulation second; not a wall-clock real-time claim.",
+          "pose_replay": false,
+          "directory": "/dit/results/geometry_pilot/industrial_outgoing/video",
+          "manifest": "/dit/results/geometry_pilot/industrial_outgoing/video/manifest.json",
+          "manifest_sha256": "bb64269086af979e2a4c9e89154f24b471a22dfe151ba4657075b8bee78415ed",
+          "source_directory": "/dit/results/geometry_pilot/industrial_outgoing/video",
+          "source_manifest": "/dit/results/geometry_pilot/industrial_outgoing/video/manifest.json"
+        },
+        "report_path": "/home/z017/research/HNUTER_DiT/results/geometry_pilot/industrial_outgoing/report.json",
+        "source_report_path": "/home/z017/research/HNUTER_DiT/results/geometry_pilot/industrial_outgoing/report.json",
+        "report_sha256": "ee442512bbed42eefec09074f4fdcab2f52bc59b429c7119b7f7a7bddee37979",
+        "checkpoint_matches_selection": true,
+        "protocol_checks": {
+          "seed": true,
+          "requested_duration": true,
+          "goal": true,
+          "profile": true,
+          "physics_dt": true,
+          "speed_limit": true,
+          "acceleration_limit": true
+        },
+        "protocol_compliant": true,
+        "plan_status_counts": {
+          "accepted": 1,
+          "guard_rejected": 2,
+          "trajectory_rejected": 19
+        },
+        "planner": {
+          "failed": false,
+          "failure_reason": null,
+          "accepted_plans": 1,
+          "guard_rejections": 2,
+          "guard_interventions": 1,
+          "horizon_completions": 0,
+          "time_in_state_seconds": {
+            "history_warmup": 0.6,
+            "moving_start_unsupported": 0.9,
+            "inference_pending": 2.224000000000014,
+            "guard_rejected": 1.7999999999999998,
+            "trajectory_rejected": 16.87499999999999,
+            "model_reference": 6.400000000000002,
+            "model_wait": 0.6999999999999993,
+            "braking": 0.46399999999999864,
+            "unknown_centerline": 0.036000000000001364
+          },
+          "planning_seconds_mean": 0.3054683610002526,
+          "planning_seconds_max": 0.39882505199784646,
+          "temporal_checkpoint_used": true,
+          "checkpoint": {
+            "schema": "hnuter_temporal_bspline_dit_v1",
+            "architecture": {
+              "dimension": 128,
+              "depth": 4,
+              "heads": 4,
+              "history_depth": 2
+            },
+            "history_mode": "temporal",
+            "training_step": 1900,
+            "training_state": "trained",
+            "source_dataset": {
+              "schema": "hnuter_temporal_rays_v1",
+              "status": "frozen",
+              "dataset_file": "dataset.npz",
+              "dataset_sha256": "548ba16e446391e800e1081825b714b84448af6683ad71022cc0fde551a8aa35",
+              "samples": 192,
+              "independent_groups": 96,
+              "episodes": 192,
+              "requested_groups": 96,
+              "seed": 107,
+              "windows_per_episode": 1,
+              "workers": 4,
+              "split_codes": {
+                "train": 0,
+                "validation": 1,
+                "test": 2
+              },
+              "split_samples": {
+                "train": 128,
+                "validation": 32,
+                "test": 32
+              },
+              "student_allowlist": [
+                "history_tokens",
+                "history_mask",
+                "history_times",
+                "condition"
+              ],
+              "training_allowlist": [
+                "history_tokens",
+                "history_mask",
+                "history_times",
+                "condition",
+                "positions",
+                "future_times",
+                "episode_id",
+                "group_id",
+                "split",
+                "sample_id"
+              ],
+              "teacher_future_fields": "gt_* and teacher_*: evaluator/label audit only, forbidden model inputs",
+              "target_semantics": "physically_validated_teacher_reference",
+              "data_time_semantics": "fixed physical future times from latest history anchor; positions are the reference commands of the accepted native teacher rollout; teacher_actual_positions stores executed physical positions separately; no arc-length resampling, no terminal goal clamp",
+              "stationary_start_only": true,
+              "maximum_start_speed_mps": 0.03,
+              "limits": {
+                "reference_speed_mps": 0.5,
+                "reference_acceleration_mps2": 0.6
+              },
+              "sensor": {
+                "rays_per_frame": 20000,
+                "history_rate_hz": 5.0,
+                "observation_backend": "MuJoCo mj_multiRay against actual geoms",
+                "direction_pattern": "MID360 envelope approximation, not Livox timing or optics",
+                "no_return": "NaN/unknown"
+              },
+              "teacher_family": "constant_velocity_crossing_wait_go",
+              "quality_gates": {
+                "no_native_contact": true,
+                "native_dt_s": 0.001,
+                "final_goal_m": 0.2,
+                "final_speed_mps": 0.1,
+                "tracking_max_m": 0.12,
+                "actual_max_speed_mps": 0.5
+              },
+              "source_sha256": {
+                "/tmp/hnuter-dit-geometry-20261004/hnuter_dit/temporal_data.py": "4df1dbfa546c7a94382da368a1539b69788d65008f9c504aee0be2383557e0d9",
+                "/tmp/hnuter-dit-geometry-20261004/hnuter_dit/temporal_observations.py": "7a259a170f30ac58a00fe243711ba4e3f5113a01aa2cc891a07ecaad70ac0fce",
+                "/home/z017/research/isaacsim-industrial-reactor/tests/reference/hnuter_control.py": "6b56d4ca7c9a0403a5eca68edb50fb932e26add990b110f3f563747f96c23001",
+                "/home/z017/research/isaacsim-industrial-reactor/robots/hnuter/source/hnuter.xml": "99f616758a3e6596b72db64eb8ee061bf7c92fb430b6aaa7ea81b92c59ecf8db"
+              },
+              "source_snapshots": {
+                "/tmp/hnuter-dit-geometry-20261004/hnuter_dit/temporal_data.py": "source_snapshot/temporal_data.py",
+                "/tmp/hnuter-dit-geometry-20261004/hnuter_dit/temporal_observations.py": "source_snapshot/temporal_observations.py",
+                "/home/z017/research/isaacsim-industrial-reactor/tests/reference/hnuter_control.py": "source_snapshot/hnuter_control.py",
+                "/home/z017/research/isaacsim-industrial-reactor/robots/hnuter/source/hnuter.xml": "source_snapshot/hnuter.xml"
+              },
+              "wall_seconds": 166.22014228199987,
+              "accepted_pairs_with_different_wait": 96,
+              "failures_preserved_in": "collection_audit.json",
+              "root": "/tmp/hnuter-dit-geometry-20261004/results/geometry_pilot/collection96_seed107",
+              "max_training_start_speed_mps": 0.010090433061122894
+            },
+            "normalization": {
+              "control_mean": [
+                0.5699604257499318,
+                -3.6641052154776487e-05,
+                0.002094315776744761
+              ],
+              "control_std": [
+                0.7527995535505075,
+                0.05,
+                0.05
+              ],
+              "condition_mean": [
+                1.9530848115682602,
+                -8.979020950529052e-18,
+                0.0070055341348052025,
+                0.001267751995328581,
+                0.00526458261811058,
+                -0.006557815708220005,
+                0.5297785784568987,
+                -0.4666436014158535,
+                -0.01838020421564579,
+                0.4667139205375861,
+                0.5298752518901892,
+                -0.0008576759719289839
+              ],
+              "condition_std": [
+                0.08731498743681441,
+                0.05,
+                0.05,
+                0.05,
+                0.05,
+                0.05,
+                0.5004013269721267,
+                0.5008383861023565,
+                0.05,
+                0.50093071581853,
+                0.5004777909403783,
+                0.05
+              ],
+              "environment_mean": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "environment_std": [
+                1.0,
+                1.0,
+                1.0,
+                1.0,
+                1.0,
+                1.0
+              ],
+              "fit_split": "train",
+              "train_row_count": 128,
+              "train_indices_sha256": "2a3e97130cab8aa70b45163bc90c921f8337900420f58997cff8ddc630081036"
+            },
+            "input_representation": "voxel",
+            "geometry_config": {
+              "input_representation": "voxel",
+              "schema": "canonical_ray_occupancy_history4x3x64_v1",
+              "tokens_shape": [
+                4,
+                3,
+                64,
+                64,
+                64
+              ],
+              "mask_shape": [
+                4,
+                64,
+                64,
+                64
+              ],
+              "tokens_dtype": "uint8",
+              "roi_radius_m": 8.0,
+              "coordinate_frame": "one current measured body origin and goal-yaw frame",
+              "history_times": [
+                -0.6,
+                -0.4,
+                -0.2,
+                0.0
+              ],
+              "causal": true,
+              "algorithm": "measured endpoint occupancy and sampled measured-return ray traversal",
+              "voxel_size_m": 0.25,
+              "cube_side_m": 16.0,
+              "grid_axis_order": "xyz",
+              "channels": [
+                "occupied",
+                "ray_free_evidence",
+                "unknown"
+              ],
+              "traversal_step_m": 0.125,
+              "endpoint_exclusion_m": 0.4330127018922193,
+              "occupied_overrides_free": true,
+              "unknown_outside_sphere": true,
+              "no_return_rays": "remain unknown, no max-range free ray",
+              "temporal_fusion": false,
+              "signed_distance": false,
+              "limitation": "Sampling may miss grazing cells; free evidence does not certify voxel volume.",
+              "configuration_sha256": "be87e1eb0cee52c48b6a1c0cdd486c78a86cb0a4428b852bbde5d898ce8e7fc0"
+            },
+            "preprocessing_sha256": "be87e1eb0cee52c48b6a1c0cdd486c78a86cb0a4428b852bbde5d898ce8e7fc0",
+            "input_spec": {
+              "input_representation": "voxel",
+              "schema": "canonical_ray_occupancy_history4x3x64_v1",
+              "tokens_shape": [
+                4,
+                3,
+                64,
+                64,
+                64
+              ],
+              "mask_shape": [
+                4,
+                64,
+                64,
+                64
+              ],
+              "tokens_dtype": "uint8"
+            },
+            "training_budget": {
+              "history_mode": "temporal",
+              "input_representation": "voxel",
+              "optimizer": "AdamW",
+              "weight_decay": 0.01,
+              "gradient_clip_norm": 1.0,
+              "steps": 2000,
+              "batch_size": 32,
+              "learning_rate": 0.0002,
+              "seed": 7,
+              "validation_interval": 100,
+              "sampling_steps": 20,
+              "ema_decay": 0.99,
+              "position_weight": 0.2,
+              "velocity_weight": 0.02,
+              "acceleration_weight": 0.002
+            },
+            "checkpoint_sha256": "524c71e0f959e76b162e07630587fc09d2bc20c7dc5b79e802f0e97ce04289d2",
+            "checkpoint_path": "/temporal-checkpoint.pt",
+            "future_times": [
+              0.0,
+              0.125,
+              0.25,
+              0.375,
+              0.5,
+              0.625,
+              0.75,
+              0.875,
+              1.0,
+              1.125,
+              1.25,
+              1.375,
+              1.5,
+              1.625,
+              1.75,
+              1.875,
+              2.0,
+              2.125,
+              2.25,
+              2.375,
+              2.5,
+              2.625,
+              2.75,
+              2.875,
+              3.0,
+              3.125,
+              3.25,
+              3.375,
+              3.5,
+              3.625,
+              3.75,
+              3.875,
+              4.0,
+              4.125,
+              4.25,
+              4.375,
+              4.5,
+              4.625,
+              4.75,
+              4.875,
+              5.0,
+              5.125,
+              5.25,
+              5.375,
+              5.5,
+              5.625,
+              5.75,
+              5.875,
+              6.0,
+              6.125,
+              6.25,
+              6.375,
+              6.5,
+              6.625,
+              6.75,
+              6.875,
+              7.0,
+              7.125,
+              7.25,
+              7.375,
+              7.5,
+              7.625,
+              7.75,
+              7.875,
+              8.0
+            ],
+            "history_times": [
+              -0.6,
+              -0.4,
+              -0.2,
+              0.0
+            ],
+            "start_velocity_support": {
+              "representation": "Exact initial derivative; this alone is not evidence of moving-start training.",
+              "training": "stationary anchors only",
+              "max_training_start_speed_mps": 0.010090433061122894
+            },
+            "position_only": true,
+            "no_retiming": true,
+            "control_points": 16,
+            "spline_degree": 3,
+            "parameter_count": 1931819,
+            "encoder_parameter_count": 119720,
+            "torch_version": "2.9.1+cu128",
+            "device": "cuda",
+            "startup_warmup_seconds": 0.5675285320030525,
+            "torch_module_path": "/opt/nvblox-venv/lib/python3.12/site-packages/torch/__init__.py",
+            "python_executable": "/opt/nvblox-venv/bin/python",
+            "runtime_kind": "temporal",
+            "process_isolated": true,
+            "worker_directory": "/dit/results/geometry_pilot/industrial_outgoing/planner_worker/dit-planner-q3mc7w1d"
+          },
+          "motion_limits": {
+            "max_speed_mps": 0.5,
+            "max_acceleration_mps2": 0.6
+          }
+        }
+      }
+    ],
+    "unassisted_model_passed": false
+  },
+  "video": {
+    "status": "available",
+    "bound_to_selected_run": true,
+    "path": "/home/z017/research/HNUTER_DiT/results/geometry_pilot/industrial_outgoing/flight.mp4",
+    "sha256": "8a6e203cc9ace759b354bd9faa44d77bcd29a57807958df04ec59b9b674e0a71",
+    "sidecar_path": "/home/z017/research/HNUTER_DiT/results/geometry_pilot/industrial_outgoing/flight.json",
+    "sidecar_sha256": "fed53450c5f40188e05634e6a75569c80cd5c80292030eced5171851b053f9f8",
+    "manifest_path": "/home/z017/research/HNUTER_DiT/results/geometry_pilot/industrial_outgoing/video/manifest.json",
+    "manifest_sha256": "bb64269086af979e2a4c9e89154f24b471a22dfe151ba4657075b8bee78415ed",
+    "source_manifest_path": "/home/z017/research/HNUTER_DiT/results/geometry_pilot/industrial_outgoing/video/manifest.json",
+    "source_flight_report": "/home/z017/research/HNUTER_DiT/results/geometry_pilot/industrial_outgoing/report.json",
+    "flight_report": "/home/z017/research/HNUTER_DiT/results/geometry_pilot/industrial_outgoing/report.json",
+    "flight_report_sha256": "ee442512bbed42eefec09074f4fdcab2f52bc59b429c7119b7f7a7bddee37979",
+    "checkpoint_sha256": "524c71e0f959e76b162e07630587fc09d2bc20c7dc5b79e802f0e97ce04289d2",
+    "input_representation": "voxel",
+    "frame_count": 301,
+    "fps": 10,
+    "camera": "follow",
+    "last_simulation_time": 30.0,
+    "flight_passed": false,
+    "time_base": "simulation time, 10 fps; not a wall-clock realtime measurement"
+  },
+  "automatic_expansion_authorized": false,
+  "limitations": [
+    "This is a small encoder comparison, not permission to enlarge data or training.",
+    "Validation chose point or voxel before test; being selected does not mean outperforming box.",
+    "One fixed-seed sample per condition; no future-truth path selection or retiming.",
+    "Timed 42-sphere geometry is a proxy; original actuator-driven native contacts are reported separately.",
+    "Eight-second physical prefixes may legitimately wait and need not complete the full mission.",
+    "Industrial guard stops/rejections are system behavior, not learned model success.",
+    "Voxels are per-frame measured occupancy/free/unknown, not nvblox TSDF fusion.",
+    "No contact-task, moving-start generalization or wall-clock realtime claim."
+  ]
+}

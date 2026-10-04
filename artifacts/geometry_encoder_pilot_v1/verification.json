@@ -1,0 +1,12 @@
+{
+  "date": "2026-10-04",
+  "test_command": "PYTHONPYCACHEPREFIX=/tmp/dit-pycache PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 OMP_NUM_THREADS=2 /home/z017/research/curobo_env/bin/python -m pytest -q",
+  "result": "159 passed in 13.58s",
+  "log_sha256": "6d0338a87456f1c3242a837954b9ce893eaeee737a8ada7cbadd90cf6290ec63",
+  "training_source_unchanged": true,
+  "sim_repository_modified": false,
+  "old_models_unchanged": {
+    "artifacts/temporal_mid360_pilot_v1/models/temporal/best.pt": "327b2dcb97f10033a210f998822c69146214a978afbf5ca9a272fa47e8099b2f",
+    "artifacts/base_free_flight_159103traj_dit_canonical_cross_v003/models/dit_cross/best.pt": "301070cd16c847d749da548bca4d66e409e7ed698346c9b938f3ddf782936dad"
+  }
+}

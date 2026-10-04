@@ -1,0 +1,81 @@
+{
+  "schema": "geometry_encoder_pilot_protocol_v1",
+  "date": "2026-10-04",
+  "base_commit": "d2d0fbc293061f7c6fc5c432ba6be4ee8fe1d5bb",
+  "dataset": {
+    "groups_requested": 96,
+    "collection_seed": 107,
+    "rays_per_frame": 20000,
+    "history_times_s": [
+      -0.6,
+      -0.4,
+      -0.2,
+      0
+    ],
+    "split": "64/16/16 complete groups if all teachers accepted",
+    "fresh_from_previous_pilot": true
+  },
+  "representations": [
+    "box",
+    "point",
+    "voxel"
+  ],
+  "shared_training": {
+    "steps": 2000,
+    "batch_size": 32,
+    "seed": 7,
+    "learning_rate": 0.0002,
+    "ema_decay": 0.99,
+    "validation_interval": 100,
+    "sampling_steps": 20,
+    "dimension": 128,
+    "depth": 4,
+    "heads": 4,
+    "history_depth": 2,
+    "checkpoint_selection": "minimum validation sampled-position RMSE"
+  },
+  "evaluation": {
+    "sampling_seed": 20404,
+    "candidates_per_condition": 1,
+    "same_group_same_seed": true,
+    "future_truth_for_scoring_only": true,
+    "max_speed_mps": 0.5,
+    "max_acceleration_mps2": 0.6,
+    "fixed_horizon_seconds": 8,
+    "no_retiming": true,
+    "native_episodes_per_representation": 8,
+    "native_selection": "first eight test episodes in frozen dataset order",
+    "ablation": "repeat latest frame through history for point and voxel",
+    "bootstrap_unit": "complete paired group"
+  },
+  "industrial_selection": {
+    "eligible": [
+      "point",
+      "voxel"
+    ],
+    "split": "validation only",
+    "primary_metric": "feasible_safe_progress rate",
+    "tie_break": "lower sampled-position RMSE, then point",
+    "freeze_before_test": true
+  },
+  "industrial": {
+    "goal_world": [
+      -25,
+      -33,
+      2.2
+    ],
+    "duration_s": 30,
+    "seed": 7,
+    "profiles": [
+      "constant_incoming",
+      "constant_outgoing"
+    ],
+    "same_limits": true,
+    "video_profile": "constant_outgoing",
+    "camera": "follow",
+    "video_fps": 10,
+    "video_time": "simulation time; not wall-clock real-time evidence"
+  },
+  "scope": "small encoder comparison only; no automatic scale-up; per-frame measured voxelization is not nvblox TSDF fusion",
+  "contact_work": "future interface direction only; no contact task trained or claimed"
+}

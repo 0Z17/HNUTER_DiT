@@ -1,0 +1,23 @@
+{
+  "date": "2026-10-04",
+  "gpu": "NVIDIA GeForce RTX 4080 Laptop GPU",
+  "total_vram_mib": 12282,
+  "driver_version": "580.173.02",
+  "training_gpu_snapshot": {
+    "memory_used_mib_including_other_processes": 3608,
+    "utilization_percent": 47,
+    "peak_measurement": false
+  },
+  "training_python": "/home/z017/research/curobo_env/bin/python",
+  "training_torch": "2.13.0+cu130",
+  "isaac_image": "isaaclab-sim:6.0.0-nvblox",
+  "video_smoke": {
+    "physics_steps": 2000,
+    "simulated_seconds": 2,
+    "frames": 21,
+    "fps_per_simulation_second": 10,
+    "goal_reached": false,
+    "contact_steps": 0,
+    "purpose": "capture and physics clock validation, previous box checkpoint only"
+  }
+}

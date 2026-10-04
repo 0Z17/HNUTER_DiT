@@ -1,0 +1,121 @@
+{
+  "point": {
+    "training_rows": [
+      0,
+      1
+    ],
+    "shape": [
+      2,
+      4,
+      512,
+      3
+    ],
+    "dtype": "float32",
+    "seconds_per_window": 0.012073370500729652,
+    "bytes_per_window": 26624,
+    "config": {
+      "input_representation": "point",
+      "schema": "canonical_measured_point_history4x512_v1",
+      "tokens_shape": [
+        4,
+        512,
+        3
+      ],
+      "mask_shape": [
+        4,
+        512
+      ],
+      "tokens_dtype": "float32",
+      "roi_radius_m": 8.0,
+      "coordinate_frame": "one current measured body origin and goal-yaw frame",
+      "history_times": [
+        -0.6,
+        -0.4,
+        -0.2,
+        0.0
+      ],
+      "causal": true,
+      "algorithm": "lexicographic unique measured endpoints, evenly spaced rank subsampling",
+      "max_points": 512,
+      "missing_returns": "unknown, mask false",
+      "spatial_pool": "4x4x4 learned PointNet max pools, with xyz features",
+      "configuration_sha256": "c42d956ee6c5df8c0180b853e416bd41e855eda4b78f47bfc36e84f3fe9b39a6"
+    }
+  },
+  "voxel": {
+    "training_rows": [
+      0,
+      1
+    ],
+    "shape": [
+      2,
+      4,
+      3,
+      64,
+      64,
+      64
+    ],
+    "dtype": "uint8",
+    "seconds_per_window": 0.12201761799951782,
+    "bytes_per_window": 4194304,
+    "config": {
+      "input_representation": "voxel",
+      "schema": "canonical_ray_occupancy_history4x3x64_v1",
+      "tokens_shape": [
+        4,
+        3,
+        64,
+        64,
+        64
+      ],
+      "mask_shape": [
+        4,
+        64,
+        64,
+        64
+      ],
+      "tokens_dtype": "uint8",
+      "roi_radius_m": 8.0,
+      "coordinate_frame": "one current measured body origin and goal-yaw frame",
+      "history_times": [
+        -0.6,
+        -0.4,
+        -0.2,
+        0.0
+      ],
+      "causal": true,
+      "algorithm": "measured endpoint occupancy and sampled measured-return ray traversal",
+      "voxel_size_m": 0.25,
+      "cube_side_m": 16.0,
+      "grid_axis_order": "xyz",
+      "channels": [
+        "occupied",
+        "ray_free_evidence",
+        "unknown"
+      ],
+      "traversal_step_m": 0.125,
+      "endpoint_exclusion_m": 0.4330127018922193,
+      "occupied_overrides_free": true,
+      "unknown_outside_sphere": true,
+      "no_return_rays": "remain unknown, no max-range free ray",
+      "temporal_fusion": false,
+      "signed_distance": false,
+      "limitation": "Sampling may miss grazing cells; free evidence does not certify voxel volume.",
+      "configuration_sha256": "be87e1eb0cee52c48b6a1c0cdd486c78a86cb0a4428b852bbde5d898ce8e7fc0"
+    },
+    "occupied_counts": [
+      [
+        680,
+        688,
+        679,
+        679
+      ],
+      [
+        643,
+        661,
+        670,
+        679
+      ]
+    ]
+  }
+}

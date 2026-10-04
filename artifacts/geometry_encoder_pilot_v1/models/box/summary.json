@@ -1,0 +1,33 @@
+{
+  "configuration": {
+    "history_mode": "temporal",
+    "input_representation": "box",
+    "optimizer": "AdamW",
+    "weight_decay": 0.01,
+    "gradient_clip_norm": 1.0,
+    "steps": 2000,
+    "batch_size": 32,
+    "learning_rate": 0.0002,
+    "seed": 7,
+    "device": "cuda",
+    "validation_interval": 100,
+    "sampling_steps": 20,
+    "ema_decay": 0.99,
+    "position_weight": 0.2,
+    "velocity_weight": 0.02,
+    "acceleration_weight": 0.002
+  },
+  "best_validation_position_rmse_m": 0.111731084396138,
+  "steps_completed": 2000,
+  "elapsed_seconds": 30.896375891999924,
+  "preprocessing_seconds": 4.5100023271515965e-07,
+  "initial_weights_sha256": "44dd060639c0c62e67988bc8f8290e8dcca84903fa8f4c3466b5f5867977d072",
+  "last_weights_sha256": "4af524197458e9d54768abbad3d63aaa643e5fd37583fcc50fbc0c59323c1488",
+  "weights_changed": true,
+  "test_rows_used": false,
+  "checkpoint_files": {
+    "initial.pt": "f743ef2a5aac672898aa9ac8edfaa76416bb0c606b70488a0a636aef82505118",
+    "best.pt": "067b08e6cda8790599c13c05b9442ec8de91969ed5c452c67669076beaa9579e",
+    "last.pt": "819e4e710dfe8049cbec8b7529571ca30f69d00cafe114de2302c2dbb04a6d83"
+  }
+}

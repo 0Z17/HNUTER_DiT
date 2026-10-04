@@ -19,6 +19,7 @@ import numpy as np
 import torch
 
 from .model import DiffusionSchedule
+from .geometry_observations import reencode_dataset, preprocessing_configuration, SCHEMAS
 from .temporal_inference import DIFFUSION_STEPS, file_sha256, sample_model, validate_inputs
 from .temporal_model import (TemporalDiT, CHECKPOINT_SCHEMA, CONDITION_SCHEMA,
     HISTORY_SCHEMA, TRAJECTORY_SCHEMA, FUTURE_TIMES, HISTORY_TIMES,
@@ -74,7 +75,7 @@ def audit_representation(positions, controls, splits):
         derivative_bounds='Dense audit; execution/evaluation separately use analytic extrema.')
 
 
-def _validate_data(data):
+def _validate_data(data, input_representation="box"):
     required = ('history_tokens', 'history_mask', 'history_times', 'condition', 'positions', 'future_times', 'split', 'group_id')
     if any(key not in data for key in required):
         raise ValueError('dataset is missing required temporal arrays')
@@ -84,7 +85,7 @@ def _validate_data(data):
         raise ValueError('invalid positions or split labels')
     if not np.array_equal(np.asarray(data['future_times']), FUTURE_TIMES):
         raise ValueError('future_times must be the fixed 65-point 8-second grid')
-    validate_inputs(*(data[key] for key in ('history_tokens', 'history_mask', 'history_times', 'condition')))
+    validate_inputs(*(data[key] for key in ('history_tokens', 'history_mask', 'history_times', 'condition')), input_representation=input_representation)
     for group in np.unique(data['group_id']):
         if len(np.unique(split[np.asarray(data['group_id']) == group])) != 1:
             raise ValueError('a group is shared between data splits')
@@ -123,7 +124,7 @@ def _validation(model, schedule, tensors, indices, batch_size, seed, steps):
     sums = dict(diffusion_v_mse=0., sampled_position_squared_error=0.)
     for offset in range(0, len(indices), batch_size):
         chosen = indices[offset:offset+batch_size]
-        batch = {key: value[chosen] for key, value in tensors.items()}
+        batch = {key: value[chosen].to(next(model.parameters()).device) for key, value in tensors.items()}
         generator = torch.Generator(device=batch['condition'].device).manual_seed(seed+offset)
         _, loss = diffusion_loss(model, schedule, batch, generator)
         sampled = sample_model(model, schedule, batch['history_tokens'], batch['history_mask'],
@@ -139,7 +140,7 @@ def train_arrays(data, output_dir, *, source_dataset=None, history_mode='tempora
                  steps=2000, batch_size=32, learning_rate=2e-4, seed=7, device='cuda',
                  dimension=128, depth=4, heads=4, history_depth=2,
                  validation_interval=100, sampling_steps=20, ema_decay=.99,
-                 position_weight=.2, velocity_weight=.02, acceleration_weight=.002):
+                 position_weight=.2, velocity_weight=.02, acceleration_weight=.002, input_representation='box'):
     """Train a fresh model. No resume/overwrite: each output is a separate run."""
     if steps < 1 or batch_size < 1 or validation_interval < 1 or not 0 <= ema_decay < 1:
         raise ValueError('invalid training budget or EMA setting')
@@ -147,7 +148,16 @@ def train_arrays(data, output_dir, *, source_dataset=None, history_mode='tempora
     output.mkdir(parents=True, exist_ok=True)
     if any((output / name).exists() for name in ('initial.pt', 'best.pt', 'last.pt')):
         raise FileExistsError('output already has checkpoints; choose a fresh run directory')
-    split, positions = _validate_data(data)
+    preprocessing_started = time.perf_counter()
+    if input_representation != 'box':
+        if data.get('_input_representation') == input_representation:
+            if data.get('_preprocessing') != preprocessing_configuration(input_representation):
+                raise ValueError('cached geometry preprocessing configuration does not match selected representation')
+        else:
+            data = reencode_dataset(data, input_representation)
+    preprocessing_seconds = time.perf_counter()-preprocessing_started
+    split, positions = _validate_data(data, input_representation)
+    geometry_config = preprocessing_configuration(input_representation)
     train_indices, val_indices = np.flatnonzero(split == 0), np.flatnonzero(split == 1)
     # Only train/validation targets are ever fit or loaded into model tensors.
     usable = np.flatnonzero(split != 2)
@@ -160,14 +170,14 @@ def train_arrays(data, output_dir, *, source_dataset=None, history_mode='tempora
     if history_mode == 'latest':
         normalization_mask[:, :-1] = False
     normalization = normalization_from_training(controls, condition, data['history_tokens'],
-                                                  normalization_mask, train_indices)
+                                                  normalization_mask, train_indices, input_representation)
     random.seed(seed)
     np.random.seed(seed)
     torch.manual_seed(seed)
     if torch.cuda.is_available():
         torch.cuda.manual_seed_all(seed)
     device = torch.device(device)
-    model = TemporalDiT(dimension, depth, heads, history_depth, history_mode).to(device)
+    model = TemporalDiT(dimension, depth, heads, history_depth, history_mode, input_representation).to(device)
     model.set_normalization(normalization)
     schedule = DiffusionSchedule.cosine(DIFFUSION_STEPS, device)
     optimizer = torch.optim.AdamW(model.parameters(), lr=learning_rate, weight_decay=.01)
@@ -178,20 +188,23 @@ def train_arrays(data, output_dir, *, source_dataset=None, history_mode='tempora
         age = np.broadcast_to(age, (len(split), 4)).copy()
     arrays = dict(history_tokens=data['history_tokens'], history_mask=data['history_mask'],
                   history_times=age, condition=condition, positions=positions, controls=controls)
-    tensors = {key: torch.as_tensor(np.asarray(value)[usable].copy(), device=device) for key, value in arrays.items()}
+    storage_device = torch.device('cpu') if input_representation == 'voxel' else device
+    tensors = {key: torch.as_tensor(np.asarray(value)[usable].copy(), device=storage_device) for key, value in arrays.items()}
     remap = {old: new for new, old in enumerate(usable.tolist())}
     train_rows = np.array([remap[index] for index in train_indices])
     val_rows = np.array([remap[index] for index in val_indices])
     rng = np.random.default_rng(seed)
     generator = torch.Generator(device=device).manual_seed(seed)
-    configuration = dict(history_mode=history_mode, steps=steps, batch_size=batch_size,
+    configuration = dict(history_mode=history_mode, input_representation=input_representation,
+        optimizer='AdamW', weight_decay=.01, gradient_clip_norm=1., steps=steps, batch_size=batch_size,
         learning_rate=learning_rate, seed=seed, device=str(device), validation_interval=validation_interval,
         sampling_steps=sampling_steps, ema_decay=ema_decay, position_weight=position_weight,
         velocity_weight=velocity_weight, acceleration_weight=acceleration_weight)
     source_dataset = dict(source_dataset or data.get('_freeze', {}))
     source_dataset['max_training_start_speed_mps'] = float(np.linalg.norm(condition[train_indices, 3:6], axis=-1).max())
     shared = dict(schema=CHECKPOINT_SCHEMA, model_type='temporal_dit_bspline',
-        condition_schema=CONDITION_SCHEMA, history_schema=HISTORY_SCHEMA, trajectory_schema=TRAJECTORY_SCHEMA,
+        condition_schema=CONDITION_SCHEMA, history_schema=SCHEMAS[input_representation], trajectory_schema=TRAJECTORY_SCHEMA,
+        input_representation=input_representation, geometry_config=geometry_config,
         architecture=model.architecture, history_mode=history_mode, prediction_type='velocity',
         diffusion_steps=DIFFUSION_STEPS, future_times=FUTURE_TIMES.tolist(), history_times=HISTORY_TIMES.tolist(),
         normalization=normalization, source_dataset=source_dataset, configuration=configuration,
@@ -204,7 +217,9 @@ def train_arrays(data, output_dir, *, source_dataset=None, history_mode='tempora
     _atomic_checkpoint(output/'initial.pt', dict(shared, model_state=initial_state,
         training_step=0, training_state='untrained_initial', weights_sha256=initial_hash))
     _atomic_json(output/'configuration.json', dict(shared, train_rows=len(train_rows), validation_rows=len(val_rows),
-        test_rows_excluded=int(np.sum(split == 2)), parameter_count=sum(p.numel() for p in model.parameters())))
+        test_rows_excluded=int(np.sum(split == 2)), parameter_count=sum(p.numel() for p in model.parameters()),
+        encoder_parameter_count=model.encoder_parameter_count(), preprocessing_seconds=preprocessing_seconds,
+        tensor_storage_device=str(storage_device)))
     print(json.dumps(dict(event='ready', output=str(output), representation_audit=audit,
                          parameter_count=sum(p.numel() for p in model.parameters()))), flush=True)
     started = time.perf_counter()
@@ -215,7 +230,7 @@ def train_arrays(data, output_dir, *, source_dataset=None, history_mode='tempora
     for step in range(1, steps+1):
         model.train()
         chosen = rng.choice(train_rows, min(batch_size, len(train_rows)), replace=False)
-        batch = {key: value[chosen] for key, value in tensors.items()}
+        batch = {key: value[chosen].to(next(model.parameters()).device) for key, value in tensors.items()}
         optimizer.zero_grad(set_to_none=True)
         loss, metrics = diffusion_loss(model, schedule, batch, generator, position_weight, velocity_weight, acceleration_weight)
         if not bool(torch.isfinite(loss)):
@@ -247,7 +262,7 @@ def train_arrays(data, output_dir, *, source_dataset=None, history_mode='tempora
             accumulated = {}
             interval_start = time.perf_counter()
     summary = dict(configuration=configuration, best_validation_position_rmse_m=best,
-        steps_completed=steps, elapsed_seconds=time.perf_counter()-started,
+        steps_completed=steps, elapsed_seconds=time.perf_counter()-started, preprocessing_seconds=preprocessing_seconds,
         initial_weights_sha256=initial_hash, last_weights_sha256=checkpoint['weights_sha256'],
         weights_changed=initial_hash != checkpoint['weights_sha256'], test_rows_used=False,
         checkpoint_files={name: file_sha256(output/name) for name in ('initial.pt', 'best.pt', 'last.pt')})
@@ -260,6 +275,7 @@ def main(argv=None):
     parser.add_argument('--dataset', required=True)
     parser.add_argument('--output', '--output-dir', dest='output', required=True)
     parser.add_argument('--history-mode', choices=('temporal', 'latest'), default='temporal')
+    parser.add_argument('--input-representation', choices=('box', 'point', 'voxel'), default='box')
     parser.add_argument('--steps', type=int, default=2000)
     parser.add_argument('--batch-size', type=int, default=32)
     parser.add_argument('--learning-rate', type=float, default=2e-4)

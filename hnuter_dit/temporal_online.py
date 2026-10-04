@@ -62,6 +62,10 @@ class TemporalOnlinePlanner:
         self.mode, self.seed = 'temporal', int(seed)
         self.max_speed, self.max_acceleration = float(max_speed), float(max_acceleration)
         self.runtime = PlannerProcess(output_dir=output_dir, device=device, temporal_checkpoint=checkpoint)
+        self.input_representation = self.runtime.describe().get('input_representation', 'box')
+        if self.input_representation not in ('box', 'point', 'voxel'):
+            self.runtime.close()
+            raise ValueError('unsupported temporal checkpoint input representation')
         self.pool = ThreadPoolExecutor(max_workers=1, thread_name_prefix='temporal-inference')
         self.history = HistoryBuffer()
         self.future = self.path = self.brake = self.hold = self.guard = None
@@ -119,7 +123,12 @@ class TemporalOnlinePlanner:
 
     def _plan(self, frames, state, sim_time):
         began = time.perf_counter()
-        encoding = encode_history(frames, state, self.goal, query_time=sim_time)
+        if self.input_representation == 'box':
+            encoding = encode_history(frames, state, self.goal, query_time=sim_time)
+        else:
+            from .geometry_observations import encode_geometry_history
+            encoding = encode_geometry_history(frames, state, self.goal,
+                representation=self.input_representation, query_time=sim_time)
         prediction = self.runtime.sample_temporal(encoding, self.seed)
         result = dict(scan_time=sim_time, model=prediction['metadata'], history=encoding['metadata'],
                       condition=encoding['condition'].tolist(), planning_seconds=time.perf_counter()-began,
@@ -273,7 +282,8 @@ class TemporalOnlinePlanner:
                 finally:
                     self.closed = True
         values = np.asarray(self.planning_seconds)
-        return dict(mode='temporal', failed=self.failed, failure_reason=self.failure_reason,
+        return dict(mode='temporal', input_representation=self.input_representation,
+                    failed=self.failed, failure_reason=self.failure_reason,
                     checkpoint=self.runtime.describe(), plans=self.events, guard_events=self.guard_events,
                     accepted_plans=sum(item['status']=='accepted' for item in self.events),
                     guard_rejections=sum(item['status']=='guard_rejected' for item in self.events),

@@ -27,6 +27,17 @@
 [验证记录](docs/temporal_pilot_validation.json)和[对照图](docs/temporal_pilot_validation.png)。
 新模型需要 `--mode temporal --temporal-checkpoint PATH` 显式启用；WebUI 默认仍为 v003。
 
+本分支进一步加入 **点云 / 局部体素时序编码 + 同一 DiT** 的小量对照。点云直接编码
+4 帧实测回波；体素采用每帧 0.25 m 的占据、射线空闲证据和未知三通道，不经过盒子重建，
+也未启用 nvblox TSDF 融合。三种编码均使用新采 seed 107 数据和相同训练预算；
+选型只使用 validation，test 和实际物理飞行独立报告。
+新一批 32 个 test episode 的综合通过率为 box 68.75%、point 0%、voxel 65.625%；
+voxel 的历史消融为 21.875%，表明这批任务中历史有效，但未显示优于 box。
+各 8 次固定物理回放中 box / voxel 均无接触，point 有 3 次接触；本轮保留负结果，不扩大训练。
+实验说明、复现命令和局限见 [几何编码器试验](docs/GEOMETRY_ENCODER_PILOT.md)。
+`--record-video --video-fps 10` 可记录绑定物理步、实测位姿和模型哈希的实际工业飞行画面；
+导出方法见该说明。视频按仿真时间播放，不代表墙钟实时性能。
+
 ## 模型
 
 当前默认模型为 v003：

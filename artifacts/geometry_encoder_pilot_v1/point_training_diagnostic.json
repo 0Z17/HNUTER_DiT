@@ -1,0 +1,1074 @@
+{
+  "schema": "hnuter_point_training_diagnostic_v1",
+  "purpose": "Check numerical/gradient health and learned sensitivity to past observations on fixed training rows.",
+  "dataset_sha256": "548ba16e446391e800e1081825b714b84448af6683ad71022cc0fde551a8aa35",
+  "dataset_path": "results/geometry_pilot/collection96_seed107",
+  "train_rows": [
+    0,
+    1,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "train_group_ids": [
+    0,
+    0,
+    2,
+    2,
+    3,
+    3,
+    4,
+    4
+  ],
+  "test_rows_decoded_for_conditioning_or_targets": false,
+  "test_metrics_computed": false,
+  "validation_usage": "existing training_history.json validation statistics only",
+  "cpu_threads": 2,
+  "device": "cpu",
+  "torch_version": "2.13.0+cu130",
+  "python_version": "3.10.20 (main, Jun 11 2026, 15:17:37) [GCC 14.3.0]",
+  "numpy_version": "2.2.6",
+  "source_files_sha256": {
+    "geometry_observations.py": "c2775d5a97f52dc06d0712b9646106fc27f4602be1d01fe7fc04a3d2e898010d",
+    "temporal_model.py": "d4684454b2e4676624d4eca6b0b4a14d29db66494a9448d648c2c5521a37fa05",
+    "temporal_training.py": "6f942531ab299c50118b2c3bf0e8bf0d2775d712b92a1aff401edcfbd55b30cd",
+    "temporal_inference.py": "9bfb5a8fe54be9d95956f302186b9a60dfbc9a3c4ab429ffe1064ba687dc3694"
+  },
+  "backward_seed": 123,
+  "optimizer_constructed": false,
+  "optimizer_steps": 0,
+  "sampling_steps": 20,
+  "sampling_seed_rule": "1901 + pair start offset within the selected eight rows",
+  "compared_checkpoint": "last.pt at training_step 2000; best.pt role is reported separately",
+  "script_sha256": "89c5eb32c6a2c4dc1671c4a38a7a98a3cfff4f3f3723b6d1f43202d453b5544f",
+  "models": {
+    "box": {
+      "checkpoint_sha256": {
+        "initial.pt": "f743ef2a5aac672898aa9ac8edfaa76416bb0c606b70488a0a636aef82505118",
+        "last.pt": "819e4e710dfe8049cbec8b7529571ca30f69d00cafe114de2302c2dbb04a6d83",
+        "best.pt": "067b08e6cda8790599c13c05b9442ec8de91969ed5c452c67669076beaa9579e"
+      },
+      "training_step": 2000,
+      "best_step": 1700,
+      "best_validation": {
+        "diffusion_v_mse": 0.009052454493939877,
+        "sampled_position_rmse_m": 0.111731084396138,
+        "rows": 32,
+        "sampling_steps": 20,
+        "fixed_seed": 100007,
+        "split": "validation"
+      },
+      "first_log": {
+        "step": 100,
+        "elapsed_seconds": 1.522696446001646,
+        "interval_seconds": 1.5226949229981983,
+        "gradient_norm": 1.636258602142334,
+        "train": {
+          "total": 0.4584551805257797,
+          "diffusion_v_mse": 0.44135166227817535,
+          "position_mse": 0.06878764055669308,
+          "velocity_mse": 0.06597621854394674,
+          "acceleration_mse": 1.0132318517565728
+        },
+        "validation": {
+          "diffusion_v_mse": 0.53789222240448,
+          "sampled_position_rmse_m": 0.7797975007706163,
+          "rows": 32,
+          "sampling_steps": 20,
+          "fixed_seed": 100007,
+          "split": "validation"
+        }
+      },
+      "last_log": {
+        "step": 2000,
+        "elapsed_seconds": 30.72038856599829,
+        "interval_seconds": 1.2144448359977105,
+        "gradient_norm": 0.5660075545310974,
+        "train": {
+          "total": 0.01737532244529575,
+          "diffusion_v_mse": 0.016832812996581195,
+          "position_mse": 0.00235085065709427,
+          "velocity_mse": 0.00157985218858812,
+          "acceleration_mse": 0.02037121349480003
+        },
+        "validation": {
+          "diffusion_v_mse": 0.008482007309794426,
+          "sampled_position_rmse_m": 0.11261569372450726,
+          "rows": 32,
+          "sampling_steps": 20,
+          "fixed_seed": 100007,
+          "split": "validation"
+        }
+      },
+      "weight_changes": {
+        "box_mlp": {
+          "parameters": 17920,
+          "initial_l2": 9.467037200927734,
+          "change_l2": 1.027113437652588,
+          "maximum_absolute_change": 0.04699373245239258,
+          "finite": true
+        },
+        "history_blocks": {
+          "parameters": 264960,
+          "initial_l2": 35.20067596435547,
+          "change_l2": 3.2489163875579834,
+          "maximum_absolute_change": 0.06352587789297104,
+          "finite": true
+        },
+        "output": {
+          "parameters": 387,
+          "initial_l2": 0.0,
+          "change_l2": 0.29070547223091125,
+          "maximum_absolute_change": 0.03609258309006691,
+          "finite": true
+        }
+      },
+      "backward": {
+        "losses": {
+          "total": 0.00707904901355505,
+          "diffusion_v_mse": 0.007032766006886959,
+          "position_mse": 0.00014430034207180142,
+          "velocity_mse": 0.0003242672246415168,
+          "acceleration_mse": 0.005468690302222967
+        },
+        "box_mlp": {
+          "gradient_l2": 0.05619209259748459,
+          "finite": true,
+          "nonzero_parameter_fraction": 0.9857142567634583
+        },
+        "history_blocks": {
+          "gradient_l2": 0.07361622899770737,
+          "finite": true,
+          "nonzero_parameter_fraction": 1.0
+        },
+        "output": {
+          "gradient_l2": 0.3457947075366974,
+          "finite": true,
+          "nonzero_parameter_fraction": 1.0
+        },
+        "input_points_with_nonzero_gradient_per_frame_mean": 32.0,
+        "active_input_points_per_frame_mean": 32.0
+      },
+      "pairs": [
+        {
+          "group_id": 0,
+          "rows": [
+            0,
+            1
+          ],
+          "seed": 1901,
+          "conditions_identical": true,
+          "latest_observations_identical": true,
+          "history_changed_same_seed_trajectory_rms_m": 1.2006900310516357,
+          "final_canonical_goal_axis_progress_m": [
+            0.070982426404953,
+            1.932877540588379
+          ],
+          "teacher_final_canonical_goal_axis_progress_m": [
+            0.0,
+            1.9416117668151855
+          ],
+          "mean_context_pair_rms": 0.4226413369178772,
+          "null_context_pair_rms": 0.19483695924282074
+        },
+        {
+          "group_id": 2,
+          "rows": [
+            4,
+            5
+          ],
+          "seed": 1903,
+          "conditions_identical": true,
+          "latest_observations_identical": true,
+          "history_changed_same_seed_trajectory_rms_m": 1.2040693759918213,
+          "final_canonical_goal_axis_progress_m": [
+            0.13633546233177185,
+            1.9660608768463135
+          ],
+          "teacher_final_canonical_goal_axis_progress_m": [
+            0.19404397904872894,
+            1.949798345565796
+          ],
+          "mean_context_pair_rms": 0.3509308993816376,
+          "null_context_pair_rms": 0.1797710508108139
+        },
+        {
+          "group_id": 3,
+          "rows": [
+            6,
+            7
+          ],
+          "seed": 1905,
+          "conditions_identical": true,
+          "latest_observations_identical": true,
+          "history_changed_same_seed_trajectory_rms_m": 1.166113018989563,
+          "final_canonical_goal_axis_progress_m": [
+            0.21297958493232727,
+            1.8800203800201416
+          ],
+          "teacher_final_canonical_goal_axis_progress_m": [
+            0.20664873719215393,
+            1.872004747390747
+          ],
+          "mean_context_pair_rms": 0.33235663175582886,
+          "null_context_pair_rms": 0.195392906665802
+        },
+        {
+          "group_id": 4,
+          "rows": [
+            8,
+            9
+          ],
+          "seed": 1907,
+          "conditions_identical": true,
+          "latest_observations_identical": true,
+          "history_changed_same_seed_trajectory_rms_m": 1.2041159868240356,
+          "final_canonical_goal_axis_progress_m": [
+            0.0821554958820343,
+            1.980816125869751
+          ],
+          "teacher_final_canonical_goal_axis_progress_m": [
+            0.0,
+            1.9915876388549805
+          ],
+          "mean_context_pair_rms": 0.3715991675853729,
+          "null_context_pair_rms": 0.20330151915550232
+        }
+      ],
+      "runtime_description": {
+        "schema": "hnuter_temporal_bspline_dit_v1",
+        "architecture": {
+          "dimension": 128,
+          "depth": 4,
+          "heads": 4,
+          "history_depth": 2
+        },
+        "history_mode": "temporal",
+        "training_step": 2000,
+        "training_state": "trained",
+        "source_dataset": {
+          "schema": "hnuter_temporal_rays_v1",
+          "status": "frozen",
+          "dataset_file": "dataset.npz",
+          "dataset_sha256": "548ba16e446391e800e1081825b714b84448af6683ad71022cc0fde551a8aa35",
+          "samples": 192,
+          "independent_groups": 96,
+          "episodes": 192,
+          "requested_groups": 96,
+          "seed": 107,
+          "windows_per_episode": 1,
+          "workers": 4,
+          "split_codes": {
+            "train": 0,
+            "validation": 1,
+            "test": 2
+          },
+          "split_samples": {
+            "train": 128,
+            "validation": 32,
+            "test": 32
+          },
+          "student_allowlist": [
+            "history_tokens",
+            "history_mask",
+            "history_times",
+            "condition"
+          ],
+          "training_allowlist": [
+            "history_tokens",
+            "history_mask",
+            "history_times",
+            "condition",
+            "positions",
+            "future_times",
+            "episode_id",
+            "group_id",
+            "split",
+            "sample_id"
+          ],
+          "teacher_future_fields": "gt_* and teacher_*: evaluator/label audit only, forbidden model inputs",
+          "target_semantics": "physically_validated_teacher_reference",
+          "data_time_semantics": "fixed physical future times from latest history anchor; positions are the reference commands of the accepted native teacher rollout; teacher_actual_positions stores executed physical positions separately; no arc-length resampling, no terminal goal clamp",
+          "stationary_start_only": true,
+          "maximum_start_speed_mps": 0.03,
+          "limits": {
+            "reference_speed_mps": 0.5,
+            "reference_acceleration_mps2": 0.6
+          },
+          "sensor": {
+            "rays_per_frame": 20000,
+            "history_rate_hz": 5.0,
+            "observation_backend": "MuJoCo mj_multiRay against actual geoms",
+            "direction_pattern": "MID360 envelope approximation, not Livox timing or optics",
+            "no_return": "NaN/unknown"
+          },
+          "teacher_family": "constant_velocity_crossing_wait_go",
+          "quality_gates": {
+            "no_native_contact": true,
+            "native_dt_s": 0.001,
+            "final_goal_m": 0.2,
+            "final_speed_mps": 0.1,
+            "tracking_max_m": 0.12,
+            "actual_max_speed_mps": 0.5
+          },
+          "source_sha256": {
+            "/tmp/hnuter-dit-geometry-20261004/hnuter_dit/temporal_data.py": "4df1dbfa546c7a94382da368a1539b69788d65008f9c504aee0be2383557e0d9",
+            "/tmp/hnuter-dit-geometry-20261004/hnuter_dit/temporal_observations.py": "7a259a170f30ac58a00fe243711ba4e3f5113a01aa2cc891a07ecaad70ac0fce",
+            "/home/z017/research/isaacsim-industrial-reactor/tests/reference/hnuter_control.py": "6b56d4ca7c9a0403a5eca68edb50fb932e26add990b110f3f563747f96c23001",
+            "/home/z017/research/isaacsim-industrial-reactor/robots/hnuter/source/hnuter.xml": "99f616758a3e6596b72db64eb8ee061bf7c92fb430b6aaa7ea81b92c59ecf8db"
+          },
+          "source_snapshots": {
+            "/tmp/hnuter-dit-geometry-20261004/hnuter_dit/temporal_data.py": "source_snapshot/temporal_data.py",
+            "/tmp/hnuter-dit-geometry-20261004/hnuter_dit/temporal_observations.py": "source_snapshot/temporal_observations.py",
+            "/home/z017/research/isaacsim-industrial-reactor/tests/reference/hnuter_control.py": "source_snapshot/hnuter_control.py",
+            "/home/z017/research/isaacsim-industrial-reactor/robots/hnuter/source/hnuter.xml": "source_snapshot/hnuter.xml"
+          },
+          "wall_seconds": 166.22014228199987,
+          "accepted_pairs_with_different_wait": 96,
+          "failures_preserved_in": "collection_audit.json",
+          "root": "/tmp/hnuter-dit-geometry-20261004/results/geometry_pilot/collection96_seed107",
+          "max_training_start_speed_mps": 0.010090433061122894
+        },
+        "normalization": {
+          "control_mean": [
+            0.5699604257499318,
+            -3.6641052154776487e-05,
+            0.002094315776744761
+          ],
+          "control_std": [
+            0.7527995535505075,
+            0.05,
+            0.05
+          ],
+          "condition_mean": [
+            1.9530848115682602,
+            -8.979020950529052e-18,
+            0.0070055341348052025,
+            0.001267751995328581,
+            0.00526458261811058,
+            -0.006557815708220005,
+            0.5297785784568987,
+            -0.4666436014158535,
+            -0.01838020421564579,
+            0.4667139205375861,
+            0.5298752518901892,
+            -0.0008576759719289839
+          ],
+          "condition_std": [
+            0.08731498743681441,
+            0.05,
+            0.05,
+            0.05,
+            0.05,
+            0.05,
+            0.5004013269721267,
+            0.5008383861023565,
+            0.05,
+            0.50093071581853,
+            0.5004777909403783,
+            0.05
+          ],
+          "environment_mean": [
+            1.0681268129286536,
+            0.2372269908613589,
+            0.8714067272920656,
+            1.09870737969959,
+            0.8028821170510128,
+            2.240568967366926
+          ],
+          "environment_std": [
+            2.822484422637835,
+            3.7464235531977894,
+            0.5006351104961507,
+            1.2840496419034595,
+            0.9527431290983817,
+            1.1613192165278063
+          ],
+          "fit_split": "train",
+          "train_row_count": 128,
+          "train_indices_sha256": "2a3e97130cab8aa70b45163bc90c921f8337900420f58997cff8ddc630081036"
+        },
+        "input_representation": "box",
+        "geometry_config": {
+          "input_representation": "box",
+          "schema": "canonical_observed_box_history4x32_v1",
+          "tokens_shape": [
+            4,
+            32,
+            10
+          ],
+          "mask_shape": [
+            4,
+            32
+          ],
+          "tokens_dtype": "float32",
+          "roi_radius_m": 8.0,
+          "coordinate_frame": "one current measured body origin and goal-yaw frame",
+          "history_times": [
+            -0.6,
+            -0.4,
+            -0.2,
+            0.0
+          ],
+          "causal": true,
+          "algorithm": "world AABB median partitions",
+          "padding_m": 0.12,
+          "configuration_sha256": "5118bb677d7975b2af3e07458f7cfd1518c7da8005510142bf7f9fc0a81461da"
+        },
+        "preprocessing_sha256": "5118bb677d7975b2af3e07458f7cfd1518c7da8005510142bf7f9fc0a81461da",
+        "input_spec": {
+          "input_representation": "box",
+          "schema": "canonical_observed_box_history4x32_v1",
+          "tokens_shape": [
+            4,
+            32,
+            10
+          ],
+          "mask_shape": [
+            4,
+            32
+          ],
+          "tokens_dtype": "float32"
+        },
+        "training_budget": {
+          "history_mode": "temporal",
+          "input_representation": "box",
+          "optimizer": "AdamW",
+          "weight_decay": 0.01,
+          "gradient_clip_norm": 1.0,
+          "steps": 2000,
+          "batch_size": 32,
+          "learning_rate": 0.0002,
+          "seed": 7,
+          "validation_interval": 100,
+          "sampling_steps": 20,
+          "ema_decay": 0.99,
+          "position_weight": 0.2,
+          "velocity_weight": 0.02,
+          "acceleration_weight": 0.002
+        },
+        "checkpoint_sha256": "819e4e710dfe8049cbec8b7529571ca30f69d00cafe114de2302c2dbb04a6d83",
+        "checkpoint_path": "/tmp/hnuter-dit-geometry-20261004/results/geometry_pilot/box_s7_2000/last.pt",
+        "future_times": [
+          0.0,
+          0.125,
+          0.25,
+          0.375,
+          0.5,
+          0.625,
+          0.75,
+          0.875,
+          1.0,
+          1.125,
+          1.25,
+          1.375,
+          1.5,
+          1.625,
+          1.75,
+          1.875,
+          2.0,
+          2.125,
+          2.25,
+          2.375,
+          2.5,
+          2.625,
+          2.75,
+          2.875,
+          3.0,
+          3.125,
+          3.25,
+          3.375,
+          3.5,
+          3.625,
+          3.75,
+          3.875,
+          4.0,
+          4.125,
+          4.25,
+          4.375,
+          4.5,
+          4.625,
+          4.75,
+          4.875,
+          5.0,
+          5.125,
+          5.25,
+          5.375,
+          5.5,
+          5.625,
+          5.75,
+          5.875,
+          6.0,
+          6.125,
+          6.25,
+          6.375,
+          6.5,
+          6.625,
+          6.75,
+          6.875,
+          7.0,
+          7.125,
+          7.25,
+          7.375,
+          7.5,
+          7.625,
+          7.75,
+          7.875,
+          8.0
+        ],
+        "history_times": [
+          -0.6,
+          -0.4,
+          -0.2,
+          0.0
+        ],
+        "start_velocity_support": {
+          "representation": "Exact initial derivative; this alone is not evidence of moving-start training.",
+          "training": "stationary anchors only",
+          "max_training_start_speed_mps": 0.010090433061122894
+        },
+        "position_only": true,
+        "no_retiming": true,
+        "control_points": 16,
+        "spline_degree": 3,
+        "parameter_count": 1830019,
+        "encoder_parameter_count": 17920,
+        "torch_version": "2.13.0+cu130",
+        "device": "cpu",
+        "startup_warmup_seconds": 0.0
+      }
+    },
+    "point": {
+      "checkpoint_sha256": {
+        "initial.pt": "df3ca155eaa15fba5e12d6035c3d56bd27f573b7f656abb304ce1c300ad31734",
+        "last.pt": "98ff3a4d9926a807a469b7663ee8f4a65aea883b000d305ec8e127ba1602bee9",
+        "best.pt": "aa3955a7dd2b7c7b5af3fbd911203a35fac11f89d34925b97d78150b2f006cbd"
+      },
+      "training_step": 2000,
+      "best_step": 300,
+      "best_validation": {
+        "diffusion_v_mse": 0.17464861273765564,
+        "sampled_position_rmse_m": 0.6670251617546967,
+        "rows": 32,
+        "sampling_steps": 20,
+        "fixed_seed": 100007,
+        "split": "validation"
+      },
+      "first_log": {
+        "step": 100,
+        "elapsed_seconds": 2.010739596997155,
+        "interval_seconds": 2.0107383240028867,
+        "gradient_norm": 0.717469334602356,
+        "train": {
+          "total": 0.46106016010046,
+          "diffusion_v_mse": 0.44384787291288375,
+          "position_mse": 0.06938192896544933,
+          "velocity_mse": 0.06594858091324568,
+          "acceleration_mse": 1.0084641462564468
+        },
+        "validation": {
+          "diffusion_v_mse": 0.544355571269989,
+          "sampled_position_rmse_m": 0.7863541380383292,
+          "rows": 32,
+          "sampling_steps": 20,
+          "fixed_seed": 100007,
+          "split": "validation"
+        }
+      },
+      "last_log": {
+        "step": 2000,
+        "elapsed_seconds": 38.02668071199878,
+        "interval_seconds": 1.7210316929995315,
+        "gradient_norm": 0.5265994668006897,
+        "train": {
+          "total": 0.074875284191221,
+          "diffusion_v_mse": 0.06968310782685876,
+          "position_mse": 0.025283654402010143,
+          "velocity_mse": 0.0036187679297290743,
+          "acceleration_mse": 0.03153511552140117
+        },
+        "validation": {
+          "diffusion_v_mse": 0.07283090054988861,
+          "sampled_position_rmse_m": 0.7714181992360826,
+          "rows": 32,
+          "sampling_steps": 20,
+          "fixed_seed": 100007,
+          "split": "validation"
+        }
+      },
+      "weight_changes": {
+        "point_mlp": {
+          "parameters": 8576,
+          "initial_l2": 8.422906875610352,
+          "change_l2": 0.33068063855171204,
+          "maximum_absolute_change": 0.02421078085899353,
+          "finite": true
+        },
+        "history_blocks": {
+          "parameters": 264960,
+          "initial_l2": 35.19805908203125,
+          "change_l2": 2.426136016845703,
+          "maximum_absolute_change": 0.04353710263967514,
+          "finite": true
+        },
+        "output": {
+          "parameters": 387,
+          "initial_l2": 0.0,
+          "change_l2": 0.2927452623844147,
+          "maximum_absolute_change": 0.03138117492198944,
+          "finite": true
+        },
+        "spatial_mlp": {
+          "parameters": 512,
+          "initial_l2": 7.708629608154297,
+          "change_l2": 0.20729650557041168,
+          "maximum_absolute_change": 0.046501874923706055,
+          "finite": true
+        }
+      },
+      "backward": {
+        "losses": {
+          "total": 0.0900554358959198,
+          "diffusion_v_mse": 0.08374427258968353,
+          "position_mse": 0.03121153451502323,
+          "velocity_mse": 0.0027115715201944113,
+          "acceleration_mse": 0.00731416791677475
+        },
+        "point_mlp": {
+          "gradient_l2": 0.02709794230759144,
+          "finite": true,
+          "nonzero_parameter_fraction": 1.0
+        },
+        "spatial_mlp": {
+          "gradient_l2": 0.015889503061771393,
+          "finite": true,
+          "nonzero_parameter_fraction": 1.0
+        },
+        "history_blocks": {
+          "gradient_l2": 0.09650225192308426,
+          "finite": true,
+          "nonzero_parameter_fraction": 0.999913215637207
+        },
+        "output": {
+          "gradient_l2": 0.618061363697052,
+          "finite": true,
+          "nonzero_parameter_fraction": 1.0
+        },
+        "input_points_with_nonzero_gradient_per_frame_mean": 113.625,
+        "active_input_points_per_frame_mean": 512.0
+      },
+      "pairs": [
+        {
+          "group_id": 0,
+          "rows": [
+            0,
+            1
+          ],
+          "seed": 1901,
+          "conditions_identical": true,
+          "latest_observations_identical": true,
+          "history_changed_same_seed_trajectory_rms_m": 0.007033423986285925,
+          "final_canonical_goal_axis_progress_m": [
+            0.15406113862991333,
+            0.17754021286964417
+          ],
+          "teacher_final_canonical_goal_axis_progress_m": [
+            0.0,
+            1.9416117668151855
+          ],
+          "mean_context_pair_rms": 0.021283317357301712,
+          "null_context_pair_rms": 0.013970703817903996
+        },
+        {
+          "group_id": 2,
+          "rows": [
+            4,
+            5
+          ],
+          "seed": 1903,
+          "conditions_identical": true,
+          "latest_observations_identical": true,
+          "history_changed_same_seed_trajectory_rms_m": 0.00010534399189054966,
+          "final_canonical_goal_axis_progress_m": [
+            1.9565825462341309,
+            1.9567079544067383
+          ],
+          "teacher_final_canonical_goal_axis_progress_m": [
+            0.19404397904872894,
+            1.949798345565796
+          ],
+          "mean_context_pair_rms": 0.0020279171876609325,
+          "null_context_pair_rms": 0.00227995659224689
+        },
+        {
+          "group_id": 3,
+          "rows": [
+            6,
+            7
+          ],
+          "seed": 1905,
+          "conditions_identical": true,
+          "latest_observations_identical": true,
+          "history_changed_same_seed_trajectory_rms_m": 0.0005885814898647368,
+          "final_canonical_goal_axis_progress_m": [
+            1.8156967163085938,
+            1.8160591125488281
+          ],
+          "teacher_final_canonical_goal_axis_progress_m": [
+            0.20664873719215393,
+            1.872004747390747
+          ],
+          "mean_context_pair_rms": 0.0018364725401625037,
+          "null_context_pair_rms": 0.001812281901948154
+        },
+        {
+          "group_id": 4,
+          "rows": [
+            8,
+            9
+          ],
+          "seed": 1907,
+          "conditions_identical": true,
+          "latest_observations_identical": true,
+          "history_changed_same_seed_trajectory_rms_m": 0.007483539637178183,
+          "final_canonical_goal_axis_progress_m": [
+            1.897951364517212,
+            1.890014886856079
+          ],
+          "teacher_final_canonical_goal_axis_progress_m": [
+            0.0,
+            1.9915876388549805
+          ],
+          "mean_context_pair_rms": 0.02133139781653881,
+          "null_context_pair_rms": 0.015613973140716553
+        }
+      ],
+      "runtime_description": {
+        "schema": "hnuter_temporal_bspline_dit_v1",
+        "architecture": {
+          "dimension": 128,
+          "depth": 4,
+          "heads": 4,
+          "history_depth": 2
+        },
+        "history_mode": "temporal",
+        "training_step": 2000,
+        "training_state": "trained",
+        "source_dataset": {
+          "schema": "hnuter_temporal_rays_v1",
+          "status": "frozen",
+          "dataset_file": "dataset.npz",
+          "dataset_sha256": "548ba16e446391e800e1081825b714b84448af6683ad71022cc0fde551a8aa35",
+          "samples": 192,
+          "independent_groups": 96,
+          "episodes": 192,
+          "requested_groups": 96,
+          "seed": 107,
+          "windows_per_episode": 1,
+          "workers": 4,
+          "split_codes": {
+            "train": 0,
+            "validation": 1,
+            "test": 2
+          },
+          "split_samples": {
+            "train": 128,
+            "validation": 32,
+            "test": 32
+          },
+          "student_allowlist": [
+            "history_tokens",
+            "history_mask",
+            "history_times",
+            "condition"
+          ],
+          "training_allowlist": [
+            "history_tokens",
+            "history_mask",
+            "history_times",
+            "condition",
+            "positions",
+            "future_times",
+            "episode_id",
+            "group_id",
+            "split",
+            "sample_id"
+          ],
+          "teacher_future_fields": "gt_* and teacher_*: evaluator/label audit only, forbidden model inputs",
+          "target_semantics": "physically_validated_teacher_reference",
+          "data_time_semantics": "fixed physical future times from latest history anchor; positions are the reference commands of the accepted native teacher rollout; teacher_actual_positions stores executed physical positions separately; no arc-length resampling, no terminal goal clamp",
+          "stationary_start_only": true,
+          "maximum_start_speed_mps": 0.03,
+          "limits": {
+            "reference_speed_mps": 0.5,
+            "reference_acceleration_mps2": 0.6
+          },
+          "sensor": {
+            "rays_per_frame": 20000,
+            "history_rate_hz": 5.0,
+            "observation_backend": "MuJoCo mj_multiRay against actual geoms",
+            "direction_pattern": "MID360 envelope approximation, not Livox timing or optics",
+            "no_return": "NaN/unknown"
+          },
+          "teacher_family": "constant_velocity_crossing_wait_go",
+          "quality_gates": {
+            "no_native_contact": true,
+            "native_dt_s": 0.001,
+            "final_goal_m": 0.2,
+            "final_speed_mps": 0.1,
+            "tracking_max_m": 0.12,
+            "actual_max_speed_mps": 0.5
+          },
+          "source_sha256": {
+            "/tmp/hnuter-dit-geometry-20261004/hnuter_dit/temporal_data.py": "4df1dbfa546c7a94382da368a1539b69788d65008f9c504aee0be2383557e0d9",
+            "/tmp/hnuter-dit-geometry-20261004/hnuter_dit/temporal_observations.py": "7a259a170f30ac58a00fe243711ba4e3f5113a01aa2cc891a07ecaad70ac0fce",
+            "/home/z017/research/isaacsim-industrial-reactor/tests/reference/hnuter_control.py": "6b56d4ca7c9a0403a5eca68edb50fb932e26add990b110f3f563747f96c23001",
+            "/home/z017/research/isaacsim-industrial-reactor/robots/hnuter/source/hnuter.xml": "99f616758a3e6596b72db64eb8ee061bf7c92fb430b6aaa7ea81b92c59ecf8db"
+          },
+          "source_snapshots": {
+            "/tmp/hnuter-dit-geometry-20261004/hnuter_dit/temporal_data.py": "source_snapshot/temporal_data.py",
+            "/tmp/hnuter-dit-geometry-20261004/hnuter_dit/temporal_observations.py": "source_snapshot/temporal_observations.py",
+            "/home/z017/research/isaacsim-industrial-reactor/tests/reference/hnuter_control.py": "source_snapshot/hnuter_control.py",
+            "/home/z017/research/isaacsim-industrial-reactor/robots/hnuter/source/hnuter.xml": "source_snapshot/hnuter.xml"
+          },
+          "wall_seconds": 166.22014228199987,
+          "accepted_pairs_with_different_wait": 96,
+          "failures_preserved_in": "collection_audit.json",
+          "root": "/tmp/hnuter-dit-geometry-20261004/results/geometry_pilot/collection96_seed107",
+          "max_training_start_speed_mps": 0.010090433061122894
+        },
+        "normalization": {
+          "control_mean": [
+            0.5699604257499318,
+            -3.6641052154776487e-05,
+            0.002094315776744761
+          ],
+          "control_std": [
+            0.7527995535505075,
+            0.05,
+            0.05
+          ],
+          "condition_mean": [
+            1.9530848115682602,
+            -8.979020950529052e-18,
+            0.0070055341348052025,
+            0.001267751995328581,
+            0.00526458261811058,
+            -0.006557815708220005,
+            0.5297785784568987,
+            -0.4666436014158535,
+            -0.01838020421564579,
+            0.4667139205375861,
+            0.5298752518901892,
+            -0.0008576759719289839
+          ],
+          "condition_std": [
+            0.08731498743681441,
+            0.05,
+            0.05,
+            0.05,
+            0.05,
+            0.05,
+            0.5004013269721267,
+            0.5008383861023565,
+            0.05,
+            0.50093071581853,
+            0.5004777909403783,
+            0.05
+          ],
+          "environment_mean": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "environment_std": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "fit_split": "train",
+          "train_row_count": 128,
+          "train_indices_sha256": "2a3e97130cab8aa70b45163bc90c921f8337900420f58997cff8ddc630081036"
+        },
+        "input_representation": "point",
+        "geometry_config": {
+          "input_representation": "point",
+          "schema": "canonical_measured_point_history4x512_v1",
+          "tokens_shape": [
+            4,
+            512,
+            3
+          ],
+          "mask_shape": [
+            4,
+            512
+          ],
+          "tokens_dtype": "float32",
+          "roi_radius_m": 8.0,
+          "coordinate_frame": "one current measured body origin and goal-yaw frame",
+          "history_times": [
+            -0.6,
+            -0.4,
+            -0.2,
+            0.0
+          ],
+          "causal": true,
+          "algorithm": "lexicographic unique measured endpoints, evenly spaced rank subsampling",
+          "max_points": 512,
+          "missing_returns": "unknown, mask false",
+          "spatial_pool": "4x4x4 learned PointNet max pools, with xyz features",
+          "configuration_sha256": "c42d956ee6c5df8c0180b853e416bd41e855eda4b78f47bfc36e84f3fe9b39a6"
+        },
+        "preprocessing_sha256": "c42d956ee6c5df8c0180b853e416bd41e855eda4b78f47bfc36e84f3fe9b39a6",
+        "input_spec": {
+          "input_representation": "point",
+          "schema": "canonical_measured_point_history4x512_v1",
+          "tokens_shape": [
+            4,
+            512,
+            3
+          ],
+          "mask_shape": [
+            4,
+            512
+          ],
+          "tokens_dtype": "float32"
+        },
+        "training_budget": {
+          "history_mode": "temporal",
+          "input_representation": "point",
+          "optimizer": "AdamW",
+          "weight_decay": 0.01,
+          "gradient_clip_norm": 1.0,
+          "steps": 2000,
+          "batch_size": 32,
+          "learning_rate": 0.0002,
+          "seed": 7,
+          "validation_interval": 100,
+          "sampling_steps": 20,
+          "ema_decay": 0.99,
+          "position_weight": 0.2,
+          "velocity_weight": 0.02,
+          "acceleration_weight": 0.002
+        },
+        "checkpoint_sha256": "98ff3a4d9926a807a469b7663ee8f4a65aea883b000d305ec8e127ba1602bee9",
+        "checkpoint_path": "/tmp/hnuter-dit-geometry-20261004/results/geometry_pilot/point_s7_2000/last.pt",
+        "future_times": [
+          0.0,
+          0.125,
+          0.25,
+          0.375,
+          0.5,
+          0.625,
+          0.75,
+          0.875,
+          1.0,
+          1.125,
+          1.25,
+          1.375,
+          1.5,
+          1.625,
+          1.75,
+          1.875,
+          2.0,
+          2.125,
+          2.25,
+          2.375,
+          2.5,
+          2.625,
+          2.75,
+          2.875,
+          3.0,
+          3.125,
+          3.25,
+          3.375,
+          3.5,
+          3.625,
+          3.75,
+          3.875,
+          4.0,
+          4.125,
+          4.25,
+          4.375,
+          4.5,
+          4.625,
+          4.75,
+          4.875,
+          5.0,
+          5.125,
+          5.25,
+          5.375,
+          5.5,
+          5.625,
+          5.75,
+          5.875,
+          6.0,
+          6.125,
+          6.25,
+          6.375,
+          6.5,
+          6.625,
+          6.75,
+          6.875,
+          7.0,
+          7.125,
+          7.25,
+          7.375,
+          7.5,
+          7.625,
+          7.75,
+          7.875,
+          8.0
+        ],
+        "history_times": [
+          -0.6,
+          -0.4,
+          -0.2,
+          0.0
+        ],
+        "start_velocity_support": {
+          "representation": "Exact initial derivative; this alone is not evidence of moving-start training.",
+          "training": "stationary anchors only",
+          "max_training_start_speed_mps": 0.010090433061122894
+        },
+        "position_only": true,
+        "no_retiming": true,
+        "control_points": 16,
+        "spline_degree": 3,
+        "parameter_count": 1821187,
+        "encoder_parameter_count": 9088,
+        "torch_version": "2.13.0+cu130",
+        "device": "cpu",
+        "startup_warmup_seconds": 0.0
+      }
+    }
+  },
+  "facts": [
+    "Both checkpoints changed finite trainable weights; point encoder, history blocks and output have finite nonzero gradients on the fixed training probe.",
+    "Point training v-loss falls but sampled validation position RMSE remains high under the recorded fixed training budget.",
+    "On these four training pairs with identical current conditions/latest scan, point last.pt is far less sensitive to changed histories than box last.pt."
+  ],
+  "interpretation": [
+    "The observed failure includes training samples; it cannot be described solely as held-out generalization failure.",
+    "512-point rank sampling and 4m local max pooling plausibly weaken small obstacle motion amid walls/ground, while /8m scaling makes displacement features small.",
+    "This is an architectural/optimization bottleneck hypothesis, not a controlled causal ablation proving max pooling is responsible."
+  ],
+  "limitations": [
+    "Four deterministic training groups are diagnostic examples, not unbiased task-success estimates.",
+    "The gradient probe is one loss draw at the final EMA checkpoint; it does not reconstruct every actual optimizer step.",
+    "Model comparisons share head/budget but have different encoders, parameter counts, token counts and geometric normalization.",
+    "Same-seed sensitivity is not safety, collision avoidance or successful flight.",
+    "The inference concerns this lightweight point encoder and small fixed-budget curriculum; it does not establish that point-cloud diffusion architectures generally fail.",
+    "No data scaling, architecture tuning or extra training was performed after examining these results."
+  ],
+  "elapsed_seconds": 1.5338830129985581
+}

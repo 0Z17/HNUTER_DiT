@@ -1,0 +1,33 @@
+{
+  "configuration": {
+    "history_mode": "temporal",
+    "input_representation": "point",
+    "optimizer": "AdamW",
+    "weight_decay": 0.01,
+    "gradient_clip_norm": 1.0,
+    "steps": 2000,
+    "batch_size": 32,
+    "learning_rate": 0.0002,
+    "seed": 7,
+    "device": "cuda",
+    "validation_interval": 100,
+    "sampling_steps": 20,
+    "ema_decay": 0.99,
+    "position_weight": 0.2,
+    "velocity_weight": 0.02,
+    "acceleration_weight": 0.002
+  },
+  "best_validation_position_rmse_m": 0.6670251617546967,
+  "steps_completed": 2000,
+  "elapsed_seconds": 38.20331719399837,
+  "preprocessing_seconds": 2.150312441001006,
+  "initial_weights_sha256": "d232540e95812fe7d0aa04177c5324b5f3d69e672cf1e4f5b9021e2032b5d514",
+  "last_weights_sha256": "2f07446a5325eefd8ee09d2ad55ec1f9ceadf6fee5ba6d55b36e323a21dd1151",
+  "weights_changed": true,
+  "test_rows_used": false,
+  "checkpoint_files": {
+    "initial.pt": "df3ca155eaa15fba5e12d6035c3d56bd27f573b7f656abb304ce1c300ad31734",
+    "best.pt": "aa3955a7dd2b7c7b5af3fbd911203a35fac11f89d34925b97d78150b2f006cbd",
+    "last.pt": "98ff3a4d9926a807a469b7663ee8f4a65aea883b000d305ec8e127ba1602bee9"
+  }
+}

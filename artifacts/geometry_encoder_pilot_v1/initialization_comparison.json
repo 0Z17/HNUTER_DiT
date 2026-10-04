@@ -1,0 +1,35 @@
+{
+  "point": {
+    "common_state_entries": 106,
+    "different_common_entries": 50,
+    "first_different_keys": [
+      "environment_mean",
+      "environment_std",
+      "age_mlp.0.weight",
+      "age_mlp.0.bias",
+      "age_mlp.2.weight",
+      "age_mlp.2.bias",
+      "history_blocks.0.self_attn.in_proj_weight",
+      "history_blocks.0.self_attn.out_proj.weight",
+      "history_blocks.0.linear1.weight",
+      "history_blocks.0.linear1.bias"
+    ]
+  },
+  "voxel": {
+    "common_state_entries": 106,
+    "different_common_entries": 50,
+    "first_different_keys": [
+      "environment_mean",
+      "environment_std",
+      "age_mlp.0.weight",
+      "age_mlp.0.bias",
+      "age_mlp.2.weight",
+      "age_mlp.2.bias",
+      "history_blocks.0.self_attn.in_proj_weight",
+      "history_blocks.0.self_attn.out_proj.weight",
+      "history_blocks.0.linear1.weight",
+      "history_blocks.0.linear1.bias"
+    ]
+  },
+  "interpretation": "Same seed and shared architecture, not identical downstream initialization: different encoder shapes consume different random draws. Single-training-seed pilot, not a conclusive causal ranking."
+}

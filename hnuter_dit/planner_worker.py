@@ -52,6 +52,7 @@ def run(directory):
                         history = {name: request[name].copy() for name in
                                    ('history_tokens', 'history_mask', 'history_times', 'condition')}
                         steps = int(request['steps'])
+                        input_representation = str(request['input_representation'])
                     else:
                         tokens, mask = request['tokens'].copy(), request['mask'].copy()
                         start, goal = request['start'].copy(), request['goal'].copy()
@@ -64,6 +65,8 @@ def run(directory):
                     if mode == 'temporal':
                         if kind != 'temporal':
                             raise ValueError('temporal request requires a temporal checkpoint')
+                        if input_representation != runtime.describe().get('input_representation', 'box'):
+                            raise ValueError('request geometry representation differs from checkpoint')
                         prediction = runtime.sample(**history, seed=seed, steps=steps)
                         arrays = {name: np.asarray(prediction[name]) for name in
                                   ('positions', 'velocities', 'accelerations', 'future_times', 'control_points')}
