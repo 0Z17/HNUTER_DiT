@@ -1,0 +1,72 @@
+{
+  "schema": "hnuter_task_telemetry_video_v1",
+  "format": "schematic telemetry replay; no RGB rendering",
+  "fps": 10,
+  "frames": 400,
+  "duration_s": 40.0,
+  "resolution": [
+    1280,
+    720
+  ],
+  "episodes": [
+    {
+      "directory": "/tmp/task-adaptive-pilot/run_v1/collection",
+      "index": 40,
+      "method": "SDF task adapter (raw), held-out",
+      "task": "surface",
+      "acceptance": {
+        "verdict": "SOFT PASS",
+        "saved_report_passed": true,
+        "post_settle_soft_gate_passed": true,
+        "full_window_force_passed": true,
+        "strict_plane_geometry_passed": true,
+        "whole_operate_force_interval_fraction": 0.9554522273886306,
+        "full_window_force_fraction_threshold": 0.9,
+        "details": "Post-settle soft gate PASS; full-window force PASS; strict plane PASS"
+      },
+      "recorded_seconds": 20.000000000002192,
+      "evaluation_directory": "/tmp/task-adaptive-pilot/run_v1/evaluation",
+      "evaluation_method": "adapter_raw",
+      "trajectory_source": "evaluation report/trace",
+      "sensor_source": "collection NPZ contains measured initial sensing; not used as the flight trajectory",
+      "selection_scope": "fixed condition index; this example is not an aggregate success estimate",
+      "lidar_scope": "Measured MID-360 preflight scan, frozen; no in-flight LiDAR in this archive",
+      "source_sha256": {
+        "/tmp/task-adaptive-pilot/run_v1/collection/collection.json": "d4fd1df195abd8fcad2b762553d2870fa1fa8d0f374f9b6916d0ade43ce81f79",
+        "/tmp/task-adaptive-pilot/run_v1/evaluation/040_adapter_raw.json": "2c26425d9afcb473cc32cde489616c914aa4ed5c2025a3ec3d012410077c9f0f",
+        "/tmp/task-adaptive-pilot/run_v1/evaluation/040_adapter_raw_trace.json": "f5207f2c57a2c1a5e3e5417a2216d72df2987afc297d404104b905af1823dd10",
+        "/tmp/task-adaptive-pilot/run_v1/collection/episode_040.npz": "e26aa3770ea702163d9bf7c743d2ca764b0f9f7465257b6d129cd59fbdd98929",
+        "/tmp/task-adaptive-pilot/run_v1/collection/report_040.json": "164cd3977fe9b346927f79968ee4672110a7c8d873c109a058548d3b22cf36f8",
+        "/tmp/task-adaptive-pilot/run_v1/evaluation/evaluation.json": "51a4e96525a68edfa1a9fddb025e6443b13c92a3fb83a84f533b1d99a1d3edce"
+      }
+    },
+    {
+      "directory": "/tmp/task-adaptive-pilot/run_v1/collection",
+      "index": 42,
+      "method": "SDF task adapter (raw), held-out",
+      "task": "inspection",
+      "acceptance": {
+        "verdict": "FAIL",
+        "saved_report_passed": false,
+        "details": "Single-target geometric visibility and dwell; flight checks are separate"
+      },
+      "recorded_seconds": 20.0,
+      "evaluation_directory": "/tmp/task-adaptive-pilot/run_v1/evaluation",
+      "evaluation_method": "adapter_raw",
+      "trajectory_source": "evaluation report/trace",
+      "sensor_source": "collection NPZ contains measured initial sensing; not used as the flight trajectory",
+      "selection_scope": "fixed condition index; this example is not an aggregate success estimate",
+      "lidar_scope": "Measured MID-360 preflight scan, frozen; no in-flight LiDAR in this archive",
+      "source_sha256": {
+        "/tmp/task-adaptive-pilot/run_v1/collection/collection.json": "d4fd1df195abd8fcad2b762553d2870fa1fa8d0f374f9b6916d0ade43ce81f79",
+        "/tmp/task-adaptive-pilot/run_v1/evaluation/042_adapter_raw.json": "28368a8d289d9ba28ccb3a05363eafc390eb324f1d067ab64f255a3e79c7dcfb",
+        "/tmp/task-adaptive-pilot/run_v1/evaluation/042_adapter_raw_trace.json": "0600cf4f7e89e13d3571845e478257306635085fe3392ff9695cd6a0fc728d5d",
+        "/tmp/task-adaptive-pilot/run_v1/collection/episode_042.npz": "388e97e1a0f2a075002fd81966237c9ab9a99e862524107e09a936572aa4f378",
+        "/tmp/task-adaptive-pilot/run_v1/collection/report_042.json": "50363cf25cf57854106b5c7e690bd5d136ee870ff4ff2bad9e44f9dabf9c7d10",
+        "/tmp/task-adaptive-pilot/run_v1/evaluation/evaluation.json": "51a4e96525a68edfa1a9fddb025e6443b13c92a3fb83a84f533b1d99a1d3edce"
+      }
+    }
+  ],
+  "poster": "/tmp/task-adaptive-pilot/run_v1/export_final/task_learned_pilot.poster.png",
+  "video_sha256": "3caeefb419b8a0f80b1e0f1beac2f03c982df1aa2195c1139446dcf727a033c9"
+}

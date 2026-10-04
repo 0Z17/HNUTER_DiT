@@ -1,0 +1,173 @@
+{
+  "task": "inspection",
+  "seed": 41,
+  "steps": 1500,
+  "log": [
+    {
+      "step": 250,
+      "loss": 111.66974639892578,
+      "velocity_loss": 111.35076141357422,
+      "raw_geometry_loss": 0.23109827935695648,
+      "raw_imitation_loss": 0.17576132714748383,
+      "validation_raw_control_mse": 0.498516708612442,
+      "elapsed_seconds": 3.1045156799955294
+    },
+    {
+      "step": 500,
+      "loss": 156.21429443359375,
+      "velocity_loss": 155.72195434570312,
+      "raw_geometry_loss": 0.36257708072662354,
+      "raw_imitation_loss": 0.2595106363296509,
+      "validation_raw_control_mse": 0.5083701610565186,
+      "elapsed_seconds": 6.055229381992831
+    },
+    {
+      "step": 750,
+      "loss": 112.29696655273438,
+      "velocity_loss": 111.9493637084961,
+      "raw_geometry_loss": 0.25387877225875854,
+      "raw_imitation_loss": 0.18745718896389008,
+      "validation_raw_control_mse": 0.50718754529953,
+      "elapsed_seconds": 8.983835569000803
+    },
+    {
+      "step": 1000,
+      "loss": 106.86808013916016,
+      "velocity_loss": 106.55130004882812,
+      "raw_geometry_loss": 0.23197519779205322,
+      "raw_imitation_loss": 0.16962017118930817,
+      "validation_raw_control_mse": 0.5083454251289368,
+      "elapsed_seconds": 11.936347540991846
+    },
+    {
+      "step": 1250,
+      "loss": 129.8022003173828,
+      "velocity_loss": 129.36167907714844,
+      "raw_geometry_loss": 0.33109724521636963,
+      "raw_imitation_loss": 0.21885466575622559,
+      "validation_raw_control_mse": 0.5081812739372253,
+      "elapsed_seconds": 14.878819398989435
+    },
+    {
+      "step": 1500,
+      "loss": 61.79515838623047,
+      "velocity_loss": 61.6279182434082,
+      "raw_geometry_loss": 0.12039095163345337,
+      "raw_imitation_loss": 0.09369800239801407,
+      "validation_raw_control_mse": 0.4980613887310028,
+      "elapsed_seconds": 17.799543285000254
+    }
+  ],
+  "train_dataset_ids": [
+    2,
+    3,
+    6,
+    7,
+    10,
+    11,
+    14,
+    15,
+    18,
+    19,
+    22,
+    23,
+    26,
+    27,
+    30,
+    31
+  ],
+  "validation_dataset_ids": [
+    34,
+    35,
+    38,
+    39
+  ],
+  "used_episode_ids": [
+    2,
+    3,
+    6,
+    7,
+    10,
+    11,
+    14,
+    15,
+    18,
+    19,
+    22,
+    23,
+    26,
+    27,
+    30,
+    31,
+    34,
+    35,
+    38,
+    39
+  ],
+  "used_layout_ids": [
+    0,
+    0,
+    1,
+    1,
+    2,
+    2,
+    3,
+    3,
+    4,
+    4,
+    5,
+    5,
+    6,
+    6,
+    7,
+    7,
+    8,
+    8,
+    9,
+    9
+  ],
+  "test_excluded": true,
+  "base_sha256": "6e0da29b562b433bc1813b2f632cdd1f0a420705b003767ae32ce31e94745192",
+  "frozen_base_bitwise_unchanged": true,
+  "frozen_normalization_bitwise_unchanged": true,
+  "base_parameter_gradients_absent": true,
+  "configuration": {
+    "schema": "frozen_sdf_task_residual_v1",
+    "base_architecture": {
+      "dimension": 128,
+      "depth": 4,
+      "heads": 4
+    },
+    "task_dim": 24,
+    "task_tokens": 3,
+    "injection_blocks": [
+      0,
+      2,
+      3
+    ],
+    "injection": "after each selected base block",
+    "bottleneck": 32,
+    "output_residual": false,
+    "output_residual_design": "zero-initialized normalized-velocity residual from final hidden + mean task tokens; bypasses frozen LayerNorm/readout capacity; new SDF-pilot extension, not canonical paper block-only",
+    "output_residual_phase": "same soft control-support mask as hidden residuals",
+    "default_phase": [
+      0.3499999940395355,
+      0.8500000238418579,
+      1.0,
+      1.0,
+      0.8500000238418579,
+      0.3499999940395355
+    ],
+    "phase_semantics": "soft control-support mask; not exact output localization",
+    "parameter_count": 327392,
+    "base_parameter_count": 1679430,
+    "frozen_base": true,
+    "frozen_normalization": true,
+    "output": "raw six free pose controls",
+    "projection": false
+  },
+  "checkpoint_selection": "lowest validation raw-control MSE",
+  "losses": "velocity MSE + raw preprojection task geometry + 0.5 raw physical-control imitation MSE",
+  "decoder_used_during_training": false,
+  "source_dataset_sha256": "185a0eefa93e1d72f21270c21b818fdf8b1de864bd30232d3bcccbb55dcca190"
+}

@@ -1,0 +1,43 @@
+{
+  "passed": true,
+  "decode_exit_code": 0,
+  "decoded_frames": 400,
+  "duration_s": 40.0,
+  "resolution": [
+    1280,
+    720
+  ],
+  "fps": 10,
+  "video_sha256": "005a8148959f4c854433384b7dcef95f00b1ebcbb974c2dbbb71e0101a3a9879",
+  "source_hashes_unchanged": true,
+  "old_export_preserved": true,
+  "poster_plot_pixels_below_header_unchanged": true,
+  "posters_visually_checked": [
+    "task_expert_pilot.surface.png",
+    "task_expert_pilot.inspection.png"
+  ],
+  "acceptance": [
+    {
+      "verdict": "PARTIAL",
+      "saved_report_passed": true,
+      "post_settle_soft_gate_passed": true,
+      "full_window_force_passed": false,
+      "strict_plane_geometry_passed": false,
+      "whole_operate_force_interval_fraction": 0.8365081745912705,
+      "full_window_force_fraction_threshold": 0.9,
+      "details": "Post-settle soft gate PASS; full-window force FAIL; strict plane FAIL"
+    },
+    {
+      "verdict": "PASS",
+      "saved_report_passed": true,
+      "details": "Single-target geometric visibility and dwell; flight checks are separate"
+    }
+  ],
+  "scope": "Expert held-out ceiling, episodes 040 and 042 selected by index; schematic telemetry replay, not RGB or learned model execution",
+  "limitations": [
+    "preflight measured MID360 frozen; no in-flight LiDAR",
+    "soft-contact model uncalibrated",
+    "Surface post-settle relaxed gate passes, whole operating-window force and strict geometry fail",
+    "inspection is single-point geometry and actual first-hit visibility, not image recognition"
+  ]
+}

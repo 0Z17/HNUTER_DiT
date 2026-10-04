@@ -1,0 +1,58 @@
+{
+  "schema": "hnuter_task_telemetry_video_v1",
+  "format": "schematic telemetry replay; no RGB rendering",
+  "fps": 10,
+  "frames": 400,
+  "duration_s": 40.0,
+  "resolution": [
+    1280,
+    720
+  ],
+  "episodes": [
+    {
+      "directory": "/tmp/task-adaptive-pilot/run_v1/collection",
+      "index": 40,
+      "method": "Expert (held-out ceiling)",
+      "task": "surface",
+      "acceptance": {
+        "verdict": "PARTIAL",
+        "saved_report_passed": true,
+        "post_settle_soft_gate_passed": true,
+        "full_window_force_passed": false,
+        "strict_plane_geometry_passed": false,
+        "whole_operate_force_interval_fraction": 0.8365081745912705,
+        "full_window_force_fraction_threshold": 0.9,
+        "details": "Post-settle soft gate PASS; full-window force FAIL; strict plane FAIL"
+      },
+      "recorded_seconds": 20.000000000002192,
+      "lidar_scope": "Measured MID-360 preflight scan, frozen; no in-flight LiDAR in this archive",
+      "source_sha256": {
+        "/tmp/task-adaptive-pilot/run_v1/collection/collection.json": "d4fd1df195abd8fcad2b762553d2870fa1fa8d0f374f9b6916d0ade43ce81f79",
+        "/tmp/task-adaptive-pilot/run_v1/collection/report_040.json": "164cd3977fe9b346927f79968ee4672110a7c8d873c109a058548d3b22cf36f8",
+        "/tmp/task-adaptive-pilot/run_v1/collection/trace_040.json": "0196dcadc40af05c74650d1a99cb0fda1c3c63c3a3c24177afa29bc011379feb",
+        "/tmp/task-adaptive-pilot/run_v1/collection/episode_040.npz": "e26aa3770ea702163d9bf7c743d2ca764b0f9f7465257b6d129cd59fbdd98929"
+      }
+    },
+    {
+      "directory": "/tmp/task-adaptive-pilot/run_v1/collection",
+      "index": 42,
+      "method": "Expert (held-out ceiling)",
+      "task": "inspection",
+      "acceptance": {
+        "verdict": "PASS",
+        "saved_report_passed": true,
+        "details": "Single-target geometric visibility and dwell; flight checks are separate"
+      },
+      "recorded_seconds": 20.0,
+      "lidar_scope": "Measured MID-360 preflight scan, frozen; no in-flight LiDAR in this archive",
+      "source_sha256": {
+        "/tmp/task-adaptive-pilot/run_v1/collection/collection.json": "d4fd1df195abd8fcad2b762553d2870fa1fa8d0f374f9b6916d0ade43ce81f79",
+        "/tmp/task-adaptive-pilot/run_v1/collection/report_042.json": "50363cf25cf57854106b5c7e690bd5d136ee870ff4ff2bad9e44f9dabf9c7d10",
+        "/tmp/task-adaptive-pilot/run_v1/collection/trace_042.json": "5da063d7511410fe13d36aac9f341fbcb9065a1ab14538460461969743f44dd5",
+        "/tmp/task-adaptive-pilot/run_v1/collection/episode_042.npz": "388e97e1a0f2a075002fd81966237c9ab9a99e862524107e09a936572aa4f378"
+      }
+    }
+  ],
+  "poster": "/tmp/task-adaptive-pilot/run_v1/export_final/task_expert_pilot.poster.png",
+  "video_sha256": "005a8148959f4c854433384b7dcef95f00b1ebcbb974c2dbbb71e0101a3a9879"
+}

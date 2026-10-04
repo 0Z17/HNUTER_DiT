@@ -1,0 +1,221 @@
+{
+  "scope": "Additional sweep-progress audit fixed before learned held-out execution; original records preserved",
+  "rows": [
+    {
+      "index": 0,
+      "progress_m": 2.1300693737561742,
+      "minimum_m": 1.7058844377964082,
+      "progress_passed": true,
+      "original_soft_contact_passed": false,
+      "strict_actual_geometry_passed": false,
+      "whole_operate_force_passed": false
+    },
+    {
+      "index": 1,
+      "progress_m": 2.1300790905424374,
+      "minimum_m": 1.7058844377964082,
+      "progress_passed": true,
+      "original_soft_contact_passed": false,
+      "strict_actual_geometry_passed": false,
+      "whole_operate_force_passed": false
+    },
+    {
+      "index": 4,
+      "progress_m": 2.2379545996600445,
+      "minimum_m": 1.7918054618711101,
+      "progress_passed": true,
+      "original_soft_contact_passed": true,
+      "strict_actual_geometry_passed": false,
+      "whole_operate_force_passed": false
+    },
+    {
+      "index": 5,
+      "progress_m": 2.237984891113408,
+      "minimum_m": 1.7918054618711101,
+      "progress_passed": true,
+      "original_soft_contact_passed": true,
+      "strict_actual_geometry_passed": false,
+      "whole_operate_force_passed": false
+    },
+    {
+      "index": 8,
+      "progress_m": 2.1445347541551874,
+      "minimum_m": 1.717230291976041,
+      "progress_passed": true,
+      "original_soft_contact_passed": false,
+      "strict_actual_geometry_passed": false,
+      "whole_operate_force_passed": false
+    },
+    {
+      "index": 9,
+      "progress_m": 2.144258015482189,
+      "minimum_m": 1.717230291976041,
+      "progress_passed": true,
+      "original_soft_contact_passed": false,
+      "strict_actual_geometry_passed": false,
+      "whole_operate_force_passed": false
+    },
+    {
+      "index": 12,
+      "progress_m": 2.1590610693356425,
+      "minimum_m": 1.7287293930722347,
+      "progress_passed": true,
+      "original_soft_contact_passed": true,
+      "strict_actual_geometry_passed": false,
+      "whole_operate_force_passed": false
+    },
+    {
+      "index": 13,
+      "progress_m": 2.1590299492831537,
+      "minimum_m": 1.7287293930722347,
+      "progress_passed": true,
+      "original_soft_contact_passed": true,
+      "strict_actual_geometry_passed": false,
+      "whole_operate_force_passed": false
+    },
+    {
+      "index": 16,
+      "progress_m": 2.207598892828441,
+      "minimum_m": 1.767525990063913,
+      "progress_passed": true,
+      "original_soft_contact_passed": true,
+      "strict_actual_geometry_passed": false,
+      "whole_operate_force_passed": false
+    },
+    {
+      "index": 17,
+      "progress_m": 2.2076157018921587,
+      "minimum_m": 1.767525990063913,
+      "progress_passed": true,
+      "original_soft_contact_passed": true,
+      "strict_actual_geometry_passed": false,
+      "whole_operate_force_passed": false
+    },
+    {
+      "index": 20,
+      "progress_m": 2.208757849182941,
+      "minimum_m": 1.7684157369618037,
+      "progress_passed": true,
+      "original_soft_contact_passed": true,
+      "strict_actual_geometry_passed": false,
+      "whole_operate_force_passed": false
+    },
+    {
+      "index": 21,
+      "progress_m": 2.2087698752960216,
+      "minimum_m": 1.7684157369618037,
+      "progress_passed": true,
+      "original_soft_contact_passed": true,
+      "strict_actual_geometry_passed": false,
+      "whole_operate_force_passed": false
+    },
+    {
+      "index": 24,
+      "progress_m": 2.193493675231118,
+      "minimum_m": 1.7562415257537705,
+      "progress_passed": true,
+      "original_soft_contact_passed": true,
+      "strict_actual_geometry_passed": false,
+      "whole_operate_force_passed": false
+    },
+    {
+      "index": 25,
+      "progress_m": 2.1935041037868284,
+      "minimum_m": 1.7562415257537705,
+      "progress_passed": true,
+      "original_soft_contact_passed": true,
+      "strict_actual_geometry_passed": false,
+      "whole_operate_force_passed": false
+    },
+    {
+      "index": 28,
+      "progress_m": 2.1353820232781455,
+      "minimum_m": 1.710160325486446,
+      "progress_passed": true,
+      "original_soft_contact_passed": false,
+      "strict_actual_geometry_passed": false,
+      "whole_operate_force_passed": false
+    },
+    {
+      "index": 29,
+      "progress_m": 2.135389399477775,
+      "minimum_m": 1.710160325486446,
+      "progress_passed": true,
+      "original_soft_contact_passed": false,
+      "strict_actual_geometry_passed": false,
+      "whole_operate_force_passed": false
+    },
+    {
+      "index": 32,
+      "progress_m": 2.205570013198307,
+      "minimum_m": 1.7658633898941725,
+      "progress_passed": true,
+      "original_soft_contact_passed": true,
+      "strict_actual_geometry_passed": false,
+      "whole_operate_force_passed": false
+    },
+    {
+      "index": 33,
+      "progress_m": 2.205584312417538,
+      "minimum_m": 1.7658633898941725,
+      "progress_passed": true,
+      "original_soft_contact_passed": true,
+      "strict_actual_geometry_passed": false,
+      "whole_operate_force_passed": false
+    },
+    {
+      "index": 36,
+      "progress_m": 2.1491115814255806,
+      "minimum_m": 1.7211243139784564,
+      "progress_passed": true,
+      "original_soft_contact_passed": true,
+      "strict_actual_geometry_passed": false,
+      "whole_operate_force_passed": false
+    },
+    {
+      "index": 37,
+      "progress_m": 2.1490944775290517,
+      "minimum_m": 1.7211243139784564,
+      "progress_passed": true,
+      "original_soft_contact_passed": true,
+      "strict_actual_geometry_passed": false,
+      "whole_operate_force_passed": false
+    },
+    {
+      "index": 40,
+      "progress_m": 2.2168082460619773,
+      "minimum_m": 1.7749063658676087,
+      "progress_passed": true,
+      "original_soft_contact_passed": true,
+      "strict_actual_geometry_passed": false,
+      "whole_operate_force_passed": false
+    },
+    {
+      "index": 41,
+      "progress_m": 2.216820486950405,
+      "minimum_m": 1.7749063658676087,
+      "progress_passed": true,
+      "original_soft_contact_passed": true,
+      "strict_actual_geometry_passed": false,
+      "whole_operate_force_passed": false
+    },
+    {
+      "index": 44,
+      "progress_m": 2.157118055235591,
+      "minimum_m": 1.7272462081223097,
+      "progress_passed": true,
+      "original_soft_contact_passed": true,
+      "strict_actual_geometry_passed": false,
+      "whole_operate_force_passed": false
+    },
+    {
+      "index": 45,
+      "progress_m": 2.1569831153553842,
+      "minimum_m": 1.7272462081223097,
+      "progress_passed": true,
+      "original_soft_contact_passed": true,
+      "strict_actual_geometry_passed": false,
+      "whole_operate_force_passed": false
+    }
+  ]
+}

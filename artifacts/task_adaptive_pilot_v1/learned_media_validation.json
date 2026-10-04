@@ -1,0 +1,43 @@
+{
+  "passed": true,
+  "decode_exit_code": 0,
+  "decoded_frames": 400,
+  "duration_s": 40.0,
+  "resolution": [
+    1280,
+    720
+  ],
+  "fps": 10,
+  "video_sha256": "3caeefb419b8a0f80b1e0f1beac2f03c982df1aa2195c1139446dcf727a033c9",
+  "source_hashes_unchanged": true,
+  "expert_export_preserved": true,
+  "renderer_source_sha256": "bf4bb07be6429f1087272ab8760d97cd7a9c7328c6120e00dbe0cfce6af4fa6c",
+  "posters_visually_checked": [
+    "task_learned_pilot.surface.png",
+    "task_learned_pilot.inspection.png"
+  ],
+  "acceptance": [
+    {
+      "verdict": "SOFT PASS",
+      "saved_report_passed": true,
+      "post_settle_soft_gate_passed": true,
+      "full_window_force_passed": true,
+      "strict_plane_geometry_passed": true,
+      "whole_operate_force_interval_fraction": 0.9554522273886306,
+      "full_window_force_fraction_threshold": 0.9,
+      "details": "Post-settle soft gate PASS; full-window force PASS; strict plane PASS"
+    },
+    {
+      "verdict": "FAIL",
+      "saved_report_passed": false,
+      "details": "Single-target geometric visibility and dwell; flight checks are separate"
+    }
+  ],
+  "scope": "Raw SDF task adapter, fixed held-out episodes 040 and 042; actual evaluation traces, not collected expert trajectories; individual examples do not assert aggregate test success",
+  "limitations": [
+    "schematic telemetry replay, no RGB camera images",
+    "measured preflight MID360 frozen; no in-flight LiDAR",
+    "soft-contact model uncalibrated",
+    "inspection first-hit geometry is not image recognition"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "surface": {
+    "run": "surface",
+    "criterion": "minimum raw-control validation MSE; held-out tasks not yet predicted",
+    "minimum_validation_mse": 0.0011392275337129831,
+    "checkpoint_sha256": "397a123630d5d4977ca5f8faa26344f5f14aa56f7287840dfc5c47f08d245680"
+  },
+  "inspection": {
+    "run": "inspection_position_weight20",
+    "criterion": "minimum raw-control validation MSE; held-out tasks not yet predicted",
+    "minimum_validation_mse": 0.10120131820440292,
+    "checkpoint_sha256": "db03f4d281a122451a4d86d96814b903f240e84707a648b5072def0b41b896e3"
+  }
+}

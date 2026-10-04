@@ -1,0 +1,7457 @@
+{
+  "schema": "task_pilot_predictions_v1",
+  "rows": [
+    {
+      "index": 40,
+      "config": {
+        "schema": "hnuter_task_adaptive_pilot_v1",
+        "index": 40,
+        "layout": 10,
+        "seed": 20261004,
+        "task": "surface",
+        "split": 2,
+        "origin": [
+          0.0,
+          0.0,
+          2.8
+        ],
+        "goal": [
+          4.437265914669021,
+          0.0,
+          2.8
+        ],
+        "goal_euler": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "pad_center": [
+          2.2186329573345107,
+          0.0,
+          1.75
+        ],
+        "pad_half_extents": [
+          3.0,
+          1.5,
+          0.05
+        ],
+        "keepout_in_pad_xy": [
+          -0.5,
+          0.5,
+          -0.2,
+          1.5
+        ],
+        "keepout_margin_m": 0.04,
+        "inspection_target": null,
+        "inspection_range": [
+          1.7,
+          2.5
+        ],
+        "inspection_angle_max_deg": 10.0,
+        "target_radius": 0.05,
+        "expert_direction": -1,
+        "expert_amplitude_m": 0.8427257832809698,
+        "boxes": [
+          [
+            7.0,
+            0.0,
+            2.5,
+            0.15,
+            16.0,
+            5.0
+          ],
+          [
+            1.0,
+            5.308240450347068,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            -5.308240450347068,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            0.0,
+            -0.05,
+            16.0,
+            16.0,
+            0.1
+          ],
+          [
+            0.6719368491277955,
+            -4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ],
+          [
+            2.6981984717555987,
+            4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ]
+        ],
+        "tool_mass_kg": 0.02,
+        "duration_s": 20.0,
+        "operate_interval": [
+          6.666666666666667,
+          13.333333333333334
+        ]
+      },
+      "method": "linear_decoded",
+      "prediction": "040_linear_decoded.npz",
+      "seed": 23,
+      "base_denoising_seconds": 0.3494499500084203,
+      "adapter_denoising_seconds": 0.054670920988428406,
+      "source_expert_accepted": true
+    },
+    {
+      "index": 40,
+      "config": {
+        "schema": "hnuter_task_adaptive_pilot_v1",
+        "index": 40,
+        "layout": 10,
+        "seed": 20261004,
+        "task": "surface",
+        "split": 2,
+        "origin": [
+          0.0,
+          0.0,
+          2.8
+        ],
+        "goal": [
+          4.437265914669021,
+          0.0,
+          2.8
+        ],
+        "goal_euler": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "pad_center": [
+          2.2186329573345107,
+          0.0,
+          1.75
+        ],
+        "pad_half_extents": [
+          3.0,
+          1.5,
+          0.05
+        ],
+        "keepout_in_pad_xy": [
+          -0.5,
+          0.5,
+          -0.2,
+          1.5
+        ],
+        "keepout_margin_m": 0.04,
+        "inspection_target": null,
+        "inspection_range": [
+          1.7,
+          2.5
+        ],
+        "inspection_angle_max_deg": 10.0,
+        "target_radius": 0.05,
+        "expert_direction": -1,
+        "expert_amplitude_m": 0.8427257832809698,
+        "boxes": [
+          [
+            7.0,
+            0.0,
+            2.5,
+            0.15,
+            16.0,
+            5.0
+          ],
+          [
+            1.0,
+            5.308240450347068,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            -5.308240450347068,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            0.0,
+            -0.05,
+            16.0,
+            16.0,
+            0.1
+          ],
+          [
+            0.6719368491277955,
+            -4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ],
+          [
+            2.6981984717555987,
+            4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ]
+        ],
+        "tool_mass_kg": 0.02,
+        "duration_s": 20.0,
+        "operate_interval": [
+          6.666666666666667,
+          13.333333333333334
+        ]
+      },
+      "method": "base_raw",
+      "prediction": "040_base_raw.npz",
+      "seed": 23,
+      "base_denoising_seconds": 0.3494499500084203,
+      "adapter_denoising_seconds": 0.054670920988428406,
+      "source_expert_accepted": true
+    },
+    {
+      "index": 40,
+      "config": {
+        "schema": "hnuter_task_adaptive_pilot_v1",
+        "index": 40,
+        "layout": 10,
+        "seed": 20261004,
+        "task": "surface",
+        "split": 2,
+        "origin": [
+          0.0,
+          0.0,
+          2.8
+        ],
+        "goal": [
+          4.437265914669021,
+          0.0,
+          2.8
+        ],
+        "goal_euler": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "pad_center": [
+          2.2186329573345107,
+          0.0,
+          1.75
+        ],
+        "pad_half_extents": [
+          3.0,
+          1.5,
+          0.05
+        ],
+        "keepout_in_pad_xy": [
+          -0.5,
+          0.5,
+          -0.2,
+          1.5
+        ],
+        "keepout_margin_m": 0.04,
+        "inspection_target": null,
+        "inspection_range": [
+          1.7,
+          2.5
+        ],
+        "inspection_angle_max_deg": 10.0,
+        "target_radius": 0.05,
+        "expert_direction": -1,
+        "expert_amplitude_m": 0.8427257832809698,
+        "boxes": [
+          [
+            7.0,
+            0.0,
+            2.5,
+            0.15,
+            16.0,
+            5.0
+          ],
+          [
+            1.0,
+            5.308240450347068,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            -5.308240450347068,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            0.0,
+            -0.05,
+            16.0,
+            16.0,
+            0.1
+          ],
+          [
+            0.6719368491277955,
+            -4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ],
+          [
+            2.6981984717555987,
+            4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ]
+        ],
+        "tool_mass_kg": 0.02,
+        "duration_s": 20.0,
+        "operate_interval": [
+          6.666666666666667,
+          13.333333333333334
+        ]
+      },
+      "method": "base_decoded",
+      "prediction": "040_base_decoded.npz",
+      "seed": 23,
+      "base_denoising_seconds": 0.3494499500084203,
+      "adapter_denoising_seconds": 0.054670920988428406,
+      "source_expert_accepted": true
+    },
+    {
+      "index": 40,
+      "config": {
+        "schema": "hnuter_task_adaptive_pilot_v1",
+        "index": 40,
+        "layout": 10,
+        "seed": 20261004,
+        "task": "surface",
+        "split": 2,
+        "origin": [
+          0.0,
+          0.0,
+          2.8
+        ],
+        "goal": [
+          4.437265914669021,
+          0.0,
+          2.8
+        ],
+        "goal_euler": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "pad_center": [
+          2.2186329573345107,
+          0.0,
+          1.75
+        ],
+        "pad_half_extents": [
+          3.0,
+          1.5,
+          0.05
+        ],
+        "keepout_in_pad_xy": [
+          -0.5,
+          0.5,
+          -0.2,
+          1.5
+        ],
+        "keepout_margin_m": 0.04,
+        "inspection_target": null,
+        "inspection_range": [
+          1.7,
+          2.5
+        ],
+        "inspection_angle_max_deg": 10.0,
+        "target_radius": 0.05,
+        "expert_direction": -1,
+        "expert_amplitude_m": 0.8427257832809698,
+        "boxes": [
+          [
+            7.0,
+            0.0,
+            2.5,
+            0.15,
+            16.0,
+            5.0
+          ],
+          [
+            1.0,
+            5.308240450347068,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            -5.308240450347068,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            0.0,
+            -0.05,
+            16.0,
+            16.0,
+            0.1
+          ],
+          [
+            0.6719368491277955,
+            -4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ],
+          [
+            2.6981984717555987,
+            4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ]
+        ],
+        "tool_mass_kg": 0.02,
+        "duration_s": 20.0,
+        "operate_interval": [
+          6.666666666666667,
+          13.333333333333334
+        ]
+      },
+      "method": "adapter_raw",
+      "prediction": "040_adapter_raw.npz",
+      "seed": 23,
+      "base_denoising_seconds": 0.3494499500084203,
+      "adapter_denoising_seconds": 0.054670920988428406,
+      "source_expert_accepted": true
+    },
+    {
+      "index": 40,
+      "config": {
+        "schema": "hnuter_task_adaptive_pilot_v1",
+        "index": 40,
+        "layout": 10,
+        "seed": 20261004,
+        "task": "surface",
+        "split": 2,
+        "origin": [
+          0.0,
+          0.0,
+          2.8
+        ],
+        "goal": [
+          4.437265914669021,
+          0.0,
+          2.8
+        ],
+        "goal_euler": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "pad_center": [
+          2.2186329573345107,
+          0.0,
+          1.75
+        ],
+        "pad_half_extents": [
+          3.0,
+          1.5,
+          0.05
+        ],
+        "keepout_in_pad_xy": [
+          -0.5,
+          0.5,
+          -0.2,
+          1.5
+        ],
+        "keepout_margin_m": 0.04,
+        "inspection_target": null,
+        "inspection_range": [
+          1.7,
+          2.5
+        ],
+        "inspection_angle_max_deg": 10.0,
+        "target_radius": 0.05,
+        "expert_direction": -1,
+        "expert_amplitude_m": 0.8427257832809698,
+        "boxes": [
+          [
+            7.0,
+            0.0,
+            2.5,
+            0.15,
+            16.0,
+            5.0
+          ],
+          [
+            1.0,
+            5.308240450347068,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            -5.308240450347068,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            0.0,
+            -0.05,
+            16.0,
+            16.0,
+            0.1
+          ],
+          [
+            0.6719368491277955,
+            -4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ],
+          [
+            2.6981984717555987,
+            4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ]
+        ],
+        "tool_mass_kg": 0.02,
+        "duration_s": 20.0,
+        "operate_interval": [
+          6.666666666666667,
+          13.333333333333334
+        ]
+      },
+      "method": "adapter_decoded",
+      "prediction": "040_adapter_decoded.npz",
+      "seed": 23,
+      "base_denoising_seconds": 0.3494499500084203,
+      "adapter_denoising_seconds": 0.054670920988428406,
+      "source_expert_accepted": true
+    },
+    {
+      "index": 40,
+      "config": {
+        "schema": "hnuter_task_adaptive_pilot_v1",
+        "index": 40,
+        "layout": 10,
+        "seed": 20261004,
+        "task": "surface",
+        "split": 2,
+        "origin": [
+          0.0,
+          0.0,
+          2.8
+        ],
+        "goal": [
+          4.437265914669021,
+          0.0,
+          2.8
+        ],
+        "goal_euler": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "pad_center": [
+          2.2186329573345107,
+          0.0,
+          1.75
+        ],
+        "pad_half_extents": [
+          3.0,
+          1.5,
+          0.05
+        ],
+        "keepout_in_pad_xy": [
+          -0.5,
+          0.5,
+          -0.2,
+          1.5
+        ],
+        "keepout_margin_m": 0.04,
+        "inspection_target": null,
+        "inspection_range": [
+          1.7,
+          2.5
+        ],
+        "inspection_angle_max_deg": 10.0,
+        "target_radius": 0.05,
+        "expert_direction": -1,
+        "expert_amplitude_m": 0.8427257832809698,
+        "boxes": [
+          [
+            7.0,
+            0.0,
+            2.5,
+            0.15,
+            16.0,
+            5.0
+          ],
+          [
+            1.0,
+            5.308240450347068,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            -5.308240450347068,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            0.0,
+            -0.05,
+            16.0,
+            16.0,
+            0.1
+          ],
+          [
+            0.6719368491277955,
+            -4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ],
+          [
+            2.6981984717555987,
+            4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ]
+        ],
+        "tool_mass_kg": 0.02,
+        "duration_s": 20.0,
+        "operate_interval": [
+          6.666666666666667,
+          13.333333333333334
+        ]
+      },
+      "method": "shuffled_raw",
+      "prediction": "040_shuffled_raw.npz",
+      "seed": 23,
+      "base_denoising_seconds": 0.3494499500084203,
+      "adapter_denoising_seconds": 0.054670920988428406,
+      "source_expert_accepted": true
+    },
+    {
+      "index": 40,
+      "config": {
+        "schema": "hnuter_task_adaptive_pilot_v1",
+        "index": 40,
+        "layout": 10,
+        "seed": 20261004,
+        "task": "surface",
+        "split": 2,
+        "origin": [
+          0.0,
+          0.0,
+          2.8
+        ],
+        "goal": [
+          4.437265914669021,
+          0.0,
+          2.8
+        ],
+        "goal_euler": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "pad_center": [
+          2.2186329573345107,
+          0.0,
+          1.75
+        ],
+        "pad_half_extents": [
+          3.0,
+          1.5,
+          0.05
+        ],
+        "keepout_in_pad_xy": [
+          -0.5,
+          0.5,
+          -0.2,
+          1.5
+        ],
+        "keepout_margin_m": 0.04,
+        "inspection_target": null,
+        "inspection_range": [
+          1.7,
+          2.5
+        ],
+        "inspection_angle_max_deg": 10.0,
+        "target_radius": 0.05,
+        "expert_direction": -1,
+        "expert_amplitude_m": 0.8427257832809698,
+        "boxes": [
+          [
+            7.0,
+            0.0,
+            2.5,
+            0.15,
+            16.0,
+            5.0
+          ],
+          [
+            1.0,
+            5.308240450347068,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            -5.308240450347068,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            0.0,
+            -0.05,
+            16.0,
+            16.0,
+            0.1
+          ],
+          [
+            0.6719368491277955,
+            -4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ],
+          [
+            2.6981984717555987,
+            4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ]
+        ],
+        "tool_mass_kg": 0.02,
+        "duration_s": 20.0,
+        "operate_interval": [
+          6.666666666666667,
+          13.333333333333334
+        ]
+      },
+      "method": "shuffled_decoded",
+      "prediction": "040_shuffled_decoded.npz",
+      "seed": 23,
+      "base_denoising_seconds": 0.3494499500084203,
+      "adapter_denoising_seconds": 0.054670920988428406,
+      "source_expert_accepted": true
+    },
+    {
+      "index": 41,
+      "config": {
+        "schema": "hnuter_task_adaptive_pilot_v1",
+        "index": 41,
+        "layout": 10,
+        "seed": 20261004,
+        "task": "surface",
+        "split": 2,
+        "origin": [
+          0.0,
+          0.0,
+          2.8
+        ],
+        "goal": [
+          4.437265914669021,
+          0.0,
+          2.8
+        ],
+        "goal_euler": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "pad_center": [
+          2.2186329573345107,
+          0.0,
+          1.75
+        ],
+        "pad_half_extents": [
+          3.0,
+          1.5,
+          0.05
+        ],
+        "keepout_in_pad_xy": [
+          -0.5,
+          0.5,
+          -1.5,
+          0.2
+        ],
+        "keepout_margin_m": 0.04,
+        "inspection_target": null,
+        "inspection_range": [
+          1.7,
+          2.5
+        ],
+        "inspection_angle_max_deg": 10.0,
+        "target_radius": 0.05,
+        "expert_direction": 1,
+        "expert_amplitude_m": 0.8427257832809698,
+        "boxes": [
+          [
+            7.0,
+            0.0,
+            2.5,
+            0.15,
+            16.0,
+            5.0
+          ],
+          [
+            1.0,
+            5.308240450347068,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            -5.308240450347068,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            0.0,
+            -0.05,
+            16.0,
+            16.0,
+            0.1
+          ],
+          [
+            0.6719368491277955,
+            -4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ],
+          [
+            2.6981984717555987,
+            4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ]
+        ],
+        "tool_mass_kg": 0.02,
+        "duration_s": 20.0,
+        "operate_interval": [
+          6.666666666666667,
+          13.333333333333334
+        ]
+      },
+      "method": "linear_decoded",
+      "prediction": "041_linear_decoded.npz",
+      "seed": 23,
+      "base_denoising_seconds": 0.03419001899601426,
+      "adapter_denoising_seconds": 0.05025757699331734,
+      "source_expert_accepted": true
+    },
+    {
+      "index": 41,
+      "config": {
+        "schema": "hnuter_task_adaptive_pilot_v1",
+        "index": 41,
+        "layout": 10,
+        "seed": 20261004,
+        "task": "surface",
+        "split": 2,
+        "origin": [
+          0.0,
+          0.0,
+          2.8
+        ],
+        "goal": [
+          4.437265914669021,
+          0.0,
+          2.8
+        ],
+        "goal_euler": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "pad_center": [
+          2.2186329573345107,
+          0.0,
+          1.75
+        ],
+        "pad_half_extents": [
+          3.0,
+          1.5,
+          0.05
+        ],
+        "keepout_in_pad_xy": [
+          -0.5,
+          0.5,
+          -1.5,
+          0.2
+        ],
+        "keepout_margin_m": 0.04,
+        "inspection_target": null,
+        "inspection_range": [
+          1.7,
+          2.5
+        ],
+        "inspection_angle_max_deg": 10.0,
+        "target_radius": 0.05,
+        "expert_direction": 1,
+        "expert_amplitude_m": 0.8427257832809698,
+        "boxes": [
+          [
+            7.0,
+            0.0,
+            2.5,
+            0.15,
+            16.0,
+            5.0
+          ],
+          [
+            1.0,
+            5.308240450347068,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            -5.308240450347068,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            0.0,
+            -0.05,
+            16.0,
+            16.0,
+            0.1
+          ],
+          [
+            0.6719368491277955,
+            -4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ],
+          [
+            2.6981984717555987,
+            4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ]
+        ],
+        "tool_mass_kg": 0.02,
+        "duration_s": 20.0,
+        "operate_interval": [
+          6.666666666666667,
+          13.333333333333334
+        ]
+      },
+      "method": "base_raw",
+      "prediction": "041_base_raw.npz",
+      "seed": 23,
+      "base_denoising_seconds": 0.03419001899601426,
+      "adapter_denoising_seconds": 0.05025757699331734,
+      "source_expert_accepted": true
+    },
+    {
+      "index": 41,
+      "config": {
+        "schema": "hnuter_task_adaptive_pilot_v1",
+        "index": 41,
+        "layout": 10,
+        "seed": 20261004,
+        "task": "surface",
+        "split": 2,
+        "origin": [
+          0.0,
+          0.0,
+          2.8
+        ],
+        "goal": [
+          4.437265914669021,
+          0.0,
+          2.8
+        ],
+        "goal_euler": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "pad_center": [
+          2.2186329573345107,
+          0.0,
+          1.75
+        ],
+        "pad_half_extents": [
+          3.0,
+          1.5,
+          0.05
+        ],
+        "keepout_in_pad_xy": [
+          -0.5,
+          0.5,
+          -1.5,
+          0.2
+        ],
+        "keepout_margin_m": 0.04,
+        "inspection_target": null,
+        "inspection_range": [
+          1.7,
+          2.5
+        ],
+        "inspection_angle_max_deg": 10.0,
+        "target_radius": 0.05,
+        "expert_direction": 1,
+        "expert_amplitude_m": 0.8427257832809698,
+        "boxes": [
+          [
+            7.0,
+            0.0,
+            2.5,
+            0.15,
+            16.0,
+            5.0
+          ],
+          [
+            1.0,
+            5.308240450347068,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            -5.308240450347068,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            0.0,
+            -0.05,
+            16.0,
+            16.0,
+            0.1
+          ],
+          [
+            0.6719368491277955,
+            -4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ],
+          [
+            2.6981984717555987,
+            4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ]
+        ],
+        "tool_mass_kg": 0.02,
+        "duration_s": 20.0,
+        "operate_interval": [
+          6.666666666666667,
+          13.333333333333334
+        ]
+      },
+      "method": "base_decoded",
+      "prediction": "041_base_decoded.npz",
+      "seed": 23,
+      "base_denoising_seconds": 0.03419001899601426,
+      "adapter_denoising_seconds": 0.05025757699331734,
+      "source_expert_accepted": true
+    },
+    {
+      "index": 41,
+      "config": {
+        "schema": "hnuter_task_adaptive_pilot_v1",
+        "index": 41,
+        "layout": 10,
+        "seed": 20261004,
+        "task": "surface",
+        "split": 2,
+        "origin": [
+          0.0,
+          0.0,
+          2.8
+        ],
+        "goal": [
+          4.437265914669021,
+          0.0,
+          2.8
+        ],
+        "goal_euler": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "pad_center": [
+          2.2186329573345107,
+          0.0,
+          1.75
+        ],
+        "pad_half_extents": [
+          3.0,
+          1.5,
+          0.05
+        ],
+        "keepout_in_pad_xy": [
+          -0.5,
+          0.5,
+          -1.5,
+          0.2
+        ],
+        "keepout_margin_m": 0.04,
+        "inspection_target": null,
+        "inspection_range": [
+          1.7,
+          2.5
+        ],
+        "inspection_angle_max_deg": 10.0,
+        "target_radius": 0.05,
+        "expert_direction": 1,
+        "expert_amplitude_m": 0.8427257832809698,
+        "boxes": [
+          [
+            7.0,
+            0.0,
+            2.5,
+            0.15,
+            16.0,
+            5.0
+          ],
+          [
+            1.0,
+            5.308240450347068,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            -5.308240450347068,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            0.0,
+            -0.05,
+            16.0,
+            16.0,
+            0.1
+          ],
+          [
+            0.6719368491277955,
+            -4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ],
+          [
+            2.6981984717555987,
+            4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ]
+        ],
+        "tool_mass_kg": 0.02,
+        "duration_s": 20.0,
+        "operate_interval": [
+          6.666666666666667,
+          13.333333333333334
+        ]
+      },
+      "method": "adapter_raw",
+      "prediction": "041_adapter_raw.npz",
+      "seed": 23,
+      "base_denoising_seconds": 0.03419001899601426,
+      "adapter_denoising_seconds": 0.05025757699331734,
+      "source_expert_accepted": true
+    },
+    {
+      "index": 41,
+      "config": {
+        "schema": "hnuter_task_adaptive_pilot_v1",
+        "index": 41,
+        "layout": 10,
+        "seed": 20261004,
+        "task": "surface",
+        "split": 2,
+        "origin": [
+          0.0,
+          0.0,
+          2.8
+        ],
+        "goal": [
+          4.437265914669021,
+          0.0,
+          2.8
+        ],
+        "goal_euler": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "pad_center": [
+          2.2186329573345107,
+          0.0,
+          1.75
+        ],
+        "pad_half_extents": [
+          3.0,
+          1.5,
+          0.05
+        ],
+        "keepout_in_pad_xy": [
+          -0.5,
+          0.5,
+          -1.5,
+          0.2
+        ],
+        "keepout_margin_m": 0.04,
+        "inspection_target": null,
+        "inspection_range": [
+          1.7,
+          2.5
+        ],
+        "inspection_angle_max_deg": 10.0,
+        "target_radius": 0.05,
+        "expert_direction": 1,
+        "expert_amplitude_m": 0.8427257832809698,
+        "boxes": [
+          [
+            7.0,
+            0.0,
+            2.5,
+            0.15,
+            16.0,
+            5.0
+          ],
+          [
+            1.0,
+            5.308240450347068,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            -5.308240450347068,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            0.0,
+            -0.05,
+            16.0,
+            16.0,
+            0.1
+          ],
+          [
+            0.6719368491277955,
+            -4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ],
+          [
+            2.6981984717555987,
+            4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ]
+        ],
+        "tool_mass_kg": 0.02,
+        "duration_s": 20.0,
+        "operate_interval": [
+          6.666666666666667,
+          13.333333333333334
+        ]
+      },
+      "method": "adapter_decoded",
+      "prediction": "041_adapter_decoded.npz",
+      "seed": 23,
+      "base_denoising_seconds": 0.03419001899601426,
+      "adapter_denoising_seconds": 0.05025757699331734,
+      "source_expert_accepted": true
+    },
+    {
+      "index": 41,
+      "config": {
+        "schema": "hnuter_task_adaptive_pilot_v1",
+        "index": 41,
+        "layout": 10,
+        "seed": 20261004,
+        "task": "surface",
+        "split": 2,
+        "origin": [
+          0.0,
+          0.0,
+          2.8
+        ],
+        "goal": [
+          4.437265914669021,
+          0.0,
+          2.8
+        ],
+        "goal_euler": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "pad_center": [
+          2.2186329573345107,
+          0.0,
+          1.75
+        ],
+        "pad_half_extents": [
+          3.0,
+          1.5,
+          0.05
+        ],
+        "keepout_in_pad_xy": [
+          -0.5,
+          0.5,
+          -1.5,
+          0.2
+        ],
+        "keepout_margin_m": 0.04,
+        "inspection_target": null,
+        "inspection_range": [
+          1.7,
+          2.5
+        ],
+        "inspection_angle_max_deg": 10.0,
+        "target_radius": 0.05,
+        "expert_direction": 1,
+        "expert_amplitude_m": 0.8427257832809698,
+        "boxes": [
+          [
+            7.0,
+            0.0,
+            2.5,
+            0.15,
+            16.0,
+            5.0
+          ],
+          [
+            1.0,
+            5.308240450347068,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            -5.308240450347068,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            0.0,
+            -0.05,
+            16.0,
+            16.0,
+            0.1
+          ],
+          [
+            0.6719368491277955,
+            -4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ],
+          [
+            2.6981984717555987,
+            4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ]
+        ],
+        "tool_mass_kg": 0.02,
+        "duration_s": 20.0,
+        "operate_interval": [
+          6.666666666666667,
+          13.333333333333334
+        ]
+      },
+      "method": "shuffled_raw",
+      "prediction": "041_shuffled_raw.npz",
+      "seed": 23,
+      "base_denoising_seconds": 0.03419001899601426,
+      "adapter_denoising_seconds": 0.05025757699331734,
+      "source_expert_accepted": true
+    },
+    {
+      "index": 41,
+      "config": {
+        "schema": "hnuter_task_adaptive_pilot_v1",
+        "index": 41,
+        "layout": 10,
+        "seed": 20261004,
+        "task": "surface",
+        "split": 2,
+        "origin": [
+          0.0,
+          0.0,
+          2.8
+        ],
+        "goal": [
+          4.437265914669021,
+          0.0,
+          2.8
+        ],
+        "goal_euler": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "pad_center": [
+          2.2186329573345107,
+          0.0,
+          1.75
+        ],
+        "pad_half_extents": [
+          3.0,
+          1.5,
+          0.05
+        ],
+        "keepout_in_pad_xy": [
+          -0.5,
+          0.5,
+          -1.5,
+          0.2
+        ],
+        "keepout_margin_m": 0.04,
+        "inspection_target": null,
+        "inspection_range": [
+          1.7,
+          2.5
+        ],
+        "inspection_angle_max_deg": 10.0,
+        "target_radius": 0.05,
+        "expert_direction": 1,
+        "expert_amplitude_m": 0.8427257832809698,
+        "boxes": [
+          [
+            7.0,
+            0.0,
+            2.5,
+            0.15,
+            16.0,
+            5.0
+          ],
+          [
+            1.0,
+            5.308240450347068,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            -5.308240450347068,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            0.0,
+            -0.05,
+            16.0,
+            16.0,
+            0.1
+          ],
+          [
+            0.6719368491277955,
+            -4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ],
+          [
+            2.6981984717555987,
+            4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ]
+        ],
+        "tool_mass_kg": 0.02,
+        "duration_s": 20.0,
+        "operate_interval": [
+          6.666666666666667,
+          13.333333333333334
+        ]
+      },
+      "method": "shuffled_decoded",
+      "prediction": "041_shuffled_decoded.npz",
+      "seed": 23,
+      "base_denoising_seconds": 0.03419001899601426,
+      "adapter_denoising_seconds": 0.05025757699331734,
+      "source_expert_accepted": true
+    },
+    {
+      "index": 44,
+      "config": {
+        "schema": "hnuter_task_adaptive_pilot_v1",
+        "index": 44,
+        "layout": 11,
+        "seed": 20261004,
+        "task": "surface",
+        "split": 2,
+        "origin": [
+          0.0,
+          0.0,
+          2.8
+        ],
+        "goal": [
+          4.318115520305774,
+          0.0,
+          2.8
+        ],
+        "goal_euler": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "pad_center": [
+          2.159057760152887,
+          0.0,
+          1.75
+        ],
+        "pad_half_extents": [
+          3.0,
+          1.5,
+          0.05
+        ],
+        "keepout_in_pad_xy": [
+          -0.5,
+          0.5,
+          -0.2,
+          1.5
+        ],
+        "keepout_margin_m": 0.04,
+        "inspection_target": null,
+        "inspection_range": [
+          1.7,
+          2.5
+        ],
+        "inspection_angle_max_deg": 10.0,
+        "target_radius": 0.05,
+        "expert_direction": -1,
+        "expert_amplitude_m": 0.861764800429396,
+        "boxes": [
+          [
+            7.0,
+            0.0,
+            2.5,
+            0.15,
+            16.0,
+            5.0
+          ],
+          [
+            1.0,
+            6.572266695241545,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            -6.572266695241545,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            0.0,
+            -0.05,
+            16.0,
+            16.0,
+            0.1
+          ],
+          [
+            0.0630151803599166,
+            -4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ],
+          [
+            1.3303212100448603,
+            4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ]
+        ],
+        "tool_mass_kg": 0.02,
+        "duration_s": 20.0,
+        "operate_interval": [
+          6.666666666666667,
+          13.333333333333334
+        ]
+      },
+      "method": "linear_decoded",
+      "prediction": "044_linear_decoded.npz",
+      "seed": 23,
+      "base_denoising_seconds": 0.035864650999428704,
+      "adapter_denoising_seconds": 0.05299546899914276,
+      "source_expert_accepted": true
+    },
+    {
+      "index": 44,
+      "config": {
+        "schema": "hnuter_task_adaptive_pilot_v1",
+        "index": 44,
+        "layout": 11,
+        "seed": 20261004,
+        "task": "surface",
+        "split": 2,
+        "origin": [
+          0.0,
+          0.0,
+          2.8
+        ],
+        "goal": [
+          4.318115520305774,
+          0.0,
+          2.8
+        ],
+        "goal_euler": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "pad_center": [
+          2.159057760152887,
+          0.0,
+          1.75
+        ],
+        "pad_half_extents": [
+          3.0,
+          1.5,
+          0.05
+        ],
+        "keepout_in_pad_xy": [
+          -0.5,
+          0.5,
+          -0.2,
+          1.5
+        ],
+        "keepout_margin_m": 0.04,
+        "inspection_target": null,
+        "inspection_range": [
+          1.7,
+          2.5
+        ],
+        "inspection_angle_max_deg": 10.0,
+        "target_radius": 0.05,
+        "expert_direction": -1,
+        "expert_amplitude_m": 0.861764800429396,
+        "boxes": [
+          [
+            7.0,
+            0.0,
+            2.5,
+            0.15,
+            16.0,
+            5.0
+          ],
+          [
+            1.0,
+            6.572266695241545,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            -6.572266695241545,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            0.0,
+            -0.05,
+            16.0,
+            16.0,
+            0.1
+          ],
+          [
+            0.0630151803599166,
+            -4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ],
+          [
+            1.3303212100448603,
+            4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ]
+        ],
+        "tool_mass_kg": 0.02,
+        "duration_s": 20.0,
+        "operate_interval": [
+          6.666666666666667,
+          13.333333333333334
+        ]
+      },
+      "method": "base_raw",
+      "prediction": "044_base_raw.npz",
+      "seed": 23,
+      "base_denoising_seconds": 0.035864650999428704,
+      "adapter_denoising_seconds": 0.05299546899914276,
+      "source_expert_accepted": true
+    },
+    {
+      "index": 44,
+      "config": {
+        "schema": "hnuter_task_adaptive_pilot_v1",
+        "index": 44,
+        "layout": 11,
+        "seed": 20261004,
+        "task": "surface",
+        "split": 2,
+        "origin": [
+          0.0,
+          0.0,
+          2.8
+        ],
+        "goal": [
+          4.318115520305774,
+          0.0,
+          2.8
+        ],
+        "goal_euler": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "pad_center": [
+          2.159057760152887,
+          0.0,
+          1.75
+        ],
+        "pad_half_extents": [
+          3.0,
+          1.5,
+          0.05
+        ],
+        "keepout_in_pad_xy": [
+          -0.5,
+          0.5,
+          -0.2,
+          1.5
+        ],
+        "keepout_margin_m": 0.04,
+        "inspection_target": null,
+        "inspection_range": [
+          1.7,
+          2.5
+        ],
+        "inspection_angle_max_deg": 10.0,
+        "target_radius": 0.05,
+        "expert_direction": -1,
+        "expert_amplitude_m": 0.861764800429396,
+        "boxes": [
+          [
+            7.0,
+            0.0,
+            2.5,
+            0.15,
+            16.0,
+            5.0
+          ],
+          [
+            1.0,
+            6.572266695241545,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            -6.572266695241545,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            0.0,
+            -0.05,
+            16.0,
+            16.0,
+            0.1
+          ],
+          [
+            0.0630151803599166,
+            -4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ],
+          [
+            1.3303212100448603,
+            4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ]
+        ],
+        "tool_mass_kg": 0.02,
+        "duration_s": 20.0,
+        "operate_interval": [
+          6.666666666666667,
+          13.333333333333334
+        ]
+      },
+      "method": "base_decoded",
+      "prediction": "044_base_decoded.npz",
+      "seed": 23,
+      "base_denoising_seconds": 0.035864650999428704,
+      "adapter_denoising_seconds": 0.05299546899914276,
+      "source_expert_accepted": true
+    },
+    {
+      "index": 44,
+      "config": {
+        "schema": "hnuter_task_adaptive_pilot_v1",
+        "index": 44,
+        "layout": 11,
+        "seed": 20261004,
+        "task": "surface",
+        "split": 2,
+        "origin": [
+          0.0,
+          0.0,
+          2.8
+        ],
+        "goal": [
+          4.318115520305774,
+          0.0,
+          2.8
+        ],
+        "goal_euler": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "pad_center": [
+          2.159057760152887,
+          0.0,
+          1.75
+        ],
+        "pad_half_extents": [
+          3.0,
+          1.5,
+          0.05
+        ],
+        "keepout_in_pad_xy": [
+          -0.5,
+          0.5,
+          -0.2,
+          1.5
+        ],
+        "keepout_margin_m": 0.04,
+        "inspection_target": null,
+        "inspection_range": [
+          1.7,
+          2.5
+        ],
+        "inspection_angle_max_deg": 10.0,
+        "target_radius": 0.05,
+        "expert_direction": -1,
+        "expert_amplitude_m": 0.861764800429396,
+        "boxes": [
+          [
+            7.0,
+            0.0,
+            2.5,
+            0.15,
+            16.0,
+            5.0
+          ],
+          [
+            1.0,
+            6.572266695241545,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            -6.572266695241545,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            0.0,
+            -0.05,
+            16.0,
+            16.0,
+            0.1
+          ],
+          [
+            0.0630151803599166,
+            -4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ],
+          [
+            1.3303212100448603,
+            4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ]
+        ],
+        "tool_mass_kg": 0.02,
+        "duration_s": 20.0,
+        "operate_interval": [
+          6.666666666666667,
+          13.333333333333334
+        ]
+      },
+      "method": "adapter_raw",
+      "prediction": "044_adapter_raw.npz",
+      "seed": 23,
+      "base_denoising_seconds": 0.035864650999428704,
+      "adapter_denoising_seconds": 0.05299546899914276,
+      "source_expert_accepted": true
+    },
+    {
+      "index": 44,
+      "config": {
+        "schema": "hnuter_task_adaptive_pilot_v1",
+        "index": 44,
+        "layout": 11,
+        "seed": 20261004,
+        "task": "surface",
+        "split": 2,
+        "origin": [
+          0.0,
+          0.0,
+          2.8
+        ],
+        "goal": [
+          4.318115520305774,
+          0.0,
+          2.8
+        ],
+        "goal_euler": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "pad_center": [
+          2.159057760152887,
+          0.0,
+          1.75
+        ],
+        "pad_half_extents": [
+          3.0,
+          1.5,
+          0.05
+        ],
+        "keepout_in_pad_xy": [
+          -0.5,
+          0.5,
+          -0.2,
+          1.5
+        ],
+        "keepout_margin_m": 0.04,
+        "inspection_target": null,
+        "inspection_range": [
+          1.7,
+          2.5
+        ],
+        "inspection_angle_max_deg": 10.0,
+        "target_radius": 0.05,
+        "expert_direction": -1,
+        "expert_amplitude_m": 0.861764800429396,
+        "boxes": [
+          [
+            7.0,
+            0.0,
+            2.5,
+            0.15,
+            16.0,
+            5.0
+          ],
+          [
+            1.0,
+            6.572266695241545,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            -6.572266695241545,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            0.0,
+            -0.05,
+            16.0,
+            16.0,
+            0.1
+          ],
+          [
+            0.0630151803599166,
+            -4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ],
+          [
+            1.3303212100448603,
+            4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ]
+        ],
+        "tool_mass_kg": 0.02,
+        "duration_s": 20.0,
+        "operate_interval": [
+          6.666666666666667,
+          13.333333333333334
+        ]
+      },
+      "method": "adapter_decoded",
+      "prediction": "044_adapter_decoded.npz",
+      "seed": 23,
+      "base_denoising_seconds": 0.035864650999428704,
+      "adapter_denoising_seconds": 0.05299546899914276,
+      "source_expert_accepted": true
+    },
+    {
+      "index": 44,
+      "config": {
+        "schema": "hnuter_task_adaptive_pilot_v1",
+        "index": 44,
+        "layout": 11,
+        "seed": 20261004,
+        "task": "surface",
+        "split": 2,
+        "origin": [
+          0.0,
+          0.0,
+          2.8
+        ],
+        "goal": [
+          4.318115520305774,
+          0.0,
+          2.8
+        ],
+        "goal_euler": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "pad_center": [
+          2.159057760152887,
+          0.0,
+          1.75
+        ],
+        "pad_half_extents": [
+          3.0,
+          1.5,
+          0.05
+        ],
+        "keepout_in_pad_xy": [
+          -0.5,
+          0.5,
+          -0.2,
+          1.5
+        ],
+        "keepout_margin_m": 0.04,
+        "inspection_target": null,
+        "inspection_range": [
+          1.7,
+          2.5
+        ],
+        "inspection_angle_max_deg": 10.0,
+        "target_radius": 0.05,
+        "expert_direction": -1,
+        "expert_amplitude_m": 0.861764800429396,
+        "boxes": [
+          [
+            7.0,
+            0.0,
+            2.5,
+            0.15,
+            16.0,
+            5.0
+          ],
+          [
+            1.0,
+            6.572266695241545,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            -6.572266695241545,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            0.0,
+            -0.05,
+            16.0,
+            16.0,
+            0.1
+          ],
+          [
+            0.0630151803599166,
+            -4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ],
+          [
+            1.3303212100448603,
+            4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ]
+        ],
+        "tool_mass_kg": 0.02,
+        "duration_s": 20.0,
+        "operate_interval": [
+          6.666666666666667,
+          13.333333333333334
+        ]
+      },
+      "method": "shuffled_raw",
+      "prediction": "044_shuffled_raw.npz",
+      "seed": 23,
+      "base_denoising_seconds": 0.035864650999428704,
+      "adapter_denoising_seconds": 0.05299546899914276,
+      "source_expert_accepted": true
+    },
+    {
+      "index": 44,
+      "config": {
+        "schema": "hnuter_task_adaptive_pilot_v1",
+        "index": 44,
+        "layout": 11,
+        "seed": 20261004,
+        "task": "surface",
+        "split": 2,
+        "origin": [
+          0.0,
+          0.0,
+          2.8
+        ],
+        "goal": [
+          4.318115520305774,
+          0.0,
+          2.8
+        ],
+        "goal_euler": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "pad_center": [
+          2.159057760152887,
+          0.0,
+          1.75
+        ],
+        "pad_half_extents": [
+          3.0,
+          1.5,
+          0.05
+        ],
+        "keepout_in_pad_xy": [
+          -0.5,
+          0.5,
+          -0.2,
+          1.5
+        ],
+        "keepout_margin_m": 0.04,
+        "inspection_target": null,
+        "inspection_range": [
+          1.7,
+          2.5
+        ],
+        "inspection_angle_max_deg": 10.0,
+        "target_radius": 0.05,
+        "expert_direction": -1,
+        "expert_amplitude_m": 0.861764800429396,
+        "boxes": [
+          [
+            7.0,
+            0.0,
+            2.5,
+            0.15,
+            16.0,
+            5.0
+          ],
+          [
+            1.0,
+            6.572266695241545,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            -6.572266695241545,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            0.0,
+            -0.05,
+            16.0,
+            16.0,
+            0.1
+          ],
+          [
+            0.0630151803599166,
+            -4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ],
+          [
+            1.3303212100448603,
+            4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ]
+        ],
+        "tool_mass_kg": 0.02,
+        "duration_s": 20.0,
+        "operate_interval": [
+          6.666666666666667,
+          13.333333333333334
+        ]
+      },
+      "method": "shuffled_decoded",
+      "prediction": "044_shuffled_decoded.npz",
+      "seed": 23,
+      "base_denoising_seconds": 0.035864650999428704,
+      "adapter_denoising_seconds": 0.05299546899914276,
+      "source_expert_accepted": true
+    },
+    {
+      "index": 45,
+      "config": {
+        "schema": "hnuter_task_adaptive_pilot_v1",
+        "index": 45,
+        "layout": 11,
+        "seed": 20261004,
+        "task": "surface",
+        "split": 2,
+        "origin": [
+          0.0,
+          0.0,
+          2.8
+        ],
+        "goal": [
+          4.318115520305774,
+          0.0,
+          2.8
+        ],
+        "goal_euler": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "pad_center": [
+          2.159057760152887,
+          0.0,
+          1.75
+        ],
+        "pad_half_extents": [
+          3.0,
+          1.5,
+          0.05
+        ],
+        "keepout_in_pad_xy": [
+          -0.5,
+          0.5,
+          -1.5,
+          0.2
+        ],
+        "keepout_margin_m": 0.04,
+        "inspection_target": null,
+        "inspection_range": [
+          1.7,
+          2.5
+        ],
+        "inspection_angle_max_deg": 10.0,
+        "target_radius": 0.05,
+        "expert_direction": 1,
+        "expert_amplitude_m": 0.861764800429396,
+        "boxes": [
+          [
+            7.0,
+            0.0,
+            2.5,
+            0.15,
+            16.0,
+            5.0
+          ],
+          [
+            1.0,
+            6.572266695241545,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            -6.572266695241545,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            0.0,
+            -0.05,
+            16.0,
+            16.0,
+            0.1
+          ],
+          [
+            0.0630151803599166,
+            -4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ],
+          [
+            1.3303212100448603,
+            4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ]
+        ],
+        "tool_mass_kg": 0.02,
+        "duration_s": 20.0,
+        "operate_interval": [
+          6.666666666666667,
+          13.333333333333334
+        ]
+      },
+      "method": "linear_decoded",
+      "prediction": "045_linear_decoded.npz",
+      "seed": 23,
+      "base_denoising_seconds": 0.035056655993685126,
+      "adapter_denoising_seconds": 0.04976981501386035,
+      "source_expert_accepted": true
+    },
+    {
+      "index": 45,
+      "config": {
+        "schema": "hnuter_task_adaptive_pilot_v1",
+        "index": 45,
+        "layout": 11,
+        "seed": 20261004,
+        "task": "surface",
+        "split": 2,
+        "origin": [
+          0.0,
+          0.0,
+          2.8
+        ],
+        "goal": [
+          4.318115520305774,
+          0.0,
+          2.8
+        ],
+        "goal_euler": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "pad_center": [
+          2.159057760152887,
+          0.0,
+          1.75
+        ],
+        "pad_half_extents": [
+          3.0,
+          1.5,
+          0.05
+        ],
+        "keepout_in_pad_xy": [
+          -0.5,
+          0.5,
+          -1.5,
+          0.2
+        ],
+        "keepout_margin_m": 0.04,
+        "inspection_target": null,
+        "inspection_range": [
+          1.7,
+          2.5
+        ],
+        "inspection_angle_max_deg": 10.0,
+        "target_radius": 0.05,
+        "expert_direction": 1,
+        "expert_amplitude_m": 0.861764800429396,
+        "boxes": [
+          [
+            7.0,
+            0.0,
+            2.5,
+            0.15,
+            16.0,
+            5.0
+          ],
+          [
+            1.0,
+            6.572266695241545,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            -6.572266695241545,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            0.0,
+            -0.05,
+            16.0,
+            16.0,
+            0.1
+          ],
+          [
+            0.0630151803599166,
+            -4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ],
+          [
+            1.3303212100448603,
+            4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ]
+        ],
+        "tool_mass_kg": 0.02,
+        "duration_s": 20.0,
+        "operate_interval": [
+          6.666666666666667,
+          13.333333333333334
+        ]
+      },
+      "method": "base_raw",
+      "prediction": "045_base_raw.npz",
+      "seed": 23,
+      "base_denoising_seconds": 0.035056655993685126,
+      "adapter_denoising_seconds": 0.04976981501386035,
+      "source_expert_accepted": true
+    },
+    {
+      "index": 45,
+      "config": {
+        "schema": "hnuter_task_adaptive_pilot_v1",
+        "index": 45,
+        "layout": 11,
+        "seed": 20261004,
+        "task": "surface",
+        "split": 2,
+        "origin": [
+          0.0,
+          0.0,
+          2.8
+        ],
+        "goal": [
+          4.318115520305774,
+          0.0,
+          2.8
+        ],
+        "goal_euler": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "pad_center": [
+          2.159057760152887,
+          0.0,
+          1.75
+        ],
+        "pad_half_extents": [
+          3.0,
+          1.5,
+          0.05
+        ],
+        "keepout_in_pad_xy": [
+          -0.5,
+          0.5,
+          -1.5,
+          0.2
+        ],
+        "keepout_margin_m": 0.04,
+        "inspection_target": null,
+        "inspection_range": [
+          1.7,
+          2.5
+        ],
+        "inspection_angle_max_deg": 10.0,
+        "target_radius": 0.05,
+        "expert_direction": 1,
+        "expert_amplitude_m": 0.861764800429396,
+        "boxes": [
+          [
+            7.0,
+            0.0,
+            2.5,
+            0.15,
+            16.0,
+            5.0
+          ],
+          [
+            1.0,
+            6.572266695241545,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            -6.572266695241545,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            0.0,
+            -0.05,
+            16.0,
+            16.0,
+            0.1
+          ],
+          [
+            0.0630151803599166,
+            -4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ],
+          [
+            1.3303212100448603,
+            4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ]
+        ],
+        "tool_mass_kg": 0.02,
+        "duration_s": 20.0,
+        "operate_interval": [
+          6.666666666666667,
+          13.333333333333334
+        ]
+      },
+      "method": "base_decoded",
+      "prediction": "045_base_decoded.npz",
+      "seed": 23,
+      "base_denoising_seconds": 0.035056655993685126,
+      "adapter_denoising_seconds": 0.04976981501386035,
+      "source_expert_accepted": true
+    },
+    {
+      "index": 45,
+      "config": {
+        "schema": "hnuter_task_adaptive_pilot_v1",
+        "index": 45,
+        "layout": 11,
+        "seed": 20261004,
+        "task": "surface",
+        "split": 2,
+        "origin": [
+          0.0,
+          0.0,
+          2.8
+        ],
+        "goal": [
+          4.318115520305774,
+          0.0,
+          2.8
+        ],
+        "goal_euler": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "pad_center": [
+          2.159057760152887,
+          0.0,
+          1.75
+        ],
+        "pad_half_extents": [
+          3.0,
+          1.5,
+          0.05
+        ],
+        "keepout_in_pad_xy": [
+          -0.5,
+          0.5,
+          -1.5,
+          0.2
+        ],
+        "keepout_margin_m": 0.04,
+        "inspection_target": null,
+        "inspection_range": [
+          1.7,
+          2.5
+        ],
+        "inspection_angle_max_deg": 10.0,
+        "target_radius": 0.05,
+        "expert_direction": 1,
+        "expert_amplitude_m": 0.861764800429396,
+        "boxes": [
+          [
+            7.0,
+            0.0,
+            2.5,
+            0.15,
+            16.0,
+            5.0
+          ],
+          [
+            1.0,
+            6.572266695241545,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            -6.572266695241545,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            0.0,
+            -0.05,
+            16.0,
+            16.0,
+            0.1
+          ],
+          [
+            0.0630151803599166,
+            -4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ],
+          [
+            1.3303212100448603,
+            4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ]
+        ],
+        "tool_mass_kg": 0.02,
+        "duration_s": 20.0,
+        "operate_interval": [
+          6.666666666666667,
+          13.333333333333334
+        ]
+      },
+      "method": "adapter_raw",
+      "prediction": "045_adapter_raw.npz",
+      "seed": 23,
+      "base_denoising_seconds": 0.035056655993685126,
+      "adapter_denoising_seconds": 0.04976981501386035,
+      "source_expert_accepted": true
+    },
+    {
+      "index": 45,
+      "config": {
+        "schema": "hnuter_task_adaptive_pilot_v1",
+        "index": 45,
+        "layout": 11,
+        "seed": 20261004,
+        "task": "surface",
+        "split": 2,
+        "origin": [
+          0.0,
+          0.0,
+          2.8
+        ],
+        "goal": [
+          4.318115520305774,
+          0.0,
+          2.8
+        ],
+        "goal_euler": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "pad_center": [
+          2.159057760152887,
+          0.0,
+          1.75
+        ],
+        "pad_half_extents": [
+          3.0,
+          1.5,
+          0.05
+        ],
+        "keepout_in_pad_xy": [
+          -0.5,
+          0.5,
+          -1.5,
+          0.2
+        ],
+        "keepout_margin_m": 0.04,
+        "inspection_target": null,
+        "inspection_range": [
+          1.7,
+          2.5
+        ],
+        "inspection_angle_max_deg": 10.0,
+        "target_radius": 0.05,
+        "expert_direction": 1,
+        "expert_amplitude_m": 0.861764800429396,
+        "boxes": [
+          [
+            7.0,
+            0.0,
+            2.5,
+            0.15,
+            16.0,
+            5.0
+          ],
+          [
+            1.0,
+            6.572266695241545,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            -6.572266695241545,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            0.0,
+            -0.05,
+            16.0,
+            16.0,
+            0.1
+          ],
+          [
+            0.0630151803599166,
+            -4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ],
+          [
+            1.3303212100448603,
+            4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ]
+        ],
+        "tool_mass_kg": 0.02,
+        "duration_s": 20.0,
+        "operate_interval": [
+          6.666666666666667,
+          13.333333333333334
+        ]
+      },
+      "method": "adapter_decoded",
+      "prediction": "045_adapter_decoded.npz",
+      "seed": 23,
+      "base_denoising_seconds": 0.035056655993685126,
+      "adapter_denoising_seconds": 0.04976981501386035,
+      "source_expert_accepted": true
+    },
+    {
+      "index": 45,
+      "config": {
+        "schema": "hnuter_task_adaptive_pilot_v1",
+        "index": 45,
+        "layout": 11,
+        "seed": 20261004,
+        "task": "surface",
+        "split": 2,
+        "origin": [
+          0.0,
+          0.0,
+          2.8
+        ],
+        "goal": [
+          4.318115520305774,
+          0.0,
+          2.8
+        ],
+        "goal_euler": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "pad_center": [
+          2.159057760152887,
+          0.0,
+          1.75
+        ],
+        "pad_half_extents": [
+          3.0,
+          1.5,
+          0.05
+        ],
+        "keepout_in_pad_xy": [
+          -0.5,
+          0.5,
+          -1.5,
+          0.2
+        ],
+        "keepout_margin_m": 0.04,
+        "inspection_target": null,
+        "inspection_range": [
+          1.7,
+          2.5
+        ],
+        "inspection_angle_max_deg": 10.0,
+        "target_radius": 0.05,
+        "expert_direction": 1,
+        "expert_amplitude_m": 0.861764800429396,
+        "boxes": [
+          [
+            7.0,
+            0.0,
+            2.5,
+            0.15,
+            16.0,
+            5.0
+          ],
+          [
+            1.0,
+            6.572266695241545,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            -6.572266695241545,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            0.0,
+            -0.05,
+            16.0,
+            16.0,
+            0.1
+          ],
+          [
+            0.0630151803599166,
+            -4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ],
+          [
+            1.3303212100448603,
+            4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ]
+        ],
+        "tool_mass_kg": 0.02,
+        "duration_s": 20.0,
+        "operate_interval": [
+          6.666666666666667,
+          13.333333333333334
+        ]
+      },
+      "method": "shuffled_raw",
+      "prediction": "045_shuffled_raw.npz",
+      "seed": 23,
+      "base_denoising_seconds": 0.035056655993685126,
+      "adapter_denoising_seconds": 0.04976981501386035,
+      "source_expert_accepted": true
+    },
+    {
+      "index": 45,
+      "config": {
+        "schema": "hnuter_task_adaptive_pilot_v1",
+        "index": 45,
+        "layout": 11,
+        "seed": 20261004,
+        "task": "surface",
+        "split": 2,
+        "origin": [
+          0.0,
+          0.0,
+          2.8
+        ],
+        "goal": [
+          4.318115520305774,
+          0.0,
+          2.8
+        ],
+        "goal_euler": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "pad_center": [
+          2.159057760152887,
+          0.0,
+          1.75
+        ],
+        "pad_half_extents": [
+          3.0,
+          1.5,
+          0.05
+        ],
+        "keepout_in_pad_xy": [
+          -0.5,
+          0.5,
+          -1.5,
+          0.2
+        ],
+        "keepout_margin_m": 0.04,
+        "inspection_target": null,
+        "inspection_range": [
+          1.7,
+          2.5
+        ],
+        "inspection_angle_max_deg": 10.0,
+        "target_radius": 0.05,
+        "expert_direction": 1,
+        "expert_amplitude_m": 0.861764800429396,
+        "boxes": [
+          [
+            7.0,
+            0.0,
+            2.5,
+            0.15,
+            16.0,
+            5.0
+          ],
+          [
+            1.0,
+            6.572266695241545,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            -6.572266695241545,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            0.0,
+            -0.05,
+            16.0,
+            16.0,
+            0.1
+          ],
+          [
+            0.0630151803599166,
+            -4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ],
+          [
+            1.3303212100448603,
+            4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ]
+        ],
+        "tool_mass_kg": 0.02,
+        "duration_s": 20.0,
+        "operate_interval": [
+          6.666666666666667,
+          13.333333333333334
+        ]
+      },
+      "method": "shuffled_decoded",
+      "prediction": "045_shuffled_decoded.npz",
+      "seed": 23,
+      "base_denoising_seconds": 0.035056655993685126,
+      "adapter_denoising_seconds": 0.04976981501386035,
+      "source_expert_accepted": true
+    },
+    {
+      "index": 42,
+      "config": {
+        "schema": "hnuter_task_adaptive_pilot_v1",
+        "index": 42,
+        "layout": 10,
+        "seed": 20261004,
+        "task": "inspection",
+        "split": 2,
+        "origin": [
+          0.0,
+          0.0,
+          2.8
+        ],
+        "goal": [
+          4.437265914669021,
+          0.0,
+          2.8
+        ],
+        "goal_euler": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "pad_center": [
+          2.2186329573345107,
+          0.0,
+          1.75
+        ],
+        "pad_half_extents": [
+          3.0,
+          1.5,
+          0.05
+        ],
+        "keepout_in_pad_xy": [
+          -0.5,
+          0.5,
+          -0.2,
+          1.5
+        ],
+        "keepout_margin_m": 0.04,
+        "inspection_target": [
+          2.2186329573345107,
+          -3.0,
+          3.0
+        ],
+        "inspection_range": [
+          1.7,
+          2.5
+        ],
+        "inspection_angle_max_deg": 10.0,
+        "target_radius": 0.05,
+        "expert_direction": -1,
+        "expert_amplitude_m": 0.8427257832809698,
+        "boxes": [
+          [
+            7.0,
+            0.0,
+            2.5,
+            0.15,
+            16.0,
+            5.0
+          ],
+          [
+            1.0,
+            5.308240450347068,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            -5.308240450347068,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            0.0,
+            -0.05,
+            16.0,
+            16.0,
+            0.1
+          ],
+          [
+            0.6719368491277955,
+            -4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ],
+          [
+            2.6981984717555987,
+            4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ]
+        ],
+        "tool_mass_kg": 0.02,
+        "duration_s": 20.0,
+        "operate_interval": [
+          6.666666666666667,
+          13.333333333333334
+        ]
+      },
+      "method": "linear_decoded",
+      "prediction": "042_linear_decoded.npz",
+      "seed": 23,
+      "base_denoising_seconds": 0.03291876599541865,
+      "adapter_denoising_seconds": 0.04937975299253594,
+      "source_expert_accepted": true
+    },
+    {
+      "index": 42,
+      "config": {
+        "schema": "hnuter_task_adaptive_pilot_v1",
+        "index": 42,
+        "layout": 10,
+        "seed": 20261004,
+        "task": "inspection",
+        "split": 2,
+        "origin": [
+          0.0,
+          0.0,
+          2.8
+        ],
+        "goal": [
+          4.437265914669021,
+          0.0,
+          2.8
+        ],
+        "goal_euler": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "pad_center": [
+          2.2186329573345107,
+          0.0,
+          1.75
+        ],
+        "pad_half_extents": [
+          3.0,
+          1.5,
+          0.05
+        ],
+        "keepout_in_pad_xy": [
+          -0.5,
+          0.5,
+          -0.2,
+          1.5
+        ],
+        "keepout_margin_m": 0.04,
+        "inspection_target": [
+          2.2186329573345107,
+          -3.0,
+          3.0
+        ],
+        "inspection_range": [
+          1.7,
+          2.5
+        ],
+        "inspection_angle_max_deg": 10.0,
+        "target_radius": 0.05,
+        "expert_direction": -1,
+        "expert_amplitude_m": 0.8427257832809698,
+        "boxes": [
+          [
+            7.0,
+            0.0,
+            2.5,
+            0.15,
+            16.0,
+            5.0
+          ],
+          [
+            1.0,
+            5.308240450347068,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            -5.308240450347068,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            0.0,
+            -0.05,
+            16.0,
+            16.0,
+            0.1
+          ],
+          [
+            0.6719368491277955,
+            -4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ],
+          [
+            2.6981984717555987,
+            4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ]
+        ],
+        "tool_mass_kg": 0.02,
+        "duration_s": 20.0,
+        "operate_interval": [
+          6.666666666666667,
+          13.333333333333334
+        ]
+      },
+      "method": "base_raw",
+      "prediction": "042_base_raw.npz",
+      "seed": 23,
+      "base_denoising_seconds": 0.03291876599541865,
+      "adapter_denoising_seconds": 0.04937975299253594,
+      "source_expert_accepted": true
+    },
+    {
+      "index": 42,
+      "config": {
+        "schema": "hnuter_task_adaptive_pilot_v1",
+        "index": 42,
+        "layout": 10,
+        "seed": 20261004,
+        "task": "inspection",
+        "split": 2,
+        "origin": [
+          0.0,
+          0.0,
+          2.8
+        ],
+        "goal": [
+          4.437265914669021,
+          0.0,
+          2.8
+        ],
+        "goal_euler": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "pad_center": [
+          2.2186329573345107,
+          0.0,
+          1.75
+        ],
+        "pad_half_extents": [
+          3.0,
+          1.5,
+          0.05
+        ],
+        "keepout_in_pad_xy": [
+          -0.5,
+          0.5,
+          -0.2,
+          1.5
+        ],
+        "keepout_margin_m": 0.04,
+        "inspection_target": [
+          2.2186329573345107,
+          -3.0,
+          3.0
+        ],
+        "inspection_range": [
+          1.7,
+          2.5
+        ],
+        "inspection_angle_max_deg": 10.0,
+        "target_radius": 0.05,
+        "expert_direction": -1,
+        "expert_amplitude_m": 0.8427257832809698,
+        "boxes": [
+          [
+            7.0,
+            0.0,
+            2.5,
+            0.15,
+            16.0,
+            5.0
+          ],
+          [
+            1.0,
+            5.308240450347068,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            -5.308240450347068,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            0.0,
+            -0.05,
+            16.0,
+            16.0,
+            0.1
+          ],
+          [
+            0.6719368491277955,
+            -4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ],
+          [
+            2.6981984717555987,
+            4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ]
+        ],
+        "tool_mass_kg": 0.02,
+        "duration_s": 20.0,
+        "operate_interval": [
+          6.666666666666667,
+          13.333333333333334
+        ]
+      },
+      "method": "base_decoded",
+      "prediction": "042_base_decoded.npz",
+      "seed": 23,
+      "base_denoising_seconds": 0.03291876599541865,
+      "adapter_denoising_seconds": 0.04937975299253594,
+      "source_expert_accepted": true
+    },
+    {
+      "index": 42,
+      "config": {
+        "schema": "hnuter_task_adaptive_pilot_v1",
+        "index": 42,
+        "layout": 10,
+        "seed": 20261004,
+        "task": "inspection",
+        "split": 2,
+        "origin": [
+          0.0,
+          0.0,
+          2.8
+        ],
+        "goal": [
+          4.437265914669021,
+          0.0,
+          2.8
+        ],
+        "goal_euler": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "pad_center": [
+          2.2186329573345107,
+          0.0,
+          1.75
+        ],
+        "pad_half_extents": [
+          3.0,
+          1.5,
+          0.05
+        ],
+        "keepout_in_pad_xy": [
+          -0.5,
+          0.5,
+          -0.2,
+          1.5
+        ],
+        "keepout_margin_m": 0.04,
+        "inspection_target": [
+          2.2186329573345107,
+          -3.0,
+          3.0
+        ],
+        "inspection_range": [
+          1.7,
+          2.5
+        ],
+        "inspection_angle_max_deg": 10.0,
+        "target_radius": 0.05,
+        "expert_direction": -1,
+        "expert_amplitude_m": 0.8427257832809698,
+        "boxes": [
+          [
+            7.0,
+            0.0,
+            2.5,
+            0.15,
+            16.0,
+            5.0
+          ],
+          [
+            1.0,
+            5.308240450347068,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            -5.308240450347068,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            0.0,
+            -0.05,
+            16.0,
+            16.0,
+            0.1
+          ],
+          [
+            0.6719368491277955,
+            -4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ],
+          [
+            2.6981984717555987,
+            4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ]
+        ],
+        "tool_mass_kg": 0.02,
+        "duration_s": 20.0,
+        "operate_interval": [
+          6.666666666666667,
+          13.333333333333334
+        ]
+      },
+      "method": "adapter_raw",
+      "prediction": "042_adapter_raw.npz",
+      "seed": 23,
+      "base_denoising_seconds": 0.03291876599541865,
+      "adapter_denoising_seconds": 0.04937975299253594,
+      "source_expert_accepted": true
+    },
+    {
+      "index": 42,
+      "config": {
+        "schema": "hnuter_task_adaptive_pilot_v1",
+        "index": 42,
+        "layout": 10,
+        "seed": 20261004,
+        "task": "inspection",
+        "split": 2,
+        "origin": [
+          0.0,
+          0.0,
+          2.8
+        ],
+        "goal": [
+          4.437265914669021,
+          0.0,
+          2.8
+        ],
+        "goal_euler": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "pad_center": [
+          2.2186329573345107,
+          0.0,
+          1.75
+        ],
+        "pad_half_extents": [
+          3.0,
+          1.5,
+          0.05
+        ],
+        "keepout_in_pad_xy": [
+          -0.5,
+          0.5,
+          -0.2,
+          1.5
+        ],
+        "keepout_margin_m": 0.04,
+        "inspection_target": [
+          2.2186329573345107,
+          -3.0,
+          3.0
+        ],
+        "inspection_range": [
+          1.7,
+          2.5
+        ],
+        "inspection_angle_max_deg": 10.0,
+        "target_radius": 0.05,
+        "expert_direction": -1,
+        "expert_amplitude_m": 0.8427257832809698,
+        "boxes": [
+          [
+            7.0,
+            0.0,
+            2.5,
+            0.15,
+            16.0,
+            5.0
+          ],
+          [
+            1.0,
+            5.308240450347068,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            -5.308240450347068,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            0.0,
+            -0.05,
+            16.0,
+            16.0,
+            0.1
+          ],
+          [
+            0.6719368491277955,
+            -4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ],
+          [
+            2.6981984717555987,
+            4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ]
+        ],
+        "tool_mass_kg": 0.02,
+        "duration_s": 20.0,
+        "operate_interval": [
+          6.666666666666667,
+          13.333333333333334
+        ]
+      },
+      "method": "adapter_decoded",
+      "prediction": "042_adapter_decoded.npz",
+      "seed": 23,
+      "base_denoising_seconds": 0.03291876599541865,
+      "adapter_denoising_seconds": 0.04937975299253594,
+      "source_expert_accepted": true
+    },
+    {
+      "index": 42,
+      "config": {
+        "schema": "hnuter_task_adaptive_pilot_v1",
+        "index": 42,
+        "layout": 10,
+        "seed": 20261004,
+        "task": "inspection",
+        "split": 2,
+        "origin": [
+          0.0,
+          0.0,
+          2.8
+        ],
+        "goal": [
+          4.437265914669021,
+          0.0,
+          2.8
+        ],
+        "goal_euler": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "pad_center": [
+          2.2186329573345107,
+          0.0,
+          1.75
+        ],
+        "pad_half_extents": [
+          3.0,
+          1.5,
+          0.05
+        ],
+        "keepout_in_pad_xy": [
+          -0.5,
+          0.5,
+          -0.2,
+          1.5
+        ],
+        "keepout_margin_m": 0.04,
+        "inspection_target": [
+          2.2186329573345107,
+          -3.0,
+          3.0
+        ],
+        "inspection_range": [
+          1.7,
+          2.5
+        ],
+        "inspection_angle_max_deg": 10.0,
+        "target_radius": 0.05,
+        "expert_direction": -1,
+        "expert_amplitude_m": 0.8427257832809698,
+        "boxes": [
+          [
+            7.0,
+            0.0,
+            2.5,
+            0.15,
+            16.0,
+            5.0
+          ],
+          [
+            1.0,
+            5.308240450347068,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            -5.308240450347068,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            0.0,
+            -0.05,
+            16.0,
+            16.0,
+            0.1
+          ],
+          [
+            0.6719368491277955,
+            -4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ],
+          [
+            2.6981984717555987,
+            4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ]
+        ],
+        "tool_mass_kg": 0.02,
+        "duration_s": 20.0,
+        "operate_interval": [
+          6.666666666666667,
+          13.333333333333334
+        ]
+      },
+      "method": "shuffled_raw",
+      "prediction": "042_shuffled_raw.npz",
+      "seed": 23,
+      "base_denoising_seconds": 0.03291876599541865,
+      "adapter_denoising_seconds": 0.04937975299253594,
+      "source_expert_accepted": true
+    },
+    {
+      "index": 42,
+      "config": {
+        "schema": "hnuter_task_adaptive_pilot_v1",
+        "index": 42,
+        "layout": 10,
+        "seed": 20261004,
+        "task": "inspection",
+        "split": 2,
+        "origin": [
+          0.0,
+          0.0,
+          2.8
+        ],
+        "goal": [
+          4.437265914669021,
+          0.0,
+          2.8
+        ],
+        "goal_euler": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "pad_center": [
+          2.2186329573345107,
+          0.0,
+          1.75
+        ],
+        "pad_half_extents": [
+          3.0,
+          1.5,
+          0.05
+        ],
+        "keepout_in_pad_xy": [
+          -0.5,
+          0.5,
+          -0.2,
+          1.5
+        ],
+        "keepout_margin_m": 0.04,
+        "inspection_target": [
+          2.2186329573345107,
+          -3.0,
+          3.0
+        ],
+        "inspection_range": [
+          1.7,
+          2.5
+        ],
+        "inspection_angle_max_deg": 10.0,
+        "target_radius": 0.05,
+        "expert_direction": -1,
+        "expert_amplitude_m": 0.8427257832809698,
+        "boxes": [
+          [
+            7.0,
+            0.0,
+            2.5,
+            0.15,
+            16.0,
+            5.0
+          ],
+          [
+            1.0,
+            5.308240450347068,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            -5.308240450347068,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            0.0,
+            -0.05,
+            16.0,
+            16.0,
+            0.1
+          ],
+          [
+            0.6719368491277955,
+            -4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ],
+          [
+            2.6981984717555987,
+            4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ]
+        ],
+        "tool_mass_kg": 0.02,
+        "duration_s": 20.0,
+        "operate_interval": [
+          6.666666666666667,
+          13.333333333333334
+        ]
+      },
+      "method": "shuffled_decoded",
+      "prediction": "042_shuffled_decoded.npz",
+      "seed": 23,
+      "base_denoising_seconds": 0.03291876599541865,
+      "adapter_denoising_seconds": 0.04937975299253594,
+      "source_expert_accepted": true
+    },
+    {
+      "index": 42,
+      "config": {
+        "schema": "hnuter_task_adaptive_pilot_v1",
+        "index": 42,
+        "layout": 10,
+        "seed": 20261004,
+        "task": "inspection",
+        "split": 2,
+        "origin": [
+          0.0,
+          0.0,
+          2.8
+        ],
+        "goal": [
+          4.437265914669021,
+          0.0,
+          2.8
+        ],
+        "goal_euler": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "pad_center": [
+          2.2186329573345107,
+          0.0,
+          1.75
+        ],
+        "pad_half_extents": [
+          3.0,
+          1.5,
+          0.05
+        ],
+        "keepout_in_pad_xy": [
+          -0.5,
+          0.5,
+          -0.2,
+          1.5
+        ],
+        "keepout_margin_m": 0.04,
+        "inspection_target": [
+          2.2186329573345107,
+          -3.0,
+          3.0
+        ],
+        "inspection_range": [
+          1.7,
+          2.5
+        ],
+        "inspection_angle_max_deg": 10.0,
+        "target_radius": 0.05,
+        "expert_direction": -1,
+        "expert_amplitude_m": 0.8427257832809698,
+        "boxes": [
+          [
+            7.0,
+            0.0,
+            2.5,
+            0.15,
+            16.0,
+            5.0
+          ],
+          [
+            1.0,
+            5.308240450347068,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            -5.308240450347068,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            0.0,
+            -0.05,
+            16.0,
+            16.0,
+            0.1
+          ],
+          [
+            0.6719368491277955,
+            -4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ],
+          [
+            2.6981984717555987,
+            4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ]
+        ],
+        "tool_mass_kg": 0.02,
+        "duration_s": 20.0,
+        "operate_interval": [
+          6.666666666666667,
+          13.333333333333334
+        ]
+      },
+      "method": "block_only_raw",
+      "prediction": "042_block_only_raw.npz",
+      "seed": 23,
+      "base_denoising_seconds": 0.03291876599541865,
+      "adapter_denoising_seconds": 0.04937975299253594,
+      "source_expert_accepted": true
+    },
+    {
+      "index": 42,
+      "config": {
+        "schema": "hnuter_task_adaptive_pilot_v1",
+        "index": 42,
+        "layout": 10,
+        "seed": 20261004,
+        "task": "inspection",
+        "split": 2,
+        "origin": [
+          0.0,
+          0.0,
+          2.8
+        ],
+        "goal": [
+          4.437265914669021,
+          0.0,
+          2.8
+        ],
+        "goal_euler": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "pad_center": [
+          2.2186329573345107,
+          0.0,
+          1.75
+        ],
+        "pad_half_extents": [
+          3.0,
+          1.5,
+          0.05
+        ],
+        "keepout_in_pad_xy": [
+          -0.5,
+          0.5,
+          -0.2,
+          1.5
+        ],
+        "keepout_margin_m": 0.04,
+        "inspection_target": [
+          2.2186329573345107,
+          -3.0,
+          3.0
+        ],
+        "inspection_range": [
+          1.7,
+          2.5
+        ],
+        "inspection_angle_max_deg": 10.0,
+        "target_radius": 0.05,
+        "expert_direction": -1,
+        "expert_amplitude_m": 0.8427257832809698,
+        "boxes": [
+          [
+            7.0,
+            0.0,
+            2.5,
+            0.15,
+            16.0,
+            5.0
+          ],
+          [
+            1.0,
+            5.308240450347068,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            -5.308240450347068,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            0.0,
+            -0.05,
+            16.0,
+            16.0,
+            0.1
+          ],
+          [
+            0.6719368491277955,
+            -4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ],
+          [
+            2.6981984717555987,
+            4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ]
+        ],
+        "tool_mass_kg": 0.02,
+        "duration_s": 20.0,
+        "operate_interval": [
+          6.666666666666667,
+          13.333333333333334
+        ]
+      },
+      "method": "block_only_decoded",
+      "prediction": "042_block_only_decoded.npz",
+      "seed": 23,
+      "base_denoising_seconds": 0.03291876599541865,
+      "adapter_denoising_seconds": 0.04937975299253594,
+      "source_expert_accepted": true
+    },
+    {
+      "index": 43,
+      "config": {
+        "schema": "hnuter_task_adaptive_pilot_v1",
+        "index": 43,
+        "layout": 10,
+        "seed": 20261004,
+        "task": "inspection",
+        "split": 2,
+        "origin": [
+          0.0,
+          0.0,
+          2.8
+        ],
+        "goal": [
+          4.437265914669021,
+          0.0,
+          2.8
+        ],
+        "goal_euler": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "pad_center": [
+          2.2186329573345107,
+          0.0,
+          1.75
+        ],
+        "pad_half_extents": [
+          3.0,
+          1.5,
+          0.05
+        ],
+        "keepout_in_pad_xy": [
+          -0.5,
+          0.5,
+          -1.5,
+          0.2
+        ],
+        "keepout_margin_m": 0.04,
+        "inspection_target": [
+          2.2186329573345107,
+          3.0,
+          3.0
+        ],
+        "inspection_range": [
+          1.7,
+          2.5
+        ],
+        "inspection_angle_max_deg": 10.0,
+        "target_radius": 0.05,
+        "expert_direction": 1,
+        "expert_amplitude_m": 0.8427257832809698,
+        "boxes": [
+          [
+            7.0,
+            0.0,
+            2.5,
+            0.15,
+            16.0,
+            5.0
+          ],
+          [
+            1.0,
+            5.308240450347068,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            -5.308240450347068,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            0.0,
+            -0.05,
+            16.0,
+            16.0,
+            0.1
+          ],
+          [
+            0.6719368491277955,
+            -4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ],
+          [
+            2.6981984717555987,
+            4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ]
+        ],
+        "tool_mass_kg": 0.02,
+        "duration_s": 20.0,
+        "operate_interval": [
+          6.666666666666667,
+          13.333333333333334
+        ]
+      },
+      "method": "linear_decoded",
+      "prediction": "043_linear_decoded.npz",
+      "seed": 23,
+      "base_denoising_seconds": 0.034811821999028325,
+      "adapter_denoising_seconds": 0.049383328994736075,
+      "source_expert_accepted": true
+    },
+    {
+      "index": 43,
+      "config": {
+        "schema": "hnuter_task_adaptive_pilot_v1",
+        "index": 43,
+        "layout": 10,
+        "seed": 20261004,
+        "task": "inspection",
+        "split": 2,
+        "origin": [
+          0.0,
+          0.0,
+          2.8
+        ],
+        "goal": [
+          4.437265914669021,
+          0.0,
+          2.8
+        ],
+        "goal_euler": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "pad_center": [
+          2.2186329573345107,
+          0.0,
+          1.75
+        ],
+        "pad_half_extents": [
+          3.0,
+          1.5,
+          0.05
+        ],
+        "keepout_in_pad_xy": [
+          -0.5,
+          0.5,
+          -1.5,
+          0.2
+        ],
+        "keepout_margin_m": 0.04,
+        "inspection_target": [
+          2.2186329573345107,
+          3.0,
+          3.0
+        ],
+        "inspection_range": [
+          1.7,
+          2.5
+        ],
+        "inspection_angle_max_deg": 10.0,
+        "target_radius": 0.05,
+        "expert_direction": 1,
+        "expert_amplitude_m": 0.8427257832809698,
+        "boxes": [
+          [
+            7.0,
+            0.0,
+            2.5,
+            0.15,
+            16.0,
+            5.0
+          ],
+          [
+            1.0,
+            5.308240450347068,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            -5.308240450347068,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            0.0,
+            -0.05,
+            16.0,
+            16.0,
+            0.1
+          ],
+          [
+            0.6719368491277955,
+            -4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ],
+          [
+            2.6981984717555987,
+            4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ]
+        ],
+        "tool_mass_kg": 0.02,
+        "duration_s": 20.0,
+        "operate_interval": [
+          6.666666666666667,
+          13.333333333333334
+        ]
+      },
+      "method": "base_raw",
+      "prediction": "043_base_raw.npz",
+      "seed": 23,
+      "base_denoising_seconds": 0.034811821999028325,
+      "adapter_denoising_seconds": 0.049383328994736075,
+      "source_expert_accepted": true
+    },
+    {
+      "index": 43,
+      "config": {
+        "schema": "hnuter_task_adaptive_pilot_v1",
+        "index": 43,
+        "layout": 10,
+        "seed": 20261004,
+        "task": "inspection",
+        "split": 2,
+        "origin": [
+          0.0,
+          0.0,
+          2.8
+        ],
+        "goal": [
+          4.437265914669021,
+          0.0,
+          2.8
+        ],
+        "goal_euler": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "pad_center": [
+          2.2186329573345107,
+          0.0,
+          1.75
+        ],
+        "pad_half_extents": [
+          3.0,
+          1.5,
+          0.05
+        ],
+        "keepout_in_pad_xy": [
+          -0.5,
+          0.5,
+          -1.5,
+          0.2
+        ],
+        "keepout_margin_m": 0.04,
+        "inspection_target": [
+          2.2186329573345107,
+          3.0,
+          3.0
+        ],
+        "inspection_range": [
+          1.7,
+          2.5
+        ],
+        "inspection_angle_max_deg": 10.0,
+        "target_radius": 0.05,
+        "expert_direction": 1,
+        "expert_amplitude_m": 0.8427257832809698,
+        "boxes": [
+          [
+            7.0,
+            0.0,
+            2.5,
+            0.15,
+            16.0,
+            5.0
+          ],
+          [
+            1.0,
+            5.308240450347068,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            -5.308240450347068,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            0.0,
+            -0.05,
+            16.0,
+            16.0,
+            0.1
+          ],
+          [
+            0.6719368491277955,
+            -4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ],
+          [
+            2.6981984717555987,
+            4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ]
+        ],
+        "tool_mass_kg": 0.02,
+        "duration_s": 20.0,
+        "operate_interval": [
+          6.666666666666667,
+          13.333333333333334
+        ]
+      },
+      "method": "base_decoded",
+      "prediction": "043_base_decoded.npz",
+      "seed": 23,
+      "base_denoising_seconds": 0.034811821999028325,
+      "adapter_denoising_seconds": 0.049383328994736075,
+      "source_expert_accepted": true
+    },
+    {
+      "index": 43,
+      "config": {
+        "schema": "hnuter_task_adaptive_pilot_v1",
+        "index": 43,
+        "layout": 10,
+        "seed": 20261004,
+        "task": "inspection",
+        "split": 2,
+        "origin": [
+          0.0,
+          0.0,
+          2.8
+        ],
+        "goal": [
+          4.437265914669021,
+          0.0,
+          2.8
+        ],
+        "goal_euler": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "pad_center": [
+          2.2186329573345107,
+          0.0,
+          1.75
+        ],
+        "pad_half_extents": [
+          3.0,
+          1.5,
+          0.05
+        ],
+        "keepout_in_pad_xy": [
+          -0.5,
+          0.5,
+          -1.5,
+          0.2
+        ],
+        "keepout_margin_m": 0.04,
+        "inspection_target": [
+          2.2186329573345107,
+          3.0,
+          3.0
+        ],
+        "inspection_range": [
+          1.7,
+          2.5
+        ],
+        "inspection_angle_max_deg": 10.0,
+        "target_radius": 0.05,
+        "expert_direction": 1,
+        "expert_amplitude_m": 0.8427257832809698,
+        "boxes": [
+          [
+            7.0,
+            0.0,
+            2.5,
+            0.15,
+            16.0,
+            5.0
+          ],
+          [
+            1.0,
+            5.308240450347068,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            -5.308240450347068,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            0.0,
+            -0.05,
+            16.0,
+            16.0,
+            0.1
+          ],
+          [
+            0.6719368491277955,
+            -4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ],
+          [
+            2.6981984717555987,
+            4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ]
+        ],
+        "tool_mass_kg": 0.02,
+        "duration_s": 20.0,
+        "operate_interval": [
+          6.666666666666667,
+          13.333333333333334
+        ]
+      },
+      "method": "adapter_raw",
+      "prediction": "043_adapter_raw.npz",
+      "seed": 23,
+      "base_denoising_seconds": 0.034811821999028325,
+      "adapter_denoising_seconds": 0.049383328994736075,
+      "source_expert_accepted": true
+    },
+    {
+      "index": 43,
+      "config": {
+        "schema": "hnuter_task_adaptive_pilot_v1",
+        "index": 43,
+        "layout": 10,
+        "seed": 20261004,
+        "task": "inspection",
+        "split": 2,
+        "origin": [
+          0.0,
+          0.0,
+          2.8
+        ],
+        "goal": [
+          4.437265914669021,
+          0.0,
+          2.8
+        ],
+        "goal_euler": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "pad_center": [
+          2.2186329573345107,
+          0.0,
+          1.75
+        ],
+        "pad_half_extents": [
+          3.0,
+          1.5,
+          0.05
+        ],
+        "keepout_in_pad_xy": [
+          -0.5,
+          0.5,
+          -1.5,
+          0.2
+        ],
+        "keepout_margin_m": 0.04,
+        "inspection_target": [
+          2.2186329573345107,
+          3.0,
+          3.0
+        ],
+        "inspection_range": [
+          1.7,
+          2.5
+        ],
+        "inspection_angle_max_deg": 10.0,
+        "target_radius": 0.05,
+        "expert_direction": 1,
+        "expert_amplitude_m": 0.8427257832809698,
+        "boxes": [
+          [
+            7.0,
+            0.0,
+            2.5,
+            0.15,
+            16.0,
+            5.0
+          ],
+          [
+            1.0,
+            5.308240450347068,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            -5.308240450347068,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            0.0,
+            -0.05,
+            16.0,
+            16.0,
+            0.1
+          ],
+          [
+            0.6719368491277955,
+            -4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ],
+          [
+            2.6981984717555987,
+            4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ]
+        ],
+        "tool_mass_kg": 0.02,
+        "duration_s": 20.0,
+        "operate_interval": [
+          6.666666666666667,
+          13.333333333333334
+        ]
+      },
+      "method": "adapter_decoded",
+      "prediction": "043_adapter_decoded.npz",
+      "seed": 23,
+      "base_denoising_seconds": 0.034811821999028325,
+      "adapter_denoising_seconds": 0.049383328994736075,
+      "source_expert_accepted": true
+    },
+    {
+      "index": 43,
+      "config": {
+        "schema": "hnuter_task_adaptive_pilot_v1",
+        "index": 43,
+        "layout": 10,
+        "seed": 20261004,
+        "task": "inspection",
+        "split": 2,
+        "origin": [
+          0.0,
+          0.0,
+          2.8
+        ],
+        "goal": [
+          4.437265914669021,
+          0.0,
+          2.8
+        ],
+        "goal_euler": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "pad_center": [
+          2.2186329573345107,
+          0.0,
+          1.75
+        ],
+        "pad_half_extents": [
+          3.0,
+          1.5,
+          0.05
+        ],
+        "keepout_in_pad_xy": [
+          -0.5,
+          0.5,
+          -1.5,
+          0.2
+        ],
+        "keepout_margin_m": 0.04,
+        "inspection_target": [
+          2.2186329573345107,
+          3.0,
+          3.0
+        ],
+        "inspection_range": [
+          1.7,
+          2.5
+        ],
+        "inspection_angle_max_deg": 10.0,
+        "target_radius": 0.05,
+        "expert_direction": 1,
+        "expert_amplitude_m": 0.8427257832809698,
+        "boxes": [
+          [
+            7.0,
+            0.0,
+            2.5,
+            0.15,
+            16.0,
+            5.0
+          ],
+          [
+            1.0,
+            5.308240450347068,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            -5.308240450347068,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            0.0,
+            -0.05,
+            16.0,
+            16.0,
+            0.1
+          ],
+          [
+            0.6719368491277955,
+            -4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ],
+          [
+            2.6981984717555987,
+            4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ]
+        ],
+        "tool_mass_kg": 0.02,
+        "duration_s": 20.0,
+        "operate_interval": [
+          6.666666666666667,
+          13.333333333333334
+        ]
+      },
+      "method": "shuffled_raw",
+      "prediction": "043_shuffled_raw.npz",
+      "seed": 23,
+      "base_denoising_seconds": 0.034811821999028325,
+      "adapter_denoising_seconds": 0.049383328994736075,
+      "source_expert_accepted": true
+    },
+    {
+      "index": 43,
+      "config": {
+        "schema": "hnuter_task_adaptive_pilot_v1",
+        "index": 43,
+        "layout": 10,
+        "seed": 20261004,
+        "task": "inspection",
+        "split": 2,
+        "origin": [
+          0.0,
+          0.0,
+          2.8
+        ],
+        "goal": [
+          4.437265914669021,
+          0.0,
+          2.8
+        ],
+        "goal_euler": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "pad_center": [
+          2.2186329573345107,
+          0.0,
+          1.75
+        ],
+        "pad_half_extents": [
+          3.0,
+          1.5,
+          0.05
+        ],
+        "keepout_in_pad_xy": [
+          -0.5,
+          0.5,
+          -1.5,
+          0.2
+        ],
+        "keepout_margin_m": 0.04,
+        "inspection_target": [
+          2.2186329573345107,
+          3.0,
+          3.0
+        ],
+        "inspection_range": [
+          1.7,
+          2.5
+        ],
+        "inspection_angle_max_deg": 10.0,
+        "target_radius": 0.05,
+        "expert_direction": 1,
+        "expert_amplitude_m": 0.8427257832809698,
+        "boxes": [
+          [
+            7.0,
+            0.0,
+            2.5,
+            0.15,
+            16.0,
+            5.0
+          ],
+          [
+            1.0,
+            5.308240450347068,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            -5.308240450347068,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            0.0,
+            -0.05,
+            16.0,
+            16.0,
+            0.1
+          ],
+          [
+            0.6719368491277955,
+            -4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ],
+          [
+            2.6981984717555987,
+            4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ]
+        ],
+        "tool_mass_kg": 0.02,
+        "duration_s": 20.0,
+        "operate_interval": [
+          6.666666666666667,
+          13.333333333333334
+        ]
+      },
+      "method": "shuffled_decoded",
+      "prediction": "043_shuffled_decoded.npz",
+      "seed": 23,
+      "base_denoising_seconds": 0.034811821999028325,
+      "adapter_denoising_seconds": 0.049383328994736075,
+      "source_expert_accepted": true
+    },
+    {
+      "index": 43,
+      "config": {
+        "schema": "hnuter_task_adaptive_pilot_v1",
+        "index": 43,
+        "layout": 10,
+        "seed": 20261004,
+        "task": "inspection",
+        "split": 2,
+        "origin": [
+          0.0,
+          0.0,
+          2.8
+        ],
+        "goal": [
+          4.437265914669021,
+          0.0,
+          2.8
+        ],
+        "goal_euler": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "pad_center": [
+          2.2186329573345107,
+          0.0,
+          1.75
+        ],
+        "pad_half_extents": [
+          3.0,
+          1.5,
+          0.05
+        ],
+        "keepout_in_pad_xy": [
+          -0.5,
+          0.5,
+          -1.5,
+          0.2
+        ],
+        "keepout_margin_m": 0.04,
+        "inspection_target": [
+          2.2186329573345107,
+          3.0,
+          3.0
+        ],
+        "inspection_range": [
+          1.7,
+          2.5
+        ],
+        "inspection_angle_max_deg": 10.0,
+        "target_radius": 0.05,
+        "expert_direction": 1,
+        "expert_amplitude_m": 0.8427257832809698,
+        "boxes": [
+          [
+            7.0,
+            0.0,
+            2.5,
+            0.15,
+            16.0,
+            5.0
+          ],
+          [
+            1.0,
+            5.308240450347068,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            -5.308240450347068,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            0.0,
+            -0.05,
+            16.0,
+            16.0,
+            0.1
+          ],
+          [
+            0.6719368491277955,
+            -4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ],
+          [
+            2.6981984717555987,
+            4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ]
+        ],
+        "tool_mass_kg": 0.02,
+        "duration_s": 20.0,
+        "operate_interval": [
+          6.666666666666667,
+          13.333333333333334
+        ]
+      },
+      "method": "block_only_raw",
+      "prediction": "043_block_only_raw.npz",
+      "seed": 23,
+      "base_denoising_seconds": 0.034811821999028325,
+      "adapter_denoising_seconds": 0.049383328994736075,
+      "source_expert_accepted": true
+    },
+    {
+      "index": 43,
+      "config": {
+        "schema": "hnuter_task_adaptive_pilot_v1",
+        "index": 43,
+        "layout": 10,
+        "seed": 20261004,
+        "task": "inspection",
+        "split": 2,
+        "origin": [
+          0.0,
+          0.0,
+          2.8
+        ],
+        "goal": [
+          4.437265914669021,
+          0.0,
+          2.8
+        ],
+        "goal_euler": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "pad_center": [
+          2.2186329573345107,
+          0.0,
+          1.75
+        ],
+        "pad_half_extents": [
+          3.0,
+          1.5,
+          0.05
+        ],
+        "keepout_in_pad_xy": [
+          -0.5,
+          0.5,
+          -1.5,
+          0.2
+        ],
+        "keepout_margin_m": 0.04,
+        "inspection_target": [
+          2.2186329573345107,
+          3.0,
+          3.0
+        ],
+        "inspection_range": [
+          1.7,
+          2.5
+        ],
+        "inspection_angle_max_deg": 10.0,
+        "target_radius": 0.05,
+        "expert_direction": 1,
+        "expert_amplitude_m": 0.8427257832809698,
+        "boxes": [
+          [
+            7.0,
+            0.0,
+            2.5,
+            0.15,
+            16.0,
+            5.0
+          ],
+          [
+            1.0,
+            5.308240450347068,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            -5.308240450347068,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            0.0,
+            -0.05,
+            16.0,
+            16.0,
+            0.1
+          ],
+          [
+            0.6719368491277955,
+            -4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ],
+          [
+            2.6981984717555987,
+            4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ]
+        ],
+        "tool_mass_kg": 0.02,
+        "duration_s": 20.0,
+        "operate_interval": [
+          6.666666666666667,
+          13.333333333333334
+        ]
+      },
+      "method": "block_only_decoded",
+      "prediction": "043_block_only_decoded.npz",
+      "seed": 23,
+      "base_denoising_seconds": 0.034811821999028325,
+      "adapter_denoising_seconds": 0.049383328994736075,
+      "source_expert_accepted": true
+    },
+    {
+      "index": 46,
+      "config": {
+        "schema": "hnuter_task_adaptive_pilot_v1",
+        "index": 46,
+        "layout": 11,
+        "seed": 20261004,
+        "task": "inspection",
+        "split": 2,
+        "origin": [
+          0.0,
+          0.0,
+          2.8
+        ],
+        "goal": [
+          4.318115520305774,
+          0.0,
+          2.8
+        ],
+        "goal_euler": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "pad_center": [
+          2.159057760152887,
+          0.0,
+          1.75
+        ],
+        "pad_half_extents": [
+          3.0,
+          1.5,
+          0.05
+        ],
+        "keepout_in_pad_xy": [
+          -0.5,
+          0.5,
+          -0.2,
+          1.5
+        ],
+        "keepout_margin_m": 0.04,
+        "inspection_target": [
+          2.159057760152887,
+          -3.0,
+          3.0
+        ],
+        "inspection_range": [
+          1.7,
+          2.5
+        ],
+        "inspection_angle_max_deg": 10.0,
+        "target_radius": 0.05,
+        "expert_direction": -1,
+        "expert_amplitude_m": 0.861764800429396,
+        "boxes": [
+          [
+            7.0,
+            0.0,
+            2.5,
+            0.15,
+            16.0,
+            5.0
+          ],
+          [
+            1.0,
+            6.572266695241545,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            -6.572266695241545,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            0.0,
+            -0.05,
+            16.0,
+            16.0,
+            0.1
+          ],
+          [
+            0.0630151803599166,
+            -4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ],
+          [
+            1.3303212100448603,
+            4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ]
+        ],
+        "tool_mass_kg": 0.02,
+        "duration_s": 20.0,
+        "operate_interval": [
+          6.666666666666667,
+          13.333333333333334
+        ]
+      },
+      "method": "linear_decoded",
+      "prediction": "046_linear_decoded.npz",
+      "seed": 23,
+      "base_denoising_seconds": 0.034765215998049825,
+      "adapter_denoising_seconds": 0.050801335004507564,
+      "source_expert_accepted": true
+    },
+    {
+      "index": 46,
+      "config": {
+        "schema": "hnuter_task_adaptive_pilot_v1",
+        "index": 46,
+        "layout": 11,
+        "seed": 20261004,
+        "task": "inspection",
+        "split": 2,
+        "origin": [
+          0.0,
+          0.0,
+          2.8
+        ],
+        "goal": [
+          4.318115520305774,
+          0.0,
+          2.8
+        ],
+        "goal_euler": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "pad_center": [
+          2.159057760152887,
+          0.0,
+          1.75
+        ],
+        "pad_half_extents": [
+          3.0,
+          1.5,
+          0.05
+        ],
+        "keepout_in_pad_xy": [
+          -0.5,
+          0.5,
+          -0.2,
+          1.5
+        ],
+        "keepout_margin_m": 0.04,
+        "inspection_target": [
+          2.159057760152887,
+          -3.0,
+          3.0
+        ],
+        "inspection_range": [
+          1.7,
+          2.5
+        ],
+        "inspection_angle_max_deg": 10.0,
+        "target_radius": 0.05,
+        "expert_direction": -1,
+        "expert_amplitude_m": 0.861764800429396,
+        "boxes": [
+          [
+            7.0,
+            0.0,
+            2.5,
+            0.15,
+            16.0,
+            5.0
+          ],
+          [
+            1.0,
+            6.572266695241545,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            -6.572266695241545,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            0.0,
+            -0.05,
+            16.0,
+            16.0,
+            0.1
+          ],
+          [
+            0.0630151803599166,
+            -4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ],
+          [
+            1.3303212100448603,
+            4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ]
+        ],
+        "tool_mass_kg": 0.02,
+        "duration_s": 20.0,
+        "operate_interval": [
+          6.666666666666667,
+          13.333333333333334
+        ]
+      },
+      "method": "base_raw",
+      "prediction": "046_base_raw.npz",
+      "seed": 23,
+      "base_denoising_seconds": 0.034765215998049825,
+      "adapter_denoising_seconds": 0.050801335004507564,
+      "source_expert_accepted": true
+    },
+    {
+      "index": 46,
+      "config": {
+        "schema": "hnuter_task_adaptive_pilot_v1",
+        "index": 46,
+        "layout": 11,
+        "seed": 20261004,
+        "task": "inspection",
+        "split": 2,
+        "origin": [
+          0.0,
+          0.0,
+          2.8
+        ],
+        "goal": [
+          4.318115520305774,
+          0.0,
+          2.8
+        ],
+        "goal_euler": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "pad_center": [
+          2.159057760152887,
+          0.0,
+          1.75
+        ],
+        "pad_half_extents": [
+          3.0,
+          1.5,
+          0.05
+        ],
+        "keepout_in_pad_xy": [
+          -0.5,
+          0.5,
+          -0.2,
+          1.5
+        ],
+        "keepout_margin_m": 0.04,
+        "inspection_target": [
+          2.159057760152887,
+          -3.0,
+          3.0
+        ],
+        "inspection_range": [
+          1.7,
+          2.5
+        ],
+        "inspection_angle_max_deg": 10.0,
+        "target_radius": 0.05,
+        "expert_direction": -1,
+        "expert_amplitude_m": 0.861764800429396,
+        "boxes": [
+          [
+            7.0,
+            0.0,
+            2.5,
+            0.15,
+            16.0,
+            5.0
+          ],
+          [
+            1.0,
+            6.572266695241545,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            -6.572266695241545,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            0.0,
+            -0.05,
+            16.0,
+            16.0,
+            0.1
+          ],
+          [
+            0.0630151803599166,
+            -4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ],
+          [
+            1.3303212100448603,
+            4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ]
+        ],
+        "tool_mass_kg": 0.02,
+        "duration_s": 20.0,
+        "operate_interval": [
+          6.666666666666667,
+          13.333333333333334
+        ]
+      },
+      "method": "base_decoded",
+      "prediction": "046_base_decoded.npz",
+      "seed": 23,
+      "base_denoising_seconds": 0.034765215998049825,
+      "adapter_denoising_seconds": 0.050801335004507564,
+      "source_expert_accepted": true
+    },
+    {
+      "index": 46,
+      "config": {
+        "schema": "hnuter_task_adaptive_pilot_v1",
+        "index": 46,
+        "layout": 11,
+        "seed": 20261004,
+        "task": "inspection",
+        "split": 2,
+        "origin": [
+          0.0,
+          0.0,
+          2.8
+        ],
+        "goal": [
+          4.318115520305774,
+          0.0,
+          2.8
+        ],
+        "goal_euler": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "pad_center": [
+          2.159057760152887,
+          0.0,
+          1.75
+        ],
+        "pad_half_extents": [
+          3.0,
+          1.5,
+          0.05
+        ],
+        "keepout_in_pad_xy": [
+          -0.5,
+          0.5,
+          -0.2,
+          1.5
+        ],
+        "keepout_margin_m": 0.04,
+        "inspection_target": [
+          2.159057760152887,
+          -3.0,
+          3.0
+        ],
+        "inspection_range": [
+          1.7,
+          2.5
+        ],
+        "inspection_angle_max_deg": 10.0,
+        "target_radius": 0.05,
+        "expert_direction": -1,
+        "expert_amplitude_m": 0.861764800429396,
+        "boxes": [
+          [
+            7.0,
+            0.0,
+            2.5,
+            0.15,
+            16.0,
+            5.0
+          ],
+          [
+            1.0,
+            6.572266695241545,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            -6.572266695241545,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            0.0,
+            -0.05,
+            16.0,
+            16.0,
+            0.1
+          ],
+          [
+            0.0630151803599166,
+            -4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ],
+          [
+            1.3303212100448603,
+            4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ]
+        ],
+        "tool_mass_kg": 0.02,
+        "duration_s": 20.0,
+        "operate_interval": [
+          6.666666666666667,
+          13.333333333333334
+        ]
+      },
+      "method": "adapter_raw",
+      "prediction": "046_adapter_raw.npz",
+      "seed": 23,
+      "base_denoising_seconds": 0.034765215998049825,
+      "adapter_denoising_seconds": 0.050801335004507564,
+      "source_expert_accepted": true
+    },
+    {
+      "index": 46,
+      "config": {
+        "schema": "hnuter_task_adaptive_pilot_v1",
+        "index": 46,
+        "layout": 11,
+        "seed": 20261004,
+        "task": "inspection",
+        "split": 2,
+        "origin": [
+          0.0,
+          0.0,
+          2.8
+        ],
+        "goal": [
+          4.318115520305774,
+          0.0,
+          2.8
+        ],
+        "goal_euler": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "pad_center": [
+          2.159057760152887,
+          0.0,
+          1.75
+        ],
+        "pad_half_extents": [
+          3.0,
+          1.5,
+          0.05
+        ],
+        "keepout_in_pad_xy": [
+          -0.5,
+          0.5,
+          -0.2,
+          1.5
+        ],
+        "keepout_margin_m": 0.04,
+        "inspection_target": [
+          2.159057760152887,
+          -3.0,
+          3.0
+        ],
+        "inspection_range": [
+          1.7,
+          2.5
+        ],
+        "inspection_angle_max_deg": 10.0,
+        "target_radius": 0.05,
+        "expert_direction": -1,
+        "expert_amplitude_m": 0.861764800429396,
+        "boxes": [
+          [
+            7.0,
+            0.0,
+            2.5,
+            0.15,
+            16.0,
+            5.0
+          ],
+          [
+            1.0,
+            6.572266695241545,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            -6.572266695241545,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            0.0,
+            -0.05,
+            16.0,
+            16.0,
+            0.1
+          ],
+          [
+            0.0630151803599166,
+            -4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ],
+          [
+            1.3303212100448603,
+            4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ]
+        ],
+        "tool_mass_kg": 0.02,
+        "duration_s": 20.0,
+        "operate_interval": [
+          6.666666666666667,
+          13.333333333333334
+        ]
+      },
+      "method": "adapter_decoded",
+      "prediction": "046_adapter_decoded.npz",
+      "seed": 23,
+      "base_denoising_seconds": 0.034765215998049825,
+      "adapter_denoising_seconds": 0.050801335004507564,
+      "source_expert_accepted": true
+    },
+    {
+      "index": 46,
+      "config": {
+        "schema": "hnuter_task_adaptive_pilot_v1",
+        "index": 46,
+        "layout": 11,
+        "seed": 20261004,
+        "task": "inspection",
+        "split": 2,
+        "origin": [
+          0.0,
+          0.0,
+          2.8
+        ],
+        "goal": [
+          4.318115520305774,
+          0.0,
+          2.8
+        ],
+        "goal_euler": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "pad_center": [
+          2.159057760152887,
+          0.0,
+          1.75
+        ],
+        "pad_half_extents": [
+          3.0,
+          1.5,
+          0.05
+        ],
+        "keepout_in_pad_xy": [
+          -0.5,
+          0.5,
+          -0.2,
+          1.5
+        ],
+        "keepout_margin_m": 0.04,
+        "inspection_target": [
+          2.159057760152887,
+          -3.0,
+          3.0
+        ],
+        "inspection_range": [
+          1.7,
+          2.5
+        ],
+        "inspection_angle_max_deg": 10.0,
+        "target_radius": 0.05,
+        "expert_direction": -1,
+        "expert_amplitude_m": 0.861764800429396,
+        "boxes": [
+          [
+            7.0,
+            0.0,
+            2.5,
+            0.15,
+            16.0,
+            5.0
+          ],
+          [
+            1.0,
+            6.572266695241545,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            -6.572266695241545,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            0.0,
+            -0.05,
+            16.0,
+            16.0,
+            0.1
+          ],
+          [
+            0.0630151803599166,
+            -4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ],
+          [
+            1.3303212100448603,
+            4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ]
+        ],
+        "tool_mass_kg": 0.02,
+        "duration_s": 20.0,
+        "operate_interval": [
+          6.666666666666667,
+          13.333333333333334
+        ]
+      },
+      "method": "shuffled_raw",
+      "prediction": "046_shuffled_raw.npz",
+      "seed": 23,
+      "base_denoising_seconds": 0.034765215998049825,
+      "adapter_denoising_seconds": 0.050801335004507564,
+      "source_expert_accepted": true
+    },
+    {
+      "index": 46,
+      "config": {
+        "schema": "hnuter_task_adaptive_pilot_v1",
+        "index": 46,
+        "layout": 11,
+        "seed": 20261004,
+        "task": "inspection",
+        "split": 2,
+        "origin": [
+          0.0,
+          0.0,
+          2.8
+        ],
+        "goal": [
+          4.318115520305774,
+          0.0,
+          2.8
+        ],
+        "goal_euler": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "pad_center": [
+          2.159057760152887,
+          0.0,
+          1.75
+        ],
+        "pad_half_extents": [
+          3.0,
+          1.5,
+          0.05
+        ],
+        "keepout_in_pad_xy": [
+          -0.5,
+          0.5,
+          -0.2,
+          1.5
+        ],
+        "keepout_margin_m": 0.04,
+        "inspection_target": [
+          2.159057760152887,
+          -3.0,
+          3.0
+        ],
+        "inspection_range": [
+          1.7,
+          2.5
+        ],
+        "inspection_angle_max_deg": 10.0,
+        "target_radius": 0.05,
+        "expert_direction": -1,
+        "expert_amplitude_m": 0.861764800429396,
+        "boxes": [
+          [
+            7.0,
+            0.0,
+            2.5,
+            0.15,
+            16.0,
+            5.0
+          ],
+          [
+            1.0,
+            6.572266695241545,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            -6.572266695241545,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            0.0,
+            -0.05,
+            16.0,
+            16.0,
+            0.1
+          ],
+          [
+            0.0630151803599166,
+            -4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ],
+          [
+            1.3303212100448603,
+            4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ]
+        ],
+        "tool_mass_kg": 0.02,
+        "duration_s": 20.0,
+        "operate_interval": [
+          6.666666666666667,
+          13.333333333333334
+        ]
+      },
+      "method": "shuffled_decoded",
+      "prediction": "046_shuffled_decoded.npz",
+      "seed": 23,
+      "base_denoising_seconds": 0.034765215998049825,
+      "adapter_denoising_seconds": 0.050801335004507564,
+      "source_expert_accepted": true
+    },
+    {
+      "index": 46,
+      "config": {
+        "schema": "hnuter_task_adaptive_pilot_v1",
+        "index": 46,
+        "layout": 11,
+        "seed": 20261004,
+        "task": "inspection",
+        "split": 2,
+        "origin": [
+          0.0,
+          0.0,
+          2.8
+        ],
+        "goal": [
+          4.318115520305774,
+          0.0,
+          2.8
+        ],
+        "goal_euler": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "pad_center": [
+          2.159057760152887,
+          0.0,
+          1.75
+        ],
+        "pad_half_extents": [
+          3.0,
+          1.5,
+          0.05
+        ],
+        "keepout_in_pad_xy": [
+          -0.5,
+          0.5,
+          -0.2,
+          1.5
+        ],
+        "keepout_margin_m": 0.04,
+        "inspection_target": [
+          2.159057760152887,
+          -3.0,
+          3.0
+        ],
+        "inspection_range": [
+          1.7,
+          2.5
+        ],
+        "inspection_angle_max_deg": 10.0,
+        "target_radius": 0.05,
+        "expert_direction": -1,
+        "expert_amplitude_m": 0.861764800429396,
+        "boxes": [
+          [
+            7.0,
+            0.0,
+            2.5,
+            0.15,
+            16.0,
+            5.0
+          ],
+          [
+            1.0,
+            6.572266695241545,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            -6.572266695241545,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            0.0,
+            -0.05,
+            16.0,
+            16.0,
+            0.1
+          ],
+          [
+            0.0630151803599166,
+            -4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ],
+          [
+            1.3303212100448603,
+            4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ]
+        ],
+        "tool_mass_kg": 0.02,
+        "duration_s": 20.0,
+        "operate_interval": [
+          6.666666666666667,
+          13.333333333333334
+        ]
+      },
+      "method": "block_only_raw",
+      "prediction": "046_block_only_raw.npz",
+      "seed": 23,
+      "base_denoising_seconds": 0.034765215998049825,
+      "adapter_denoising_seconds": 0.050801335004507564,
+      "source_expert_accepted": true
+    },
+    {
+      "index": 46,
+      "config": {
+        "schema": "hnuter_task_adaptive_pilot_v1",
+        "index": 46,
+        "layout": 11,
+        "seed": 20261004,
+        "task": "inspection",
+        "split": 2,
+        "origin": [
+          0.0,
+          0.0,
+          2.8
+        ],
+        "goal": [
+          4.318115520305774,
+          0.0,
+          2.8
+        ],
+        "goal_euler": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "pad_center": [
+          2.159057760152887,
+          0.0,
+          1.75
+        ],
+        "pad_half_extents": [
+          3.0,
+          1.5,
+          0.05
+        ],
+        "keepout_in_pad_xy": [
+          -0.5,
+          0.5,
+          -0.2,
+          1.5
+        ],
+        "keepout_margin_m": 0.04,
+        "inspection_target": [
+          2.159057760152887,
+          -3.0,
+          3.0
+        ],
+        "inspection_range": [
+          1.7,
+          2.5
+        ],
+        "inspection_angle_max_deg": 10.0,
+        "target_radius": 0.05,
+        "expert_direction": -1,
+        "expert_amplitude_m": 0.861764800429396,
+        "boxes": [
+          [
+            7.0,
+            0.0,
+            2.5,
+            0.15,
+            16.0,
+            5.0
+          ],
+          [
+            1.0,
+            6.572266695241545,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            -6.572266695241545,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            0.0,
+            -0.05,
+            16.0,
+            16.0,
+            0.1
+          ],
+          [
+            0.0630151803599166,
+            -4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ],
+          [
+            1.3303212100448603,
+            4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ]
+        ],
+        "tool_mass_kg": 0.02,
+        "duration_s": 20.0,
+        "operate_interval": [
+          6.666666666666667,
+          13.333333333333334
+        ]
+      },
+      "method": "block_only_decoded",
+      "prediction": "046_block_only_decoded.npz",
+      "seed": 23,
+      "base_denoising_seconds": 0.034765215998049825,
+      "adapter_denoising_seconds": 0.050801335004507564,
+      "source_expert_accepted": true
+    },
+    {
+      "index": 47,
+      "config": {
+        "schema": "hnuter_task_adaptive_pilot_v1",
+        "index": 47,
+        "layout": 11,
+        "seed": 20261004,
+        "task": "inspection",
+        "split": 2,
+        "origin": [
+          0.0,
+          0.0,
+          2.8
+        ],
+        "goal": [
+          4.318115520305774,
+          0.0,
+          2.8
+        ],
+        "goal_euler": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "pad_center": [
+          2.159057760152887,
+          0.0,
+          1.75
+        ],
+        "pad_half_extents": [
+          3.0,
+          1.5,
+          0.05
+        ],
+        "keepout_in_pad_xy": [
+          -0.5,
+          0.5,
+          -1.5,
+          0.2
+        ],
+        "keepout_margin_m": 0.04,
+        "inspection_target": [
+          2.159057760152887,
+          3.0,
+          3.0
+        ],
+        "inspection_range": [
+          1.7,
+          2.5
+        ],
+        "inspection_angle_max_deg": 10.0,
+        "target_radius": 0.05,
+        "expert_direction": 1,
+        "expert_amplitude_m": 0.861764800429396,
+        "boxes": [
+          [
+            7.0,
+            0.0,
+            2.5,
+            0.15,
+            16.0,
+            5.0
+          ],
+          [
+            1.0,
+            6.572266695241545,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            -6.572266695241545,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            0.0,
+            -0.05,
+            16.0,
+            16.0,
+            0.1
+          ],
+          [
+            0.0630151803599166,
+            -4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ],
+          [
+            1.3303212100448603,
+            4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ]
+        ],
+        "tool_mass_kg": 0.02,
+        "duration_s": 20.0,
+        "operate_interval": [
+          6.666666666666667,
+          13.333333333333334
+        ]
+      },
+      "method": "linear_decoded",
+      "prediction": "047_linear_decoded.npz",
+      "seed": 23,
+      "base_denoising_seconds": 0.03483081699232571,
+      "adapter_denoising_seconds": 0.049654189991997555,
+      "source_expert_accepted": true
+    },
+    {
+      "index": 47,
+      "config": {
+        "schema": "hnuter_task_adaptive_pilot_v1",
+        "index": 47,
+        "layout": 11,
+        "seed": 20261004,
+        "task": "inspection",
+        "split": 2,
+        "origin": [
+          0.0,
+          0.0,
+          2.8
+        ],
+        "goal": [
+          4.318115520305774,
+          0.0,
+          2.8
+        ],
+        "goal_euler": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "pad_center": [
+          2.159057760152887,
+          0.0,
+          1.75
+        ],
+        "pad_half_extents": [
+          3.0,
+          1.5,
+          0.05
+        ],
+        "keepout_in_pad_xy": [
+          -0.5,
+          0.5,
+          -1.5,
+          0.2
+        ],
+        "keepout_margin_m": 0.04,
+        "inspection_target": [
+          2.159057760152887,
+          3.0,
+          3.0
+        ],
+        "inspection_range": [
+          1.7,
+          2.5
+        ],
+        "inspection_angle_max_deg": 10.0,
+        "target_radius": 0.05,
+        "expert_direction": 1,
+        "expert_amplitude_m": 0.861764800429396,
+        "boxes": [
+          [
+            7.0,
+            0.0,
+            2.5,
+            0.15,
+            16.0,
+            5.0
+          ],
+          [
+            1.0,
+            6.572266695241545,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            -6.572266695241545,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            0.0,
+            -0.05,
+            16.0,
+            16.0,
+            0.1
+          ],
+          [
+            0.0630151803599166,
+            -4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ],
+          [
+            1.3303212100448603,
+            4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ]
+        ],
+        "tool_mass_kg": 0.02,
+        "duration_s": 20.0,
+        "operate_interval": [
+          6.666666666666667,
+          13.333333333333334
+        ]
+      },
+      "method": "base_raw",
+      "prediction": "047_base_raw.npz",
+      "seed": 23,
+      "base_denoising_seconds": 0.03483081699232571,
+      "adapter_denoising_seconds": 0.049654189991997555,
+      "source_expert_accepted": true
+    },
+    {
+      "index": 47,
+      "config": {
+        "schema": "hnuter_task_adaptive_pilot_v1",
+        "index": 47,
+        "layout": 11,
+        "seed": 20261004,
+        "task": "inspection",
+        "split": 2,
+        "origin": [
+          0.0,
+          0.0,
+          2.8
+        ],
+        "goal": [
+          4.318115520305774,
+          0.0,
+          2.8
+        ],
+        "goal_euler": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "pad_center": [
+          2.159057760152887,
+          0.0,
+          1.75
+        ],
+        "pad_half_extents": [
+          3.0,
+          1.5,
+          0.05
+        ],
+        "keepout_in_pad_xy": [
+          -0.5,
+          0.5,
+          -1.5,
+          0.2
+        ],
+        "keepout_margin_m": 0.04,
+        "inspection_target": [
+          2.159057760152887,
+          3.0,
+          3.0
+        ],
+        "inspection_range": [
+          1.7,
+          2.5
+        ],
+        "inspection_angle_max_deg": 10.0,
+        "target_radius": 0.05,
+        "expert_direction": 1,
+        "expert_amplitude_m": 0.861764800429396,
+        "boxes": [
+          [
+            7.0,
+            0.0,
+            2.5,
+            0.15,
+            16.0,
+            5.0
+          ],
+          [
+            1.0,
+            6.572266695241545,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            -6.572266695241545,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            0.0,
+            -0.05,
+            16.0,
+            16.0,
+            0.1
+          ],
+          [
+            0.0630151803599166,
+            -4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ],
+          [
+            1.3303212100448603,
+            4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ]
+        ],
+        "tool_mass_kg": 0.02,
+        "duration_s": 20.0,
+        "operate_interval": [
+          6.666666666666667,
+          13.333333333333334
+        ]
+      },
+      "method": "base_decoded",
+      "prediction": "047_base_decoded.npz",
+      "seed": 23,
+      "base_denoising_seconds": 0.03483081699232571,
+      "adapter_denoising_seconds": 0.049654189991997555,
+      "source_expert_accepted": true
+    },
+    {
+      "index": 47,
+      "config": {
+        "schema": "hnuter_task_adaptive_pilot_v1",
+        "index": 47,
+        "layout": 11,
+        "seed": 20261004,
+        "task": "inspection",
+        "split": 2,
+        "origin": [
+          0.0,
+          0.0,
+          2.8
+        ],
+        "goal": [
+          4.318115520305774,
+          0.0,
+          2.8
+        ],
+        "goal_euler": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "pad_center": [
+          2.159057760152887,
+          0.0,
+          1.75
+        ],
+        "pad_half_extents": [
+          3.0,
+          1.5,
+          0.05
+        ],
+        "keepout_in_pad_xy": [
+          -0.5,
+          0.5,
+          -1.5,
+          0.2
+        ],
+        "keepout_margin_m": 0.04,
+        "inspection_target": [
+          2.159057760152887,
+          3.0,
+          3.0
+        ],
+        "inspection_range": [
+          1.7,
+          2.5
+        ],
+        "inspection_angle_max_deg": 10.0,
+        "target_radius": 0.05,
+        "expert_direction": 1,
+        "expert_amplitude_m": 0.861764800429396,
+        "boxes": [
+          [
+            7.0,
+            0.0,
+            2.5,
+            0.15,
+            16.0,
+            5.0
+          ],
+          [
+            1.0,
+            6.572266695241545,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            -6.572266695241545,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            0.0,
+            -0.05,
+            16.0,
+            16.0,
+            0.1
+          ],
+          [
+            0.0630151803599166,
+            -4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ],
+          [
+            1.3303212100448603,
+            4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ]
+        ],
+        "tool_mass_kg": 0.02,
+        "duration_s": 20.0,
+        "operate_interval": [
+          6.666666666666667,
+          13.333333333333334
+        ]
+      },
+      "method": "adapter_raw",
+      "prediction": "047_adapter_raw.npz",
+      "seed": 23,
+      "base_denoising_seconds": 0.03483081699232571,
+      "adapter_denoising_seconds": 0.049654189991997555,
+      "source_expert_accepted": true
+    },
+    {
+      "index": 47,
+      "config": {
+        "schema": "hnuter_task_adaptive_pilot_v1",
+        "index": 47,
+        "layout": 11,
+        "seed": 20261004,
+        "task": "inspection",
+        "split": 2,
+        "origin": [
+          0.0,
+          0.0,
+          2.8
+        ],
+        "goal": [
+          4.318115520305774,
+          0.0,
+          2.8
+        ],
+        "goal_euler": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "pad_center": [
+          2.159057760152887,
+          0.0,
+          1.75
+        ],
+        "pad_half_extents": [
+          3.0,
+          1.5,
+          0.05
+        ],
+        "keepout_in_pad_xy": [
+          -0.5,
+          0.5,
+          -1.5,
+          0.2
+        ],
+        "keepout_margin_m": 0.04,
+        "inspection_target": [
+          2.159057760152887,
+          3.0,
+          3.0
+        ],
+        "inspection_range": [
+          1.7,
+          2.5
+        ],
+        "inspection_angle_max_deg": 10.0,
+        "target_radius": 0.05,
+        "expert_direction": 1,
+        "expert_amplitude_m": 0.861764800429396,
+        "boxes": [
+          [
+            7.0,
+            0.0,
+            2.5,
+            0.15,
+            16.0,
+            5.0
+          ],
+          [
+            1.0,
+            6.572266695241545,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            -6.572266695241545,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            0.0,
+            -0.05,
+            16.0,
+            16.0,
+            0.1
+          ],
+          [
+            0.0630151803599166,
+            -4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ],
+          [
+            1.3303212100448603,
+            4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ]
+        ],
+        "tool_mass_kg": 0.02,
+        "duration_s": 20.0,
+        "operate_interval": [
+          6.666666666666667,
+          13.333333333333334
+        ]
+      },
+      "method": "adapter_decoded",
+      "prediction": "047_adapter_decoded.npz",
+      "seed": 23,
+      "base_denoising_seconds": 0.03483081699232571,
+      "adapter_denoising_seconds": 0.049654189991997555,
+      "source_expert_accepted": true
+    },
+    {
+      "index": 47,
+      "config": {
+        "schema": "hnuter_task_adaptive_pilot_v1",
+        "index": 47,
+        "layout": 11,
+        "seed": 20261004,
+        "task": "inspection",
+        "split": 2,
+        "origin": [
+          0.0,
+          0.0,
+          2.8
+        ],
+        "goal": [
+          4.318115520305774,
+          0.0,
+          2.8
+        ],
+        "goal_euler": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "pad_center": [
+          2.159057760152887,
+          0.0,
+          1.75
+        ],
+        "pad_half_extents": [
+          3.0,
+          1.5,
+          0.05
+        ],
+        "keepout_in_pad_xy": [
+          -0.5,
+          0.5,
+          -1.5,
+          0.2
+        ],
+        "keepout_margin_m": 0.04,
+        "inspection_target": [
+          2.159057760152887,
+          3.0,
+          3.0
+        ],
+        "inspection_range": [
+          1.7,
+          2.5
+        ],
+        "inspection_angle_max_deg": 10.0,
+        "target_radius": 0.05,
+        "expert_direction": 1,
+        "expert_amplitude_m": 0.861764800429396,
+        "boxes": [
+          [
+            7.0,
+            0.0,
+            2.5,
+            0.15,
+            16.0,
+            5.0
+          ],
+          [
+            1.0,
+            6.572266695241545,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            -6.572266695241545,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            0.0,
+            -0.05,
+            16.0,
+            16.0,
+            0.1
+          ],
+          [
+            0.0630151803599166,
+            -4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ],
+          [
+            1.3303212100448603,
+            4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ]
+        ],
+        "tool_mass_kg": 0.02,
+        "duration_s": 20.0,
+        "operate_interval": [
+          6.666666666666667,
+          13.333333333333334
+        ]
+      },
+      "method": "shuffled_raw",
+      "prediction": "047_shuffled_raw.npz",
+      "seed": 23,
+      "base_denoising_seconds": 0.03483081699232571,
+      "adapter_denoising_seconds": 0.049654189991997555,
+      "source_expert_accepted": true
+    },
+    {
+      "index": 47,
+      "config": {
+        "schema": "hnuter_task_adaptive_pilot_v1",
+        "index": 47,
+        "layout": 11,
+        "seed": 20261004,
+        "task": "inspection",
+        "split": 2,
+        "origin": [
+          0.0,
+          0.0,
+          2.8
+        ],
+        "goal": [
+          4.318115520305774,
+          0.0,
+          2.8
+        ],
+        "goal_euler": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "pad_center": [
+          2.159057760152887,
+          0.0,
+          1.75
+        ],
+        "pad_half_extents": [
+          3.0,
+          1.5,
+          0.05
+        ],
+        "keepout_in_pad_xy": [
+          -0.5,
+          0.5,
+          -1.5,
+          0.2
+        ],
+        "keepout_margin_m": 0.04,
+        "inspection_target": [
+          2.159057760152887,
+          3.0,
+          3.0
+        ],
+        "inspection_range": [
+          1.7,
+          2.5
+        ],
+        "inspection_angle_max_deg": 10.0,
+        "target_radius": 0.05,
+        "expert_direction": 1,
+        "expert_amplitude_m": 0.861764800429396,
+        "boxes": [
+          [
+            7.0,
+            0.0,
+            2.5,
+            0.15,
+            16.0,
+            5.0
+          ],
+          [
+            1.0,
+            6.572266695241545,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            -6.572266695241545,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            0.0,
+            -0.05,
+            16.0,
+            16.0,
+            0.1
+          ],
+          [
+            0.0630151803599166,
+            -4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ],
+          [
+            1.3303212100448603,
+            4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ]
+        ],
+        "tool_mass_kg": 0.02,
+        "duration_s": 20.0,
+        "operate_interval": [
+          6.666666666666667,
+          13.333333333333334
+        ]
+      },
+      "method": "shuffled_decoded",
+      "prediction": "047_shuffled_decoded.npz",
+      "seed": 23,
+      "base_denoising_seconds": 0.03483081699232571,
+      "adapter_denoising_seconds": 0.049654189991997555,
+      "source_expert_accepted": true
+    },
+    {
+      "index": 47,
+      "config": {
+        "schema": "hnuter_task_adaptive_pilot_v1",
+        "index": 47,
+        "layout": 11,
+        "seed": 20261004,
+        "task": "inspection",
+        "split": 2,
+        "origin": [
+          0.0,
+          0.0,
+          2.8
+        ],
+        "goal": [
+          4.318115520305774,
+          0.0,
+          2.8
+        ],
+        "goal_euler": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "pad_center": [
+          2.159057760152887,
+          0.0,
+          1.75
+        ],
+        "pad_half_extents": [
+          3.0,
+          1.5,
+          0.05
+        ],
+        "keepout_in_pad_xy": [
+          -0.5,
+          0.5,
+          -1.5,
+          0.2
+        ],
+        "keepout_margin_m": 0.04,
+        "inspection_target": [
+          2.159057760152887,
+          3.0,
+          3.0
+        ],
+        "inspection_range": [
+          1.7,
+          2.5
+        ],
+        "inspection_angle_max_deg": 10.0,
+        "target_radius": 0.05,
+        "expert_direction": 1,
+        "expert_amplitude_m": 0.861764800429396,
+        "boxes": [
+          [
+            7.0,
+            0.0,
+            2.5,
+            0.15,
+            16.0,
+            5.0
+          ],
+          [
+            1.0,
+            6.572266695241545,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            -6.572266695241545,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            0.0,
+            -0.05,
+            16.0,
+            16.0,
+            0.1
+          ],
+          [
+            0.0630151803599166,
+            -4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ],
+          [
+            1.3303212100448603,
+            4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ]
+        ],
+        "tool_mass_kg": 0.02,
+        "duration_s": 20.0,
+        "operate_interval": [
+          6.666666666666667,
+          13.333333333333334
+        ]
+      },
+      "method": "block_only_raw",
+      "prediction": "047_block_only_raw.npz",
+      "seed": 23,
+      "base_denoising_seconds": 0.03483081699232571,
+      "adapter_denoising_seconds": 0.049654189991997555,
+      "source_expert_accepted": true
+    },
+    {
+      "index": 47,
+      "config": {
+        "schema": "hnuter_task_adaptive_pilot_v1",
+        "index": 47,
+        "layout": 11,
+        "seed": 20261004,
+        "task": "inspection",
+        "split": 2,
+        "origin": [
+          0.0,
+          0.0,
+          2.8
+        ],
+        "goal": [
+          4.318115520305774,
+          0.0,
+          2.8
+        ],
+        "goal_euler": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "pad_center": [
+          2.159057760152887,
+          0.0,
+          1.75
+        ],
+        "pad_half_extents": [
+          3.0,
+          1.5,
+          0.05
+        ],
+        "keepout_in_pad_xy": [
+          -0.5,
+          0.5,
+          -1.5,
+          0.2
+        ],
+        "keepout_margin_m": 0.04,
+        "inspection_target": [
+          2.159057760152887,
+          3.0,
+          3.0
+        ],
+        "inspection_range": [
+          1.7,
+          2.5
+        ],
+        "inspection_angle_max_deg": 10.0,
+        "target_radius": 0.05,
+        "expert_direction": 1,
+        "expert_amplitude_m": 0.861764800429396,
+        "boxes": [
+          [
+            7.0,
+            0.0,
+            2.5,
+            0.15,
+            16.0,
+            5.0
+          ],
+          [
+            1.0,
+            6.572266695241545,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            -6.572266695241545,
+            2.5,
+            16.0,
+            0.15,
+            5.0
+          ],
+          [
+            1.0,
+            0.0,
+            -0.05,
+            16.0,
+            16.0,
+            0.1
+          ],
+          [
+            0.0630151803599166,
+            -4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ],
+          [
+            1.3303212100448603,
+            4.0,
+            2.0,
+            0.7,
+            0.7,
+            4.0
+          ]
+        ],
+        "tool_mass_kg": 0.02,
+        "duration_s": 20.0,
+        "operate_interval": [
+          6.666666666666667,
+          13.333333333333334
+        ]
+      },
+      "method": "block_only_decoded",
+      "prediction": "047_block_only_decoded.npz",
+      "seed": 23,
+      "base_denoising_seconds": 0.03483081699232571,
+      "adapter_denoising_seconds": 0.049654189991997555,
+      "source_expert_accepted": true
+    }
+  ],
+  "base_sha256": "6e0da29b562b433bc1813b2f632cdd1f0a420705b003767ae32ce31e94745192",
+  "adapter_sha256": {
+    "surface": "397a123630d5d4977ca5f8faa26344f5f14aa56f7287840dfc5c47f08d245680",
+    "inspection": "db03f4d281a122451a4d86d96814b903f240e84707a648b5072def0b41b896e3",
+    "inspection_block_only": "aabf732a30478ca5f66913488b95ca06ee6afc30b73d549691ec6c26b3525042"
+  },
+  "unavailable": [],
+  "source_dataset_sha256": "185a0eefa93e1d72f21270c21b818fdf8b1de864bd30232d3bcccbb55dcca190",
+  "seed": 23,
+  "candidates_per_method_per_task": 1,
+  "test_filter": "all recorded test attempts, irrespective of expert success",
+  "decoder_scope": "surface plane/normal or inspection control-point look-at only; no tangential/path search"
+}

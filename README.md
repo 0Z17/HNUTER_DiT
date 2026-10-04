@@ -5,6 +5,15 @@
 移动和缩放障碍物，编辑起终点 XYZ/roll/pitch/yaw，并一次生成多条 SE(3)
 轨迹进行三维对比。
 
+## Task-adaptive 接触 / 观测小量试验（2026-10-04）
+
+新增“冻结 SDF 先验＋独立任务残差＋独立几何 decoder”的小量验证，已实际采集48条
+专家尝试，保留6条软接触失败；两类任务分别训练，并完成64次原执行器物理回放。
+Surface 适配器4/4通过软接触稳定窗与合法扫掠验收，Inspection仍为0/4，不扩大规模。
+参考几何、真实接触力、完整操作窗和严格实际几何分别报告，不能把软接触通过当成
+硬表面作业成功。这是论文立意的SDF扩展，不是canonical v003同协议复现。
+详见[任务自适应试验](docs/TASK_ADAPTIVE_PILOT.md)及[验证证据](docs/task_adaptive_pilot_validation.json)。
+
 ## 静态障碍 GPU 距离场位姿规划（实验分支）
 
 新增实际 nvblox TSDF/ESDF 局部 GPU 编码、四帧观测历史和六自由度 DiT 位姿样条。

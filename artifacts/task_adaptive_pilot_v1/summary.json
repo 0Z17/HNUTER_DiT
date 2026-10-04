@@ -1,0 +1,843 @@
+{
+  "schema": "task_adaptive_pilot_evidence_v1",
+  "date": "2026-10-04",
+  "purpose": "New frozen-SDF task extension aligned with manuscript principles, not canonical v003 replication",
+  "collection": {
+    "surface": {
+      "attempted": 24,
+      "accepted": 18,
+      "splits": {
+        "0": {
+          "attempted": 16,
+          "accepted": 10
+        },
+        "1": {
+          "attempted": 4,
+          "accepted": 4
+        },
+        "2": {
+          "attempted": 4,
+          "accepted": 4
+        }
+      },
+      "forbidden_contact_steps": 0,
+      "strict_actual_geometry_passed": 0,
+      "whole_operation_force_passed": 0,
+      "operating_contact_fraction": {
+        "min": 0.9631198164813835,
+        "median": 0.964884418563614,
+        "max": 0.9684136227280749
+      },
+      "operating_force_interval_fraction": {
+        "min": 0.8980059996470796,
+        "median": 0.9048879477677784,
+        "max": 0.9186518440091759
+      },
+      "whole_operate_contact_fraction": {
+        "min": 0.968651567421629,
+        "median": 0.9701514924253787,
+        "max": 0.9731513424328784
+      },
+      "whole_operate_force_interval_fraction": {
+        "min": 0.8324583770811459,
+        "median": 0.8348582570871457,
+        "max": 0.8372581370931453
+      },
+      "maximum_actual_penetration_m": {
+        "min": 0.0115980897396371,
+        "median": 0.011837302522633424,
+        "max": 0.012025000927129263
+      },
+      "max_position_tracking_error_m": {
+        "min": 0.019040749612221637,
+        "median": 0.01927968702593394,
+        "max": 0.01949510651525733
+      }
+    },
+    "inspection": {
+      "attempted": 24,
+      "accepted": 24,
+      "splits": {
+        "0": {
+          "attempted": 16,
+          "accepted": 16
+        },
+        "1": {
+          "attempted": 4,
+          "accepted": 4
+        },
+        "2": {
+          "attempted": 4,
+          "accepted": 4
+        }
+      },
+      "forbidden_contact_steps": 0,
+      "strict_actual_geometry_passed": null,
+      "whole_operation_force_passed": null
+    }
+  },
+  "evaluation": {
+    "surface/linear_decoded": {
+      "attempted": 4,
+      "passed": 0,
+      "physical_passed": 4,
+      "raw_reference_geometry_passed": 0,
+      "forbidden_contact_steps": 0,
+      "contact_unknown": 0,
+      "failures": [
+        {
+          "index": 40,
+          "error": null,
+          "first_forbidden": null
+        },
+        {
+          "index": 41,
+          "error": null,
+          "first_forbidden": null
+        },
+        {
+          "index": 44,
+          "error": null,
+          "first_forbidden": null
+        },
+        {
+          "index": 45,
+          "error": null,
+          "first_forbidden": null
+        }
+      ],
+      "strict_actual_geometry_passed": 0,
+      "reference_plane_error_mean_m": {
+        "median": 2.839640899565993e-16,
+        "max": 2.839640899565993e-16
+      },
+      "reference_plane_error_max_m": {
+        "median": 4.440892098500626e-16,
+        "max": 4.440892098500626e-16
+      },
+      "reference_normal_error_max_deg": {
+        "median": 8.537736462515939e-07,
+        "max": 8.537736462515939e-07
+      },
+      "whole_operation_force_passed": 0
+    },
+    "surface/base_raw": {
+      "attempted": 4,
+      "passed": 0,
+      "physical_passed": 0,
+      "raw_reference_geometry_passed": 0,
+      "forbidden_contact_steps": 0,
+      "contact_unknown": 0,
+      "failures": [
+        {
+          "index": 40,
+          "error": null,
+          "first_forbidden": null
+        },
+        {
+          "index": 41,
+          "error": null,
+          "first_forbidden": null
+        },
+        {
+          "index": 44,
+          "error": null,
+          "first_forbidden": null
+        },
+        {
+          "index": 45,
+          "error": null,
+          "first_forbidden": null
+        }
+      ],
+      "strict_actual_geometry_passed": 0,
+      "reference_plane_error_mean_m": {
+        "median": 0.24600608344727792,
+        "max": 0.246025795621937
+      },
+      "reference_plane_error_max_m": {
+        "median": 0.2481592957248253,
+        "max": 0.24818833078426894
+      },
+      "reference_normal_error_max_deg": {
+        "median": 0.7766446385761012,
+        "max": 0.7777663519504793
+      },
+      "whole_operation_force_passed": 0
+    },
+    "surface/base_decoded": {
+      "attempted": 4,
+      "passed": 1,
+      "physical_passed": 2,
+      "raw_reference_geometry_passed": 2,
+      "forbidden_contact_steps": 0,
+      "contact_unknown": 0,
+      "failures": [
+        {
+          "index": 40,
+          "error": null,
+          "first_forbidden": null
+        },
+        {
+          "index": 44,
+          "error": null,
+          "first_forbidden": null
+        },
+        {
+          "index": 45,
+          "error": null,
+          "first_forbidden": null
+        }
+      ],
+      "strict_actual_geometry_passed": 0,
+      "reference_plane_error_mean_m": {
+        "median": 2.8313183881370184e-16,
+        "max": 2.896233977283017e-16
+      },
+      "reference_plane_error_max_m": {
+        "median": 4.440892098500626e-16,
+        "max": 4.440892098500626e-16
+      },
+      "reference_normal_error_max_deg": {
+        "median": 0.0,
+        "max": 0.0
+      },
+      "whole_operation_force_passed": 0
+    },
+    "surface/adapter_raw": {
+      "attempted": 4,
+      "passed": 4,
+      "physical_passed": 4,
+      "raw_reference_geometry_passed": 2,
+      "forbidden_contact_steps": 0,
+      "contact_unknown": 0,
+      "failures": [],
+      "strict_actual_geometry_passed": 2,
+      "reference_plane_error_mean_m": {
+        "median": 0.003108159220393247,
+        "max": 0.003948810020911236
+      },
+      "reference_plane_error_max_m": {
+        "median": 0.005453223218218395,
+        "max": 0.00636254427760341
+      },
+      "reference_normal_error_max_deg": {
+        "median": 0.12903284604161172,
+        "max": 0.13526786948773772
+      },
+      "whole_operation_force_passed": 4
+    },
+    "surface/adapter_decoded": {
+      "attempted": 4,
+      "passed": 4,
+      "physical_passed": 4,
+      "raw_reference_geometry_passed": 4,
+      "forbidden_contact_steps": 0,
+      "contact_unknown": 0,
+      "failures": [],
+      "strict_actual_geometry_passed": 0,
+      "reference_plane_error_mean_m": {
+        "median": 2.8479634109949666e-16,
+        "max": 2.8995629818546067e-16
+      },
+      "reference_plane_error_max_m": {
+        "median": 4.440892098500626e-16,
+        "max": 4.440892098500626e-16
+      },
+      "reference_normal_error_max_deg": {
+        "median": 8.537736462515939e-07,
+        "max": 8.537736462515939e-07
+      },
+      "whole_operation_force_passed": 0
+    },
+    "surface/shuffled_raw": {
+      "attempted": 4,
+      "passed": 0,
+      "physical_passed": 4,
+      "raw_reference_geometry_passed": 0,
+      "forbidden_contact_steps": 0,
+      "contact_unknown": 0,
+      "failures": [
+        {
+          "index": 40,
+          "error": null,
+          "first_forbidden": null
+        },
+        {
+          "index": 41,
+          "error": null,
+          "first_forbidden": null
+        },
+        {
+          "index": 44,
+          "error": null,
+          "first_forbidden": null
+        },
+        {
+          "index": 45,
+          "error": null,
+          "first_forbidden": null
+        }
+      ],
+      "strict_actual_geometry_passed": 0,
+      "reference_plane_error_mean_m": {
+        "median": 0.003108159220393247,
+        "max": 0.003948810020911236
+      },
+      "reference_plane_error_max_m": {
+        "median": 0.005453223218218395,
+        "max": 0.00636254427760341
+      },
+      "reference_normal_error_max_deg": {
+        "median": 0.12903284604161172,
+        "max": 0.13526786948773772
+      },
+      "whole_operation_force_passed": 4
+    },
+    "surface/shuffled_decoded": {
+      "attempted": 4,
+      "passed": 0,
+      "physical_passed": 4,
+      "raw_reference_geometry_passed": 0,
+      "forbidden_contact_steps": 0,
+      "contact_unknown": 0,
+      "failures": [
+        {
+          "index": 40,
+          "error": null,
+          "first_forbidden": null
+        },
+        {
+          "index": 41,
+          "error": null,
+          "first_forbidden": null
+        },
+        {
+          "index": 44,
+          "error": null,
+          "first_forbidden": null
+        },
+        {
+          "index": 45,
+          "error": null,
+          "first_forbidden": null
+        }
+      ],
+      "strict_actual_geometry_passed": 0,
+      "reference_plane_error_mean_m": {
+        "median": 2.8479634109949666e-16,
+        "max": 2.8995629818546067e-16
+      },
+      "reference_plane_error_max_m": {
+        "median": 4.440892098500626e-16,
+        "max": 4.440892098500626e-16
+      },
+      "reference_normal_error_max_deg": {
+        "median": 8.537736462515939e-07,
+        "max": 8.537736462515939e-07
+      },
+      "whole_operation_force_passed": 0
+    },
+    "inspection/linear_decoded": {
+      "attempted": 4,
+      "passed": 0,
+      "physical_passed": 4,
+      "raw_reference_geometry_passed": 0,
+      "forbidden_contact_steps": 0,
+      "contact_unknown": 0,
+      "failures": [
+        {
+          "index": 42,
+          "error": null,
+          "first_forbidden": null
+        },
+        {
+          "index": 43,
+          "error": null,
+          "first_forbidden": null
+        },
+        {
+          "index": 46,
+          "error": null,
+          "first_forbidden": null
+        },
+        {
+          "index": 47,
+          "error": null,
+          "first_forbidden": null
+        }
+      ],
+      "effective_fraction": {
+        "min": 0.0,
+        "median": 0.0,
+        "max": 0.0
+      },
+      "longest_continuous_effective_s": {
+        "min": 0.0,
+        "median": 0.0,
+        "max": 0.0
+      }
+    },
+    "inspection/base_raw": {
+      "attempted": 4,
+      "passed": 0,
+      "physical_passed": 4,
+      "raw_reference_geometry_passed": 0,
+      "forbidden_contact_steps": 0,
+      "contact_unknown": 0,
+      "failures": [
+        {
+          "index": 42,
+          "error": null,
+          "first_forbidden": null
+        },
+        {
+          "index": 43,
+          "error": null,
+          "first_forbidden": null
+        },
+        {
+          "index": 46,
+          "error": null,
+          "first_forbidden": null
+        },
+        {
+          "index": 47,
+          "error": null,
+          "first_forbidden": null
+        }
+      ],
+      "effective_fraction": {
+        "min": 0.0,
+        "median": 0.0,
+        "max": 0.0
+      },
+      "longest_continuous_effective_s": {
+        "min": 0.0,
+        "median": 0.0,
+        "max": 0.0
+      }
+    },
+    "inspection/base_decoded": {
+      "attempted": 4,
+      "passed": 0,
+      "physical_passed": 4,
+      "raw_reference_geometry_passed": 0,
+      "forbidden_contact_steps": 0,
+      "contact_unknown": 0,
+      "failures": [
+        {
+          "index": 42,
+          "error": null,
+          "first_forbidden": null
+        },
+        {
+          "index": 43,
+          "error": null,
+          "first_forbidden": null
+        },
+        {
+          "index": 46,
+          "error": null,
+          "first_forbidden": null
+        },
+        {
+          "index": 47,
+          "error": null,
+          "first_forbidden": null
+        }
+      ],
+      "effective_fraction": {
+        "min": 0.0,
+        "median": 0.26224999999999443,
+        "max": 0.612999999999987
+      },
+      "longest_continuous_effective_s": {
+        "min": 0.0,
+        "median": 0.8771666666666476,
+        "max": 2.044333333333289
+      }
+    },
+    "inspection/adapter_raw": {
+      "attempted": 4,
+      "passed": 0,
+      "physical_passed": 4,
+      "raw_reference_geometry_passed": 0,
+      "forbidden_contact_steps": 0,
+      "contact_unknown": 0,
+      "failures": [
+        {
+          "index": 42,
+          "error": null,
+          "first_forbidden": null
+        },
+        {
+          "index": 43,
+          "error": null,
+          "first_forbidden": null
+        },
+        {
+          "index": 46,
+          "error": null,
+          "first_forbidden": null
+        },
+        {
+          "index": 47,
+          "error": null,
+          "first_forbidden": null
+        }
+      ],
+      "effective_fraction": {
+        "min": 0.37049999999999195,
+        "median": 0.5019249999999892,
+        "max": 0.6348499999999865
+      },
+      "longest_continuous_effective_s": {
+        "min": 1.3499999999999712,
+        "median": 1.8561666666666277,
+        "max": 2.3523333333332843
+      }
+    },
+    "inspection/adapter_decoded": {
+      "attempted": 4,
+      "passed": 0,
+      "physical_passed": 4,
+      "raw_reference_geometry_passed": 0,
+      "forbidden_contact_steps": 0,
+      "contact_unknown": 0,
+      "failures": [
+        {
+          "index": 42,
+          "error": null,
+          "first_forbidden": null
+        },
+        {
+          "index": 43,
+          "error": null,
+          "first_forbidden": null
+        },
+        {
+          "index": 46,
+          "error": null,
+          "first_forbidden": null
+        },
+        {
+          "index": 47,
+          "error": null,
+          "first_forbidden": null
+        }
+      ],
+      "effective_fraction": {
+        "min": 0.37199999999999195,
+        "median": 0.46967499999998996,
+        "max": 0.5733499999999879
+      },
+      "longest_continuous_effective_s": {
+        "min": 1.359999999999971,
+        "median": 1.8461666666666279,
+        "max": 2.3423333333332845
+      }
+    },
+    "inspection/shuffled_raw": {
+      "attempted": 4,
+      "passed": 0,
+      "physical_passed": 4,
+      "raw_reference_geometry_passed": 0,
+      "forbidden_contact_steps": 0,
+      "contact_unknown": 0,
+      "failures": [
+        {
+          "index": 42,
+          "error": null,
+          "first_forbidden": null
+        },
+        {
+          "index": 43,
+          "error": null,
+          "first_forbidden": null
+        },
+        {
+          "index": 46,
+          "error": null,
+          "first_forbidden": null
+        },
+        {
+          "index": 47,
+          "error": null,
+          "first_forbidden": null
+        }
+      ],
+      "effective_fraction": {
+        "min": 0.0,
+        "median": 0.0,
+        "max": 0.0
+      },
+      "longest_continuous_effective_s": {
+        "min": 0.0,
+        "median": 0.0,
+        "max": 0.0
+      }
+    },
+    "inspection/shuffled_decoded": {
+      "attempted": 4,
+      "passed": 0,
+      "physical_passed": 4,
+      "raw_reference_geometry_passed": 0,
+      "forbidden_contact_steps": 0,
+      "contact_unknown": 0,
+      "failures": [
+        {
+          "index": 42,
+          "error": null,
+          "first_forbidden": null
+        },
+        {
+          "index": 43,
+          "error": null,
+          "first_forbidden": null
+        },
+        {
+          "index": 46,
+          "error": null,
+          "first_forbidden": null
+        },
+        {
+          "index": 47,
+          "error": null,
+          "first_forbidden": null
+        }
+      ],
+      "effective_fraction": {
+        "min": 0.0,
+        "median": 0.0,
+        "max": 0.0
+      },
+      "longest_continuous_effective_s": {
+        "min": 0.0,
+        "median": 0.0,
+        "max": 0.0
+      }
+    },
+    "inspection/block_only_raw": {
+      "attempted": 4,
+      "passed": 0,
+      "physical_passed": 4,
+      "raw_reference_geometry_passed": 0,
+      "forbidden_contact_steps": 0,
+      "contact_unknown": 0,
+      "failures": [
+        {
+          "index": 42,
+          "error": null,
+          "first_forbidden": null
+        },
+        {
+          "index": 43,
+          "error": null,
+          "first_forbidden": null
+        },
+        {
+          "index": 46,
+          "error": null,
+          "first_forbidden": null
+        },
+        {
+          "index": 47,
+          "error": null,
+          "first_forbidden": null
+        }
+      ],
+      "effective_fraction": {
+        "min": 0.0,
+        "median": 0.0,
+        "max": 0.0
+      },
+      "longest_continuous_effective_s": {
+        "min": 0.0,
+        "median": 0.0,
+        "max": 0.0
+      }
+    },
+    "inspection/block_only_decoded": {
+      "attempted": 4,
+      "passed": 0,
+      "physical_passed": 4,
+      "raw_reference_geometry_passed": 0,
+      "forbidden_contact_steps": 0,
+      "contact_unknown": 0,
+      "failures": [
+        {
+          "index": 42,
+          "error": null,
+          "first_forbidden": null
+        },
+        {
+          "index": 43,
+          "error": null,
+          "first_forbidden": null
+        },
+        {
+          "index": 46,
+          "error": null,
+          "first_forbidden": null
+        },
+        {
+          "index": 47,
+          "error": null,
+          "first_forbidden": null
+        }
+      ],
+      "effective_fraction": {
+        "min": 0.607499999999987,
+        "median": 0.7272499999999844,
+        "max": 0.8289999999999823
+      },
+      "longest_continuous_effective_s": {
+        "min": 2.0999999999999552,
+        "median": 3.019333333333268,
+        "max": 4.22999999999991
+      }
+    }
+  },
+  "training": {
+    "inspection": {
+      "best_validation_raw_control_mse": 0.2074214071035385,
+      "steps": 1500,
+      "seconds": 18.483125482991454,
+      "training_count": 16,
+      "validation_count": 4,
+      "seed": 41,
+      "frozen_base_bitwise_unchanged": true,
+      "frozen_normalization_bitwise_unchanged": true,
+      "base_parameter_gradients_absent": true,
+      "test_excluded": true,
+      "output_residual": true,
+      "physical_loss_weight": 0.5,
+      "checkpoint_sha256": "45899d451583be293a1883531996d5500f8f4a86645acd073670f8ae30fda885"
+    },
+    "inspection_block_only": {
+      "best_validation_raw_control_mse": 0.4980613887310028,
+      "steps": 1500,
+      "seconds": 17.799543285000254,
+      "training_count": 16,
+      "validation_count": 4,
+      "seed": 41,
+      "frozen_base_bitwise_unchanged": true,
+      "frozen_normalization_bitwise_unchanged": true,
+      "base_parameter_gradients_absent": true,
+      "test_excluded": true,
+      "output_residual": false,
+      "physical_loss_weight": 0.5,
+      "checkpoint_sha256": "0b51f58a941753a621ae348f8fb1adb290aeae6076e1460a5d8c781276f0cc75"
+    },
+    "inspection_block_only_weight20": {
+      "best_validation_raw_control_mse": 0.3882726728916168,
+      "steps": 3000,
+      "seconds": 35.69222639099462,
+      "training_count": 16,
+      "validation_count": 4,
+      "seed": 41,
+      "frozen_base_bitwise_unchanged": true,
+      "frozen_normalization_bitwise_unchanged": true,
+      "base_parameter_gradients_absent": true,
+      "test_excluded": true,
+      "output_residual": false,
+      "physical_loss_weight": 20.0,
+      "checkpoint_sha256": "aabf732a30478ca5f66913488b95ca06ee6afc30b73d549691ec6c26b3525042"
+    },
+    "inspection_position_weight20": {
+      "best_validation_raw_control_mse": 0.10120131820440292,
+      "steps": 3000,
+      "seconds": 36.408358294997015,
+      "training_count": 16,
+      "validation_count": 4,
+      "seed": 41,
+      "frozen_base_bitwise_unchanged": true,
+      "frozen_normalization_bitwise_unchanged": true,
+      "base_parameter_gradients_absent": true,
+      "test_excluded": true,
+      "output_residual": true,
+      "physical_loss_weight": 20.0,
+      "checkpoint_sha256": "db03f4d281a122451a4d86d96814b903f240e84707a648b5072def0b41b896e3"
+    },
+    "surface": {
+      "best_validation_raw_control_mse": 0.0011392275337129831,
+      "steps": 1500,
+      "seconds": 18.599654025005293,
+      "training_count": 10,
+      "validation_count": 4,
+      "seed": 41,
+      "frozen_base_bitwise_unchanged": true,
+      "frozen_normalization_bitwise_unchanged": true,
+      "base_parameter_gradients_absent": true,
+      "test_excluded": true,
+      "output_residual": true,
+      "physical_loss_weight": 0.5,
+      "checkpoint_sha256": "397a123630d5d4977ca5f8faa26344f5f14aa56f7287840dfc5c47f08d245680"
+    }
+  },
+  "selection": {
+    "surface": {
+      "run": "surface",
+      "criterion": "minimum raw-control validation MSE; held-out tasks not yet predicted",
+      "minimum_validation_mse": 0.0011392275337129831,
+      "checkpoint_sha256": "397a123630d5d4977ca5f8faa26344f5f14aa56f7287840dfc5c47f08d245680"
+    },
+    "inspection": {
+      "run": "inspection_position_weight20",
+      "criterion": "minimum raw-control validation MSE; held-out tasks not yet predicted",
+      "minimum_validation_mse": 0.10120131820440292,
+      "checkpoint_sha256": "db03f4d281a122451a4d86d96814b903f240e84707a648b5072def0b41b896e3"
+    }
+  },
+  "source_sha256": {
+    "collection/collection.json": "d4fd1df195abd8fcad2b762553d2870fa1fa8d0f374f9b6916d0ade43ce81f79",
+    "prepared/dataset.npz": "185a0eefa93e1d72f21270c21b818fdf8b1de864bd30232d3bcccbb55dcca190",
+    "prepared/mapping.json": "01d9dfa8d81bb985bc8f29dc5bbee2db480485964aed1fa66fa3d20018bfdafc",
+    "evaluation/evaluation.json": "51a4e96525a68edfa1a9fddb025e6443b13c92a3fb83a84f533b1d99a1d3edce",
+    "predictions/predictions.json": "3c6e6342b02926e93e0b9cbd1eeabcffd566b4294dd478611c4c8dc6607952c5",
+    "collection_task_audit.json": "2c3f431331d78a3514376e326f67fdfaf49efa15457e6b160d70f1d94d22deec"
+  },
+  "base_sha256": "6e0da29b562b433bc1813b2f632cdd1f0a420705b003767ae32ce31e94745192",
+  "adapter_sha256": {
+    "surface": "397a123630d5d4977ca5f8faa26344f5f14aa56f7287840dfc5c47f08d245680",
+    "inspection": "db03f4d281a122451a4d86d96814b903f240e84707a648b5072def0b41b896e3",
+    "inspection_block_only": "aabf732a30478ca5f66913488b95ca06ee6afc30b73d549691ec6c26b3525042"
+  },
+  "timing": {
+    "base_denoising_seconds": {
+      "median": 0.03482131949567702,
+      "p95": 0.23969509535527306
+    },
+    "adapter_denoising_seconds": {
+      "median": 0.05001369600358885,
+      "p95": 0.05408451279217843
+    },
+    "scope": "single-case 20-step cached-memory GPU denoising only; excludes map, encoder, decoder, physics",
+    "collection_wall_seconds": 75.77474871400045,
+    "evaluation_wall_seconds": 97.92318720300682
+  },
+  "limitations": [
+    "Single seed; four held-out cases per task; narrow workbench distribution.",
+    "Soft numerical contact is uncalibrated; post-settle physical gates differ from full-window force and strict actual geometry.",
+    "48 trials contain 6 failed contact experts; failures excluded only from positive training, not hidden in reports.",
+    "Single-target ray visibility is not RGB recognition, target area coverage or sensing-plane estimation.",
+    "Task geometry is an external command; MID360 has a near-downward blind region.",
+    "Four stationary-start measured histories, no in-flight replanning or industrial contact deployment.",
+    "Each task has an independent adapter; no simultaneous task blending/conflict handling demonstrated."
+  ],
+  "paper_sources": {
+    "README.md": "30f88522a470a34d950ac2a850d32f573da2e105b8f24308b70c911e79b8ed02",
+    "PAPER_OUTLINE.md": "b3303d4965e57e34bfeb2d5d62ffbc2e237d61196e1c3b2e26d56f2aff844c43",
+    "ieeeconf/task_adaptive_diffusion.tex": "cf084d543498a3fb49bb9d28ac78ccc901d4ce2157ddc9d3d61de181785de05c",
+    "ieeeconf/task_adaptive_diffusion_en.tex": "5b566bc4d9c7c9ec0f0c0207710aab72be79cd7c5d03f527295a9c15d7fc7a3c",
+    "ieeeconf/MANUSCRIPT_GUIDE.md": "acafa198011035d22a939656b001db94fd5d7655dd1d8f918a44883fe30f9893"
+  },
+  "validation": {
+    "task_tests_passed": 51,
+    "test_command": "PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 python -m pytest -q tests/test_task_*.py",
+    "actuator_driven_test_steps": 1280000,
+    "test_executions": 64,
+    "measured_surface_counterfactual_pairs_identical": 12
+  }
+}

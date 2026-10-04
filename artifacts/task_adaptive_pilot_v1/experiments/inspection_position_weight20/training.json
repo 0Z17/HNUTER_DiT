@@ -1,0 +1,234 @@
+{
+  "task": "inspection",
+  "seed": 41,
+  "steps": 3000,
+  "log": [
+    {
+      "step": 250,
+      "loss": 25.87058448791504,
+      "velocity_loss": 24.998498916625977,
+      "raw_geometry_loss": 0.01671663299202919,
+      "raw_imitation_loss": 0.042768459767103195,
+      "validation_raw_control_mse": 0.3119339346885681,
+      "elapsed_seconds": 3.1477846709894948
+    },
+    {
+      "step": 500,
+      "loss": 15.639013290405273,
+      "velocity_loss": 14.89851188659668,
+      "raw_geometry_loss": 0.017622336745262146,
+      "raw_imitation_loss": 0.03614398464560509,
+      "validation_raw_control_mse": 0.2482374757528305,
+      "elapsed_seconds": 6.158545055994182
+    },
+    {
+      "step": 750,
+      "loss": 14.166287422180176,
+      "velocity_loss": 13.346176147460938,
+      "raw_geometry_loss": 0.02282211184501648,
+      "raw_imitation_loss": 0.039864432066679,
+      "validation_raw_control_mse": 0.25050830841064453,
+      "elapsed_seconds": 9.190283304997138
+    },
+    {
+      "step": 1000,
+      "loss": 3.373347043991089,
+      "velocity_loss": 2.729794979095459,
+      "raw_geometry_loss": 0.019107557833194733,
+      "raw_imitation_loss": 0.031222227960824966,
+      "validation_raw_control_mse": 0.21981531381607056,
+      "elapsed_seconds": 12.176758927002084
+    },
+    {
+      "step": 1250,
+      "loss": 2.424565076828003,
+      "velocity_loss": 1.7559080123901367,
+      "raw_geometry_loss": 0.04206918552517891,
+      "raw_imitation_loss": 0.03132938966155052,
+      "validation_raw_control_mse": 0.2077699452638626,
+      "elapsed_seconds": 15.200575884999125
+    },
+    {
+      "step": 1500,
+      "loss": 3.18864369392395,
+      "velocity_loss": 2.799598455429077,
+      "raw_geometry_loss": 0.009513508528470993,
+      "raw_imitation_loss": 0.01897658035159111,
+      "validation_raw_control_mse": 0.20098237693309784,
+      "elapsed_seconds": 18.246961431999807
+    },
+    {
+      "step": 1750,
+      "loss": 2.1637418270111084,
+      "velocity_loss": 1.6760412454605103,
+      "raw_geometry_loss": 0.020595721900463104,
+      "raw_imitation_loss": 0.02335524372756481,
+      "validation_raw_control_mse": 0.19624753296375275,
+      "elapsed_seconds": 21.27309417599463
+    },
+    {
+      "step": 2000,
+      "loss": 2.132052421569824,
+      "velocity_loss": 1.656065583229065,
+      "raw_geometry_loss": 0.027249842882156372,
+      "raw_imitation_loss": 0.022436851635575294,
+      "validation_raw_control_mse": 0.1853058934211731,
+      "elapsed_seconds": 24.277766166997026
+    },
+    {
+      "step": 2250,
+      "loss": 1.2017301321029663,
+      "velocity_loss": 0.8256144523620605,
+      "raw_geometry_loss": 0.017560767009854317,
+      "raw_imitation_loss": 0.01792774349451065,
+      "validation_raw_control_mse": 0.16617341339588165,
+      "elapsed_seconds": 27.324412642992684
+    },
+    {
+      "step": 2500,
+      "loss": 1.0577969551086426,
+      "velocity_loss": 0.5670298337936401,
+      "raw_geometry_loss": 0.03411641716957092,
+      "raw_imitation_loss": 0.022832537069916725,
+      "validation_raw_control_mse": 0.14791563153266907,
+      "elapsed_seconds": 30.350032595990342
+    },
+    {
+      "step": 2750,
+      "loss": 1.429397463798523,
+      "velocity_loss": 0.9595768451690674,
+      "raw_geometry_loss": 0.0142743531614542,
+      "raw_imitation_loss": 0.022777311503887177,
+      "validation_raw_control_mse": 0.12687638401985168,
+      "elapsed_seconds": 33.38257875898853
+    },
+    {
+      "step": 3000,
+      "loss": 1.30009126663208,
+      "velocity_loss": 1.0090357065200806,
+      "raw_geometry_loss": 0.004790334030985832,
+      "raw_imitation_loss": 0.014313263818621635,
+      "validation_raw_control_mse": 0.10120131820440292,
+      "elapsed_seconds": 36.408358294997015
+    }
+  ],
+  "train_dataset_ids": [
+    2,
+    3,
+    6,
+    7,
+    10,
+    11,
+    14,
+    15,
+    18,
+    19,
+    22,
+    23,
+    26,
+    27,
+    30,
+    31
+  ],
+  "validation_dataset_ids": [
+    34,
+    35,
+    38,
+    39
+  ],
+  "used_episode_ids": [
+    2,
+    3,
+    6,
+    7,
+    10,
+    11,
+    14,
+    15,
+    18,
+    19,
+    22,
+    23,
+    26,
+    27,
+    30,
+    31,
+    34,
+    35,
+    38,
+    39
+  ],
+  "used_layout_ids": [
+    0,
+    0,
+    1,
+    1,
+    2,
+    2,
+    3,
+    3,
+    4,
+    4,
+    5,
+    5,
+    6,
+    6,
+    7,
+    7,
+    8,
+    8,
+    9,
+    9
+  ],
+  "test_excluded": true,
+  "base_sha256": "6e0da29b562b433bc1813b2f632cdd1f0a420705b003767ae32ce31e94745192",
+  "frozen_base_bitwise_unchanged": true,
+  "frozen_normalization_bitwise_unchanged": true,
+  "base_parameter_gradients_absent": true,
+  "configuration": {
+    "schema": "frozen_sdf_task_residual_v1",
+    "base_architecture": {
+      "dimension": 128,
+      "depth": 4,
+      "heads": 4
+    },
+    "task_dim": 24,
+    "task_tokens": 3,
+    "injection_blocks": [
+      0,
+      2,
+      3
+    ],
+    "injection": "after each selected base block",
+    "bottleneck": 32,
+    "output_residual": true,
+    "output_residual_design": "zero-initialized normalized-velocity residual from final hidden + mean task tokens; bypasses frozen LayerNorm/readout capacity; new SDF-pilot extension, not canonical paper block-only",
+    "output_residual_phase": "same soft control-support mask as hidden residuals",
+    "default_phase": [
+      0.3499999940395355,
+      0.8500000238418579,
+      1.0,
+      1.0,
+      0.8500000238418579,
+      0.3499999940395355
+    ],
+    "phase_semantics": "soft control-support mask; not exact output localization",
+    "parameter_count": 335814,
+    "base_parameter_count": 1679430,
+    "frozen_base": true,
+    "frozen_normalization": true,
+    "output": "raw six free pose controls",
+    "projection": false
+  },
+  "checkpoint_selection": "lowest validation raw-control MSE",
+  "losses": "velocity MSE + raw preprojection task geometry + weighted raw physical-control imitation MSE",
+  "physical_loss_weight": 20.0,
+  "optimizer": {
+    "name": "AdamW",
+    "lr": 0.0008,
+    "weight_decay": 0.01,
+    "batch_size": 16
+  },
+  "decoder_used_during_training": false,
+  "source_dataset_sha256": "185a0eefa93e1d72f21270c21b818fdf8b1de864bd30232d3bcccbb55dcca190"
+}
