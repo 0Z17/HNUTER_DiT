@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import json
+import hashlib
 import os
 from pathlib import Path
 import subprocess
@@ -42,7 +43,7 @@ class PlannerProcess:
     _worker_script = Path(__file__).with_name('planner_worker.py')
 
     def __init__(self, output_dir=None, *, python=None, device='cuda',
-                 startup_timeout=120., request_timeout=120.):
+                 startup_timeout=120., request_timeout=120., temporal_checkpoint=None):
         if device not in ('cpu', 'cuda', 'auto'):
             raise ValueError('device must be cpu, cuda, or auto')
         if not np.isfinite(startup_timeout) or startup_timeout <= 0 or not np.isfinite(request_timeout) or request_timeout <= 0:
@@ -64,7 +65,15 @@ class PlannerProcess:
         self._status = None
         self._request_lock = threading.Lock()
         self._request_timeout = float(request_timeout)
-        _atomic_json(self.output_dir/'config.json', dict(device=device))
+        self.runtime_kind = 'temporal' if temporal_checkpoint is not None else 'legacy'
+        config = dict(device=device, runtime_kind=self.runtime_kind)
+        if temporal_checkpoint is not None:
+            checkpoint = Path(temporal_checkpoint).resolve()
+            if not checkpoint.is_file():
+                raise ValueError('temporal checkpoint does not exist: ' + str(checkpoint))
+            config.update(checkpoint_path=str(checkpoint),
+                          expected_checkpoint_sha256=hashlib.sha256(checkpoint.read_bytes()).hexdigest())
+        _atomic_json(self.output_dir/'config.json', config)
         self._log = (self.output_dir/'worker.log').open('w')
         try:
             self._process = subprocess.Popen([executable, str(self._worker_script), str(self.output_dir)],
@@ -115,6 +124,8 @@ class PlannerProcess:
         return dict(self._description, process_isolated=True, worker_directory=str(self.output_dir))
 
     def sample(self, mode, tokens, mask, start, goal, seed, count=8):
+        if self.runtime_kind != 'legacy':
+            raise ValueError('a temporal worker cannot sample the legacy modes')
         if mode not in ('baseline', 'online'):
             raise ValueError('mode must be baseline or online')
         if isinstance(count, bool) or not isinstance(count, (int, np.integer)) or not 1 <= count <= 16:
@@ -127,6 +138,44 @@ class PlannerProcess:
             raise ValueError('expected finite tokens[32,10] and mask[32]')
         if any(pose.shape != (7,) or not np.isfinite(pose).all() or np.linalg.norm(pose[3:]) < 1e-8 for pose in (start, goal)):
             raise ValueError('start and goal must be finite xyz+wxyz poses')
+        response, metadata = self._request(dict(mode=mode, tokens=tokens, mask=mask,
+            start=start, goal=goal, seed=np.int64(seed), count=np.int64(count)), ('paths',))
+        paths = response['paths']
+        if paths.shape != (count, 128, 7) or not np.isfinite(paths).all():
+            raise RuntimeError('DiT worker returned invalid poses')
+        return paths, metadata
+
+    def sample_temporal(self, encoding, seed, steps=20):
+        """Send only causal sensor conditioning, never dynamic obstacle truth."""
+        if self.runtime_kind != 'temporal':
+            raise ValueError('temporal sampling requires an explicit temporal checkpoint')
+        if isinstance(seed, bool) or not isinstance(seed, (int, np.integer)):
+            raise ValueError('seed must be an integer')
+        if isinstance(steps, bool) or not isinstance(steps, (int, np.integer)) or not 1 <= steps <= 100:
+            raise ValueError('temporal sampling steps must be an integer in [1,100]')
+        tokens = np.asarray(encoding['history_tokens'], dtype=np.float32)
+        mask = np.asarray(encoding['history_mask'])
+        times = np.asarray(encoding['history_times'], dtype=np.float64)
+        condition = np.asarray(encoding['condition'], dtype=np.float32)
+        if (tokens.shape != (4,32,10) or mask.shape != (4,32) or mask.dtype != np.dtype(bool) or condition.shape != (12,) or
+                times.shape != (4,) or not np.isfinite(tokens).all() or not np.isfinite(condition).all() or
+                not np.allclose(times, [-.6,-.4,-.2,0.], atol=1e-8, rtol=0)):
+            raise ValueError('invalid temporal four-frame conditioning or relative timestamps')
+        arrays, metadata = self._request(dict(mode='temporal', history_tokens=tokens,
+            history_mask=mask, history_times=times, condition=condition,
+            seed=np.int64(seed), count=np.int64(1), steps=np.int64(steps)),
+            ('positions', 'velocities', 'accelerations', 'future_times', 'control_points'))
+        shapes = dict(positions=(65,3), velocities=(65,3), accelerations=(65,3),
+                      future_times=(65,), control_points=(16,3))
+        for key, shape in shapes.items():
+            if arrays[key].shape != shape or not np.isfinite(arrays[key]).all():
+                raise RuntimeError('Temporal worker returned invalid ' + key)
+        if not np.allclose(arrays['future_times'], np.arange(65)*.125, atol=1e-8, rtol=0):
+            raise RuntimeError('Temporal worker changed the fixed prediction times')
+        return dict(arrays, metadata=metadata, inference_seconds=metadata.get('inference_seconds'))
+
+    def _request(self, payload, fields):
+        """Shared atomic mailbox lifecycle for both strict model contracts."""
         with self._request_lock:
             if self._closed:
                 raise RuntimeError('DiT planner process is closed')
@@ -134,8 +183,7 @@ class PlannerProcess:
             sequence = self._sequence + 1
             temporary = self.output_dir/'request.tmp'
             with temporary.open('wb') as stream:
-                np.savez(stream, sequence=np.int64(sequence), mode=mode, tokens=tokens, mask=mask,
-                         start=start, goal=goal, seed=np.int64(seed), count=np.int64(count))
+                np.savez(stream, sequence=np.int64(sequence), **payload)
             temporary.replace(self.output_dir/'request.npz')
             self._sequence = sequence
             deadline = time.monotonic() + self._request_timeout
@@ -151,10 +199,9 @@ class PlannerProcess:
                             metadata = json.loads(str(response['metadata']))
                             if metadata.get('error'):
                                 raise RuntimeError('DiT request failed: ' + metadata['error'])
-                            paths = response['paths'].copy()
-                            if paths.shape != (count, 128, 7) or not np.isfinite(paths).all():
-                                raise RuntimeError('DiT worker returned invalid poses')
-                            return paths, metadata
+                            if any(field not in response for field in fields):
+                                raise RuntimeError('DiT worker response is missing required arrays')
+                            return {field: response[field].copy() for field in fields}, metadata
                         if response_sequence > sequence:
                             raise RuntimeError('DiT IPC response sequence is ahead of the request')
                 time.sleep(.01)

@@ -1,0 +1,81 @@
+{
+  "schema": "hnuter_temporal_rays_v1",
+  "status": "frozen",
+  "dataset_file": "dataset.npz",
+  "dataset_sha256": "7c6e537e4cfba1ec70bddc9d14c2c4f807d235623ff74985b13ab189b4bdce0e",
+  "samples": 192,
+  "independent_groups": 96,
+  "episodes": 192,
+  "requested_groups": 96,
+  "seed": 73,
+  "windows_per_episode": 1,
+  "workers": 4,
+  "split_codes": {
+    "train": 0,
+    "validation": 1,
+    "test": 2
+  },
+  "split_samples": {
+    "train": 128,
+    "validation": 32,
+    "test": 32
+  },
+  "student_allowlist": [
+    "history_tokens",
+    "history_mask",
+    "history_times",
+    "condition"
+  ],
+  "training_allowlist": [
+    "history_tokens",
+    "history_mask",
+    "history_times",
+    "condition",
+    "positions",
+    "future_times",
+    "episode_id",
+    "group_id",
+    "split",
+    "sample_id"
+  ],
+  "teacher_future_fields": "gt_* and teacher_*: evaluator/label audit only, forbidden model inputs",
+  "target_semantics": "physically_validated_teacher_reference",
+  "data_time_semantics": "fixed physical future times from latest history anchor; positions are the reference commands of the accepted native teacher rollout; teacher_actual_positions stores executed physical positions separately; no arc-length resampling, no terminal goal clamp",
+  "stationary_start_only": true,
+  "maximum_start_speed_mps": 0.03,
+  "limits": {
+    "reference_speed_mps": 0.5,
+    "reference_acceleration_mps2": 0.6
+  },
+  "sensor": {
+    "rays_per_frame": 20000,
+    "history_rate_hz": 5.0,
+    "observation_backend": "MuJoCo mj_multiRay against actual geoms",
+    "direction_pattern": "MID360 envelope approximation, not Livox timing or optics",
+    "no_return": "NaN/unknown"
+  },
+  "teacher_family": "constant_velocity_crossing_wait_go",
+  "quality_gates": {
+    "no_native_contact": true,
+    "native_dt_s": 0.001,
+    "final_goal_m": 0.2,
+    "final_speed_mps": 0.1,
+    "tracking_max_m": 0.12,
+    "actual_max_speed_mps": 0.5
+  },
+  "source_sha256": {
+    "/tmp/hnuter-dit-temporal-20261004/hnuter_dit/temporal_data.py": "4df1dbfa546c7a94382da368a1539b69788d65008f9c504aee0be2383557e0d9",
+    "/tmp/hnuter-dit-temporal-20261004/hnuter_dit/temporal_observations.py": "7a259a170f30ac58a00fe243711ba4e3f5113a01aa2cc891a07ecaad70ac0fce",
+    "/home/z017/research/isaacsim-industrial-reactor/tests/reference/hnuter_control.py": "6b56d4ca7c9a0403a5eca68edb50fb932e26add990b110f3f563747f96c23001",
+    "/home/z017/research/isaacsim-industrial-reactor/robots/hnuter/source/hnuter.xml": "99f616758a3e6596b72db64eb8ee061bf7c92fb430b6aaa7ea81b92c59ecf8db"
+  },
+  "source_snapshots": {
+    "/tmp/hnuter-dit-temporal-20261004/hnuter_dit/temporal_data.py": "source_snapshot/temporal_data.py",
+    "/tmp/hnuter-dit-temporal-20261004/hnuter_dit/temporal_observations.py": "source_snapshot/temporal_observations.py",
+    "/home/z017/research/isaacsim-industrial-reactor/tests/reference/hnuter_control.py": "source_snapshot/hnuter_control.py",
+    "/home/z017/research/isaacsim-industrial-reactor/robots/hnuter/source/hnuter.xml": "source_snapshot/hnuter.xml"
+  },
+  "wall_seconds": 162.908578827999,
+  "accepted_pairs_with_different_wait": 96,
+  "failures_preserved_in": "collection_audit.json"
+}

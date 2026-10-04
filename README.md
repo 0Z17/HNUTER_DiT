@@ -7,11 +7,25 @@
 
 ## 工业仿真与动态雷达规划（实验分支）
 
-2026-10-04 增加 Isaac Sim 工业场景的真实物理飞行评测、MID-360 当前扫描条件、
-独立进程 DiT 推理和低速在线重规划原型。沿用 v003 权重；没有重新训练动态模型。
+2026-10-04 的第一阶段增加 Isaac Sim 工业场景的真实物理飞行评测、MID-360 当前扫描条件、
+独立进程 DiT 推理和低速在线重规划原型。该阶段沿用 v003 权重，没有重新训练动态模型。
 运行方法、实测结果和限制见 [工业动态规划说明](docs/DYNAMIC_PLANNING.md)。
 本机两个低速种子均在停等后无碰撞到达；0.5 m/s 测试发生碰撞。当前原型没有障碍运动预测，
 完整仿真也未达到墙钟实时。既有 WebUI 和历史模型评测保持原有入口。
+
+随后新增独立训练的 **Temporal DiT 小量试验**：4 帧真实雷达观测直接进入网络，
+输出带固定物理时间的 8 秒位置参考，可表达等待；保持当前姿态，未训练完整六自由度策略。
+192 个物理验收 episode 按 96 组拆分，历史模型与同架构单帧对照各训练 2,000 步。
+32 个独立 test episode 中，单候选的“原时间可执行、代理距离安全且具有足够进展”
+比例为 **87.5%**，将历史替换为最新帧后为 **40.625%**。8 个固定测试 episode
+通过原执行器物理回放，无接触，最大位置跟踪误差 2.09 cm。工业接近与远离障碍测试均无接触到达，
+但均出现保护器干预和计划拒绝，未通过预注册的模型独立验证门槛。
+本次不扩大数据或训练规模，保护器带来的停等不能算模型学会了动态等待。
+
+复现命令、对照选择的局限与扩规模门槛见
+[Temporal DiT 试验说明](docs/TEMPORAL_DIT_PILOT.md)；证据见
+[验证记录](docs/temporal_pilot_validation.json)和[对照图](docs/temporal_pilot_validation.png)。
+新模型需要 `--mode temporal --temporal-checkpoint PATH` 显式启用；WebUI 默认仍为 v003。
 
 ## 模型
 
@@ -57,8 +71,12 @@ artifacts/base_free_flight_159103traj_dit_relgeom_v002/models/dit_rel_cross/best
 artifacts/base_free_flight_159103traj_dit_v001/models/dit_cross/best.pt
 ```
 
-`best.pt` 是按 validation loss 选择的 EMA 推理模型；`last.pt` 保存 optimizer、
+上述 v001/v002/v003 的 `best.pt` 是按 validation loss 选择的 EMA 推理模型；`last.pt` 保存 optimizer、
 scheduler、EMA、sampler 和 RNG 状态，可用于精确恢复训练。
+新的 temporal 训练入口语义不同：`initial.pt` 是训练归一化下的随机初始化模型，
+`best.pt` 按 validation 采样位置 RMSE 选取，`last.pt` 仅为最终 EMA 推理快照，
+不含 optimizer/RNG，不能用于恢复训练。正式权重位于
+`artifacts/temporal_mid360_pilot_v1/models/{temporal,latest_only}/best.pt`。
 
 ### v001 / v002 / v003 对照结果
 

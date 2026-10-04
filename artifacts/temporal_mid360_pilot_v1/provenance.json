@@ -1,0 +1,33 @@
+{
+  "schema": "temporal_mid360_pilot_provenance_v1",
+  "base_git_commit": "e2ad74fbf624e6b064789acd4db467dd713e4d41",
+  "model_family": "position-only history-conditioned DiT, freshly trained, 1830019 parameters",
+  "static_v003_modified": false,
+  "dataset_location": "results/temporal_pilot/collection96_seed73",
+  "dataset_sha256": "7c6e537e4cfba1ec70bddc9d14c2c4f807d235623ff74985b13ab189b4bdce0e",
+  "training_source_sha256": {
+    "hnuter_dit/temporal_model.py": "5f227ee94ec3bd1965673f9e2899c43cf7a04f1439cf54df331fb9f4258d3a50",
+    "hnuter_dit/temporal_training.py": "e0ee8a25143d5ec77cbf787c12e271bd61f0e7b2944bb29e2228624417932d37",
+    "hnuter_dit/temporal_inference.py": "77acb33234ab3de4a9e32ce2e440d33659afcddef953a72f7c49b3293965925e",
+    "hnuter_dit/model.py": "06866dd8b7f0ea1806a9c29b3d2e2adec265b331536ba6192c448dc6e334d3ed",
+    "hnuter_dit/temporal_observations.py": "7a259a170f30ac58a00fe243711ba4e3f5113a01aa2cc891a07ecaad70ac0fce"
+  },
+  "training_source_snapshot": "results/temporal_pilot/training_source_snapshot",
+  "roles": {
+    "temporal": {
+      "best_checkpoint": "artifacts/temporal_mid360_pilot_v1/models/temporal/best.pt",
+      "sha256": "327b2dcb97f10033a210f998822c69146214a978afbf5ca9a272fa47e8099b2f",
+      "training_summary": "artifacts/temporal_mid360_pilot_v1/models/temporal/summary.json"
+    },
+    "latest_only": {
+      "best_checkpoint": "artifacts/temporal_mid360_pilot_v1/models/latest_only/best.pt",
+      "sha256": "2b6ba77c0de6311a54259aef091a783b0918a9b7ade6601aa71cf1693cdc87ad",
+      "training_summary": "artifacts/temporal_mid360_pilot_v1/models/latest_only/summary.json"
+    }
+  },
+  "training_budget_per_role": 2000,
+  "checkpoint_selection": "minimum validation sampled-position RMSE; never test",
+  "scale_decision_report": "docs/temporal_pilot_validation.json",
+  "last_checkpoint_semantics": "EMA inference snapshot only; no optimizer resume state",
+  "scope": "small stationary-start constant-velocity crossing curriculum; no general industrial safety claim"
+}

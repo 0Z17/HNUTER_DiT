@@ -1,0 +1,28 @@
+{
+  "configuration": {
+    "history_mode": "latest",
+    "steps": 2000,
+    "batch_size": 32,
+    "learning_rate": 0.0002,
+    "seed": 7,
+    "device": "cuda",
+    "validation_interval": 100,
+    "sampling_steps": 20,
+    "ema_decay": 0.99,
+    "position_weight": 0.2,
+    "velocity_weight": 0.02,
+    "acceleration_weight": 0.002
+  },
+  "best_validation_position_rmse_m": 0.6670541580923836,
+  "steps_completed": 2000,
+  "elapsed_seconds": 47.86770500000057,
+  "initial_weights_sha256": "ad62dd36297197003405230220d491d82f22ddeaf021e825e881441a6d52fe27",
+  "last_weights_sha256": "8b1de8b26961afb7772f0396cc436d0359c932fee261d6ff76c3ff48152694dd",
+  "weights_changed": true,
+  "test_rows_used": false,
+  "checkpoint_files": {
+    "initial.pt": "cfa4ef9f5d6e1bf179f21973d0f965f4be56a73b57d8ea68953a675cfe15eba9",
+    "best.pt": "2b6ba77c0de6311a54259aef091a783b0918a9b7ade6601aa71cf1693cdc87ad",
+    "last.pt": "ba275bce28e90f177248a8fcaebdba6df616d41cc3b70f65c3d3718a87abcc40"
+  }
+}

@@ -5,12 +5,17 @@ TASK_IMAGE="${ISAACSIM_IMAGE:-isaaclab-sim:6.0.0-nvblox}"
 TASK_SIM_ROOT="${HNUTER_SIM_ROOT:-/home/z017/research/isaacsim-industrial-reactor}"
 TASK_CLI=()
 TASK_HEADLESS=false
+TASK_CHECKPOINT=""
 while [[ $# -gt 0 ]]; do
   case "$1" in
     --sim-root)
       [[ $# -ge 2 ]] || { echo '--sim-root requires a host repository path' >&2; exit 1; }
       TASK_SIM_ROOT="$2"; shift 2 ;;
     --sim-root=*) TASK_SIM_ROOT="${1#*=}"; shift ;;
+    --temporal-checkpoint)
+      [[ $# -ge 2 ]] || { echo '--temporal-checkpoint requires a host file path' >&2; exit 1; }
+      TASK_CHECKPOINT="$2"; shift 2 ;;
+    --temporal-checkpoint=*) TASK_CHECKPOINT="${1#*=}"; shift ;;
     --headless) TASK_HEADLESS=true; TASK_CLI+=("$1"); shift ;;
     *) TASK_CLI+=("$1"); shift ;;
   esac
@@ -23,6 +28,12 @@ TASK_DOCKER=(--rm --gpus all --shm-size=2g --network host
   --mount "type=bind,source=$TASK_ROOT,target=/dit"
   --mount "type=bind,source=$TASK_SIM_ROOT,target=/sim,readonly"
   --mount type=volume,source=refinery-isaacsim60-cache,target=/root/.cache)
+if [[ -n "$TASK_CHECKPOINT" ]]; then
+  [[ -f "$TASK_CHECKPOINT" ]] || { echo "Temporal checkpoint not found: $TASK_CHECKPOINT" >&2; exit 1; }
+  TASK_CHECKPOINT="$(realpath -- "$TASK_CHECKPOINT")"
+  TASK_DOCKER+=(--mount "type=bind,source=$TASK_CHECKPOINT,target=/temporal-checkpoint.pt,readonly")
+  TASK_CLI+=(--temporal-checkpoint /temporal-checkpoint.pt)
+fi
 if [[ "$TASK_HEADLESS" == false ]]; then
   : "${DISPLAY:?Run from the graphical desktop or add --headless}"
   TASK_XAUTH="${XAUTHORITY:-$HOME/.Xauthority}"

@@ -209,7 +209,9 @@ def arguments(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--sim-root", type=Path, default=Path("/sim"))
     parser.add_argument("--scene", default="scene_hnuter.usda")
-    parser.add_argument("--mode", choices=("baseline", "online"), default="online")
+    parser.add_argument("--mode", choices=("baseline", "online", "temporal"), default="online")
+    parser.add_argument("--temporal-checkpoint", type=Path,
+                        help="Explicit trained temporal checkpoint; required for --mode temporal")
     parser.add_argument("--goal", type=float, nargs=3, metavar=("X", "Y", "Z"))
     parser.add_argument("--duration", type=float, default=40.0, help="Finite simulation seconds")
     parser.add_argument("--headless", action="store_true")
@@ -218,6 +220,8 @@ def arguments(argv=None):
     parser.add_argument("--seed", type=int, default=0)
     parser.add_argument("--output", type=Path)
     parser.add_argument("--dynamic-obstacle", action="store_true")
+    parser.add_argument("--dynamic-profile", choices=("legacy", "constant_incoming", "constant_outgoing"),
+                        default="legacy", help="Evaluator obstacle motion; never supplied to the planner")
     parser.add_argument("--mujoco-cpu", action="store_true")
     parser.add_argument("--camera", choices=("follow", "fpv"), default="follow")
     parser.add_argument("--capture-views", action="store_true")
@@ -229,6 +233,13 @@ def arguments(argv=None):
         parser.error("motion limits must be finite and positive")
     if args.goal is not None and not np.isfinite(args.goal).all():
         parser.error("goal must contain three finite world coordinates")
+    if args.mode == 'temporal':
+        if args.temporal_checkpoint is None or not args.temporal_checkpoint.is_file():
+            parser.error("temporal mode requires an existing --temporal-checkpoint file")
+    elif args.temporal_checkpoint is not None:
+        parser.error("--temporal-checkpoint is only accepted with --mode temporal")
+    if args.dynamic_profile != 'legacy' and not args.dynamic_obstacle:
+        parser.error("non-legacy --dynamic-profile requires --dynamic-obstacle")
     if not (args.sim_root / "controllers/hnuter/newton_bridge.py").is_file():
         parser.error("sim-root must point to the industrial simulation repository")
     if not (args.sim_root / args.scene).is_file():
@@ -246,6 +257,7 @@ def main(argv=None):
     report = {"passed": False, "completed": False, "mode": args.mode, "seed": args.seed,
               "scene": args.scene, "sim_root": str(args.sim_root), "physics_dt": DT,
               "requested_duration": args.duration, "dynamic_obstacle": args.dynamic_obstacle,
+              "dynamic_profile": args.dynamic_profile,
               "goal_reached": False, "nonfinite_state": False}
     import hashlib
     report['implementation_sha256'] = {path.name: hashlib.sha256(path.read_bytes()).hexdigest()
@@ -272,7 +284,6 @@ def main(argv=None):
         from controllers.hnuter.newton_bridge import NewtonHnuterBridge
         from perception.mid360 import Mid360Lidar
         from tools.viewport_camera import bind_camera
-        from hnuter_dit.online import OnlinePlanner
 
         carb.settings.get_settings().set("/exts/isaacsim.physics.newton/auto_switch_on_startup", False)
         manager = omni.kit.app.get_app().get_extension_manager()
@@ -294,9 +305,14 @@ def main(argv=None):
         authored_origin = np.asarray(UsdGeom.XformCache().GetLocalToWorldTransform(
             usd_stage.GetPrimAtPath(ROBOT_PATH + "/Geometry/drone")).ExtractTranslation(), dtype=float)
         if args.dynamic_obstacle:
-            from hnuter_dit.industrial_obstacle import SlidingObstacle
             authored_goal = np.asarray(args.goal) if args.goal is not None else authored_origin + [0, 3, 0]
-            obstacle = SlidingObstacle.author(usd_stage, authored_origin, authored_goal)
+            if args.dynamic_profile == 'legacy':
+                from hnuter_dit.industrial_obstacle import SlidingObstacle
+                obstacle = SlidingObstacle.author(usd_stage, authored_origin, authored_goal)
+            else:
+                from hnuter_dit.industrial_obstacle import ConstantVelocityObstacle
+                direction = 1 if args.dynamic_profile == 'constant_incoming' else -1
+                obstacle = ConstantVelocityObstacle.author(usd_stage, authored_origin, authored_goal, direction=direction)
         physics.CreateAttribute("physxScene:timeStepsPerSecond", Sdf.ValueTypeNames.UInt).Set(1000)
         if not SimulationManager.switch_physics_engine("newton"):
             raise RuntimeError("Could not activate Newton")
@@ -325,8 +341,16 @@ def main(argv=None):
         initial = bridge.read_state()
         origin = initial["position"].copy()
         goal = np.asarray(args.goal, dtype=float) if args.goal is not None else origin + [0, 3, 0]
-        planner = OnlinePlanner(mode=args.mode, goal_position=goal, device="cuda", seed=args.seed,
-                                output_dir=output / "planner_worker", max_speed=args.max_speed, max_acceleration=args.max_acceleration)
+        planner_options = dict(goal_position=goal, device="cuda", seed=args.seed,
+                               output_dir=output / "planner_worker", max_speed=args.max_speed,
+                               max_acceleration=args.max_acceleration)
+        if args.mode == 'temporal':
+            from hnuter_dit.temporal_online import TemporalOnlinePlanner
+            planner = TemporalOnlinePlanner(checkpoint=args.temporal_checkpoint, **planner_options)
+            report['temporal_checkpoint'] = str(args.temporal_checkpoint)
+        else:
+            from hnuter_dit.online import OnlinePlanner
+            planner = OnlinePlanner(mode=args.mode, **planner_options)
         controller = GeometricController()
         if args.capture_views:
             from tools.capture_views import ViewCapture
