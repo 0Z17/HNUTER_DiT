@@ -1,0 +1,998 @@
+{
+  "checkpoint_sha256": "ba69b90b18fb43fa91a6e6bebba7b8aa64b9e09570d450f6ea679639262ccf14",
+  "selected_step": 2000,
+  "dataset_sha256": "3ee0a7806504c31ecbe81cc0eecc87c25012e7f77f324f959c00a8da7c2ea1e3",
+  "seed": 23,
+  "split": "test",
+  "results": {
+    "model": {
+      "count": 16,
+      "passed": 16,
+      "rows": [
+        {
+          "index": 80,
+          "proxy_clearance_m": 0.5237490121631229,
+          "feasible": true,
+          "safe": true,
+          "passed": true,
+          "control_rmse": 0.007069355342537165,
+          "audit": {
+            "speed_bound_mps": 0.41049508930956935,
+            "acceleration_bound_mps2": 0.1533113791752583,
+            "sampled_angular_speed_radps": 0.012736662800685696,
+            "sampled_angular_acceleration_radps2": 0.003076153494770534,
+            "max_local_angle_rad": 0.10526906698942184
+          }
+        },
+        {
+          "index": 81,
+          "proxy_clearance_m": 0.5103295797826588,
+          "feasible": true,
+          "safe": true,
+          "passed": true,
+          "control_rmse": 0.001238504541106522,
+          "audit": {
+            "speed_bound_mps": 0.4026871579589289,
+            "acceleration_bound_mps2": 0.15111814025860557,
+            "sampled_angular_speed_radps": 0.008281556287915173,
+            "sampled_angular_acceleration_radps2": 0.002001896657183068,
+            "max_local_angle_rad": 0.06770903617143631
+          }
+        },
+        {
+          "index": 82,
+          "proxy_clearance_m": 0.5726774654069476,
+          "feasible": true,
+          "safe": true,
+          "passed": true,
+          "control_rmse": 0.003343005897477269,
+          "audit": {
+            "speed_bound_mps": 0.4034108006802417,
+            "acceleration_bound_mps2": 0.15239950391549534,
+            "sampled_angular_speed_radps": 0.01997662048429097,
+            "sampled_angular_acceleration_radps2": 0.0048394030767509085,
+            "max_local_angle_rad": 0.21876117587089539
+          }
+        },
+        {
+          "index": 83,
+          "proxy_clearance_m": 0.45530602307926127,
+          "feasible": true,
+          "safe": true,
+          "passed": true,
+          "control_rmse": 0.002112205605953932,
+          "audit": {
+            "speed_bound_mps": 0.4132126026002537,
+            "acceleration_bound_mps2": 0.1532177616231153,
+            "sampled_angular_speed_radps": 0.0161292343442023,
+            "sampled_angular_acceleration_radps2": 0.0039263727588948446,
+            "max_local_angle_rad": 0.1626323014497757
+          }
+        },
+        {
+          "index": 84,
+          "proxy_clearance_m": 0.56102106539585,
+          "feasible": true,
+          "safe": true,
+          "passed": true,
+          "control_rmse": 0.002594718709588051,
+          "audit": {
+            "speed_bound_mps": 0.39755441524298696,
+            "acceleration_bound_mps2": 0.15099801417328612,
+            "sampled_angular_speed_radps": 0.02790366442343959,
+            "sampled_angular_acceleration_radps2": 0.006730178795674902,
+            "max_local_angle_rad": 0.32490256428718567
+          }
+        },
+        {
+          "index": 85,
+          "proxy_clearance_m": 0.37597818797629756,
+          "feasible": true,
+          "safe": true,
+          "passed": true,
+          "control_rmse": 0.0028624271508306265,
+          "audit": {
+            "speed_bound_mps": 0.3993179714182843,
+            "acceleration_bound_mps2": 0.14999799948626785,
+            "sampled_angular_speed_radps": 0.0075002015947969874,
+            "sampled_angular_acceleration_radps2": 0.0018103258856741304,
+            "max_local_angle_rad": 0.08804618567228317
+          }
+        },
+        {
+          "index": 86,
+          "proxy_clearance_m": 0.5534866604182935,
+          "feasible": true,
+          "safe": true,
+          "passed": true,
+          "control_rmse": 0.001949190511368215,
+          "audit": {
+            "speed_bound_mps": 0.4120691352381542,
+            "acceleration_bound_mps2": 0.1548050723690122,
+            "sampled_angular_speed_radps": 0.022945426522669232,
+            "sampled_angular_acceleration_radps2": 0.005574194411355825,
+            "max_local_angle_rad": 0.24366027116775513
+          }
+        },
+        {
+          "index": 87,
+          "proxy_clearance_m": 0.5377970951299895,
+          "feasible": true,
+          "safe": true,
+          "passed": true,
+          "control_rmse": 0.003901727730408311,
+          "audit": {
+            "speed_bound_mps": 0.4137853794754116,
+            "acceleration_bound_mps2": 0.15317568276783103,
+            "sampled_angular_speed_radps": 0.014272270635857669,
+            "sampled_angular_acceleration_radps2": 0.003413698765755201,
+            "max_local_angle_rad": 0.146566241979599
+          }
+        },
+        {
+          "index": 88,
+          "proxy_clearance_m": 0.5388262274259404,
+          "feasible": true,
+          "safe": true,
+          "passed": true,
+          "control_rmse": 0.004222379066050053,
+          "audit": {
+            "speed_bound_mps": 0.40523945722666443,
+            "acceleration_bound_mps2": 0.1528725531059993,
+            "sampled_angular_speed_radps": 0.026853833973627173,
+            "sampled_angular_acceleration_radps2": 0.006473449210693892,
+            "max_local_angle_rad": 0.31172287464141846
+          }
+        },
+        {
+          "index": 89,
+          "proxy_clearance_m": 0.6647872592994836,
+          "feasible": true,
+          "safe": true,
+          "passed": true,
+          "control_rmse": 0.0037899648305028677,
+          "audit": {
+            "speed_bound_mps": 0.4163159963492288,
+            "acceleration_bound_mps2": 0.1543033393900617,
+            "sampled_angular_speed_radps": 0.021854397200763792,
+            "sampled_angular_acceleration_radps2": 0.005221265374607769,
+            "max_local_angle_rad": 0.22775177657604218
+          }
+        },
+        {
+          "index": 90,
+          "proxy_clearance_m": 0.6377659169505971,
+          "feasible": true,
+          "safe": true,
+          "passed": true,
+          "control_rmse": 0.009031631983816624,
+          "audit": {
+            "speed_bound_mps": 0.39188278240942376,
+            "acceleration_bound_mps2": 0.14873483538316182,
+            "sampled_angular_speed_radps": 0.01362728004524986,
+            "sampled_angular_acceleration_radps2": 0.003309672537377042,
+            "max_local_angle_rad": 0.11967958509922028
+          }
+        },
+        {
+          "index": 91,
+          "proxy_clearance_m": 0.5910332807763629,
+          "feasible": true,
+          "safe": true,
+          "passed": true,
+          "control_rmse": 0.006809714250266552,
+          "audit": {
+            "speed_bound_mps": 0.4164055505242233,
+            "acceleration_bound_mps2": 0.15460659023921733,
+            "sampled_angular_speed_radps": 0.020975882713584585,
+            "sampled_angular_acceleration_radps2": 0.005074698601053813,
+            "max_local_angle_rad": 0.23139895498752594
+          }
+        },
+        {
+          "index": 92,
+          "proxy_clearance_m": 0.5733274481483094,
+          "feasible": true,
+          "safe": true,
+          "passed": true,
+          "control_rmse": 0.003123051952570677,
+          "audit": {
+            "speed_bound_mps": 0.41237542431868046,
+            "acceleration_bound_mps2": 0.15452140728455369,
+            "sampled_angular_speed_radps": 0.015619849535230754,
+            "sampled_angular_acceleration_radps2": 0.003802003466685634,
+            "max_local_angle_rad": 0.15971149504184723
+          }
+        },
+        {
+          "index": 93,
+          "proxy_clearance_m": 0.5797930118825055,
+          "feasible": true,
+          "safe": true,
+          "passed": true,
+          "control_rmse": 0.0025648523587733507,
+          "audit": {
+            "speed_bound_mps": 0.40929152895404364,
+            "acceleration_bound_mps2": 0.15252011177383099,
+            "sampled_angular_speed_radps": 0.026072121069122732,
+            "sampled_angular_acceleration_radps2": 0.006373376212930702,
+            "max_local_angle_rad": 0.2810027599334717
+          }
+        },
+        {
+          "index": 94,
+          "proxy_clearance_m": 0.5857058857135387,
+          "feasible": true,
+          "safe": true,
+          "passed": true,
+          "control_rmse": 0.003923582378774881,
+          "audit": {
+            "speed_bound_mps": 0.39499908230301617,
+            "acceleration_bound_mps2": 0.1500763378129221,
+            "sampled_angular_speed_radps": 0.023691976037840623,
+            "sampled_angular_acceleration_radps2": 0.005753534030738708,
+            "max_local_angle_rad": 0.2562407851219177
+          }
+        },
+        {
+          "index": 95,
+          "proxy_clearance_m": 0.6776848336869068,
+          "feasible": true,
+          "safe": true,
+          "passed": true,
+          "control_rmse": 0.003845730796456337,
+          "audit": {
+            "speed_bound_mps": 0.41531503945936077,
+            "acceleration_bound_mps2": 0.15434756044578904,
+            "sampled_angular_speed_radps": 0.023219536987765476,
+            "sampled_angular_acceleration_radps2": 0.0056377508723852564,
+            "max_local_angle_rad": 0.25024235248565674
+          }
+        }
+      ]
+    },
+    "latest": {
+      "count": 16,
+      "passed": 16,
+      "rows": [
+        {
+          "index": 80,
+          "proxy_clearance_m": 0.5184695823831369,
+          "feasible": true,
+          "safe": true,
+          "passed": true,
+          "control_rmse": 0.012018818408250809,
+          "audit": {
+            "speed_bound_mps": 0.4104918127591234,
+            "acceleration_bound_mps2": 0.15225483774533718,
+            "sampled_angular_speed_radps": 0.012742132881502008,
+            "sampled_angular_acceleration_radps2": 0.003088570756186932,
+            "max_local_angle_rad": 0.10526906698942184
+          }
+        },
+        {
+          "index": 81,
+          "proxy_clearance_m": 0.5303079748705396,
+          "feasible": true,
+          "safe": true,
+          "passed": true,
+          "control_rmse": 0.028154322877526283,
+          "audit": {
+            "speed_bound_mps": 0.4125737833737086,
+            "acceleration_bound_mps2": 0.15757535142267326,
+            "sampled_angular_speed_radps": 0.008254246191139873,
+            "sampled_angular_acceleration_radps2": 0.002013991634830847,
+            "max_local_angle_rad": 0.06770903617143631
+          }
+        },
+        {
+          "index": 82,
+          "proxy_clearance_m": 0.5734932721400234,
+          "feasible": true,
+          "safe": true,
+          "passed": true,
+          "control_rmse": 0.003060627030208707,
+          "audit": {
+            "speed_bound_mps": 0.40417353329501265,
+            "acceleration_bound_mps2": 0.15253618465385793,
+            "sampled_angular_speed_radps": 0.01997436244802529,
+            "sampled_angular_acceleration_radps2": 0.004833046352198506,
+            "max_local_angle_rad": 0.21876117587089539
+          }
+        },
+        {
+          "index": 83,
+          "proxy_clearance_m": 0.4833491780192528,
+          "feasible": true,
+          "safe": true,
+          "passed": true,
+          "control_rmse": 0.02683514915406704,
+          "audit": {
+            "speed_bound_mps": 0.42258703776920903,
+            "acceleration_bound_mps2": 0.1597139126993434,
+            "sampled_angular_speed_radps": 0.016156083165785658,
+            "sampled_angular_acceleration_radps2": 0.003951758528638649,
+            "max_local_angle_rad": 0.1626323014497757
+          }
+        },
+        {
+          "index": 84,
+          "proxy_clearance_m": 0.5642901483512553,
+          "feasible": true,
+          "safe": true,
+          "passed": true,
+          "control_rmse": 0.0017328617395833135,
+          "audit": {
+            "speed_bound_mps": 0.39908830302460213,
+            "acceleration_bound_mps2": 0.15161533699401503,
+            "sampled_angular_speed_radps": 0.027900579441263437,
+            "sampled_angular_acceleration_radps2": 0.006720344210015341,
+            "max_local_angle_rad": 0.32490256428718567
+          }
+        },
+        {
+          "index": 85,
+          "proxy_clearance_m": 0.40046583160586746,
+          "feasible": true,
+          "safe": true,
+          "passed": true,
+          "control_rmse": 0.02754639834165573,
+          "audit": {
+            "speed_bound_mps": 0.41022048501090114,
+            "acceleration_bound_mps2": 0.15699849838644053,
+            "sampled_angular_speed_radps": 0.007470114380657465,
+            "sampled_angular_acceleration_radps2": 0.001802543341400442,
+            "max_local_angle_rad": 0.08804618567228317
+          }
+        },
+        {
+          "index": 86,
+          "proxy_clearance_m": 0.5566315146597832,
+          "feasible": true,
+          "safe": true,
+          "passed": true,
+          "control_rmse": 0.002135520102456212,
+          "audit": {
+            "speed_bound_mps": 0.4132875407517448,
+            "acceleration_bound_mps2": 0.15520491214008794,
+            "sampled_angular_speed_radps": 0.02293669238707379,
+            "sampled_angular_acceleration_radps2": 0.005574946327967565,
+            "max_local_angle_rad": 0.24366027116775513
+          }
+        },
+        {
+          "index": 87,
+          "proxy_clearance_m": 0.5940495816522544,
+          "feasible": true,
+          "safe": true,
+          "passed": true,
+          "control_rmse": 0.025089774280786514,
+          "audit": {
+            "speed_bound_mps": 0.42351786241365547,
+            "acceleration_bound_mps2": 0.1597239380569415,
+            "sampled_angular_speed_radps": 0.014283535664895847,
+            "sampled_angular_acceleration_radps2": 0.003401151271780814,
+            "max_local_angle_rad": 0.146566241979599
+          }
+        },
+        {
+          "index": 88,
+          "proxy_clearance_m": 0.5428986465769077,
+          "feasible": true,
+          "safe": true,
+          "passed": true,
+          "control_rmse": 0.0022307520266622305,
+          "audit": {
+            "speed_bound_mps": 0.4069339218331108,
+            "acceleration_bound_mps2": 0.15346490331740392,
+            "sampled_angular_speed_radps": 0.026856790112127514,
+            "sampled_angular_acceleration_radps2": 0.006473765682664132,
+            "max_local_angle_rad": 0.31172287464141846
+          }
+        },
+        {
+          "index": 89,
+          "proxy_clearance_m": 0.6958098859781476,
+          "feasible": true,
+          "safe": true,
+          "passed": true,
+          "control_rmse": 0.0273244921118021,
+          "audit": {
+            "speed_bound_mps": 0.4239423196847163,
+            "acceleration_bound_mps2": 0.15987812661858006,
+            "sampled_angular_speed_radps": 0.021856338667048142,
+            "sampled_angular_acceleration_radps2": 0.005225408377276922,
+            "max_local_angle_rad": 0.22775177657604218
+          }
+        },
+        {
+          "index": 90,
+          "proxy_clearance_m": 0.6382560224847971,
+          "feasible": true,
+          "safe": true,
+          "passed": true,
+          "control_rmse": 0.008632835932075977,
+          "audit": {
+            "speed_bound_mps": 0.39248077913931156,
+            "acceleration_bound_mps2": 0.14888759988780767,
+            "sampled_angular_speed_radps": 0.01362399240445507,
+            "sampled_angular_acceleration_radps2": 0.0033035829087682015,
+            "max_local_angle_rad": 0.11967958509922028
+          }
+        },
+        {
+          "index": 91,
+          "proxy_clearance_m": 0.6708809643274276,
+          "feasible": true,
+          "safe": true,
+          "passed": true,
+          "control_rmse": 0.03340628743171692,
+          "audit": {
+            "speed_bound_mps": 0.42507162956897465,
+            "acceleration_bound_mps2": 0.16088157079121237,
+            "sampled_angular_speed_radps": 0.020961612187057034,
+            "sampled_angular_acceleration_radps2": 0.005079079902771899,
+            "max_local_angle_rad": 0.23139895498752594
+          }
+        },
+        {
+          "index": 92,
+          "proxy_clearance_m": 0.5728334993970051,
+          "feasible": true,
+          "safe": true,
+          "passed": true,
+          "control_rmse": 0.003876297501847148,
+          "audit": {
+            "speed_bound_mps": 0.41236081429340227,
+            "acceleration_bound_mps2": 0.15435031638037863,
+            "sampled_angular_speed_radps": 0.015628897407431713,
+            "sampled_angular_acceleration_radps2": 0.003801157168947439,
+            "max_local_angle_rad": 0.15971149504184723
+          }
+        },
+        {
+          "index": 93,
+          "proxy_clearance_m": 0.6521217731108305,
+          "feasible": true,
+          "safe": true,
+          "passed": true,
+          "control_rmse": 0.027036646381020546,
+          "audit": {
+            "speed_bound_mps": 0.41742330491561347,
+            "acceleration_bound_mps2": 0.158409505195553,
+            "sampled_angular_speed_radps": 0.026050234308058827,
+            "sampled_angular_acceleration_radps2": 0.00638817585337618,
+            "max_local_angle_rad": 0.2810027599334717
+          }
+        },
+        {
+          "index": 94,
+          "proxy_clearance_m": 0.5881717923948948,
+          "feasible": true,
+          "safe": true,
+          "passed": true,
+          "control_rmse": 0.002089631510898471,
+          "audit": {
+            "speed_bound_mps": 0.39636906683700734,
+            "acceleration_bound_mps2": 0.15067638400132013,
+            "sampled_angular_speed_radps": 0.023687798006327306,
+            "sampled_angular_acceleration_radps2": 0.0057450922518498425,
+            "max_local_angle_rad": 0.2562407851219177
+          }
+        },
+        {
+          "index": 95,
+          "proxy_clearance_m": 0.7074457762667479,
+          "feasible": true,
+          "safe": true,
+          "passed": true,
+          "control_rmse": 0.028695033863186836,
+          "audit": {
+            "speed_bound_mps": 0.42375975085877526,
+            "acceleration_bound_mps2": 0.16013336872247066,
+            "sampled_angular_speed_radps": 0.02322120738831284,
+            "sampled_angular_acceleration_radps2": 0.00562752038846482,
+            "max_local_angle_rad": 0.25024235248565674
+          }
+        }
+      ]
+    },
+    "empty": {
+      "count": 16,
+      "passed": 8,
+      "rows": [
+        {
+          "index": 80,
+          "proxy_clearance_m": 0.3762000633318512,
+          "feasible": true,
+          "safe": true,
+          "passed": true,
+          "control_rmse": 0.08167070150375366,
+          "audit": {
+            "speed_bound_mps": 0.41047722208677606,
+            "acceleration_bound_mps2": 0.14030618138017278,
+            "sampled_angular_speed_radps": 0.012725077074962635,
+            "sampled_angular_acceleration_radps2": 0.0030599370909426197,
+            "max_local_angle_rad": 0.10526906698942184
+          }
+        },
+        {
+          "index": 81,
+          "proxy_clearance_m": -0.3194828623461081,
+          "feasible": true,
+          "safe": false,
+          "passed": false,
+          "control_rmse": 0.8202705383300781,
+          "audit": {
+            "speed_bound_mps": 0.39048507973018826,
+            "acceleration_bound_mps2": 0.1364087807498998,
+            "sampled_angular_speed_radps": 0.008276421024375875,
+            "sampled_angular_acceleration_radps2": 0.0020088154113665517,
+            "max_local_angle_rad": 0.06770903617143631
+          }
+        },
+        {
+          "index": 82,
+          "proxy_clearance_m": 0.4737442569406536,
+          "feasible": true,
+          "safe": true,
+          "passed": true,
+          "control_rmse": 0.08395057916641235,
+          "audit": {
+            "speed_bound_mps": 0.3978055683823337,
+            "acceleration_bound_mps2": 0.13779316591464574,
+            "sampled_angular_speed_radps": 0.019965541705041664,
+            "sampled_angular_acceleration_radps2": 0.004806880809956474,
+            "max_local_angle_rad": 0.21876117587089539
+          }
+        },
+        {
+          "index": 83,
+          "proxy_clearance_m": -0.39282213953176015,
+          "feasible": true,
+          "safe": false,
+          "passed": false,
+          "control_rmse": 0.8240672945976257,
+          "audit": {
+            "speed_bound_mps": 0.4096195304579567,
+            "acceleration_bound_mps2": 0.1402213779861289,
+            "sampled_angular_speed_radps": 0.016127338813342287,
+            "sampled_angular_acceleration_radps2": 0.0039160341396273345,
+            "max_local_angle_rad": 0.1626323014497757
+          }
+        },
+        {
+          "index": 84,
+          "proxy_clearance_m": 0.4140006777270656,
+          "feasible": true,
+          "safe": true,
+          "passed": true,
+          "control_rmse": 0.08570651710033417,
+          "audit": {
+            "speed_bound_mps": 0.3862472283014636,
+            "acceleration_bound_mps2": 0.13562569286585924,
+            "sampled_angular_speed_radps": 0.027884063895868602,
+            "sampled_angular_acceleration_radps2": 0.006707034349553844,
+            "max_local_angle_rad": 0.32490256428718567
+          }
+        },
+        {
+          "index": 85,
+          "proxy_clearance_m": -0.3261219257710958,
+          "feasible": true,
+          "safe": false,
+          "passed": false,
+          "control_rmse": 0.8196150660514832,
+          "audit": {
+            "speed_bound_mps": 0.3867714125722315,
+            "acceleration_bound_mps2": 0.1356974730302176,
+            "sampled_angular_speed_radps": 0.007503271314843402,
+            "sampled_angular_acceleration_radps2": 0.0018158664026632514,
+            "max_local_angle_rad": 0.08804618567228317
+          }
+        },
+        {
+          "index": 86,
+          "proxy_clearance_m": 0.3439939407089816,
+          "feasible": true,
+          "safe": true,
+          "passed": true,
+          "control_rmse": 0.08063620328903198,
+          "audit": {
+            "speed_bound_mps": 0.4116215771885025,
+            "acceleration_bound_mps2": 0.1405085953736134,
+            "sampled_angular_speed_radps": 0.022979001970065853,
+            "sampled_angular_acceleration_radps2": 0.005580002808469268,
+            "max_local_angle_rad": 0.24366027116775513
+          }
+        },
+        {
+          "index": 87,
+          "proxy_clearance_m": -0.33158128862239566,
+          "feasible": true,
+          "safe": false,
+          "passed": false,
+          "control_rmse": 0.8243565559387207,
+          "audit": {
+            "speed_bound_mps": 0.41266874494527755,
+            "acceleration_bound_mps2": 0.14065316995070792,
+            "sampled_angular_speed_radps": 0.014287667881805917,
+            "sampled_angular_acceleration_radps2": 0.0034112477485077077,
+            "max_local_angle_rad": 0.146566241979599
+          }
+        },
+        {
+          "index": 88,
+          "proxy_clearance_m": 0.3819850590885038,
+          "feasible": true,
+          "safe": true,
+          "passed": true,
+          "control_rmse": 0.08311525732278824,
+          "audit": {
+            "speed_bound_mps": 0.4023731952557901,
+            "acceleration_bound_mps2": 0.13879132882077347,
+            "sampled_angular_speed_radps": 0.026829547265692782,
+            "sampled_angular_acceleration_radps2": 0.006497391127981921,
+            "max_local_angle_rad": 0.31172287464141846
+          }
+        },
+        {
+          "index": 89,
+          "proxy_clearance_m": -0.440443571698212,
+          "feasible": true,
+          "safe": false,
+          "passed": false,
+          "control_rmse": 0.8246501684188843,
+          "audit": {
+            "speed_bound_mps": 0.4107091428491011,
+            "acceleration_bound_mps2": 0.14041967780764977,
+            "sampled_angular_speed_radps": 0.02186125442490335,
+            "sampled_angular_acceleration_radps2": 0.005241818059984451,
+            "max_local_angle_rad": 0.22775177657604218
+          }
+        },
+        {
+          "index": 90,
+          "proxy_clearance_m": 0.4263640959411471,
+          "feasible": true,
+          "safe": true,
+          "passed": true,
+          "control_rmse": 0.08613298833370209,
+          "audit": {
+            "speed_bound_mps": 0.38081556235294195,
+            "acceleration_bound_mps2": 0.13461249776991388,
+            "sampled_angular_speed_radps": 0.013608403100610806,
+            "sampled_angular_acceleration_radps2": 0.0033109647970348687,
+            "max_local_angle_rad": 0.11967958509922028
+          }
+        },
+        {
+          "index": 91,
+          "proxy_clearance_m": -0.34024810528444605,
+          "feasible": true,
+          "safe": false,
+          "passed": false,
+          "control_rmse": 0.8236541748046875,
+          "audit": {
+            "speed_bound_mps": 0.4079561737222843,
+            "acceleration_bound_mps2": 0.13992669980928532,
+            "sampled_angular_speed_radps": 0.020967337059146586,
+            "sampled_angular_acceleration_radps2": 0.005068950100239289,
+            "max_local_angle_rad": 0.23139895498752594
+          }
+        },
+        {
+          "index": 92,
+          "proxy_clearance_m": 0.4968411481362265,
+          "feasible": true,
+          "safe": true,
+          "passed": true,
+          "control_rmse": 0.08093928545713425,
+          "audit": {
+            "speed_bound_mps": 0.4123653034671482,
+            "acceleration_bound_mps2": 0.140821248078624,
+            "sampled_angular_speed_radps": 0.015584168262776222,
+            "sampled_angular_acceleration_radps2": 0.00381078496733501,
+            "max_local_angle_rad": 0.15971149504184723
+          }
+        },
+        {
+          "index": 93,
+          "proxy_clearance_m": -0.39445318505984683,
+          "feasible": true,
+          "safe": false,
+          "passed": false,
+          "control_rmse": 0.8216761350631714,
+          "audit": {
+            "speed_bound_mps": 0.3994870261936136,
+            "acceleration_bound_mps2": 0.13819933593665493,
+            "sampled_angular_speed_radps": 0.026073806126433435,
+            "sampled_angular_acceleration_radps2": 0.00633987050338831,
+            "max_local_angle_rad": 0.2810027599334717
+          }
+        },
+        {
+          "index": 94,
+          "proxy_clearance_m": 0.45379598989724446,
+          "feasible": true,
+          "safe": true,
+          "passed": true,
+          "control_rmse": 0.08689868450164795,
+          "audit": {
+            "speed_bound_mps": 0.3821915913756804,
+            "acceleration_bound_mps2": 0.13462821618973134,
+            "sampled_angular_speed_radps": 0.023681917646522156,
+            "sampled_angular_acceleration_radps2": 0.005717301820490747,
+            "max_local_angle_rad": 0.2562407851219177
+          }
+        },
+        {
+          "index": 95,
+          "proxy_clearance_m": -0.3269554322080712,
+          "feasible": true,
+          "safe": false,
+          "passed": false,
+          "control_rmse": 0.8241029381752014,
+          "audit": {
+            "speed_bound_mps": 0.4099740213695886,
+            "acceleration_bound_mps2": 0.14008846533150096,
+            "sampled_angular_speed_radps": 0.023232535012582052,
+            "sampled_angular_acceleration_radps2": 0.005638753683445402,
+            "max_local_angle_rad": 0.25024235248565674
+          }
+        }
+      ]
+    },
+    "straight": {
+      "count": 16,
+      "passed": 0,
+      "rows": [
+        {
+          "index": 80,
+          "proxy_clearance_m": -0.5235370763827784,
+          "feasible": true,
+          "safe": false,
+          "passed": false,
+          "control_rmse": 0.45140406977443187,
+          "audit": {
+            "speed_bound_mps": 0.41054715212631193,
+            "acceleration_bound_mps2": 0.0923731092284202,
+            "sampled_angular_speed_radps": 0.01274100180270705,
+            "sampled_angular_acceleration_radps2": 0.0030852124146787344,
+            "max_local_angle_rad": 0.10526906698942184
+          }
+        },
+        {
+          "index": 81,
+          "proxy_clearance_m": -0.5840871913322493,
+          "feasible": true,
+          "safe": false,
+          "passed": false,
+          "control_rmse": 0.45140406977443187,
+          "audit": {
+            "speed_bound_mps": 0.3905243359017593,
+            "acceleration_bound_mps2": 0.08786797557789586,
+            "sampled_angular_speed_radps": 0.008301422945234832,
+            "sampled_angular_acceleration_radps2": 0.0020048803719299735,
+            "max_local_angle_rad": 0.06770903617143631
+          }
+        },
+        {
+          "index": 82,
+          "proxy_clearance_m": -0.5971025587821921,
+          "feasible": true,
+          "safe": false,
+          "passed": false,
+          "control_rmse": 0.4514040697744321,
+          "audit": {
+            "speed_bound_mps": 0.39785647952308706,
+            "acceleration_bound_mps2": 0.08951770789269463,
+            "sampled_angular_speed_radps": 0.01998690167045268,
+            "sampled_angular_acceleration_radps2": 0.004828038233705082,
+            "max_local_angle_rad": 0.21876117587089539
+          }
+        },
+        {
+          "index": 83,
+          "proxy_clearance_m": -0.6246820950903034,
+          "feasible": true,
+          "safe": false,
+          "passed": false,
+          "control_rmse": 0.45140406977442976,
+          "audit": {
+            "speed_bound_mps": 0.40968992896704465,
+            "acceleration_bound_mps2": 0.09218023401758506,
+            "sampled_angular_speed_radps": 0.016104196037149795,
+            "sampled_angular_acceleration_radps2": 0.003897896454846176,
+            "max_local_angle_rad": 0.1626323014497757
+          }
+        },
+        {
+          "index": 84,
+          "proxy_clearance_m": -0.5135484985648108,
+          "feasible": true,
+          "safe": false,
+          "passed": false,
+          "control_rmse": 0.4514040697744333,
+          "audit": {
+            "speed_bound_mps": 0.3862856307046866,
+            "acceleration_bound_mps2": 0.08691426690855453,
+            "sampled_angular_speed_radps": 0.02791320715474564,
+            "sampled_angular_acceleration_radps2": 0.006712907539731172,
+            "max_local_angle_rad": 0.32490256428718567
+          }
+        },
+        {
+          "index": 85,
+          "proxy_clearance_m": -0.6184561741728014,
+          "feasible": true,
+          "safe": false,
+          "passed": false,
+          "control_rmse": 0.4514040697744301,
+          "audit": {
+            "speed_bound_mps": 0.3868066409682809,
+            "acceleration_bound_mps2": 0.08703149421786321,
+            "sampled_angular_speed_radps": 0.007503140985654443,
+            "sampled_angular_acceleration_radps2": 0.0017992000686216814,
+            "max_local_angle_rad": 0.08804618567228317
+          }
+        },
+        {
+          "index": 86,
+          "proxy_clearance_m": -0.5823712804535163,
+          "feasible": true,
+          "safe": false,
+          "passed": false,
+          "control_rmse": 0.45140406977443137,
+          "audit": {
+            "speed_bound_mps": 0.4116828120998906,
+            "acceleration_bound_mps2": 0.09262863272247539,
+            "sampled_angular_speed_radps": 0.022940995978715968,
+            "sampled_angular_acceleration_radps2": 0.005565273699780673,
+            "max_local_angle_rad": 0.24366027116775513
+          }
+        },
+        {
+          "index": 87,
+          "proxy_clearance_m": -0.5158882605318182,
+          "feasible": true,
+          "safe": false,
+          "passed": false,
+          "control_rmse": 0.45140406977443287,
+          "audit": {
+            "speed_bound_mps": 0.4127303074293823,
+            "acceleration_bound_mps2": 0.09286431917161106,
+            "sampled_angular_speed_radps": 0.014245493738419527,
+            "sampled_angular_acceleration_radps2": 0.003423967587810728,
+            "max_local_angle_rad": 0.146566241979599
+          }
+        },
+        {
+          "index": 88,
+          "proxy_clearance_m": -0.5583912727374944,
+          "feasible": true,
+          "safe": false,
+          "passed": false,
+          "control_rmse": 0.4514040697744312,
+          "audit": {
+            "speed_bound_mps": 0.4024365345507882,
+            "acceleration_bound_mps2": 0.09054822027392738,
+            "sampled_angular_speed_radps": 0.02686674422717247,
+            "sampled_angular_acceleration_radps2": 0.006450030443211846,
+            "max_local_angle_rad": 0.31172287464141846
+          }
+        },
+        {
+          "index": 89,
+          "proxy_clearance_m": -0.5448876795457059,
+          "feasible": true,
+          "safe": false,
+          "passed": false,
+          "control_rmse": 0.45140406977443054,
+          "audit": {
+            "speed_bound_mps": 0.41077250334710597,
+            "acceleration_bound_mps2": 0.09242381325309885,
+            "sampled_angular_speed_radps": 0.02183736957769814,
+            "sampled_angular_acceleration_radps2": 0.005284138660090301,
+            "max_local_angle_rad": 0.22775177657604218
+          }
+        },
+        {
+          "index": 90,
+          "proxy_clearance_m": -0.5587260064213886,
+          "feasible": true,
+          "safe": false,
+          "passed": false,
+          "control_rmse": 0.4514040697744333,
+          "audit": {
+            "speed_bound_mps": 0.38084730289900437,
+            "acceleration_bound_mps2": 0.08569064315227601,
+            "sampled_angular_speed_radps": 0.013624347025618615,
+            "sampled_angular_acceleration_radps2": 0.003298731428620855,
+            "max_local_angle_rad": 0.11967958509922028
+          }
+        },
+        {
+          "index": 91,
+          "proxy_clearance_m": -0.6019382226916801,
+          "feasible": true,
+          "safe": false,
+          "passed": false,
+          "control_rmse": 0.45140406977443054,
+          "audit": {
+            "speed_bound_mps": 0.40802392245893704,
+            "acceleration_bound_mps2": 0.09180538255326086,
+            "sampled_angular_speed_radps": 0.02101213818062647,
+            "sampled_angular_acceleration_radps2": 0.00505595642411106,
+            "max_local_angle_rad": 0.23139895498752594
+          }
+        },
+        {
+          "index": 92,
+          "proxy_clearance_m": -0.5455127605406924,
+          "feasible": true,
+          "safe": false,
+          "passed": false,
+          "control_rmse": 0.45140406977443465,
+          "audit": {
+            "speed_bound_mps": 0.41244292862380827,
+            "acceleration_bound_mps2": 0.09279965894035691,
+            "sampled_angular_speed_radps": 0.015633372486426603,
+            "sampled_angular_acceleration_radps2": 0.0037558342604785545,
+            "max_local_angle_rad": 0.15971149504184723
+          }
+        },
+        {
+          "index": 93,
+          "proxy_clearance_m": -0.6210766017006242,
+          "feasible": true,
+          "safe": false,
+          "passed": false,
+          "control_rmse": 0.4514040697744302,
+          "audit": {
+            "speed_bound_mps": 0.3995416729969281,
+            "acceleration_bound_mps2": 0.08989687642430885,
+            "sampled_angular_speed_radps": 0.02609472427562118,
+            "sampled_angular_acceleration_radps2": 0.006313589143884243,
+            "max_local_angle_rad": 0.2810027599334717
+          }
+        },
+        {
+          "index": 94,
+          "proxy_clearance_m": -0.5764008907939779,
+          "feasible": true,
+          "safe": false,
+          "passed": false,
+          "control_rmse": 0.4514040697744294,
+          "audit": {
+            "speed_bound_mps": 0.38221686753881473,
+            "acceleration_bound_mps2": 0.08599879519623335,
+            "sampled_angular_speed_radps": 0.02369659963268318,
+            "sampled_angular_acceleration_radps2": 0.005736268396818109,
+            "max_local_angle_rad": 0.2562407851219177
+          }
+        },
+        {
+          "index": 95,
+          "proxy_clearance_m": -0.5406113099555818,
+          "feasible": true,
+          "safe": false,
+          "passed": false,
+          "control_rmse": 0.45140406977443087,
+          "audit": {
+            "speed_bound_mps": 0.4100254980888824,
+            "acceleration_bound_mps2": 0.0922557370699986,
+            "sampled_angular_speed_radps": 0.023197806854539652,
+            "sampled_angular_acceleration_radps2": 0.0056222298141703425,
+            "max_local_angle_rad": 0.25024235248565674
+          }
+        }
+      ]
+    }
+  },
+  "inference_seconds": {
+    "median": 0.03576926999812713,
+    "p95": 0.15489102699757495
+  },
+  "caveat": "Sampled sphere proxy is not native collision truth; native evaluation recorded separately. First call includes cold-start effects."
+}

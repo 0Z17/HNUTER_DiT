@@ -1,0 +1,9 @@
+{
+  "/tmp/hnuter-static-sdf-20261004/hnuter_dit/sdf_data.py": "fad13b69ceaac2707ea683ca3d6db5395c0014ac8b468eb83df302fe075b357a",
+  "/tmp/hnuter-static-sdf-20261004/hnuter_dit/sdf_pose.py": "3ad2e729b8256489a88987e0aa2ca54679d9946366bac68d7be651ebc095e766",
+  "/tmp/hnuter-static-sdf-20261004/hnuter_dit/temporal_data.py": "4df1dbfa546c7a94382da368a1539b69788d65008f9c504aee0be2383557e0d9",
+  "/tmp/hnuter-static-sdf-20261004/hnuter_dit/collision_loss.py": "42da73bf7fa061c6d346866c646db10c9c6c0cbe177a6e462878a936a62cd2be",
+  "/home/z017/research/isaacsim-industrial-reactor/tests/reference/hnuter_control.py": "6b56d4ca7c9a0403a5eca68edb50fb932e26add990b110f3f563747f96c23001",
+  "/home/z017/research/isaacsim-industrial-reactor/perception/mid360.py": "e5cdb4e3d1c136276eb468a66f85d9d2153a2806101697f09921e95c6acf95df",
+  "/home/z017/research/isaacsim-industrial-reactor/robots/hnuter/source/hnuter.xml": "99f616758a3e6596b72db64eb8ee061bf7c92fb430b6aaa7ea81b92c59ecf8db"
+}

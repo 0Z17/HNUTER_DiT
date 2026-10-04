@@ -1,0 +1,320 @@
+{
+  "index": 96,
+  "config": {
+    "index": 96,
+    "seed": 811,
+    "origin": [
+      0.0,
+      0.0,
+      2.3
+    ],
+    "target": [
+      4.593844909153619,
+      0.0,
+      0.018716232003770705,
+      0.10369585433402645,
+      -0.10389966521905174,
+      0.1181392199797407
+    ],
+    "boxes": [
+      [
+        2.246086557357692,
+        -0.33088951349408624,
+        2.3,
+        0.7439821308405755,
+        0.992304634354652,
+        3.2
+      ],
+      [
+        2.246086557357692,
+        -1.8,
+        2.3,
+        1.0,
+        0.65,
+        3.2
+      ],
+      [
+        6.0,
+        0.0,
+        2.5,
+        0.2,
+        14.0,
+        5.0
+      ],
+      [
+        0.0,
+        6.0,
+        2.5,
+        16.0,
+        0.2,
+        5.0
+      ],
+      [
+        0.0,
+        -6.0,
+        2.5,
+        16.0,
+        0.2,
+        5.0
+      ],
+      [
+        0.0,
+        0.0,
+        -0.05,
+        16.0,
+        16.0,
+        0.1
+      ]
+    ],
+    "side": -1,
+    "split": 2
+  },
+  "steps": 24000,
+  "simulation_seconds": 24.0,
+  "loop_wall_seconds": 24.000230501995247,
+  "contact_steps": 0,
+  "final_goal_distance_m": 0.018788112934233363,
+  "final_goal_angle_rad": 0.022547066524325646,
+  "final_speed_mps": 3.3379847468167317e-07,
+  "raycast_seconds": {
+    "median": 0.004564008500892669,
+    "p95": 0.005123016099969391,
+    "maximum": 0.008570997997594532
+  },
+  "planner": {
+    "mode": "sdf_pose",
+    "failed": false,
+    "failure_reason": null,
+    "checkpoint": {
+      "schema": "hnuter_static_sdf_pose_v1",
+      "checkpoint_sha256": "ba69b90b18fb43fa91a6e6bebba7b8aa64b9e09570d450f6ea679639262ccf14",
+      "selected_step": 2000,
+      "mapper": {
+        "native": {
+          "nvblox_version": "0.0.10.dev1+cu12ubuntu24",
+          "torch_version": "2.9.1+cu128",
+          "cuda_version": "12.8",
+          "gpu": "NVIDIA GeForce RTX 4080 Laptop GPU",
+          "esdf_max_distance_m": 5.0,
+          "esdf_min_weight": 0.001,
+          "lidar_factory_argument_swap_compensated": true,
+          "esdf_unknown_sentinel": 100.0
+        },
+        "config": {
+          "voxel_size": 0.15,
+          "max_range": 20.0,
+          "esdf_max_distance": 5.0,
+          "width": 720,
+          "height": 128,
+          "vertical_fov_degrees": 104.0
+        },
+        "grid": 32,
+        "cell": 0.25,
+        "local_bounds": [
+          [
+            -2,
+            6
+          ],
+          [
+            -4,
+            4
+          ],
+          [
+            -4,
+            4
+          ]
+        ],
+        "channels": [
+          "tsdf_clipped",
+          "weight_log",
+          "esdf_clipped",
+          "esdf_known",
+          "tsdf_known",
+          "latest_hits"
+        ],
+        "unknown_policy": "zero-valued distance with separate explicit known flags; never certified free",
+        "history": "four cumulative causal snapshots, 0.2 seconds apart, common planning-anchor coordinates"
+      },
+      "pose_output": true,
+      "input_scope": "measured historical scans, measured start pose and requested goal; no obstacle truth",
+      "process_isolated": true,
+      "worker_directory": "/dit/results/static_sdf/live96/worker/dit-planner-h3ii7i1g"
+    },
+    "plans": [
+      {
+        "status": "accepted",
+        "scan_time": 0.6,
+        "activation_time": 0.661,
+        "fresh": true,
+        "feasible": true,
+        "observed_clearance": {
+          "minimum_known_m": 0.21080002188682556,
+          "known_fraction": 0.39006465673446655,
+          "observed_violation": false,
+          "collision_certified": false,
+          "unknown_policy": "unknown is not free; partial observed guard only"
+        },
+        "controls": [
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.4589039087295532,
+            0.44848868250846863,
+            0.001951176323927939,
+            0.01085465494543314,
+            -0.009891866706311703,
+            0.012420076876878738
+          ],
+          [
+            1.1479600667953491,
+            0.8828805685043335,
+            0.004806830082088709,
+            0.026357846334576607,
+            -0.025568554177880287,
+            0.030129490420222282
+          ],
+          [
+            1.8370165824890137,
+            0.9991013407707214,
+            0.007599196396768093,
+            0.041898149996995926,
+            -0.04103498533368111,
+            0.047871775925159454
+          ],
+          [
+            2.755826950073242,
+            0.9975859522819519,
+            0.011336488649249077,
+            0.06262777745723724,
+            -0.06184704229235649,
+            0.07155261933803558
+          ],
+          [
+            3.444979429244995,
+            0.9006872177124023,
+            0.014230857603251934,
+            0.07823767513036728,
+            -0.07757528126239777,
+            0.08922762423753738
+          ],
+          [
+            4.134148597717285,
+            0.45851054787635803,
+            0.01706681214272976,
+            0.09380611032247543,
+            -0.09305689483880997,
+            0.10689903795719147
+          ],
+          [
+            4.593844909153619,
+            0.0,
+            0.018716232003770816,
+            0.10369585433402642,
+            -0.10389966521905158,
+            0.1181392199797407
+          ],
+          [
+            4.593844909153619,
+            0.0,
+            0.018716232003770816,
+            0.10369585433402642,
+            -0.10389966521905158,
+            0.1181392199797407
+          ],
+          [
+            4.593844909153619,
+            0.0,
+            0.018716232003770816,
+            0.10369585433402642,
+            -0.10389966521905158,
+            0.1181392199797407
+          ]
+        ]
+      }
+    ],
+    "accepted_plans": 1,
+    "guard_interventions": 0,
+    "submitted_scans": 240,
+    "dropped_scans": 0,
+    "deadline_misses_100ms": 0,
+    "response_seconds": {
+      "median": 0.0163561440022022,
+      "p95": 0.017539983399183258,
+      "maximum": 0.06753776700497838
+    },
+    "map_seconds": {
+      "median": 0.0033295705034106504,
+      "p95": 0.003908029699596227,
+      "maximum": 0.04682279699773062
+    },
+    "goal_rpy": [
+      0.10369585433402645,
+      -0.10389966521905174,
+      0.1181392199797407
+    ],
+    "executed_model_reference": true,
+    "position_only": false,
+    "contract": "static environment; stationary-start full 20s position and attitude spline; continued measured-map monitoring; no geometric path repair",
+    "safety_scope": "Observed ESDF only, unknown space is not certified free; actual contacts evaluated independently",
+    "recorded_scan_responses": 240,
+    "planning_responses": [
+      {
+        "map_seconds": 0.0027751369998441078,
+        "known_fraction": 0.15521240234375,
+        "scan_time": 0.6,
+        "inference_seconds": 0.034980087002622895,
+        "trajectory_audit": {
+          "speed_bound_mps": 0.4134686480926012,
+          "acceleration_bound_mps2": 0.13147776898263658,
+          "sampled_angular_speed_radps": 0.016195990641094036,
+          "sampled_angular_acceleration_radps2": 0.003896743665278595,
+          "max_local_angle_rad": 0.1181392199797407
+        },
+        "feasible": true,
+        "observed_clearance": {
+          "minimum_known_m": 0.21080002188682556,
+          "known_fraction": 0.39006465673446655,
+          "observed_violation": false,
+          "collision_certified": false,
+          "unknown_policy": "unknown is not free; partial observed guard only"
+        },
+        "worker_wall_seconds": 0.047711826002341695,
+        "sequence": 7,
+        "response_time": 0.661,
+        "observation_age_sim_seconds": 0.061000000000000054,
+        "sensor_to_response_wall_seconds": 0.05688344399823109,
+        "plan_requested": true
+      }
+    ],
+    "steady_response_seconds": {
+      "count": 234,
+      "median": 0.0163674750001519,
+      "p95": 0.01753440354805207,
+      "maximum": 0.06753776700497838
+    },
+    "steady_deadline_misses_100ms": 0
+  },
+  "passed": true
+}

@@ -6,8 +6,16 @@ TASK_SIM_ROOT="${HNUTER_SIM_ROOT:-/home/z017/research/isaacsim-industrial-reacto
 TASK_CLI=()
 TASK_HEADLESS=false
 TASK_CHECKPOINT=""
+TASK_CHECKPOINT_FLAG="--temporal-checkpoint"
 while [[ $# -gt 0 ]]; do
+  if [[ "$1" =~ ^--(temporal|sdf)-checkpoint(=|$) ]] && [[ -n "$TASK_CHECKPOINT" ]]; then
+    echo 'Specify exactly one temporal or SDF checkpoint.' >&2; exit 1
+  fi
   case "$1" in
+    --sdf-checkpoint)
+      [[ $# -ge 2 ]] || { echo '--sdf-checkpoint requires a host file path' >&2; exit 1; }
+      TASK_CHECKPOINT="$2"; TASK_CHECKPOINT_FLAG="--sdf-checkpoint"; shift 2 ;;
+    --sdf-checkpoint=*) TASK_CHECKPOINT="${1#*=}"; TASK_CHECKPOINT_FLAG="--sdf-checkpoint"; shift ;;
     --sim-root)
       [[ $# -ge 2 ]] || { echo '--sim-root requires a host repository path' >&2; exit 1; }
       TASK_SIM_ROOT="$2"; shift 2 ;;
@@ -32,7 +40,7 @@ if [[ -n "$TASK_CHECKPOINT" ]]; then
   [[ -f "$TASK_CHECKPOINT" ]] || { echo "Temporal checkpoint not found: $TASK_CHECKPOINT" >&2; exit 1; }
   TASK_CHECKPOINT="$(realpath -- "$TASK_CHECKPOINT")"
   TASK_DOCKER+=(--mount "type=bind,source=$TASK_CHECKPOINT,target=/temporal-checkpoint.pt,readonly")
-  TASK_CLI+=(--temporal-checkpoint /temporal-checkpoint.pt)
+  TASK_CLI+=("$TASK_CHECKPOINT_FLAG" /temporal-checkpoint.pt)
 fi
 if [[ "$TASK_HEADLESS" == false ]]; then
   : "${DISPLAY:?Run from the graphical desktop or add --headless}"

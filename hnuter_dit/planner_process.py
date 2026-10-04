@@ -42,6 +42,10 @@ class PlannerProcess:
     """
     _worker_script = Path(__file__).with_name('planner_worker.py')
 
+    @staticmethod
+    def worker_environment():
+        return _worker_environment()
+
     def __init__(self, output_dir=None, *, python=None, device='cuda',
                  startup_timeout=120., request_timeout=120., temporal_checkpoint=None):
         if device not in ('cpu', 'cuda', 'auto'):
@@ -77,7 +81,7 @@ class PlannerProcess:
         self._log = (self.output_dir/'worker.log').open('w')
         try:
             self._process = subprocess.Popen([executable, str(self._worker_script), str(self.output_dir)],
-                env=_worker_environment(), stdout=self._log, stderr=subprocess.STDOUT)
+                env=self.worker_environment(), stdout=self._log, stderr=subprocess.STDOUT)
         except BaseException:
             self._closed = True
             self._log.close()

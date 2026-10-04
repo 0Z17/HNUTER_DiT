@@ -1,0 +1,13 @@
+{
+  "tests": "175 passed in 10.79s",
+  "command": "PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 PYTHONDONTWRITEBYTECODE=1 /home/z017/research/curobo_env/bin/python -m pytest -q",
+  "test_log_sha256": "de169caa1e01ebcc3c205befa3ff3bcaf359bb4e4cf35d65e87c8b4c60fadad8",
+  "checkpoint_sha256": "6e0da29b562b433bc1813b2f632cdd1f0a420705b003767ae32ce31e94745192",
+  "source_freeze_verified": true,
+  "raw_physics_test_successes": 16,
+  "industrial_new_placement_successes": 2,
+  "wall_clock_native_successes": 2,
+  "selected_weights_unchanged_during_final_evaluation": true,
+  "plot_visually_inspected": true,
+  "note": "Final source freeze matches all SDF modules. Raw negative experiments and initial weight retained. Simulator repository unchanged."
+}

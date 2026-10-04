@@ -53,6 +53,7 @@ def evaluation_passed(report):
     collision = report.get("collision", {})
     planner = report.get("planner", {})
     return bool(report.get("completed") and report.get("goal_reached")
+                and report.get("pose_goal_reached", True)
                 and collision.get("complete") and not collision.get("collision_detected")
                 and planner.get("failed") is False)
 
@@ -209,7 +210,10 @@ def arguments(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--sim-root", type=Path, default=Path("/sim"))
     parser.add_argument("--scene", default="scene_hnuter.usda")
-    parser.add_argument("--mode", choices=("baseline", "online", "temporal"), default="online")
+    parser.add_argument("--mode", choices=("baseline", "online", "temporal", "sdf"), default="online")
+    parser.add_argument("--sdf-checkpoint", type=Path)
+    parser.add_argument("--sdf-goal-rpy", type=float, nargs=3, default=(.08,-.06,.25))
+    parser.add_argument("--sdf-scene-index", type=int, help="Author two static evaluation obstacles; goal is set from this held-out scenario")
     parser.add_argument("--temporal-checkpoint", type=Path,
                         help="Explicit trained temporal checkpoint; required for --mode temporal")
     parser.add_argument("--goal", type=float, nargs=3, metavar=("X", "Y", "Z"))
@@ -240,6 +244,15 @@ def arguments(argv=None):
             parser.error("temporal mode requires an existing --temporal-checkpoint file")
     elif args.temporal_checkpoint is not None:
         parser.error("--temporal-checkpoint is only accepted with --mode temporal")
+    if args.mode == 'sdf':
+        if args.sdf_checkpoint is None or not args.sdf_checkpoint.is_file():
+            parser.error('sdf mode requires an existing --sdf-checkpoint')
+        if args.dynamic_obstacle:
+            parser.error('sdf pilot supports static obstacles only')
+        if args.sdf_scene_index is not None and args.goal is not None:
+            parser.error('sdf fixture sets its own goal; omit --goal')
+    elif args.sdf_checkpoint is not None or args.sdf_scene_index is not None:
+        parser.error('SDF checkpoint/fixture requires --mode sdf')
     if args.dynamic_profile != 'legacy' and not args.dynamic_obstacle:
         parser.error("non-legacy --dynamic-profile requires --dynamic-obstacle")
     if not (args.sim_root / "controllers/hnuter/newton_bridge.py").is_file():
@@ -306,6 +319,21 @@ def main(argv=None):
         robot.GetVariantSet("Physics").SetVariantSelection("mujoco")
         authored_origin = np.asarray(UsdGeom.XformCache().GetLocalToWorldTransform(
             usd_stage.GetPrimAtPath(ROBOT_PATH + "/Geometry/drone")).ExtractTranslation(), dtype=float)
+        if args.sdf_scene_index is not None:
+            from hnuter_dit.sdf_data import scenario
+            from pxr import Gf, UsdPhysics
+            fixture = scenario(args.sdf_scene_index)
+            for index, box in enumerate(fixture['boxes'][:2]):
+                cube = UsdGeom.Cube.Define(usd_stage, f'/World/SDFStaticFixture/Box{index}')
+                cube.CreateSizeAttr(1.)
+                position = authored_origin + np.asarray(box[:3]) - np.asarray(fixture['origin'])
+                cube.AddTranslateOp().Set(Gf.Vec3d(*position))
+                cube.AddScaleOp().Set(Gf.Vec3f(*box[3:]))
+                cube.CreateDisplayColorAttr([Gf.Vec3f(.9,.32,.08)])
+                UsdPhysics.CollisionAPI.Apply(cube.GetPrim())
+            args.goal = authored_origin + np.asarray(fixture['target'][:3])
+            args.sdf_goal_rpy = fixture['target'][3:]
+            report['static_sdf_fixture'] = fixture
         if args.dynamic_obstacle:
             authored_goal = np.asarray(args.goal) if args.goal is not None else authored_origin + [0, 3, 0]
             if args.dynamic_profile == 'legacy':
@@ -342,11 +370,16 @@ def main(argv=None):
         lidar = Mid360Lidar(ns)
         initial = bridge.read_state()
         origin = initial["position"].copy()
-        goal = np.asarray(args.goal, dtype=float) if args.goal is not None else origin + [0, 3, 0]
+        default_goal_offset = [4.4, 0, 0] if args.mode == 'sdf' else [0, 3, 0]
+        goal = np.asarray(args.goal, dtype=float) if args.goal is not None else origin + default_goal_offset
         planner_options = dict(goal_position=goal, device="cuda", seed=args.seed,
                                output_dir=output / "planner_worker", max_speed=args.max_speed,
                                max_acceleration=args.max_acceleration)
-        if args.mode == 'temporal':
+        if args.mode == 'sdf':
+            from hnuter_dit.sdf_online import SDFOnlinePlanner
+            planner = SDFOnlinePlanner(checkpoint=args.sdf_checkpoint, goal_rpy=args.sdf_goal_rpy, **planner_options)
+            report['sdf_checkpoint'] = str(args.sdf_checkpoint)
+        elif args.mode == 'temporal':
             from hnuter_dit.temporal_online import TemporalOnlinePlanner
             planner = TemporalOnlinePlanner(checkpoint=args.temporal_checkpoint, **planner_options)
             report['temporal_checkpoint'] = str(args.temporal_checkpoint)
@@ -354,6 +387,12 @@ def main(argv=None):
             from hnuter_dit.online import OnlinePlanner
             planner = OnlinePlanner(mode=args.mode, **planner_options)
         controller = GeometricController()
+        if args.mode == 'sdf':
+            # Compile sensor kernels during declared initialization, without
+            # advancing physics or supplying an extra history observation.
+            sensor_warmup_start = time.perf_counter()
+            Mid360Lidar(ns).capture(initial, 0.)
+            report['sensor_startup_warmup_seconds'] = time.perf_counter()-sensor_warmup_start
         if args.capture_views:
             from tools.capture_views import ViewCapture
             capture = ViewCapture()
@@ -390,6 +429,8 @@ def main(argv=None):
         target_steps = round(args.duration / DT)
         goal_progress = GoalProgress(goal)
         last_contact = False
+        last_sensor_wall = -np.inf
+        raycast_seconds = []
         while app.is_running() and step < target_steps:
             if not timeline.is_playing():
                 report["stop_reason"] = "timeline_paused_or_stopped"
@@ -399,14 +440,25 @@ def main(argv=None):
             state = bridge.read_state()
             sim_time = step * DT
             goal_progress.observe(state, sim_time, collided=contacts.first_collision is not None)
-            if step % 100 == 0:
+            # Keep the standard 10 Hz simulation cadence. SDF also refreshes
+            # after 100 ms wall time if physics/rendering runs slower, so a
+            # nominal simulated rate cannot silently become stale sensing.
+            if step % 100 == 0 or (args.mode == 'sdf' and time.monotonic()-last_sensor_wall >= .1):
+                capture_wall = time.perf_counter()
+                last_sensor_wall = time.monotonic()
                 frame = lidar.capture(state, sim_time)
+                raycast_seconds.append(time.perf_counter()-capture_wall)
                 last_frame = frame
                 if not lidar_summary:
                     save_scan(output / "first_lidar.npz", frame)
-                planner.observe(frame, state, sim_time)
+                if args.mode == 'sdf':
+                    planner.observe(frame, state, sim_time, capture_wall_time=capture_wall)
+                else:
+                    planner.observe(frame, state, sim_time)
                 lidar_summary.append({"t": sim_time, "frame_index": frame.frame_index,
-                                      "hits": len(frame.points), "rays": frame.rays_count})
+                                      "hits": len(frame.points), "rays": frame.rays_count,
+                                      "capture_wall_seconds": capture_wall-wall_start,
+                                      "capture_seconds": raycast_seconds[-1]})
             desired = planner.command(state, sim_time)
             controller.set_desired_state(desired)
             if obstacle:
@@ -482,10 +534,25 @@ def main(argv=None):
                       attitude_tracking_max_error_rad=max((row["attitude_error_rad"] for row in rows), default=None),
                       collision=collision, lidar_frames=len(lidar_summary))
         report.update(goal_progress.report())
+        if args.mode == 'sdf':
+            from scipy.spatial.transform import Rotation
+            goal_rotation = Rotation.from_euler('xyz', args.sdf_goal_rpy)
+            final_rotation = Rotation.from_quat(final['quaternion'][[1,2,3,0]])
+            angle = float((goal_rotation.inv()*final_rotation).magnitude())
+            report.update(final_goal_angle_rad=angle, goal_rpy=list(args.sdf_goal_rpy), pose_goal_reached=angle < .08)
+            report['raycast_seconds'] = dict(median=float(np.median(raycast_seconds)),p95=float(np.percentile(raycast_seconds,95)),maximum=float(max(raycast_seconds)))
+            report['sensing_schedule'] = 'every 0.1 simulation seconds or 0.1 wall seconds, whichever comes first; timestamped actual physics state'
+            for label, records in (('all',lidar_summary),('after_history_warmup',[r for r in lidar_summary if r['t']>=.6])):
+                intervals = np.diff([r['capture_wall_seconds'] for r in records])
+                if len(intervals):
+                    report[f'sensing_wall_intervals_{label}_seconds'] = dict(median=float(np.median(intervals)),p95=float(np.percentile(intervals,95)),maximum=float(max(intervals)))
         if obstacle:
             report["obstacle"] = obstacle.report()
         report["planner"] = planner.close()
         planner = None
+        if args.mode == 'sdf':
+            # Retain numerical flight evidence even if optional rendering stalls.
+            (output/'flight_before_render.json').write_text(json.dumps(json_value(report), indent=2, allow_nan=False)+'\n')
         if capture:
             ns.update_fabric()
             for _ in range(24):

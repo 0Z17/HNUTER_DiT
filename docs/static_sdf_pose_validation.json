@@ -1,0 +1,652 @@
+{
+  "schema": "static_sdf_pose_validation_v1",
+  "date": "2026-10-04",
+  "checkpoint_sha256": "6e0da29b562b433bc1813b2f632cdd1f0a420705b003767ae32ce31e94745192",
+  "selected_step": 2000,
+  "collection": {
+    "episodes": 96,
+    "physical_successes": 96,
+    "contacts": 0,
+    "max_position_tracking_m": 0.018670738214568276,
+    "collection_seconds": 116.11653301300248,
+    "split_counts": {
+      "train": 64,
+      "validation": 16,
+      "test": 16
+    },
+    "seed": 919,
+    "background_randomization": true
+  },
+  "training": {
+    "steps": 2000,
+    "seed": 31,
+    "batch_size": 16,
+    "learning_rate": 0.0003,
+    "ema": 0.99,
+    "from_scratch": true
+  },
+  "held_out_native": {
+    "model": {
+      "count": 16,
+      "passed": 16,
+      "collision_episodes": 0
+    },
+    "empty": {
+      "count": 16,
+      "passed": 8,
+      "collision_episodes": 8
+    },
+    "straight": {
+      "count": 16,
+      "passed": 0,
+      "collision_episodes": 16
+    }
+  },
+  "offline_ablation": {
+    "model": {
+      "passed": 16,
+      "count": 16
+    },
+    "latest": {
+      "passed": 16,
+      "count": 16
+    },
+    "empty": {
+      "passed": 8,
+      "count": 16
+    },
+    "straight": {
+      "passed": 0,
+      "count": 16
+    }
+  },
+  "inference_seconds": {
+    "median": 0.03676588799862657,
+    "p95": 0.16239606650196947
+  },
+  "evidence": {
+    "training": {
+      "path": "results/static_sdf/train2000_diverse_seed31/training.json",
+      "sha256": "930300abd75d64d768bc7b8db587b4504722c62d9f3ebf30ed3b8ac1d6c92f98"
+    },
+    "mapping": {
+      "path": "results/static_sdf/mapped_diverse96/mapping.json",
+      "sha256": "d425ba019be2dc62c7321002d5ab62237a9b5076f6c23f714700c5aa98996153"
+    },
+    "initial_training": {
+      "path": "results/static_sdf/train2000_seed29/training.json",
+      "sha256": "f57d4e5830257e761190672e31de9ec4f46a2b6d5b31a1865a184db6bf7ed34a"
+    },
+    "initial_mapping": {
+      "path": "results/static_sdf/mapped96/mapping.json",
+      "sha256": "149c37cecc1b2b494383c84a33365a28f468c85fcb4fdc61b32a394af3c07178"
+    },
+    "initial_offline": {
+      "path": "results/static_sdf/test_frozen/offline.json",
+      "sha256": "5297dad3fbd329da23466f38431bbf83e02d4295e5286c583129492e98704395"
+    },
+    "initial_native": {
+      "path": "results/static_sdf/test_native/native.json",
+      "sha256": "d3fa106b3ac03cc74efbe16cc7822f691e250f805b86e8d859c1b822560a47a4"
+    },
+    "offline": {
+      "path": "results/static_sdf/test_diverse_frozen/offline.json",
+      "sha256": "7591ea3e18b0dbafcc3e6cbf9fbbae72fe6d65a2cbb6030966e7eedf10d2173c"
+    },
+    "native": {
+      "path": "results/static_sdf/test_diverse_native/native.json",
+      "sha256": "d2c4a064b4cd05944574b60d76eefff6862c050f6ab94b5df5b8ebfc8b55f6aa"
+    },
+    "industrial96_initial_failure": {
+      "path": "results/static_sdf/industrial96/report.json",
+      "sha256": "fe410da5fdc0d37e79d27f64bac202faf4d827e1fd69fa29e9c4ed9aaad7f0f8"
+    },
+    "industrial96_wallclock": {
+      "path": "results/static_sdf/industrial96_wallclock/report.json",
+      "sha256": "580c22444b65ebf906bd7bd392e8659c92f874d5eb843d5cda7b55781bc4d466"
+    },
+    "industrial97_warmup_failure": {
+      "path": "results/static_sdf/industrial97_warmed/report.json",
+      "sha256": "e96e52bbcb349c7c26efbde2c07b869e77b23766fff88e84ff6281a4c972fac1"
+    },
+    "industrial97_initial_single": {
+      "path": "results/static_sdf/industrial97_final/report.json",
+      "sha256": "a84eed51f3675c558a040285db79d9518f2d1a93e09eb4e8aaf273e1e41ab827"
+    },
+    "industrial97_initial_candidates": {
+      "path": "results/static_sdf/industrial97_candidates/report.json",
+      "sha256": "5f9a8c51d7aff871b7dbc34365666301e493fbcfbdbff9f1c743a7fcb0deab2d"
+    },
+    "industrial100_final": {
+      "path": "results/static_sdf/industrial100_final/report.json",
+      "sha256": "885c8c93a10d0f180cd43324b199cb0f58f7e26655fdb9feaf29b670ef82b078"
+    },
+    "industrial101_final": {
+      "path": "results/static_sdf/industrial101_final/report.json",
+      "sha256": "eda194def87e72e98488a314f57aec3fcb2f95c5902f7964f218dff4434f1751"
+    },
+    "live96_initial": {
+      "path": "results/static_sdf/live96/report.json",
+      "sha256": "ad85cf83e08430bba5cea71dc9105f35c5a4e80a145eb53811afc0ef3b1f2022"
+    },
+    "live96_final": {
+      "path": "results/static_sdf/live96_final/report.json",
+      "sha256": "89bfc2fb19ccbdf19d7dc247151784e37909871cccb009cfad0b820ea4b38d31"
+    },
+    "live97_final": {
+      "path": "results/static_sdf/live97_final/report.json",
+      "sha256": "d95f0f184a57d4fdb6b818ee001d0def10f504533caa4fa43561c7123cd113fd"
+    }
+  },
+  "sources": {
+    "hnuter_dit/sdf_data.py": "fad13b69ceaac2707ea683ca3d6db5395c0014ac8b468eb83df302fe075b357a",
+    "hnuter_dit/sdf_evaluation.py": "b7325cfb09e8bfa67890fa5102db5b50101339408b3ff512578c18501d9425f1",
+    "hnuter_dit/sdf_live.py": "b20df769c703ed34794b128258e0a10a2cf872f546de38728264fb06785fef19",
+    "hnuter_dit/sdf_mapping.py": "162a56fcd006e705ba6524da9f4ca622af7fc3e239068c64f2ca392bdb769e55",
+    "hnuter_dit/sdf_model.py": "f074f699660354fa09d9ba45aaa516c306f1b4e9b9cfffdffd7f58a5f8873be8",
+    "hnuter_dit/sdf_online.py": "5390798a527bb4125daefaeef5960d034167d77583ae17050cf0bcf66f3f5a49",
+    "hnuter_dit/sdf_pose.py": "3ad2e729b8256489a88987e0aa2ca54679d9946366bac68d7be651ebc095e766",
+    "hnuter_dit/sdf_runtime.py": "846881c4bc5cd0b11437341068a35158df76be9202719f5845e258a023116271",
+    "hnuter_dit/sdf_training.py": "d75e98a7a93defb1ea557c3b7d5d65cb0fee9b748cbfa6a55266e8b746af0790",
+    "hnuter_dit/sdf_worker.py": "e3f2a965f9de07d748d1237e82e132f7d5f75bfcd935fc512823ae5f7794b5dd"
+  },
+  "limitations": [
+    "single small curriculum and training seed",
+    "stationary start, up to three observation-driven attempts then fixed 20s pose plan with continued sensing",
+    "history has no demonstrated benefit over latest observation in this static curriculum",
+    "unknown space is not certified free",
+    "industrial physics loop is slower than wall-clock real time",
+    "modest orientation changes, no learned contact or narrow-gap attitude maneuvers"
+  ],
+  "flights": {
+    "industrial96_initial_failure": {
+      "passed": false,
+      "simulation_seconds": 24.0,
+      "loop_wall_seconds": 101.0230752599964,
+      "final_goal_distance_m": 4.594156022918852,
+      "final_goal_angle_rad": 0.21737594901738388,
+      "contact_steps": null,
+      "raycast_seconds": null,
+      "sensor_startup_warmup_seconds": null,
+      "sensing_wall_intervals_after_history_warmup_seconds": null,
+      "accepted_plans": 1,
+      "guard_interventions": 1,
+      "dropped_scans": 0,
+      "deadline_misses_100ms": 0,
+      "response_seconds": {
+        "median": 0.019162406999384984,
+        "p95": 0.0334448975037958,
+        "maximum": 0.09113682899624109
+      },
+      "map_seconds": {
+        "median": 0.0052341324990266,
+        "p95": 0.007152431149006587,
+        "maximum": 0.06089649500063388
+      },
+      "steady_response_seconds": {
+        "count": 234,
+        "median": 0.019162406999384984,
+        "p95": 0.033284605751396155,
+        "maximum": 0.08822008899733191
+      },
+      "steady_deadline_misses_100ms": 0,
+      "steady_processed_update_intervals_seconds": null,
+      "plan_attempts": null,
+      "collision": {
+        "backend": "native MuJoCo contacts",
+        "samples": 24000,
+        "collision_detected": false,
+        "contact_steps": 0,
+        "penetration_steps": 0,
+        "first_collision": null,
+        "max_penetration_m": 0.0,
+        "minimum_contact_distance_m": null,
+        "overflow_steps": 0,
+        "unmapped_contacts": 0,
+        "complete": true,
+        "scope": "Robot versus environment only; self contacts excluded; evaluator-only truth"
+      }
+    },
+    "industrial96_wallclock": {
+      "passed": true,
+      "simulation_seconds": 24.0,
+      "loop_wall_seconds": 52.6795650310014,
+      "final_goal_distance_m": 0.019159898657709496,
+      "final_goal_angle_rad": 0.02254794526085215,
+      "contact_steps": null,
+      "raycast_seconds": {
+        "median": 0.004641492498194566,
+        "p95": 0.0054111056513647775,
+        "maximum": 1.0903054970040102
+      },
+      "sensor_startup_warmup_seconds": null,
+      "sensing_wall_intervals_after_history_warmup_seconds": null,
+      "accepted_plans": 1,
+      "guard_interventions": 0,
+      "dropped_scans": 46,
+      "deadline_misses_100ms": 1,
+      "response_seconds": {
+        "median": 0.024360645500564715,
+        "p95": 0.03735408125103276,
+        "maximum": 5.469971640006406
+      },
+      "map_seconds": {
+        "median": 0.006934489501873031,
+        "p95": 0.009970526800316293,
+        "maximum": 0.054905966004298534
+      },
+      "steady_response_seconds": {
+        "count": 470,
+        "median": 0.02293473049576278,
+        "p95": 0.037248125299083765,
+        "maximum": 0.0828025470036664
+      },
+      "steady_deadline_misses_100ms": 0,
+      "steady_processed_update_intervals_seconds": null,
+      "plan_attempts": null,
+      "collision": {
+        "backend": "MuJoCo Warp GPU contacts",
+        "samples": 24000,
+        "collision_detected": false,
+        "contact_steps": 0,
+        "penetration_steps": 0,
+        "first_collision": null,
+        "max_penetration_m": 0.0,
+        "minimum_contact_distance_m": null,
+        "overflow_steps": 0,
+        "unmapped_contacts": 0,
+        "complete": true,
+        "scope": "Robot versus environment only; self contacts excluded; evaluator-only truth"
+      }
+    },
+    "industrial97_warmup_failure": {
+      "passed": false,
+      "simulation_seconds": 0.0,
+      "loop_wall_seconds": null,
+      "final_goal_distance_m": 4.360278949913224,
+      "final_goal_angle_rad": null,
+      "contact_steps": null,
+      "raycast_seconds": null,
+      "sensor_startup_warmup_seconds": 1.2228869609971298,
+      "sensing_wall_intervals_after_history_warmup_seconds": null,
+      "accepted_plans": 0,
+      "guard_interventions": 0,
+      "dropped_scans": 0,
+      "deadline_misses_100ms": 0,
+      "response_seconds": null,
+      "map_seconds": null,
+      "steady_response_seconds": null,
+      "steady_deadline_misses_100ms": 0,
+      "steady_processed_update_intervals_seconds": null,
+      "plan_attempts": null,
+      "collision": {
+        "backend": "MuJoCo Warp GPU contacts",
+        "samples": 0,
+        "collision_detected": false,
+        "contact_steps": 0,
+        "penetration_steps": 0,
+        "first_collision": null,
+        "max_penetration_m": 0.0,
+        "minimum_contact_distance_m": null,
+        "overflow_steps": 0,
+        "unmapped_contacts": 0,
+        "complete": false,
+        "scope": "Robot versus environment only; self contacts excluded; evaluator-only truth"
+      }
+    },
+    "industrial97_initial_single": {
+      "passed": false,
+      "simulation_seconds": 24.0,
+      "loop_wall_seconds": 44.4357104199953,
+      "final_goal_distance_m": 4.3604407283321756,
+      "final_goal_angle_rad": 0.21042556617134964,
+      "contact_steps": null,
+      "raycast_seconds": {
+        "median": 0.004555793497274863,
+        "p95": 0.005264543048178893,
+        "maximum": 0.006585319002624601
+      },
+      "sensor_startup_warmup_seconds": 1.1384044570004335,
+      "sensing_wall_intervals_after_history_warmup_seconds": {
+        "median": 0.10001384800125379,
+        "p95": 0.1013141696988896,
+        "maximum": 0.10178522500063991
+      },
+      "accepted_plans": 0,
+      "guard_interventions": 0,
+      "dropped_scans": 1,
+      "deadline_misses_100ms": 1,
+      "response_seconds": {
+        "median": 0.024803328000416514,
+        "p95": 0.03592156500235433,
+        "maximum": 4.107738796999911
+      },
+      "map_seconds": {
+        "median": 0.006386073000612669,
+        "p95": 0.009810678995563649,
+        "maximum": 0.05804733499826398
+      },
+      "steady_response_seconds": {
+        "count": 468,
+        "median": 0.02476958150145947,
+        "p95": 0.03585021084836626,
+        "maximum": 0.08686300499539357
+      },
+      "steady_deadline_misses_100ms": 0,
+      "steady_processed_update_intervals_seconds": {
+        "median": 0.08801883900014218,
+        "p95": 0.11118854609740084,
+        "maximum": 0.1226012780025485
+      },
+      "plan_attempts": null,
+      "collision": {
+        "backend": "MuJoCo Warp GPU contacts",
+        "samples": 24000,
+        "collision_detected": false,
+        "contact_steps": 0,
+        "penetration_steps": 0,
+        "first_collision": null,
+        "max_penetration_m": 0.0,
+        "minimum_contact_distance_m": null,
+        "overflow_steps": 0,
+        "unmapped_contacts": 0,
+        "complete": true,
+        "scope": "Robot versus environment only; self contacts excluded; evaluator-only truth"
+      }
+    },
+    "industrial97_initial_candidates": {
+      "passed": false,
+      "simulation_seconds": 24.0,
+      "loop_wall_seconds": 44.631986865002546,
+      "final_goal_distance_m": 4.3604407283321756,
+      "final_goal_angle_rad": 0.21042556617134964,
+      "contact_steps": null,
+      "raycast_seconds": {
+        "median": 0.004554462000669446,
+        "p95": 0.005594046553960652,
+        "maximum": 0.006560433001141064
+      },
+      "sensor_startup_warmup_seconds": 1.0985981519988854,
+      "sensing_wall_intervals_after_history_warmup_seconds": {
+        "median": 0.10000314300123136,
+        "p95": 0.10140854810015298,
+        "maximum": 0.1021015400037868
+      },
+      "accepted_plans": 0,
+      "guard_interventions": 0,
+      "dropped_scans": 2,
+      "deadline_misses_100ms": 3,
+      "response_seconds": {
+        "median": 0.02904255250177812,
+        "p95": 0.03655529965108144,
+        "maximum": 4.174063408994698
+      },
+      "map_seconds": {
+        "median": 0.006543387004057877,
+        "p95": 0.010172162897652012,
+        "maximum": 0.05607922600029269
+      },
+      "steady_response_seconds": {
+        "count": 466,
+        "median": 0.02879110949652386,
+        "p95": 0.036517087997708586,
+        "maximum": 0.17008431399881374
+      },
+      "steady_deadline_misses_100ms": 2,
+      "steady_processed_update_intervals_seconds": {
+        "median": 0.08707618799962802,
+        "p95": 0.11023570319666759,
+        "maximum": 0.2338579839997692
+      },
+      "plan_attempts": null,
+      "collision": {
+        "backend": "MuJoCo Warp GPU contacts",
+        "samples": 24000,
+        "collision_detected": false,
+        "contact_steps": 0,
+        "penetration_steps": 0,
+        "first_collision": null,
+        "max_penetration_m": 0.0,
+        "minimum_contact_distance_m": null,
+        "overflow_steps": 0,
+        "unmapped_contacts": 0,
+        "complete": true,
+        "scope": "Robot versus environment only; self contacts excluded; evaluator-only truth"
+      }
+    },
+    "industrial100_final": {
+      "passed": true,
+      "simulation_seconds": 24.0,
+      "loop_wall_seconds": 52.01619879599457,
+      "final_goal_distance_m": 0.015730931874587517,
+      "final_goal_angle_rad": 0.01753101107211056,
+      "contact_steps": null,
+      "raycast_seconds": {
+        "median": 0.004883213998255087,
+        "p95": 0.005756496751928352,
+        "maximum": 0.007351105996349361
+      },
+      "sensor_startup_warmup_seconds": 1.2178546599971014,
+      "sensing_wall_intervals_after_history_warmup_seconds": {
+        "median": 0.10026188699703198,
+        "p95": 0.1017254447004234,
+        "maximum": 0.10373205500218319
+      },
+      "accepted_plans": 1,
+      "guard_interventions": 0,
+      "dropped_scans": 55,
+      "deadline_misses_100ms": 1,
+      "response_seconds": {
+        "median": 0.023203078999358695,
+        "p95": 0.03713047900018864,
+        "maximum": 4.578713926995988
+      },
+      "map_seconds": {
+        "median": 0.006492979002359789,
+        "p95": 0.009621532896562712,
+        "maximum": 0.05378024800302228
+      },
+      "steady_response_seconds": {
+        "count": 469,
+        "median": 0.023055721998389345,
+        "p95": 0.036990827196859755,
+        "maximum": 0.09983456700138049
+      },
+      "steady_deadline_misses_100ms": 0,
+      "steady_processed_update_intervals_seconds": {
+        "median": 0.10011005449996446,
+        "p95": 0.11392710939944663,
+        "maximum": 0.14639024400094058
+      },
+      "plan_attempts": 1,
+      "collision": {
+        "backend": "MuJoCo Warp GPU contacts",
+        "samples": 24000,
+        "collision_detected": false,
+        "contact_steps": 0,
+        "penetration_steps": 0,
+        "first_collision": null,
+        "max_penetration_m": 0.0,
+        "minimum_contact_distance_m": null,
+        "overflow_steps": 0,
+        "unmapped_contacts": 0,
+        "complete": true,
+        "scope": "Robot versus environment only; self contacts excluded; evaluator-only truth"
+      }
+    },
+    "industrial101_final": {
+      "passed": true,
+      "simulation_seconds": 24.0,
+      "loop_wall_seconds": 50.88592558099481,
+      "final_goal_distance_m": 0.015846868734093317,
+      "final_goal_angle_rad": 0.017459450679282038,
+      "contact_steps": null,
+      "raycast_seconds": {
+        "median": 0.004562543006613851,
+        "p95": 0.005372931898455135,
+        "maximum": 0.0065765529943746515
+      },
+      "sensor_startup_warmup_seconds": 1.1660932120066718,
+      "sensing_wall_intervals_after_history_warmup_seconds": {
+        "median": 0.10021857100218767,
+        "p95": 0.10158766414824641,
+        "maximum": 0.10210215400002198
+      },
+      "accepted_plans": 1,
+      "guard_interventions": 0,
+      "dropped_scans": 36,
+      "deadline_misses_100ms": 1,
+      "response_seconds": {
+        "median": 0.022928160993615165,
+        "p95": 0.03674438639864093,
+        "maximum": 4.192445770997438
+      },
+      "map_seconds": {
+        "median": 0.006652058000327088,
+        "p95": 0.009499985397269482,
+        "maximum": 0.0561584090028191
+      },
+      "steady_response_seconds": {
+        "count": 470,
+        "median": 0.022676013999443967,
+        "p95": 0.03671721089667699,
+        "maximum": 0.09727780400135089
+      },
+      "steady_deadline_misses_100ms": 0,
+      "steady_processed_update_intervals_seconds": {
+        "median": 0.09981550600059563,
+        "p95": 0.11208629940083482,
+        "maximum": 0.12462578999839025
+      },
+      "plan_attempts": 1,
+      "collision": {
+        "backend": "MuJoCo Warp GPU contacts",
+        "samples": 24000,
+        "collision_detected": false,
+        "contact_steps": 0,
+        "penetration_steps": 0,
+        "first_collision": null,
+        "max_penetration_m": 0.0,
+        "minimum_contact_distance_m": null,
+        "overflow_steps": 0,
+        "unmapped_contacts": 0,
+        "complete": true,
+        "scope": "Robot versus environment only; self contacts excluded; evaluator-only truth"
+      }
+    },
+    "live96_initial": {
+      "passed": true,
+      "simulation_seconds": 24.0,
+      "loop_wall_seconds": 24.000230501995247,
+      "final_goal_distance_m": 0.018788112934233363,
+      "final_goal_angle_rad": 0.022547066524325646,
+      "contact_steps": 0,
+      "raycast_seconds": {
+        "median": 0.004564008500892669,
+        "p95": 0.005123016099969391,
+        "maximum": 0.008570997997594532
+      },
+      "sensor_startup_warmup_seconds": null,
+      "sensing_wall_intervals_after_history_warmup_seconds": null,
+      "accepted_plans": 1,
+      "guard_interventions": 0,
+      "dropped_scans": 0,
+      "deadline_misses_100ms": 0,
+      "response_seconds": {
+        "median": 0.0163561440022022,
+        "p95": 0.017539983399183258,
+        "maximum": 0.06753776700497838
+      },
+      "map_seconds": {
+        "median": 0.0033295705034106504,
+        "p95": 0.003908029699596227,
+        "maximum": 0.04682279699773062
+      },
+      "steady_response_seconds": {
+        "count": 234,
+        "median": 0.0163674750001519,
+        "p95": 0.01753440354805207,
+        "maximum": 0.06753776700497838
+      },
+      "steady_deadline_misses_100ms": 0,
+      "steady_processed_update_intervals_seconds": null,
+      "plan_attempts": null
+    },
+    "live96_final": {
+      "passed": true,
+      "simulation_seconds": 24.0,
+      "loop_wall_seconds": 24.000224236995564,
+      "final_goal_distance_m": 0.018788137509966496,
+      "final_goal_angle_rad": 0.02254706716625391,
+      "contact_steps": 0,
+      "raycast_seconds": {
+        "median": 0.0043716830004996154,
+        "p95": 0.004710052249356523,
+        "maximum": 0.006788683997001499
+      },
+      "sensor_startup_warmup_seconds": null,
+      "sensing_wall_intervals_after_history_warmup_seconds": null,
+      "accepted_plans": 1,
+      "guard_interventions": 0,
+      "dropped_scans": 0,
+      "deadline_misses_100ms": 0,
+      "response_seconds": {
+        "median": 0.020127070503804134,
+        "p95": 0.02200745689624455,
+        "maximum": 0.07397653099906165
+      },
+      "map_seconds": {
+        "median": 0.003249200999562163,
+        "p95": 0.004418475403144839,
+        "maximum": 0.048861388000659645
+      },
+      "steady_response_seconds": {
+        "count": 234,
+        "median": 0.020155924998107366,
+        "p95": 0.02200726240007498,
+        "maximum": 0.06002305199945113
+      },
+      "steady_deadline_misses_100ms": 0,
+      "steady_processed_update_intervals_seconds": null,
+      "plan_attempts": 1
+    },
+    "live97_final": {
+      "passed": true,
+      "simulation_seconds": 24.0,
+      "loop_wall_seconds": 24.000233450999076,
+      "final_goal_distance_m": 0.015377249795766256,
+      "final_goal_angle_rad": 0.019481781138273237,
+      "contact_steps": 0,
+      "raycast_seconds": {
+        "median": 0.00444622449867893,
+        "p95": 0.005236588603656855,
+        "maximum": 0.005868290005309973
+      },
+      "sensor_startup_warmup_seconds": null,
+      "sensing_wall_intervals_after_history_warmup_seconds": null,
+      "accepted_plans": 1,
+      "guard_interventions": 0,
+      "dropped_scans": 0,
+      "deadline_misses_100ms": 0,
+      "response_seconds": {
+        "median": 0.02101197150113876,
+        "p95": 0.023007422048976878,
+        "maximum": 0.07297793600446312
+      },
+      "map_seconds": {
+        "median": 0.0027597139996942133,
+        "p95": 0.0034022068524791386,
+        "maximum": 0.04789765599707607
+      },
+      "steady_response_seconds": {
+        "count": 234,
+        "median": 0.021012735498516122,
+        "p95": 0.023007226199842988,
+        "maximum": 0.0720115119984257
+      },
+      "steady_deadline_misses_100ms": 0,
+      "steady_processed_update_intervals_seconds": null,
+      "plan_attempts": 1
+    }
+  }
+}

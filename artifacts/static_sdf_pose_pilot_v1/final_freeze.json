@@ -1,0 +1,24 @@
+{
+  "schema": "static_sdf_final_freeze_v1",
+  "checkpoint": "train2000_diverse_seed31/best.pt",
+  "checkpoint_sha256": "6e0da29b562b433bc1813b2f632cdd1f0a420705b003767ae32ce31e94745192",
+  "selected_step": 2000,
+  "dataset_sha256": "4b8c0986bcebbb4ab12a487f8a0fd55fb3dc4ed2e5905593f4071e8b0bbe2dfa",
+  "industrial_evaluation_indices": [
+    100,
+    101
+  ],
+  "sampling_seed": 23,
+  "runtime_source_sha256": {
+    "hnuter_dit/sdf_data.py": "fad13b69ceaac2707ea683ca3d6db5395c0014ac8b468eb83df302fe075b357a",
+    "hnuter_dit/sdf_evaluation.py": "b7325cfb09e8bfa67890fa5102db5b50101339408b3ff512578c18501d9425f1",
+    "hnuter_dit/sdf_live.py": "b20df769c703ed34794b128258e0a10a2cf872f546de38728264fb06785fef19",
+    "hnuter_dit/sdf_mapping.py": "162a56fcd006e705ba6524da9f4ca622af7fc3e239068c64f2ca392bdb769e55",
+    "hnuter_dit/sdf_model.py": "f074f699660354fa09d9ba45aaa516c306f1b4e9b9cfffdffd7f58a5f8873be8",
+    "hnuter_dit/sdf_online.py": "5390798a527bb4125daefaeef5960d034167d77583ae17050cf0bcf66f3f5a49",
+    "hnuter_dit/sdf_pose.py": "3ad2e729b8256489a88987e0aa2ca54679d9946366bac68d7be651ebc095e766",
+    "hnuter_dit/sdf_runtime.py": "846881c4bc5cd0b11437341068a35158df76be9202719f5845e258a023116271",
+    "hnuter_dit/sdf_training.py": "d75e98a7a93defb1ea557c3b7d5d65cb0fee9b748cbfa6a55266e8b746af0790",
+    "hnuter_dit/sdf_worker.py": "e3f2a965f9de07d748d1237e82e132f7d5f75bfcd935fc512823ae5f7794b5dd"
+  }
+}
