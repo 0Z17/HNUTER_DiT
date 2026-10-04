@@ -1,0 +1,23 @@
+{
+  "visual_frames_reviewed": [
+    0,
+    10,
+    27,
+    50,
+    78,
+    81,
+    108
+  ],
+  "observations": "Drone visible with silver body, red rotors and MID-360 housing; follow/FPV, trajectory, LiDAR and unknown-aware ESDF panels readable.",
+  "tests": [
+    {
+      "command": "pytest -q -p no:cacheprovider tests",
+      "passed": 180
+    },
+    {
+      "command": "pytest -q -p no:cacheprovider tests/test_factory_tour.py tests/test_sdf_online.py tests/test_industrial_helpers.py",
+      "passed": 25
+    }
+  ],
+  "source_reports": "All original reports preserved; compact files are separate copies with raw SHA-256 identities."
+}

@@ -1,0 +1,1401 @@
+{
+  "passed": false,
+  "completed": false,
+  "mode": "sdf",
+  "seed": 23,
+  "scene": "scene_hnuter.usda",
+  "sim_root": "/sim",
+  "physics_dt": 0.001,
+  "requested_duration": 180.0,
+  "dynamic_obstacle": false,
+  "dynamic_profile": "legacy",
+  "goal_reached": false,
+  "nonfinite_state": false,
+  "implementation_sha256": {
+    "planner_process.py": "18e87ed143eb8b62ff2008d607cec4cac60fb599c9a85c37cbf10105be96a61d",
+    "temporal_evaluation.py": "4151cb05586fcc093036643787216711f027302c69f9eda2df83fb4ee0821fa7",
+    "sdf_data.py": "fad13b69ceaac2707ea683ca3d6db5395c0014ac8b468eb83df302fe075b357a",
+    "sdf_online.py": "cf2cb55d3da149b7bf2578df37fc292484bfeb2ca53507ca2b70acc011f4cb95",
+    "lidar_condition.py": "a4943f26240dadaf3eeb718b89476a192ae6ad17c8015cf20bb38d7b11cb57bb",
+    "industrial_runner.py": "53b69a973b5f607dae18a847f512ce5e383b86cd0ef0b8a2e291b40da996078c",
+    "observation_guard.py": "ae107faf19c57d2d136844bf5d633e8931948b73ec4716dff71aee57838a3a21",
+    "web.py": "65436ead410a87bd2199b5c03d781834d63503f1d30d1218a7f3a3c2f915e80d",
+    "industrial_obstacle.py": "17c0869e88bf3e10586f446ff44b6982beddffb28997eac9e9b29bff7eeb9242",
+    "demo_capture.py": "23a17ada9ce09cfd1ae7d499d42653255c86ab9cecaf2aa2f1b1b6e5a10ebb99",
+    "temporal_training.py": "6f942531ab299c50118b2c3bf0e8bf0d2775d712b92a1aff401edcfbd55b30cd",
+    "sdf_live.py": "b20df769c703ed34794b128258e0a10a2cf872f546de38728264fb06785fef19",
+    "evaluate_v003.py": "ea6777e38621be4e19f722d8fe3c039269d3c133c73a7052153cff7df9207466",
+    "model.py": "06866dd8b7f0ea1806a9c29b3d2e2adec265b331536ba6192c448dc6e334d3ed",
+    "online_diffusion.py": "7c7e661961fac20d9ccefcd6f11fee859fb74957a5675d6373adb28bceee4be5",
+    "temporal_inference.py": "9bfb5a8fe54be9d95956f302186b9a60dfbc9a3c4ab429ffe1064ba687dc3694",
+    "tune_guidance.py": "fdd3f04f9a4f437db10865157693490d446c9df432feddb097d4a4798a3dc61f",
+    "sdf_pose.py": "3ad2e729b8256489a88987e0aa2ca54679d9946366bac68d7be651ebc095e766",
+    "collision_loss.py": "42da73bf7fa061c6d346866c646db10c9c6c0cbe177a6e462878a936a62cd2be",
+    "temporal_model.py": "d4684454b2e4676624d4eca6b0b4a14d29db66494a9448d648c2c5521a37fa05",
+    "path_validation.py": "aa2cbbc87689f86f12e9da53da4795b7fff324e0b6079e509b12c9ea34af6baf",
+    "__main__.py": "dc5fadec60ea288f2446329c8ea1620a8d9eb8ca9ddade1b54d8d38e9f659f99",
+    "training.py": "ec9226917717fd12b45d1b6f27c5cfd0ded7a0682b6d9fb9df12e8d0ec353e13",
+    "online.py": "1b2c3934c8c2eeaa67510c3bde0557f6dd49c76fdf8332a34b43f15db02b124f",
+    "geometry.py": "68d2197da96eb23490a36995b20c1aa055ad9dcb93ab316fef7055315ec1d9d8",
+    "evaluate_obstacle_shift.py": "fcc4b9da32f346f9062fca5692c70e28f43b724f40f9f3bb4759439cdcda84bc",
+    "sdf_training.py": "d75e98a7a93defb1ea557c3b7d5d65cb0fee9b748cbfa6a55266e8b746af0790",
+    "temporal_online.py": "24054be278d06e4c93277aa30f67d89b5c121c81d9c677fd2b8d0ff13db550e3",
+    "temporal_observations.py": "7a259a170f30ac58a00fe243711ba4e3f5113a01aa2cc891a07ecaad70ac0fce",
+    "timed_trajectory.py": "a9cf7f20acd30148ca05ea6015129466b38775248782518d8e013dc12056ad1c",
+    "planner_worker.py": "f129ac16bc6417d5f464302b85c6c783b5a9845cb41962a9fd39740bab4f22bc",
+    "temporal_data.py": "4df1dbfa546c7a94382da368a1539b69788d65008f9c504aee0be2383557e0d9",
+    "__init__.py": "a7ad2138b180f6196a1c5dbacf200c09ffe5a51e2abc60efde8418a27821d8ca",
+    "sdf_mapping.py": "162a56fcd006e705ba6524da9f4ca622af7fc3e239068c64f2ca392bdb769e55",
+    "service.py": "ac9cad181d45ecf251b80c376ee952e6b7c669597b0ed9c7f94636a6752a7981",
+    "geometry_observations.py": "c2775d5a97f52dc06d0712b9646106fc27f4602be1d01fe7fc04a3d2e898010d",
+    "sdf_model.py": "f074f699660354fa09d9ba45aaa516c306f1b4e9b9cfffdffd7f58a5f8873be8",
+    "guidance.py": "7c5bf72232e9e59431ee1817ed9008844bb116af3daf8901666699c9036f4033",
+    "sdf_runtime.py": "846881c4bc5cd0b11437341068a35158df76be9202719f5845e258a023116271",
+    "temporal_trajectory.py": "a00c604955693dff6296cb52f8f87ee334fd2b47b45d680eb273912e3afd246a",
+    "sdf_evaluation.py": "b7325cfb09e8bfa67890fa5102db5b50101339408b3ff512578c18501d9425f1",
+    "factory_tour.py": "a582ffba3abfc685cb5a49c21524ec889dfbb4569d1abe88b988ba394d5484ac",
+    "geometry_evaluation.py": "4388fe4fa8de74df66f3835f7d6502057f3397d470ed264b8d08bf4bd7f5331a",
+    "evaluate_models.py": "e07021cac9a7a7602ae84f202859791cea55985d597000f8edfa1eb8c1f79a7d",
+    "sdf_worker.py": "0deb1fc23134024de7d37e4b29f98727e7709d153c99b13f35f3cef54c6ee1ca",
+    "flight_video.py": "059f8f3f1842c1f470a4e5c4346f3da64274229938e9c2f7acb293b8bdd01578"
+  },
+  "factory_mission": {
+    "schema": "hnuter_factory_mission_v1",
+    "start_position": [
+      10.0,
+      2.0,
+      13.0
+    ],
+    "waypoints": [
+      [
+        14.4,
+        2.0,
+        13.0
+      ],
+      [
+        18.8,
+        2.0,
+        13.0
+      ],
+      [
+        18.8,
+        6.4,
+        13.0
+      ],
+      [
+        18.8,
+        10.8,
+        13.0
+      ],
+      [
+        18.8,
+        15.2,
+        13.0
+      ],
+      [
+        18.8,
+        19.6,
+        13.0
+      ],
+      [
+        14.4,
+        19.6,
+        13.0
+      ]
+    ],
+    "goal_yaws": [
+      0,
+      0,
+      0.3,
+      0.6,
+      0.9,
+      1.2,
+      1.5
+    ],
+    "nominal_distance_m": 30.800000000000004,
+    "minimum_centerline_surface_distance_m": 3.6730096340179443,
+    "per_segment_minimum_centerline_distance_m": [
+      5.016997814178467,
+      4.319362640380859,
+      4.451854228973389,
+      5.407087802886963,
+      4.618771553039551,
+      3.6730096340179443,
+      3.75519061088562
+    ],
+    "maximum_verification_spacing_m": 0.044,
+    "mesh_sha256": "48e0ed42efe592cc7df759ef9e04aa800df26ae50649092dc50a71cb550cf9b4",
+    "scope": "Surveyed high-level waypoint mission; no local path or obstacle truth is supplied to DiT. Centerline clearance is not a learned-path collision certificate."
+  },
+  "initialization_scope": "Start pose authored before Newton initialization; no runtime robot pose writes",
+  "sdf_checkpoint": "/temporal-checkpoint.pt",
+  "sensor_startup_warmup_seconds": 1.0923920220011496,
+  "initial_position": [
+    10.0,
+    2.0,
+    13.0
+  ],
+  "goal_position": [
+    14.4,
+    19.6,
+    13.0
+  ],
+  "engine": "newton",
+  "mujoco_version": "3.8.0",
+  "newton_version": "1.2.0",
+  "torch_version": "2.10.0+cu128",
+  "mujoco_cpu": false,
+  "lidar": {
+    "backend": "Newton 1.2 / Warp live collision raycast",
+    "model": "MID-360 envelope approximation",
+    "scan_pattern": "non-repeating low-discrepancy solid-angle coverage; not Livox firing sequence",
+    "scan_timing": "instantaneous snapshot; all hit timestamps equal simulation capture time",
+    "frame_rate_hz": 10.0,
+    "rays_per_frame": 20000,
+    "nominal_points_per_second": 200000.0,
+    "fov_degrees": [
+      360.0,
+      -7.0,
+      52.0
+    ],
+    "range_m": [
+      0.1,
+      40.0
+    ],
+    "mount_body_flu_m": [
+      0.0,
+      0.0,
+      0.13
+    ],
+    "collision_shapes": 154,
+    "robot_self_returns": "excluded",
+    "limitations": [
+      "no optical intensity/noise/reflectivity model",
+      "no measured Livox scan sequence",
+      "no rolling-scan motion distortion or IMU",
+      "collision geometry only; visual-only, particle and deformable obstacles unsupported"
+    ]
+  },
+  "actuator_mapping": {
+    "tilt_rj2": {
+      "array": "joint_target_pos",
+      "index": 10,
+      "runtime_index": 2,
+      "target": "/World/HNUTER/Geometry/drone/r2/rj2",
+      "ctrl_range": [
+        -2.7,
+        2.7
+      ]
+    },
+    "tilt_lj2": {
+      "array": "joint_target_pos",
+      "index": 6,
+      "runtime_index": 0,
+      "target": "/World/HNUTER/Geometry/drone/l2/lj2",
+      "ctrl_range": [
+        -2.7,
+        2.7
+      ]
+    },
+    "tilt_rj1": {
+      "array": "joint_target_pos",
+      "index": 11,
+      "runtime_index": 3,
+      "target": "/World/HNUTER/Geometry/drone/r2/r1/rj1",
+      "ctrl_range": [
+        -2.7,
+        2.7
+      ]
+    },
+    "tilt_lj1": {
+      "array": "joint_target_pos",
+      "index": 7,
+      "runtime_index": 1,
+      "target": "/World/HNUTER/Geometry/drone/l2/l1/lj1",
+      "ctrl_range": [
+        -2.7,
+        2.7
+      ]
+    },
+    "motor_xy1": {
+      "array": "mujoco.ctrl",
+      "index": 0,
+      "runtime_index": 4,
+      "target": "/World/HNUTER/Geometry/drone/r2/r1/xy1/motor_xy1",
+      "ctrl_range": [
+        0.0,
+        50.0
+      ]
+    },
+    "motor_xy2": {
+      "array": "mujoco.ctrl",
+      "index": 1,
+      "runtime_index": 5,
+      "target": "/World/HNUTER/Geometry/drone/r2/r1/xy2/motor_xy2",
+      "ctrl_range": [
+        0.0,
+        50.0
+      ]
+    },
+    "motor_xy3": {
+      "array": "mujoco.ctrl",
+      "index": 2,
+      "runtime_index": 6,
+      "target": "/World/HNUTER/Geometry/drone/l2/l1/xy3/motor_xy3",
+      "ctrl_range": [
+        0.0,
+        50.0
+      ]
+    },
+    "motor_xy4": {
+      "array": "mujoco.ctrl",
+      "index": 3,
+      "runtime_index": 7,
+      "target": "/World/HNUTER/Geometry/drone/l2/l1/xy4/motor_xy4",
+      "ctrl_range": [
+        0.0,
+        50.0
+      ]
+    },
+    "motor_xy5": {
+      "array": "mujoco.ctrl",
+      "index": 4,
+      "runtime_index": 8,
+      "target": "/World/HNUTER/Geometry/drone/xy5/motor_xy5",
+      "ctrl_range": [
+        -20.0,
+        20.0
+      ]
+    }
+  },
+  "stop_reason": "factory_planning_or_contact_failure",
+  "steps": 23911,
+  "simulation_seconds": 23.911,
+  "actual_integrated_seconds": 23.911001135711558,
+  "loop_wall_seconds": 59.01940998899954,
+  "final_position": [
+    14.398930549621582,
+    2.028276205062866,
+    12.982423782348633
+  ],
+  "final_quaternion": [
+    0.9998135664676819,
+    -0.0010731502075591337,
+    0.019121371396979628,
+    -0.002460449492452835
+  ],
+  "final_velocity": [
+    -0.0002407806751660742,
+    5.2995871210151916e-05,
+    -0.0002656969531523197
+  ],
+  "position_tracking_rmse_m": 0.01624150631684048,
+  "position_tracking_max_error_m": 0.016947826044056896,
+  "attitude_tracking_max_error_rad": 0.01971356457243786,
+  "collision": {
+    "backend": "MuJoCo Warp GPU contacts",
+    "samples": 23911,
+    "collision_detected": false,
+    "contact_steps": 0,
+    "penetration_steps": 0,
+    "first_collision": null,
+    "max_penetration_m": 0.0,
+    "minimum_contact_distance_m": null,
+    "overflow_steps": 0,
+    "unmapped_contacts": 0,
+    "complete": true,
+    "scope": "Robot versus environment only; self contacts excluded; evaluator-only truth"
+  },
+  "lidar_frames": 701,
+  "first_goal_time": null,
+  "goal_settled_seconds": 0.0,
+  "final_goal_distance_m": 17.571732617835696,
+  "final_speed_mps": 0.00036246209017382704,
+  "minimum_goal_distance_m": 16.605912204873,
+  "goal_distance_tolerance_m": 0.35,
+  "goal_speed_tolerance_mps": 0.1,
+  "goal_settle_required_seconds": 0.5,
+  "final_goal_angle_rad": 1.505313573701423,
+  "goal_rpy": [
+    0.0,
+    0.0,
+    1.5
+  ],
+  "pose_goal_reached": false,
+  "raycast_seconds": {
+    "median": 0.0037008180006523617,
+    "p95": 0.004336202000558842,
+    "maximum": 0.006712124995829072
+  },
+  "sensing_schedule": "every 0.1 simulation seconds or 0.1 wall seconds, whichever comes first; timestamped actual physics state",
+  "sensing_wall_intervals_all_seconds": {
+    "median": 0.10057850200246321,
+    "p95": 0.10202740035165334,
+    "maximum": 4.201658179001242
+  },
+  "sensing_wall_intervals_after_history_warmup_seconds": {
+    "median": 0.10058046400081366,
+    "p95": 0.10202679175199592,
+    "maximum": 0.10381662500003586
+  },
+  "loop_profile": {
+    "all": {
+      "state_read_and_loop_checks": {
+        "count": 23911,
+        "total_seconds": 7.9002691720234,
+        "percent_of_profiled_wall": 13.419397133806257,
+        "median_ms": 0.30896499811206013,
+        "p95_ms": 0.46297700100694783,
+        "maximum_ms": 3.676061998703517
+      },
+      "sensor_capture_and_submission": {
+        "count": 23911,
+        "total_seconds": 3.003119750901533,
+        "percent_of_profiled_wall": 5.101099177789588,
+        "median_ms": 0.0018740029190666974,
+        "p95_ms": 0.003711997123900801,
+        "maximum_ms": 31.535309004539158
+      },
+      "planner_poll_controller_and_actuation": {
+        "count": 23911,
+        "total_seconds": 21.003964873350924,
+        "percent_of_profiled_wall": 35.677334516416636,
+        "median_ms": 0.8493709974572994,
+        "p95_ms": 1.2224005004100036,
+        "maximum_ms": 5.1799619977828115
+      },
+      "telemetry": {
+        "count": 23911,
+        "total_seconds": 0.35013323405291885,
+        "percent_of_profiled_wall": 0.5947363077373052,
+        "median_ms": 0.0077649965533055365,
+        "p95_ms": 0.06787600068491884,
+        "maximum_ms": 0.3065210039494559
+      },
+      "physics_step_and_validation": {
+        "count": 23911,
+        "total_seconds": 8.772241477185162,
+        "percent_of_profiled_wall": 14.900529282326364,
+        "median_ms": 0.16863400378497317,
+        "p95_ms": 0.3102175032836385,
+        "maximum_ms": 4168.025696999393
+      },
+      "contact_readback": {
+        "count": 23911,
+        "total_seconds": 17.766037587352912,
+        "percent_of_profiled_wall": 30.177391261943164,
+        "median_ms": 0.705273007042706,
+        "p95_ms": 0.9444630013604183,
+        "maximum_ms": 2.6753310012281872
+      },
+      "fabric_render_and_recording": {
+        "count": 23911,
+        "total_seconds": 0.03606733959168196,
+        "percent_of_profiled_wall": 0.061263982657020315,
+        "median_ms": 0.0013230019249022007,
+        "p95_ms": 0.0024839973775669932,
+        "maximum_ms": 0.2080570047837682
+      },
+      "progress_and_pacing": {
+        "count": 23911,
+        "total_seconds": 0.04017916975135449,
+        "percent_of_profiled_wall": 0.06824833732366968,
+        "median_ms": 0.0013520038919523358,
+        "p95_ms": 0.0025949993869289756,
+        "maximum_ms": 0.2854210033547133
+      }
+    },
+    "after_first_simulation_second": {
+      "state_read_and_loop_checks": {
+        "count": 22911,
+        "total_seconds": 7.573160023886885,
+        "percent_of_profiled_wall": 14.436684410907052,
+        "median_ms": 0.3090760001214221,
+        "p95_ms": 0.46314249993884005,
+        "maximum_ms": 3.676061998703517
+      },
+      "sensor_capture_and_submission": {
+        "count": 22911,
+        "total_seconds": 2.856446796846285,
+        "percent_of_profiled_wall": 5.4452330087501775,
+        "median_ms": 0.0018930004443973303,
+        "p95_ms": 0.003727000148501247,
+        "maximum_ms": 7.072785003401805
+      },
+      "planner_poll_controller_and_actuation": {
+        "count": 22911,
+        "total_seconds": 20.243670569463575,
+        "percent_of_profiled_wall": 38.59042756364682,
+        "median_ms": 0.8509640028933063,
+        "p95_ms": 1.2261775009392295,
+        "maximum_ms": 5.1799619977828115
+      },
+      "telemetry": {
+        "count": 22911,
+        "total_seconds": 0.3365283000675845,
+        "percent_of_profiled_wall": 0.6415225411969075,
+        "median_ms": 0.007775000995025039,
+        "p95_ms": 0.06806699821026996,
+        "maximum_ms": 0.3065210039494559
+      },
+      "physics_step_and_validation": {
+        "count": 22911,
+        "total_seconds": 4.353948864220001,
+        "percent_of_profiled_wall": 8.299915160344193,
+        "median_ms": 0.168423997820355,
+        "p95_ms": 0.31099399711820297,
+        "maximum_ms": 2.3626279944437556
+      },
+      "contact_readback": {
+        "count": 22911,
+        "total_seconds": 17.02037618630129,
+        "percent_of_profiled_wall": 32.44587448060236,
+        "median_ms": 0.7052630026009865,
+        "p95_ms": 0.9443330018257257,
+        "maximum_ms": 2.6753310012281872
+      },
+      "fabric_render_and_recording": {
+        "count": 22911,
+        "total_seconds": 0.03492550567170838,
+        "percent_of_profiled_wall": 0.06657835060707139,
+        "median_ms": 0.0013419994502328336,
+        "p95_ms": 0.0024950059014372528,
+        "maximum_ms": 0.2080570047837682
+      },
+      "progress_and_pacing": {
+        "count": 22911,
+        "total_seconds": 0.038695189636200666,
+        "percent_of_profiled_wall": 0.0737644839454107,
+        "median_ms": 0.001362997863907367,
+        "p95_ms": 0.0026039997464977205,
+        "maximum_ms": 0.2854210033547133
+      }
+    },
+    "scope": "Host wall phases, including CUDA waits; no extra synchronization. Worker runs concurrently.",
+    "caveat": "Physics launch and later readback waits can fall in different phases; not pure solver kernel time."
+  },
+  "wall_seconds_including_cleanup": 59.87457483400067,
+  "planner": {
+    "mode": "factory_sdf",
+    "failed": true,
+    "failure_reason": "local plan rejected or stopped; no fallback",
+    "checkpoint": {
+      "schema": "hnuter_static_sdf_pose_v1",
+      "checkpoint_sha256": "6e0da29b562b433bc1813b2f632cdd1f0a420705b003767ae32ce31e94745192",
+      "selected_step": 2000,
+      "mapper": {
+        "native": {
+          "nvblox_version": "0.0.10.dev1+cu12ubuntu24",
+          "torch_version": "2.9.1+cu128",
+          "cuda_version": "12.8",
+          "gpu": "NVIDIA GeForce RTX 4080 Laptop GPU",
+          "esdf_max_distance_m": 5.0,
+          "esdf_min_weight": 0.001,
+          "lidar_factory_argument_swap_compensated": true,
+          "esdf_unknown_sentinel": 100.0
+        },
+        "config": {
+          "voxel_size": 0.15,
+          "max_range": 20.0,
+          "esdf_max_distance": 5.0,
+          "width": 720,
+          "height": 128,
+          "vertical_fov_degrees": 104.0
+        },
+        "grid": 32,
+        "cell": 0.25,
+        "local_bounds": [
+          [
+            -2,
+            6
+          ],
+          [
+            -4,
+            4
+          ],
+          [
+            -4,
+            4
+          ]
+        ],
+        "channels": [
+          "tsdf_clipped",
+          "weight_log",
+          "esdf_clipped",
+          "esdf_known",
+          "tsdf_known",
+          "latest_hits"
+        ],
+        "unknown_policy": "zero-valued distance with separate explicit known flags; never certified free",
+        "history": "four cumulative causal snapshots, nominal 0.2 s apart; actual ages retained under bounded asynchronous jitter, common planning-anchor coordinates"
+      },
+      "pose_output": true,
+      "input_scope": "measured historical scans, measured start pose and requested goal; no obstacle truth",
+      "process_isolated": true,
+      "worker_directory": "/dit/results/factory_weave/preflight/planner_worker/dit-planner-3xlftr61"
+    },
+    "mission": {
+      "schema": "hnuter_factory_mission_v1",
+      "start_position": [
+        10.0,
+        2.0,
+        13.0
+      ],
+      "waypoints": [
+        [
+          14.4,
+          2.0,
+          13.0
+        ],
+        [
+          18.8,
+          2.0,
+          13.0
+        ],
+        [
+          18.8,
+          6.4,
+          13.0
+        ],
+        [
+          18.8,
+          10.8,
+          13.0
+        ],
+        [
+          18.8,
+          15.2,
+          13.0
+        ],
+        [
+          18.8,
+          19.6,
+          13.0
+        ],
+        [
+          14.4,
+          19.6,
+          13.0
+        ]
+      ],
+      "goal_yaws": [
+        0,
+        0,
+        0.3,
+        0.6,
+        0.9,
+        1.2,
+        1.5
+      ],
+      "nominal_distance_m": 30.800000000000004,
+      "minimum_centerline_surface_distance_m": 3.6730096340179443,
+      "per_segment_minimum_centerline_distance_m": [
+        5.016997814178467,
+        4.319362640380859,
+        4.451854228973389,
+        5.407087802886963,
+        4.618771553039551,
+        3.6730096340179443,
+        3.75519061088562
+      ],
+      "maximum_verification_spacing_m": 0.044,
+      "mesh_sha256": "48e0ed42efe592cc7df759ef9e04aa800df26ae50649092dc50a71cb550cf9b4",
+      "scope": "Surveyed high-level waypoint mission; no local path or obstacle truth is supplied to DiT. Centerline clearance is not a learned-path collision certificate."
+    },
+    "mission_completed": false,
+    "completed_time": null,
+    "plans": [
+      {
+        "status": "segment_started",
+        "segment": 0,
+        "sim_time": 0.0,
+        "measured_origin": [
+          10.0,
+          2.0,
+          13.0
+        ],
+        "goal": [
+          14.4,
+          2.0,
+          13.0
+        ],
+        "world_frame": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      {
+        "status": "accepted",
+        "scan_time": 0.6,
+        "activation_time": 0.646,
+        "fresh": true,
+        "feasible": true,
+        "observed_clearance": {
+          "minimum_known_m": 4.760799884796143,
+          "known_fraction": 0.07172251492738724,
+          "observed_violation": false,
+          "minimum_observed_support": true,
+          "collision_certified": false,
+          "unknown_policy": "unknown is not free; partial observed guard only"
+        },
+        "controls": [
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.43977147340774536,
+            0.49220407009124756,
+            -7.771152013447136e-05,
+            -0.00022151942539494485,
+            -0.0003315097710583359,
+            -0.00020694814156740904
+          ],
+          [
+            1.0997780561447144,
+            0.9724146127700806,
+            -2.642161973653856e-07,
+            -0.00022457382874563336,
+            -0.00039367383578792214,
+            -0.0002098200930049643
+          ],
+          [
+            1.759732961654663,
+            1.0962918996810913,
+            -2.014674828387797e-05,
+            -0.00040827348129823804,
+            -0.0002569755306467414,
+            -0.00016749367932789028
+          ],
+          [
+            2.639862060546875,
+            1.096462368965149,
+            -6.629625568166375e-05,
+            -0.00036286088288761675,
+            -0.00031185807893052697,
+            -0.00012743312981911004
+          ],
+          [
+            3.299907922744751,
+            0.9744124412536621,
+            7.645678851986304e-05,
+            -0.00032850803108885884,
+            -0.0004236453678458929,
+            -0.00021568022202700377
+          ],
+          [
+            3.960076093673706,
+            0.4918178915977478,
+            7.704447489231825e-05,
+            -0.00034930059337057173,
+            -0.0003511295944917947,
+            -0.00018822024867404252
+          ],
+          [
+            4.4,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            4.4,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            4.4,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        "segment": 0,
+        "world_origin": [
+          10.0,
+          2.0,
+          13.0
+        ],
+        "world_frame": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "segment_start": 0.0,
+        "local_origin": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "start_rotation": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      {
+        "status": "segment_started",
+        "segment": 1,
+        "sim_time": 21.19,
+        "measured_origin": [
+          14.39950180053711,
+          2.0142123699188232,
+          12.99109172821045
+        ],
+        "goal": [
+          18.8,
+          2.0,
+          13.0
+        ],
+        "world_frame": [
+          [
+            0.9999947845003934,
+            0.0032297015360552178,
+            0.0
+          ],
+          [
+            -0.0032297015360552178,
+            0.9999947845003934,
+            -0.0
+          ],
+          [
+            -0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      {
+        "status": "rejected",
+        "scan_time": 21.798000000000002,
+        "activation_time": 21.863,
+        "fresh": true,
+        "feasible": true,
+        "observed_clearance": {
+          "minimum_known_m": 4.873098850250244,
+          "known_fraction": 0.003233392024412751,
+          "observed_violation": false,
+          "minimum_observed_support": false,
+          "collision_certified": false,
+          "unknown_policy": "unknown is not free; partial observed guard only"
+        },
+        "controls": [
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.4398357570171356,
+            -0.4007604420185089,
+            0.0008453844347968698,
+            0.00018580604228191078,
+            -0.00198516808450222,
+            0.00020853317982982844
+          ],
+          [
+            1.1003178358078003,
+            -0.7841125726699829,
+            0.0022341767325997353,
+            0.00019076373428106308,
+            -0.004883098416030407,
+            0.0007234069635160267
+          ],
+          [
+            1.759962797164917,
+            -0.8878415822982788,
+            0.003512381576001644,
+            0.0003480729938019067,
+            -0.007699508685618639,
+            0.0010030801640823483
+          ],
+          [
+            2.6401126384735107,
+            -0.8876930475234985,
+            0.0052824364975094795,
+            0.0006152585265226662,
+            -0.011587330140173435,
+            0.0014991395873948932
+          ],
+          [
+            3.3004202842712402,
+            -0.7976136803627014,
+            0.006906864698976278,
+            0.0009887355845421553,
+            -0.014790205284953117,
+            0.001894431421533227
+          ],
+          [
+            3.960330009460449,
+            -0.40370622277259827,
+            0.008044570684432983,
+            0.0010286465985700488,
+            -0.017476093024015427,
+            0.0022097788751125336
+          ],
+          [
+            4.4005211503792205,
+            -1.7970333371592016e-18,
+            0.008908271789550781,
+            0.0010879640701016765,
+            -0.019281948034222562,
+            0.0024664502620083315
+          ],
+          [
+            4.4005211503792205,
+            -1.7970333371592016e-18,
+            0.008908271789550781,
+            0.0010879640701016765,
+            -0.019281948034222562,
+            0.0024664502620083315
+          ],
+          [
+            4.4005211503792205,
+            -1.7970333371592016e-18,
+            0.008908271789550781,
+            0.0010879640701016765,
+            -0.019281948034222562,
+            0.0024664502620083315
+          ]
+        ],
+        "segment": 1,
+        "world_origin": [
+          14.39950180053711,
+          2.0142123699188232,
+          12.99109172821045
+        ],
+        "world_frame": [
+          [
+            0.9999947845003934,
+            0.0032297015360552178,
+            0.0
+          ],
+          [
+            -0.0032297015360552178,
+            0.9999947845003934,
+            -0.0
+          ],
+          [
+            -0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "segment_start": 21.19,
+        "local_origin": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "start_rotation": [
+          [
+            0.9998138869977029,
+            -0.0007637132243014572,
+            0.019277139535099193
+          ],
+          [
+            0.000741681314458794,
+            0.9999990636729047,
+            0.0011500270179138632
+          ],
+          [
+            -0.01927799977623301,
+            -0.0011355154887434384,
+            0.9998135172766981
+          ]
+        ]
+      },
+      {
+        "status": "rejected",
+        "scan_time": 22.8,
+        "activation_time": 22.862000000000002,
+        "fresh": true,
+        "feasible": true,
+        "observed_clearance": {
+          "minimum_known_m": 4.760799884796143,
+          "known_fraction": 0.006466784048825502,
+          "observed_violation": false,
+          "minimum_observed_support": false,
+          "collision_certified": false,
+          "unknown_policy": "unknown is not free; partial observed guard only"
+        },
+        "controls": [
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.4397646188735962,
+            -0.40943285822868347,
+            0.0007656933157704771,
+            0.00024005038721952587,
+            -0.0020403824746608734,
+            0.00020928026060573757
+          ],
+          [
+            1.1002577543258667,
+            -0.8027285933494568,
+            0.0021767790894955397,
+            0.00020532894995994866,
+            -0.004926813766360283,
+            0.0007067662663757801
+          ],
+          [
+            1.7598963975906372,
+            -0.9075302481651306,
+            0.00344999716617167,
+            0.00036948229535482824,
+            -0.007736964151263237,
+            0.0009879323188215494
+          ],
+          [
+            2.6400723457336426,
+            -0.9060607552528381,
+            0.005203050561249256,
+            0.0006212920416146517,
+            -0.01163360197097063,
+            0.0015128672821447253
+          ],
+          [
+            3.300367593765259,
+            -0.8157449960708618,
+            0.006888457108289003,
+            0.001020909519866109,
+            -0.014854809269309044,
+            0.00187461799941957
+          ],
+          [
+            3.9603567123413086,
+            -0.41258704662323,
+            0.008019503206014633,
+            0.0010756021365523338,
+            -0.017518606036901474,
+            0.0022226537112146616
+          ],
+          [
+            4.4005211503792205,
+            -1.7970333371592016e-18,
+            0.008908271789550781,
+            0.0010879640701016765,
+            -0.019281948034222562,
+            0.0024664502620083315
+          ],
+          [
+            4.4005211503792205,
+            -1.7970333371592016e-18,
+            0.008908271789550781,
+            0.0010879640701016765,
+            -0.019281948034222562,
+            0.0024664502620083315
+          ],
+          [
+            4.4005211503792205,
+            -1.7970333371592016e-18,
+            0.008908271789550781,
+            0.0010879640701016765,
+            -0.019281948034222562,
+            0.0024664502620083315
+          ]
+        ],
+        "segment": 1,
+        "world_origin": [
+          14.39950180053711,
+          2.0142123699188232,
+          12.99109172821045
+        ],
+        "world_frame": [
+          [
+            0.9999947845003934,
+            0.0032297015360552178,
+            0.0
+          ],
+          [
+            -0.0032297015360552178,
+            0.9999947845003934,
+            -0.0
+          ],
+          [
+            -0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "segment_start": 21.19,
+        "local_origin": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "start_rotation": [
+          [
+            0.9998138869977029,
+            -0.0007637132243014572,
+            0.019277139535099193
+          ],
+          [
+            0.000741681314458794,
+            0.9999990636729047,
+            0.0011500270179138632
+          ],
+          [
+            -0.01927799977623301,
+            -0.0011355154887434384,
+            0.9998135172766981
+          ]
+        ]
+      },
+      {
+        "status": "rejected",
+        "scan_time": 23.85,
+        "activation_time": 23.91,
+        "fresh": true,
+        "feasible": true,
+        "observed_clearance": {
+          "minimum_known_m": 4.760799884796143,
+          "known_fraction": 0.006466784048825502,
+          "observed_violation": false,
+          "minimum_observed_support": false,
+          "collision_certified": false,
+          "unknown_policy": "unknown is not free; partial observed guard only"
+        },
+        "controls": [
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.4397718906402588,
+            -0.4086630642414093,
+            0.0007619263487868011,
+            0.00024685694370418787,
+            -0.0020393794402480125,
+            0.0002127195184584707
+          ],
+          [
+            1.1002596616744995,
+            -0.8016127347946167,
+            0.002169595332816243,
+            0.00021558762819040567,
+            -0.0049294400960206985,
+            0.0007089790306054056
+          ],
+          [
+            1.7599048614501953,
+            -0.9060305953025818,
+            0.0034438581205904484,
+            0.00037534459261223674,
+            -0.00773379672318697,
+            0.0009907144121825695
+          ],
+          [
+            2.640079975128174,
+            -0.9043203592300415,
+            0.005196438170969486,
+            0.0006280197412706912,
+            -0.011633017100393772,
+            0.0015160233015194535
+          ],
+          [
+            3.3003733158111572,
+            -0.8149033188819885,
+            0.006882376037538052,
+            0.0010321157751604915,
+            -0.014855386689305305,
+            0.0018773333868011832
+          ],
+          [
+            3.960364818572998,
+            -0.4120658338069916,
+            0.008013749495148659,
+            0.00108530989382416,
+            -0.017519336193799973,
+            0.0022283343132585287
+          ],
+          [
+            4.4005211503792205,
+            -1.7970333371592016e-18,
+            0.008908271789550781,
+            0.0010879640701016765,
+            -0.019281948034222562,
+            0.0024664502620083315
+          ],
+          [
+            4.4005211503792205,
+            -1.7970333371592016e-18,
+            0.008908271789550781,
+            0.0010879640701016765,
+            -0.019281948034222562,
+            0.0024664502620083315
+          ],
+          [
+            4.4005211503792205,
+            -1.7970333371592016e-18,
+            0.008908271789550781,
+            0.0010879640701016765,
+            -0.019281948034222562,
+            0.0024664502620083315
+          ]
+        ],
+        "segment": 1,
+        "world_origin": [
+          14.39950180053711,
+          2.0142123699188232,
+          12.99109172821045
+        ],
+        "world_frame": [
+          [
+            0.9999947845003934,
+            0.0032297015360552178,
+            0.0
+          ],
+          [
+            -0.0032297015360552178,
+            0.9999947845003934,
+            -0.0
+          ],
+          [
+            -0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "segment_start": 21.19,
+        "local_origin": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "start_rotation": [
+          [
+            0.9998138869977029,
+            -0.0007637132243014572,
+            0.019277139535099193
+          ],
+          [
+            0.000741681314458794,
+            0.9999990636729047,
+            0.0011500270179138632
+          ],
+          [
+            -0.01927799977623301,
+            -0.0011355154887434384,
+            0.9998135172766981
+          ]
+        ]
+      }
+    ],
+    "accepted_plans": 1,
+    "guard_interventions": 0,
+    "position_only": false,
+    "executed_model_reference": true,
+    "contract": "Surveyed mission goals; fresh measured nvblox maps and frozen DiT per 20-second stationary-start leg. Rigid coordinate changes only; no local path repair or expert fallback.",
+    "legs": [
+      {
+        "mode": "sdf_pose",
+        "failed": false,
+        "failure_reason": null,
+        "accepted_plans": 1,
+        "guard_interventions": 0,
+        "submitted_scans": 594,
+        "dropped_scans": 38,
+        "deadline_misses_100ms": 1,
+        "plan_attempts": 1,
+        "max_stationary_plan_attempts": 3,
+        "response_seconds": {
+          "median": 0.022243683499254985,
+          "p95": 0.03739058075079811,
+          "maximum": 4.206037110001489
+        },
+        "map_seconds": {
+          "median": 0.007017337997240247,
+          "p95": 0.010115937801310794,
+          "maximum": 0.04427401000430109
+        },
+        "goal_rpy": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "executed_model_reference": true,
+        "position_only": false,
+        "contract": "static environment; stationary-start full 20s position and attitude spline; continued measured-map monitoring; no geometric path repair",
+        "safety_scope": "Observed ESDF only, unknown space is not certified free; actual contacts evaluated independently"
+      },
+      {
+        "mode": "sdf_pose",
+        "failed": false,
+        "failure_reason": null,
+        "accepted_plans": 0,
+        "guard_interventions": 0,
+        "submitted_scans": 53,
+        "dropped_scans": 16,
+        "deadline_misses_100ms": 3,
+        "plan_attempts": 3,
+        "max_stationary_plan_attempts": 3,
+        "response_seconds": {
+          "median": 0.02919865799776744,
+          "p95": 0.08926571160263835,
+          "maximum": 0.15335987399885198
+        },
+        "map_seconds": {
+          "median": 0.007860883997636847,
+          "p95": 0.011884789602481759,
+          "maximum": 0.028577091004990507
+        },
+        "goal_rpy": [
+          0.0,
+          0.0,
+          0.003229707150902628
+        ],
+        "executed_model_reference": false,
+        "position_only": false,
+        "contract": "static environment; stationary-start full 20s position and attitude spline; continued measured-map monitoring; no geometric path repair",
+        "safety_scope": "Observed ESDF only, unknown space is not certified free; actual contacts evaluated independently"
+      }
+    ]
+  },
+  "scan_summary": {
+    "count": 647,
+    "retained_map_scans": 0,
+    "segments": [
+      {
+        "segment": 0,
+        "scans": 594,
+        "map_retained": false
+      },
+      {
+        "segment": 1,
+        "scans": 53,
+        "map_retained": false
+      }
+    ]
+  },
+  "raw_report": {
+    "path": "results/factory_weave/preflight/report.json",
+    "sha256": "4eb5faf753aebc3b786f5cf17a0416d78d07807752e24ba44597606dc67440f2",
+    "scans_omitted_from_compact_copy": true
+  },
+  "measured_distance_m": 5.160999724824034
+}

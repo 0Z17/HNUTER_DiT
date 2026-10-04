@@ -13,10 +13,12 @@ CONFIG=dict(voxel_size=.15,max_range=20.,esdf_max_distance=5.,width=720,height=1
 
 
 class LocalSDF:
-    """One bounded planning-anchor map with four measured snapshots on GPU.
+    """A planning-anchor view with four measured snapshots on GPU.
 
 Static pilot flights stay inside a fixed 8m local window for <=30s. Explicitly
-reset before a new episode; no permanent global SLAM or moving-object model.
+reset before a new episode. The factory runtime can retain the world map across
+anchors under its separate 120-second/28-m bound; local history always resets.
+Neither mode provides permanent global SLAM or a moving-object model.
 """
     def __init__(self,sim_root='/sim'):
         sys.path.insert(0,str(Path(sim_root)/'perception/nvblox'))
@@ -30,12 +32,14 @@ reset before a new episode; no permanent global SLAM or moving-object model.
         axis=(t.arange(GRID,device='cuda')+.5)*CELL-4
         self.local=t.stack(t.meshgrid(axis+2,axis,axis,indexing='ij'),dim=-1).reshape(-1,3)
 
-    def reset(self,origin,frame=None):
+    def reset(self,origin,frame=None,*,clear_native=True):
         self.origin=np.asarray(origin,dtype=np.float64)
         self.frame=np.eye(3) if frame is None else np.asarray(frame,dtype=np.float64)
         if self.origin.shape!=(3,) or not np.isfinite(self.origin).all() or self.frame.shape!=(3,3) or not np.allclose(self.frame.T@self.frame,np.eye(3),atol=1e-6):
             raise ValueError('invalid map anchor')
-        t=self.torch; self.native.clear();self.history.clear();self.last_time=self.first_time=None
+        t=self.torch
+        if clear_native:self.native.clear()
+        self.history.clear();self.last_time=self.first_time=None
         self.queries=self.local@t.as_tensor(self.frame.T,device='cuda',dtype=t.float32)+t.as_tensor(self.origin,device='cuda',dtype=t.float32)
         self.spheres=t.cat((self.queries,t.zeros((len(self.queries),1),device='cuda')),dim=-1)
         self.tsdf=t.zeros((len(self.queries),2),device='cuda')
@@ -75,7 +79,14 @@ reset before a new episode; no permanent global SLAM or moving-object model.
         self.last_time=stamp
         if self.first_time is None:self.first_time=stamp
         t.cuda.synchronize();seconds=time.perf_counter()-began;self.integration_times.append(seconds)
-        return dict(map_seconds=seconds,known_fraction=float(known.float().mean().item()),scan_time=stamp)
+        return dict(map_seconds=seconds,known_fraction=float(known.float().mean().item()),scan_time=stamp,
+                    history_count=len(self.history),history_ready=self.history_ready())
+
+    def history_ready(self):
+        if len(self.history)!=4 or self.last_time is None:return False
+        times=np.array([entry[0] for entry in self.history]);times[-1]=self.last_time
+        return bool(np.isfinite(times).all() and np.all(np.diff(times)>0) and
+                    np.all(np.diff(times)<=.4+1e-6) and times[-1]-times[0]<=1.)
 
     def inputs(self):
         if len(self.history)!=4:raise ValueError('four causal SDF snapshots required')

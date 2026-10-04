@@ -30,10 +30,12 @@ class SDFProcess(PlannerProcess):
 
 class SDFOnlinePlanner:
     def __init__(self,*,goal_position,checkpoint,goal_rpy=(.08,-.06,.25),seed=23,output_dir=None,
-                 device='cuda',max_speed=.65,max_acceleration=.9):
+                 device='cuda',max_speed=.65,max_acceleration=.9,injected_runtime=None,map_context=None):
         self.goal=np.asarray(goal_position);self.goal_rpy=np.asarray(goal_rpy)
         if self.goal.shape!=(3,) or self.goal_rpy.shape!=(3,) or not np.isfinite(np.r_[self.goal,self.goal_rpy]).all():raise ValueError('invalid pose goal')
-        self.runtime=SDFProcess(output_dir=output_dir,temporal_checkpoint=checkpoint,device=device,request_timeout=10.)
+        self.owns_runtime=injected_runtime is None
+        self.map_context={} if map_context is None else dict(map_context)
+        self.runtime=injected_runtime if injected_runtime is not None else SDFProcess(output_dir=output_dir,temporal_checkpoint=checkpoint,device=device,request_timeout=10.)
         self.pool=ThreadPoolExecutor(max_workers=1,thread_name_prefix='sdf-mapping')
         self.seed=seed;self.max_speed=max_speed;self.max_acceleration=max_acceleration
         self.future=self.path=self.brake=self.hold=None
@@ -64,7 +66,8 @@ class SDFOnlinePlanner:
         self._poll(state,sim_time)
         if self.failed:return
         if self.future is not None:self.dropped+=1;return
-        plan=bool(not self.planned and self.plan_attempts<3 and sim_time>=.6-1e-6 and sim_time-self.last_plan_request>=1.-1e-6)
+        plan=bool(not self.planned and self.plan_attempts<3 and sim_time>=.6-1e-6 and sim_time-self.last_plan_request>=1.-1e-6
+                  and self.scans and self.scans[-1].get('history_ready',False))
         if plan and (np.linalg.norm(state['velocity'])>.03 or np.linalg.norm(state['position']-self.origin)>.03):
             self.failed=True;self.failure_reason='stationary start contract exceeded';self._stop(state,sim_time,self.failure_reason);return
         if plan:
@@ -73,6 +76,7 @@ class SDFOnlinePlanner:
             reset=np.bool_(self.submitted==0),origin=self.origin,start_rotation=self.rotation,target=self.target,
             plan=np.bool_(plan),seed=np.int64(self.seed),elapsed=np.float64(max(0,sim_time-self.path_start) if self.path else 0))
         if self.record_visualization:payload["record_visualization"]=np.bool_(True)
+        payload.update(self.map_context)
         began=time.perf_counter() if capture_wall_time is None else float(capture_wall_time)
         if not np.isfinite(began) or began>time.perf_counter():raise ValueError('invalid wall-clock scan timestamp')
         self.pending=dict(stamp=sim_time,plan=plan,started=began)
@@ -122,13 +126,35 @@ class SDFOnlinePlanner:
         self.last_command_category='pose_hold' if self.planned else 'history_warmup'
         return self.hold
 
+    def recording_refresh_required(self):
+        return bool(self.path is not None and
+            (self.last_map_wall is None or time.perf_counter()-self.last_map_wall>.25))
+
+    def wait_for_recorded_observation(self,frame,state,sim_time,capture_wall_time):
+        """Offline recording barrier: caller holds physics fixed throughout.
+
+        Accept only a newly captured current-state map. This never relabels a
+        previous scan or weakens the normal command-time freshness guard.
+        """
+        deadline=time.perf_counter()+.3
+        while time.perf_counter()<deadline:
+            self._poll(state,sim_time)
+            if self.failed:raise RuntimeError(self.failure_reason)
+            if self.last_map_time is not None and abs(self.last_map_time-sim_time)<1e-8:
+                if time.perf_counter()-self.last_map_wall<=.3:return
+                raise RuntimeError('current-state observation already exceeded recording freshness deadline')
+            if self.future is None:self.observe(frame,state,sim_time,capture_wall_time=capture_wall_time)
+            time.sleep(.001)
+        raise RuntimeError('recording barrier did not obtain a fresh current-state observation within 300 ms')
+
     def close(self):
         if not self.closed:
             self.pool.shutdown(wait=True,cancel_futures=True)
             if self.future is not None and not self.future.cancelled():
                 try:self.future.result()
                 except Exception as exc:self.failed=True;self.failure_reason=str(exc)
-            self.runtime.close();self.closed=True
+            if self.owns_runtime:self.runtime.close()
+            self.closed=True
         durations=np.array([r['sensor_to_response_wall_seconds'] for r in self.scans])
         mapping=np.array([r['map_seconds'] for r in self.scans])
         summary=lambda x:dict(median=float(np.median(x)),p95=float(np.percentile(x,95)),maximum=float(x.max())) if len(x) else None

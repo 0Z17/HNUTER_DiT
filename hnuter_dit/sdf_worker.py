@@ -25,7 +25,10 @@ def run(directory):
             if values is not None:
                 sequence=new
                 try:
-                    if bool(values['reset']):runtime.reset(values['origin'],values['start_rotation'],values['target'])
+                    if bool(values['reset']):
+                        runtime.reset(values['origin'],values['start_rotation'],values['target'],
+                            world_origin=values.get('map_world_origin'),world_frame=values.get('map_world_frame'),
+                            global_start=values.get('map_global_start'))
                     controls,metadata=runtime.scan(values['points'],values['pose'],float(values['stamp']),
                         bool(values['plan']),int(values['seed']),float(values['elapsed']))
                 except Exception as exc:

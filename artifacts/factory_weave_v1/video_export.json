@@ -1,0 +1,38 @@
+{
+  "schema": "hnuter_sdf_demo_mp4_v1",
+  "mp4_sha256": "f9e9c4df4f6bc9c642d6489c40978200c3f08899fa86ea933a047739245e4f14",
+  "frame_count": 1081,
+  "fps": 10,
+  "encoded_seconds": 108.1,
+  "simulation_seconds": 108.0,
+  "resolution": [
+    1920,
+    1200
+  ],
+  "recording_loop_wall_seconds": 480.25086863800243,
+  "physics_report_sha256": "5a68e00deff009a73aca943e57785caba04c7302878abe23b7d47fc1178eb11f",
+  "camera_manifest_sha256": "cfd3e2bc66d9f2df173767fc496daf2cdb9ea3708dbec753840efb8608b71a4f",
+  "perception_manifest_sha256": "9f709a6636a37a16b7a7c27b5e2efd5b1e0422bfb04dca8bb24f2e7d42cafdc5",
+  "unknown_initial_frames": 1,
+  "checkpoint_sha256": "6e0da29b562b433bc1813b2f632cdd1f0a420705b003767ae32ce31e94745192",
+  "passed": true,
+  "final_goal_distance_m": 0.01670005105306071,
+  "collision": {
+    "backend": "MuJoCo Warp GPU contacts",
+    "samples": 108000,
+    "collision_detected": false,
+    "contact_steps": 0,
+    "penetration_steps": 0,
+    "first_collision": null,
+    "max_penetration_m": 0.0,
+    "minimum_contact_distance_m": null,
+    "overflow_steps": 0,
+    "unmapped_contacts": 0,
+    "complete": true,
+    "scope": "Robot versus environment only; self contacts excluded; evaluator-only truth"
+  },
+  "source": "Actual in-run rendered cameras, timestamped measured raycasts and actual nvblox ESDF; no pose replay, interpolation or synthetic obstacle cloud.",
+  "playback": "Every recorded frame from 0 to 108.0 simulation seconds retained; 1x simulation clock, not a wall-clock real-time claim.",
+  "full_export_evidence_sha256": "3c0731b812a04f857e06c4513933e6df1951982fe496c5d7592737ab36e08854",
+  "map_snapshot_count": 1080
+}

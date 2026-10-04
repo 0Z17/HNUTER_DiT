@@ -62,6 +62,8 @@ def export(run,output,ffmpeg=None):
     if digest(run/f'perception_video/{other}/manifest.json')!=side['camera']['manifest_sha256']:raise ValueError('secondary identity mismatch')
     if len(main['frames'])!=len(side['frames']) or len(main['frames'])!=len(secondary['frames']):raise ValueError('unequal capture lengths')
     origin=np.array(flight['initial_position']);goal=np.array(flight['goal_position'])-origin
+    factory=flight.get('factory_mission')
+    world_positions=np.array([f['position'] for f in main['frames']])
     positions=np.array([f['position'] for f in main['frames']])-origin
     plan=next((p for p in flight['planner']['plans'] if p['status']=='accepted'),None)
     planned=None
@@ -71,6 +73,15 @@ def export(run,output,ffmpeg=None):
         from scipy.spatial.transform import Rotation
         rotation=Rotation.from_quat(np.array(main['frames'][0]['quaternion_wxyz'])[[1,2,3,0]]).as_matrix()
         planned=PoseSpline(np.array(plan['controls']),origin,start_rotation=rotation).sample(np.linspace(0,20,100))['pos']-origin
+    factory_plans={}
+    if factory:
+        from hnuter_dit.sdf_pose import PoseSpline
+        for event in flight['planner']['plans']:
+            if event['status']=='accepted':
+                local=PoseSpline(np.array(event['controls']),np.array(event['local_origin']),
+                    start_rotation=np.array(event['start_rotation'])).sample(np.linspace(0,20,100))['pos']
+                world=local@np.array(event['world_frame']).T+np.array(event['world_origin'])
+                factory_plans[event['segment']]=(event['activation_time'],world)
     executable=locate_ffmpeg(ffmpeg)
     output.parent.mkdir(parents=True,exist_ok=True)
     command=[executable,'-hide_banner','-loglevel','error','-f','rawvideo','-pix_fmt','rgb24','-s','1920x1200',
@@ -80,16 +91,40 @@ def export(run,output,ffmpeg=None):
     try:
         for i,(frame,second,record) in enumerate(zip(main['frames'],secondary['frames'],side['frames'])):
             t=frame['simulation_time']
+            context=record.get('mapping_context') or {}
+            segment=int(context.get('segment',0))
+            anchor=np.array(context.get('world_origin',origin))
+            basis=np.array(context.get('world_frame',np.eye(3)))
+            begin=min(i,int(np.ceil(float(context.get('segment_start',0))*main['fps']-1e-8)))
+            shown_positions=(world_positions[begin:i+1]-anchor)@basis if factory else positions[:i+1]
+            shown_goal=(np.array(factory['waypoints'][segment])-anchor)@basis if factory else goal
+            shown_plan=None
+            if factory and segment in factory_plans and t>=factory_plans[segment][0]:
+                shown_plan=(factory_plans[segment][1]-anchor)@basis
+            elif not factory and plan and t>=plan['activation_time']:shown_plan=planned
             if second['physics_step']!=frame['physics_step'] or record['physics_step']!=frame['physics_step']:raise ValueError('unsynchronized capture')
             canvas=Image.new('RGB',(1920,1200),BG);draw=ImageDraw.Draw(canvas)
-            text(draw,(24,12),'HNUTER | GPU distance-field history + DiT | static obstacle flight',28,bold=True)
-            text(draw,(1500,18),f'SIM {t:05.1f} / 24.0 s',24,(99,220,186),True)
+            text(draw,(24,12),'HNUTER | GPU SDF + DiT | factory waypoint mission' if factory else 'HNUTER | GPU distance-field history + DiT | static obstacle flight',28,bold=True)
+            text(draw,(1500,18),f"SIM {t:05.1f} / {main['last_simulation_time']:.1f} s",24,(99,220,186),True)
             for x,label,path in ((0,main['camera'].upper(),run/'video'/frame['filename']),
                                   (960,other.upper(),run/'perception_video'/other/second['filename'])):
                 canvas.paste(Image.open(path).convert('RGB'),(x,56))
                 draw=ImageDraw.Draw(canvas);draw.rectangle((x+12,68,x+195,101),fill=BG)
                 text(draw,(x+24,72),label+' CAMERA',18,bold=True)
-            text(draw,(24,613),'MID-360 measured returns | local XY, height color',23,bold=True)
+            if factory:
+                mission_points=np.array([factory['start_position'],*factory['waypoints']])[:,:2]
+                lower=mission_points.min(0)-3;upper=mission_points.max(0)+3
+                def mini(points):
+                    value=(np.asarray(points)[:,:2]-lower)/(upper-lower)
+                    return np.column_stack((24+value[:,0]*220,560-value[:,1]*125))
+                draw.rectangle((12,404,262,585),fill=BG)
+                text(draw,(20,410),'SURVEYED MISSION GOALS',13,MUTED,True)
+                draw.line([tuple(q) for q in mini(mission_points)],fill=(98,110,126),width=2)
+                if i:draw.line([tuple(q) for q in mini(world_positions[:i+1])],fill=(255,255,255),width=2)
+                for j,q in enumerate(mini(mission_points)):
+                    draw.ellipse((q[0]-3,q[1]-3,q[0]+3,q[1]+3),fill=(255,197,67))
+                text(draw,(22,566),f"Local DiT leg {segment+1}/{len(factory['waypoints'])}",14,FG)
+            text(draw,(24,613),'MID-360 measured returns | active local XY, height color',23,bold=True)
             text(draw,(984,613),'nvblox GPU ESDF | observed-distance slice',23,bold=True)
             left=(58,680,490,360);right=(1025,665,390,390)
             pixel=axes(draw,left,(-3,8,-5,5));map_pixel=axes(draw,right,(-2,6,-4,4))
@@ -99,10 +134,10 @@ def export(run,output,ffmpeg=None):
                 if digest(path)!=scan['sha256']:raise ValueError('scan hash mismatch')
                 with np.load(path) as z:
                     if abs(float(z['scan_time'])-scan['time'])>1e-8 or scan['time']>t+1e-8:raise ValueError('scan timestamp mismatch')
-                    points=z['points_world']-origin
+                    points=(z['points_world']-anchor)@basis if factory else z['points_world']-origin
                 valid=(points[:,0]>-3)&(points[:,0]<8)&(points[:,1]>-5)&(points[:,1]<5)
                 points=points[valid];pix=np.rint(pixel(points)).astype(int)
-                colors=(colormaps['turbo'](np.clip((points[:,2]+origin[2])/8,0,1))[:,:3]*255).astype(np.uint8)
+                colors=(colormaps['turbo'](np.clip((points[:,2]+anchor[2])/(25 if factory else 8),0,1))[:,:3]*255).astype(np.uint8)
                 # Rasterize only measured returns. No obstacle geometry is loaded.
                 pixels=np.asarray(canvas).copy()
                 pixels[pix[:,1],pix[:,0]]=colors
@@ -118,8 +153,10 @@ def export(run,output,ffmpeg=None):
                 map_hashes[str(path.relative_to(run))]=digest(path)
                 with np.load(path) as z:
                     stamp=float(z['stamp']);esdf=z['esdf_m'];known=z['known'];height=float(z['z_world'])
-                    if abs(stamp-record['map_scan_time'])>1e-8 or stamp>t+1e-8:raise ValueError('map is newer than displayed state')
-                    if not np.allclose(z['origin'],origin):raise ValueError('map anchor mismatch')
+                    expected_stamp=context.get('map_local_scan_time',record['map_scan_time'])
+                    if abs(stamp-expected_stamp)>1e-8 or record['map_scan_time']>t+1e-8:raise ValueError('map is newer than displayed state')
+                    if not np.allclose(z['origin'],np.zeros(3) if factory else origin,atol=1e-6):raise ValueError('map anchor mismatch')
+                    if factory:stamp=record['map_scan_time'];height+=anchor[2]
                 rgb=(colormaps['viridis'](np.clip(esdf/3,0,1))[:,:,:3]*255).astype(np.uint8)
                 rgb[~known]=(26,35,47)
                 canvas.paste(Image.fromarray(rgb.transpose(1,0,2)[::-1]).resize((390,390),Image.Resampling.NEAREST),(1025,665));draw=ImageDraw.Draw(canvas)
@@ -132,23 +169,23 @@ def export(run,output,ffmpeg=None):
                 text(draw,(1460,909),f"Sensor response: {record['sensor_response_seconds']*1000:.1f} ms",20)
             else:
                 unknown_frames+=1;text(draw,(1460,686),'Waiting for mapped observation',20)
-            active=planned if plan and t>=plan['activation_time'] else None
-            path_overlay(draw,pixel,positions[:i+1],goal,active)
-            path_overlay(draw,map_pixel,positions[:i+1],goal,active)
+            path_overlay(draw,pixel,shown_positions,shown_goal,shown_plan)
+            path_overlay(draw,map_pixel,shown_positions,shown_goal,shown_plan)
             for j in range(280):
                 c=tuple(int(v) for v in np.array(colormaps['turbo'](j/279)[:3])*255)
                 draw.line((580+j,840,580+j,856),fill=c)
                 c=tuple(int(v) for v in np.array(colormaps['viridis'](j/279)[:3])*255)
                 draw.line((1460+j,962,1460+j,978),fill=c)
-            text(draw,(580,865),'Height: 0 m                      8 m',17,MUTED)
+            text(draw,(580,865),'Height: 0 m                     25 m' if factory else 'Height: 0 m                      8 m',17,MUTED)
             text(draw,(1460,984),'Distance: 0 m                    3 m+',17,MUTED)
             text(draw,(580,920),'White: measured flight',19)
             text(draw,(580,951),'Blue: accepted DiT plan',19,(85,202,245))
             text(draw,(580,982),'Gold: requested pose location',19,(255,197,67))
             draw.rectangle((0,1085,1920,1200),fill=(18,29,43))
-            text(draw,(24,1100),f"Goal error {frame['goal_distance_m']:.3f} m | contacts {'DETECTED' if frame['collision_detected'] else 'none'} | {frame['planner_status']} | accepted plans {record['accepted_plans']}",23,bold=True)
-            text(draw,(24,1140),f"Actual physics + sensor records | 1x SIM playback | {flight['simulation_seconds']:.1f} sim s recorded in {flight['loop_wall_seconds']:.1f} wall s (startup excluded).",20,MUTED)
-            if i in (0,10,80,150,len(main['frames'])-1):canvas.save(output.parent/f'preview_{i:04d}.png')
+            text(draw,(24,1100),f"Final goal distance {frame['goal_distance_m']:.3f} m | contacts {'DETECTED' if frame['collision_detected'] else 'none'} | {frame['planner_status']} | accepted plans {record['accepted_plans']}",23,bold=True)
+            pacing='offline sync recording' if flight.get('recording_perception_barrier',{}).get('enabled') else 'sensor records'
+            text(draw,(24,1140),f"Actual physics + {pacing} | 1x SIM playback | {flight['simulation_seconds']:.1f} sim s recorded in {flight['loop_wall_seconds']:.1f} wall s (startup excluded).",20,MUTED)
+            if i in (0,10,80,150,len(main['frames'])//4,len(main['frames'])//2,3*len(main['frames'])//4,len(main['frames'])-1):canvas.save(output.parent/f'preview_{i:04d}.png')
             process.stdin.write(canvas.tobytes())
         process.stdin.close()
         if process.wait():raise RuntimeError('ffmpeg failed')
@@ -162,7 +199,7 @@ def export(run,output,ffmpeg=None):
         checkpoint_sha256=flight['planner']['checkpoint']['checkpoint_sha256'],passed=flight['passed'],
         final_goal_distance_m=flight['final_goal_distance_m'],collision=flight['collision'],
         source='Actual in-run rendered cameras, timestamped measured raycasts and actual nvblox ESDF; no pose replay, interpolation or synthetic obstacle cloud.',
-        playback='Every recorded frame from 0 to 24 simulation seconds retained; 1x simulation clock, not a wall-clock real-time claim.')
+        playback=f"Every recorded frame from 0 to {main['last_simulation_time']} simulation seconds retained; 1x simulation clock, not a wall-clock real-time claim.")
     output.with_suffix('.json').write_text(json.dumps(evidence,indent=2)+'\n')
     print(json.dumps({k:v for k,v in evidence.items() if k!='map_snapshot_sha256'},indent=2))
 

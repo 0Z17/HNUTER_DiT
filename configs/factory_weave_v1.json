@@ -1,0 +1,68 @@
+{
+  "schema": "hnuter_factory_mission_v1",
+  "start_position": [
+    10.0,
+    2.0,
+    13.0
+  ],
+  "waypoints": [
+    [
+      14.4,
+      2.0,
+      13.0
+    ],
+    [
+      18.8,
+      2.0,
+      13.0
+    ],
+    [
+      18.8,
+      6.4,
+      13.0
+    ],
+    [
+      18.8,
+      10.8,
+      13.0
+    ],
+    [
+      18.8,
+      15.2,
+      13.0
+    ],
+    [
+      18.8,
+      19.6,
+      13.0
+    ],
+    [
+      14.4,
+      19.6,
+      13.0
+    ]
+  ],
+  "goal_yaws": [
+    0,
+    0,
+    0.3,
+    0.6,
+    0.9,
+    1.2,
+    1.5
+  ],
+  "nominal_distance_m": 30.800000000000004,
+  "minimum_centerline_surface_distance_m": 3.6730096340179443,
+  "per_segment_minimum_centerline_distance_m": [
+    5.016997814178467,
+    4.319362640380859,
+    4.451854228973389,
+    5.407087802886963,
+    4.618771553039551,
+    3.6730096340179443,
+    3.75519061088562
+  ],
+  "maximum_verification_spacing_m": 0.044,
+  "mesh_sha256": "48e0ed42efe592cc7df759ef9e04aa800df26ae50649092dc50a71cb550cf9b4",
+  "scope": "Surveyed high-level waypoint mission; no local path or obstacle truth is supplied to DiT. Centerline clearance is not a learned-path collision certificate."
+}

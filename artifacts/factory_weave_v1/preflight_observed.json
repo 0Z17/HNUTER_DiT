@@ -1,0 +1,650 @@
+{
+  "passed": false,
+  "completed": false,
+  "mode": "sdf",
+  "seed": 23,
+  "scene": "scene_hnuter.usda",
+  "sim_root": "/sim",
+  "physics_dt": 0.001,
+  "requested_duration": 130.0,
+  "dynamic_obstacle": false,
+  "dynamic_profile": "legacy",
+  "goal_reached": false,
+  "nonfinite_state": false,
+  "implementation_sha256": {
+    "planner_process.py": "18e87ed143eb8b62ff2008d607cec4cac60fb599c9a85c37cbf10105be96a61d",
+    "temporal_evaluation.py": "4151cb05586fcc093036643787216711f027302c69f9eda2df83fb4ee0821fa7",
+    "sdf_data.py": "fad13b69ceaac2707ea683ca3d6db5395c0014ac8b468eb83df302fe075b357a",
+    "sdf_online.py": "cf2cb55d3da149b7bf2578df37fc292484bfeb2ca53507ca2b70acc011f4cb95",
+    "lidar_condition.py": "a4943f26240dadaf3eeb718b89476a192ae6ad17c8015cf20bb38d7b11cb57bb",
+    "industrial_runner.py": "53b69a973b5f607dae18a847f512ce5e383b86cd0ef0b8a2e291b40da996078c",
+    "observation_guard.py": "ae107faf19c57d2d136844bf5d633e8931948b73ec4716dff71aee57838a3a21",
+    "web.py": "65436ead410a87bd2199b5c03d781834d63503f1d30d1218a7f3a3c2f915e80d",
+    "industrial_obstacle.py": "17c0869e88bf3e10586f446ff44b6982beddffb28997eac9e9b29bff7eeb9242",
+    "demo_capture.py": "23a17ada9ce09cfd1ae7d499d42653255c86ab9cecaf2aa2f1b1b6e5a10ebb99",
+    "temporal_training.py": "6f942531ab299c50118b2c3bf0e8bf0d2775d712b92a1aff401edcfbd55b30cd",
+    "sdf_live.py": "b20df769c703ed34794b128258e0a10a2cf872f546de38728264fb06785fef19",
+    "evaluate_v003.py": "ea6777e38621be4e19f722d8fe3c039269d3c133c73a7052153cff7df9207466",
+    "model.py": "06866dd8b7f0ea1806a9c29b3d2e2adec265b331536ba6192c448dc6e334d3ed",
+    "online_diffusion.py": "7c7e661961fac20d9ccefcd6f11fee859fb74957a5675d6373adb28bceee4be5",
+    "temporal_inference.py": "9bfb5a8fe54be9d95956f302186b9a60dfbc9a3c4ab429ffe1064ba687dc3694",
+    "tune_guidance.py": "fdd3f04f9a4f437db10865157693490d446c9df432feddb097d4a4798a3dc61f",
+    "sdf_pose.py": "3ad2e729b8256489a88987e0aa2ca54679d9946366bac68d7be651ebc095e766",
+    "collision_loss.py": "42da73bf7fa061c6d346866c646db10c9c6c0cbe177a6e462878a936a62cd2be",
+    "temporal_model.py": "d4684454b2e4676624d4eca6b0b4a14d29db66494a9448d648c2c5521a37fa05",
+    "path_validation.py": "aa2cbbc87689f86f12e9da53da4795b7fff324e0b6079e509b12c9ea34af6baf",
+    "__main__.py": "dc5fadec60ea288f2446329c8ea1620a8d9eb8ca9ddade1b54d8d38e9f659f99",
+    "training.py": "ec9226917717fd12b45d1b6f27c5cfd0ded7a0682b6d9fb9df12e8d0ec353e13",
+    "online.py": "1b2c3934c8c2eeaa67510c3bde0557f6dd49c76fdf8332a34b43f15db02b124f",
+    "geometry.py": "68d2197da96eb23490a36995b20c1aa055ad9dcb93ab316fef7055315ec1d9d8",
+    "evaluate_obstacle_shift.py": "fcc4b9da32f346f9062fca5692c70e28f43b724f40f9f3bb4759439cdcda84bc",
+    "sdf_training.py": "d75e98a7a93defb1ea557c3b7d5d65cb0fee9b748cbfa6a55266e8b746af0790",
+    "temporal_online.py": "24054be278d06e4c93277aa30f67d89b5c121c81d9c677fd2b8d0ff13db550e3",
+    "temporal_observations.py": "7a259a170f30ac58a00fe243711ba4e3f5113a01aa2cc891a07ecaad70ac0fce",
+    "timed_trajectory.py": "a9cf7f20acd30148ca05ea6015129466b38775248782518d8e013dc12056ad1c",
+    "planner_worker.py": "f129ac16bc6417d5f464302b85c6c783b5a9845cb41962a9fd39740bab4f22bc",
+    "temporal_data.py": "4df1dbfa546c7a94382da368a1539b69788d65008f9c504aee0be2383557e0d9",
+    "__init__.py": "a7ad2138b180f6196a1c5dbacf200c09ffe5a51e2abc60efde8418a27821d8ca",
+    "sdf_mapping.py": "162a56fcd006e705ba6524da9f4ca622af7fc3e239068c64f2ca392bdb769e55",
+    "service.py": "ac9cad181d45ecf251b80c376ee952e6b7c669597b0ed9c7f94636a6752a7981",
+    "geometry_observations.py": "c2775d5a97f52dc06d0712b9646106fc27f4602be1d01fe7fc04a3d2e898010d",
+    "sdf_model.py": "f074f699660354fa09d9ba45aaa516c306f1b4e9b9cfffdffd7f58a5f8873be8",
+    "guidance.py": "7c5bf72232e9e59431ee1817ed9008844bb116af3daf8901666699c9036f4033",
+    "sdf_runtime.py": "846881c4bc5cd0b11437341068a35158df76be9202719f5845e258a023116271",
+    "temporal_trajectory.py": "a00c604955693dff6296cb52f8f87ee334fd2b47b45d680eb273912e3afd246a",
+    "sdf_evaluation.py": "b7325cfb09e8bfa67890fa5102db5b50101339408b3ff512578c18501d9425f1",
+    "factory_tour.py": "a582ffba3abfc685cb5a49c21524ec889dfbb4569d1abe88b988ba394d5484ac",
+    "geometry_evaluation.py": "4388fe4fa8de74df66f3835f7d6502057f3397d470ed264b8d08bf4bd7f5331a",
+    "evaluate_models.py": "e07021cac9a7a7602ae84f202859791cea55985d597000f8edfa1eb8c1f79a7d",
+    "sdf_worker.py": "0deb1fc23134024de7d37e4b29f98727e7709d153c99b13f35f3cef54c6ee1ca",
+    "flight_video.py": "059f8f3f1842c1f470a4e5c4346f3da64274229938e9c2f7acb293b8bdd01578"
+  },
+  "factory_mission": {
+    "schema": "hnuter_factory_mission_v1",
+    "start_position": [
+      16.5,
+      7.0,
+      13.0
+    ],
+    "waypoints": [
+      [
+        16.5,
+        11.4,
+        13.0
+      ],
+      [
+        16.5,
+        15.8,
+        13.0
+      ],
+      [
+        16.5,
+        20.2,
+        13.0
+      ],
+      [
+        12.1,
+        20.2,
+        13.0
+      ],
+      [
+        7.7,
+        20.2,
+        13.0
+      ]
+    ],
+    "goal_yaws": [
+      0.3,
+      0.6,
+      0.9,
+      1.2,
+      1.5
+    ],
+    "nominal_distance_m": 22.0,
+    "minimum_centerline_surface_distance_m": 2.81111478805542,
+    "per_segment_minimum_centerline_distance_m": [
+      3.299236536026001,
+      3.1979517936706543,
+      3.7737908363342285,
+      3.4554522037506104,
+      2.81111478805542
+    ],
+    "maximum_verification_spacing_m": 0.044,
+    "mesh_sha256": "48e0ed42efe592cc7df759ef9e04aa800df26ae50649092dc50a71cb550cf9b4",
+    "scope": "Surveyed high-level waypoint mission; no local path or obstacle truth is supplied to DiT. Centerline clearance is not a learned-path collision certificate."
+  },
+  "initialization_scope": "Start pose authored before Newton initialization; no runtime robot pose writes",
+  "sdf_checkpoint": "/temporal-checkpoint.pt",
+  "sensor_startup_warmup_seconds": 1.0734782099971198,
+  "initial_position": [
+    16.5,
+    7.0,
+    13.0
+  ],
+  "goal_position": [
+    7.7,
+    20.2,
+    13.0
+  ],
+  "engine": "newton",
+  "mujoco_version": "3.8.0",
+  "newton_version": "1.2.0",
+  "torch_version": "2.10.0+cu128",
+  "mujoco_cpu": false,
+  "lidar": {
+    "backend": "Newton 1.2 / Warp live collision raycast",
+    "model": "MID-360 envelope approximation",
+    "scan_pattern": "non-repeating low-discrepancy solid-angle coverage; not Livox firing sequence",
+    "scan_timing": "instantaneous snapshot; all hit timestamps equal simulation capture time",
+    "frame_rate_hz": 10.0,
+    "rays_per_frame": 20000,
+    "nominal_points_per_second": 200000.0,
+    "fov_degrees": [
+      360.0,
+      -7.0,
+      52.0
+    ],
+    "range_m": [
+      0.1,
+      40.0
+    ],
+    "mount_body_flu_m": [
+      0.0,
+      0.0,
+      0.13
+    ],
+    "collision_shapes": 154,
+    "robot_self_returns": "excluded",
+    "limitations": [
+      "no optical intensity/noise/reflectivity model",
+      "no measured Livox scan sequence",
+      "no rolling-scan motion distortion or IMU",
+      "collision geometry only; visual-only, particle and deformable obstacles unsupported"
+    ]
+  },
+  "actuator_mapping": {
+    "tilt_rj2": {
+      "array": "joint_target_pos",
+      "index": 10,
+      "runtime_index": 2,
+      "target": "/World/HNUTER/Geometry/drone/r2/rj2",
+      "ctrl_range": [
+        -2.7,
+        2.7
+      ]
+    },
+    "tilt_lj2": {
+      "array": "joint_target_pos",
+      "index": 6,
+      "runtime_index": 0,
+      "target": "/World/HNUTER/Geometry/drone/l2/lj2",
+      "ctrl_range": [
+        -2.7,
+        2.7
+      ]
+    },
+    "tilt_rj1": {
+      "array": "joint_target_pos",
+      "index": 11,
+      "runtime_index": 3,
+      "target": "/World/HNUTER/Geometry/drone/r2/r1/rj1",
+      "ctrl_range": [
+        -2.7,
+        2.7
+      ]
+    },
+    "tilt_lj1": {
+      "array": "joint_target_pos",
+      "index": 7,
+      "runtime_index": 1,
+      "target": "/World/HNUTER/Geometry/drone/l2/l1/lj1",
+      "ctrl_range": [
+        -2.7,
+        2.7
+      ]
+    },
+    "motor_xy1": {
+      "array": "mujoco.ctrl",
+      "index": 0,
+      "runtime_index": 4,
+      "target": "/World/HNUTER/Geometry/drone/r2/r1/xy1/motor_xy1",
+      "ctrl_range": [
+        0.0,
+        50.0
+      ]
+    },
+    "motor_xy2": {
+      "array": "mujoco.ctrl",
+      "index": 1,
+      "runtime_index": 5,
+      "target": "/World/HNUTER/Geometry/drone/r2/r1/xy2/motor_xy2",
+      "ctrl_range": [
+        0.0,
+        50.0
+      ]
+    },
+    "motor_xy3": {
+      "array": "mujoco.ctrl",
+      "index": 2,
+      "runtime_index": 6,
+      "target": "/World/HNUTER/Geometry/drone/l2/l1/xy3/motor_xy3",
+      "ctrl_range": [
+        0.0,
+        50.0
+      ]
+    },
+    "motor_xy4": {
+      "array": "mujoco.ctrl",
+      "index": 3,
+      "runtime_index": 7,
+      "target": "/World/HNUTER/Geometry/drone/l2/l1/xy4/motor_xy4",
+      "ctrl_range": [
+        0.0,
+        50.0
+      ]
+    },
+    "motor_xy5": {
+      "array": "mujoco.ctrl",
+      "index": 4,
+      "runtime_index": 8,
+      "target": "/World/HNUTER/Geometry/drone/xy5/motor_xy5",
+      "ctrl_range": [
+        -20.0,
+        20.0
+      ]
+    }
+  },
+  "stop_reason": "factory_planning_or_contact_failure",
+  "steps": 609,
+  "simulation_seconds": 0.609,
+  "actual_integrated_seconds": 0.6090000289259478,
+  "loop_wall_seconds": 5.49181227999361,
+  "final_position": [
+    16.50164031982422,
+    7.011661529541016,
+    12.99293327331543
+  ],
+  "final_quaternion": [
+    0.9999568739328583,
+    -0.0004219399863321995,
+    0.009218278046836876,
+    -0.0010467047934758099
+  ],
+  "final_velocity": [
+    -0.0036140980996657275,
+    0.006398972454696139,
+    -0.006309270192299223
+  ],
+  "position_tracking_rmse_m": 0.008566512774306388,
+  "position_tracking_max_error_m": 0.013656664993422772,
+  "attitude_tracking_max_error_rad": 0.01851513477017397,
+  "collision": {
+    "backend": "MuJoCo Warp GPU contacts",
+    "samples": 609,
+    "collision_detected": false,
+    "contact_steps": 0,
+    "penetration_steps": 0,
+    "first_collision": null,
+    "max_penetration_m": 0.0,
+    "minimum_contact_distance_m": null,
+    "overflow_steps": 0,
+    "unmapped_contacts": 0,
+    "complete": true,
+    "scope": "Robot versus environment only; self contacts excluded; evaluator-only truth"
+  },
+  "lidar_frames": 16,
+  "first_goal_time": null,
+  "goal_settled_seconds": 0.0,
+  "final_goal_distance_m": 15.855636028541076,
+  "final_speed_mps": 0.009685837284891937,
+  "minimum_goal_distance_m": 15.855636028541076,
+  "goal_distance_tolerance_m": 0.35,
+  "goal_speed_tolerance_mps": 0.1,
+  "goal_settle_required_seconds": 0.5,
+  "final_goal_angle_rad": 1.5021847144582194,
+  "goal_rpy": [
+    0.0,
+    0.0,
+    1.5
+  ],
+  "pose_goal_reached": false,
+  "raycast_seconds": {
+    "median": 0.0036177090005367063,
+    "p95": 0.004346849002104136,
+    "maximum": 0.004620997999154497
+  },
+  "sensing_schedule": "every 0.1 simulation seconds or 0.1 wall seconds, whichever comes first; timestamped actual physics state",
+  "sensing_wall_intervals_all_seconds": {
+    "median": 0.10093396699812729,
+    "p95": 1.33327472399978,
+    "maximum": 4.2073068780009635
+  },
+  "loop_profile": {
+    "all": {
+      "state_read_and_loop_checks": {
+        "count": 609,
+        "total_seconds": 0.19527550898783375,
+        "percent_of_profiled_wall": 3.5577934734234526,
+        "median_ms": 0.302894004562404,
+        "p95_ms": 0.43855120311491197,
+        "maximum_ms": 0.8586190015194006
+      },
+      "sensor_capture_and_submission": {
+        "count": 609,
+        "total_seconds": 0.09296257703681476,
+        "percent_of_profiled_wall": 1.6937180272555874,
+        "median_ms": 0.001443004293832928,
+        "p95_ms": 0.0026910012820735574,
+        "maximum_ms": 30.34768100042129
+      },
+      "planner_poll_controller_and_actuation": {
+        "count": 609,
+        "total_seconds": 0.3978510499873664,
+        "percent_of_profiled_wall": 7.248588808583816,
+        "median_ms": 0.6198540067998692,
+        "p95_ms": 0.9139439993305133,
+        "maximum_ms": 1.3084070014883764
+      },
+      "telemetry": {
+        "count": 609,
+        "total_seconds": 0.008078060964180622,
+        "percent_of_profiled_wall": 0.1471770460373972,
+        "median_ms": 0.007214002835098654,
+        "p95_ms": 0.05838100187247619,
+        "maximum_ms": 0.10134799958905205
+      },
+      "physics_step_and_validation": {
+        "count": 609,
+        "total_seconds": 4.332084204019338,
+        "percent_of_profiled_wall": 78.92777229089742,
+        "median_ms": 0.1544479964650236,
+        "p95_ms": 0.26609340129653,
+        "maximum_ms": 4174.750873993617
+      },
+      "contact_readback": {
+        "count": 609,
+        "total_seconds": 0.46110040001076413,
+        "percent_of_profiled_wall": 8.400951057582178,
+        "median_ms": 0.7222760032163933,
+        "p95_ms": 0.9963282020180491,
+        "maximum_ms": 1.6595010019955225
+      },
+      "fabric_render_and_recording": {
+        "count": 609,
+        "total_seconds": 0.0006515410714200698,
+        "percent_of_profiled_wall": 0.011870656917402116,
+        "median_ms": 0.0009420036803930998,
+        "p95_ms": 0.0017030033632181585,
+        "maximum_ms": 0.004928995622321963
+      },
+      "progress_and_pacing": {
+        "count": 609,
+        "total_seconds": 0.0006657008707406931,
+        "percent_of_profiled_wall": 0.012128639302745882,
+        "median_ms": 0.0009619980119168758,
+        "p95_ms": 0.0018836013623513281,
+        "maximum_ms": 0.008756003808230162
+      }
+    },
+    "after_first_simulation_second": {},
+    "scope": "Host wall phases, including CUDA waits; no extra synchronization. Worker runs concurrently.",
+    "caveat": "Physics launch and later readback waits can fall in different phases; not pure solver kernel time."
+  },
+  "wall_seconds_including_cleanup": 6.164304161997279,
+  "planner": {
+    "mode": "factory_sdf",
+    "failed": true,
+    "failure_reason": "RuntimeError: DiT request failed: ValueError: four causal SDF snapshots required",
+    "checkpoint": {
+      "schema": "hnuter_static_sdf_pose_v1",
+      "checkpoint_sha256": "6e0da29b562b433bc1813b2f632cdd1f0a420705b003767ae32ce31e94745192",
+      "selected_step": 2000,
+      "mapper": {
+        "native": {
+          "nvblox_version": "0.0.10.dev1+cu12ubuntu24",
+          "torch_version": "2.9.1+cu128",
+          "cuda_version": "12.8",
+          "gpu": "NVIDIA GeForce RTX 4080 Laptop GPU",
+          "esdf_max_distance_m": 5.0,
+          "esdf_min_weight": 0.001,
+          "lidar_factory_argument_swap_compensated": true,
+          "esdf_unknown_sentinel": 100.0
+        },
+        "config": {
+          "voxel_size": 0.15,
+          "max_range": 20.0,
+          "esdf_max_distance": 5.0,
+          "width": 720,
+          "height": 128,
+          "vertical_fov_degrees": 104.0
+        },
+        "grid": 32,
+        "cell": 0.25,
+        "local_bounds": [
+          [
+            -2,
+            6
+          ],
+          [
+            -4,
+            4
+          ],
+          [
+            -4,
+            4
+          ]
+        ],
+        "channels": [
+          "tsdf_clipped",
+          "weight_log",
+          "esdf_clipped",
+          "esdf_known",
+          "tsdf_known",
+          "latest_hits"
+        ],
+        "unknown_policy": "zero-valued distance with separate explicit known flags; never certified free",
+        "history": "four cumulative causal snapshots, nominal 0.2 s apart; actual ages retained under bounded asynchronous jitter, common planning-anchor coordinates"
+      },
+      "pose_output": true,
+      "input_scope": "measured historical scans, measured start pose and requested goal; no obstacle truth",
+      "process_isolated": true,
+      "worker_directory": "/dit/results/factory_weave/preflight_observed/planner_worker/dit-planner-6384vy3q"
+    },
+    "mission": {
+      "schema": "hnuter_factory_mission_v1",
+      "start_position": [
+        16.5,
+        7.0,
+        13.0
+      ],
+      "waypoints": [
+        [
+          16.5,
+          11.4,
+          13.0
+        ],
+        [
+          16.5,
+          15.8,
+          13.0
+        ],
+        [
+          16.5,
+          20.2,
+          13.0
+        ],
+        [
+          12.1,
+          20.2,
+          13.0
+        ],
+        [
+          7.7,
+          20.2,
+          13.0
+        ]
+      ],
+      "goal_yaws": [
+        0.3,
+        0.6,
+        0.9,
+        1.2,
+        1.5
+      ],
+      "nominal_distance_m": 22.0,
+      "minimum_centerline_surface_distance_m": 2.81111478805542,
+      "per_segment_minimum_centerline_distance_m": [
+        3.299236536026001,
+        3.1979517936706543,
+        3.7737908363342285,
+        3.4554522037506104,
+        2.81111478805542
+      ],
+      "maximum_verification_spacing_m": 0.044,
+      "mesh_sha256": "48e0ed42efe592cc7df759ef9e04aa800df26ae50649092dc50a71cb550cf9b4",
+      "scope": "Surveyed high-level waypoint mission; no local path or obstacle truth is supplied to DiT. Centerline clearance is not a learned-path collision certificate."
+    },
+    "mission_completed": false,
+    "completed_time": null,
+    "plans": [
+      {
+        "status": "segment_started",
+        "segment": 0,
+        "sim_time": 0.0,
+        "measured_origin": [
+          16.5,
+          7.0,
+          13.0
+        ],
+        "goal": [
+          16.5,
+          11.4,
+          13.0
+        ],
+        "world_frame": [
+          [
+            2.220446049250313e-16,
+            -1.0,
+            0.0
+          ],
+          [
+            1.0,
+            2.220446049250313e-16,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      {
+        "status": "execution_stopped",
+        "reason": "RuntimeError: DiT request failed: ValueError: four causal SDF snapshots required",
+        "sim_time": 0.608,
+        "segment": 0,
+        "world_origin": [
+          16.5,
+          7.0,
+          13.0
+        ],
+        "world_frame": [
+          [
+            2.220446049250313e-16,
+            -1.0,
+            0.0
+          ],
+          [
+            1.0,
+            2.220446049250313e-16,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "segment_start": 0.0,
+        "local_origin": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "start_rotation": [
+          [
+            2.220446049250313e-16,
+            1.0,
+            0.0
+          ],
+          [
+            -1.0,
+            2.220446049250313e-16,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    ],
+    "accepted_plans": 0,
+    "guard_interventions": 0,
+    "position_only": false,
+    "executed_model_reference": false,
+    "contract": "Surveyed mission goals; fresh measured nvblox maps and frozen DiT per 20-second stationary-start leg. Rigid coordinate changes only; no local path repair or expert fallback.",
+    "legs": [
+      {
+        "mode": "sdf_pose",
+        "failed": true,
+        "failure_reason": "RuntimeError: DiT request failed: ValueError: four causal SDF snapshots required",
+        "accepted_plans": 0,
+        "guard_interventions": 0,
+        "submitted_scans": 15,
+        "dropped_scans": 1,
+        "deadline_misses_100ms": 1,
+        "plan_attempts": 1,
+        "max_stationary_plan_attempts": 3,
+        "response_seconds": {
+          "median": 0.03529197100215242,
+          "p95": 1.514322937200994,
+          "maximum": 4.211897539003985
+        },
+        "map_seconds": {
+          "median": 0.010107788501045434,
+          "p95": 0.03506086625202441,
+          "maximum": 0.05767760000162525
+        },
+        "goal_rpy": [
+          0.0,
+          0.0,
+          -1.2707963267948963
+        ],
+        "executed_model_reference": false,
+        "position_only": false,
+        "contract": "static environment; stationary-start full 20s position and attitude spline; continued measured-map monitoring; no geometric path repair",
+        "safety_scope": "Observed ESDF only, unknown space is not certified free; actual contacts evaluated independently"
+      }
+    ]
+  },
+  "scan_summary": {
+    "count": 14,
+    "retained_map_scans": 0,
+    "segments": [
+      {
+        "segment": 0,
+        "scans": 14,
+        "map_retained": false
+      }
+    ]
+  },
+  "raw_report": {
+    "path": "results/factory_weave/preflight_observed/report.json",
+    "sha256": "8ce9bd5977f04c944c18d4c517c602418cfb84e8aaff355c48182849cc4b9e4a",
+    "scans_omitted_from_compact_copy": true
+  },
+  "measured_distance_m": 0.013901484039751716
+}

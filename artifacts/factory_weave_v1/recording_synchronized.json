@@ -1,0 +1,4475 @@
+{
+  "passed": true,
+  "completed": true,
+  "mode": "sdf",
+  "seed": 23,
+  "scene": "scene_hnuter.usda",
+  "sim_root": "/sim",
+  "physics_dt": 0.001,
+  "requested_duration": 130.0,
+  "dynamic_obstacle": false,
+  "dynamic_profile": "legacy",
+  "goal_reached": true,
+  "nonfinite_state": false,
+  "implementation_sha256": {
+    "planner_process.py": "18e87ed143eb8b62ff2008d607cec4cac60fb599c9a85c37cbf10105be96a61d",
+    "temporal_evaluation.py": "4151cb05586fcc093036643787216711f027302c69f9eda2df83fb4ee0821fa7",
+    "sdf_data.py": "fad13b69ceaac2707ea683ca3d6db5395c0014ac8b468eb83df302fe075b357a",
+    "sdf_online.py": "7abdf22a13f719ad34831d75c353f78e27944cf27c7214ab3763b42d9b7406eb",
+    "lidar_condition.py": "a4943f26240dadaf3eeb718b89476a192ae6ad17c8015cf20bb38d7b11cb57bb",
+    "industrial_runner.py": "765f85110184a778680effeab21cecfa702c66c6fc69a217af35227104be8590",
+    "observation_guard.py": "ae107faf19c57d2d136844bf5d633e8931948b73ec4716dff71aee57838a3a21",
+    "web.py": "65436ead410a87bd2199b5c03d781834d63503f1d30d1218a7f3a3c2f915e80d",
+    "industrial_obstacle.py": "17c0869e88bf3e10586f446ff44b6982beddffb28997eac9e9b29bff7eeb9242",
+    "demo_capture.py": "b8f10658eb16d6cd88e144af5e1bab081a13a3999696e7f95a63b18a45bd8489",
+    "temporal_training.py": "6f942531ab299c50118b2c3bf0e8bf0d2775d712b92a1aff401edcfbd55b30cd",
+    "sdf_live.py": "b20df769c703ed34794b128258e0a10a2cf872f546de38728264fb06785fef19",
+    "evaluate_v003.py": "ea6777e38621be4e19f722d8fe3c039269d3c133c73a7052153cff7df9207466",
+    "model.py": "06866dd8b7f0ea1806a9c29b3d2e2adec265b331536ba6192c448dc6e334d3ed",
+    "online_diffusion.py": "7c7e661961fac20d9ccefcd6f11fee859fb74957a5675d6373adb28bceee4be5",
+    "temporal_inference.py": "9bfb5a8fe54be9d95956f302186b9a60dfbc9a3c4ab429ffe1064ba687dc3694",
+    "tune_guidance.py": "fdd3f04f9a4f437db10865157693490d446c9df432feddb097d4a4798a3dc61f",
+    "sdf_pose.py": "3ad2e729b8256489a88987e0aa2ca54679d9946366bac68d7be651ebc095e766",
+    "collision_loss.py": "42da73bf7fa061c6d346866c646db10c9c6c0cbe177a6e462878a936a62cd2be",
+    "temporal_model.py": "d4684454b2e4676624d4eca6b0b4a14d29db66494a9448d648c2c5521a37fa05",
+    "path_validation.py": "aa2cbbc87689f86f12e9da53da4795b7fff324e0b6079e509b12c9ea34af6baf",
+    "__main__.py": "dc5fadec60ea288f2446329c8ea1620a8d9eb8ca9ddade1b54d8d38e9f659f99",
+    "training.py": "ec9226917717fd12b45d1b6f27c5cfd0ded7a0682b6d9fb9df12e8d0ec353e13",
+    "online.py": "1b2c3934c8c2eeaa67510c3bde0557f6dd49c76fdf8332a34b43f15db02b124f",
+    "geometry.py": "68d2197da96eb23490a36995b20c1aa055ad9dcb93ab316fef7055315ec1d9d8",
+    "evaluate_obstacle_shift.py": "fcc4b9da32f346f9062fca5692c70e28f43b724f40f9f3bb4759439cdcda84bc",
+    "sdf_training.py": "d75e98a7a93defb1ea557c3b7d5d65cb0fee9b748cbfa6a55266e8b746af0790",
+    "temporal_online.py": "24054be278d06e4c93277aa30f67d89b5c121c81d9c677fd2b8d0ff13db550e3",
+    "temporal_observations.py": "7a259a170f30ac58a00fe243711ba4e3f5113a01aa2cc891a07ecaad70ac0fce",
+    "timed_trajectory.py": "a9cf7f20acd30148ca05ea6015129466b38775248782518d8e013dc12056ad1c",
+    "planner_worker.py": "f129ac16bc6417d5f464302b85c6c783b5a9845cb41962a9fd39740bab4f22bc",
+    "temporal_data.py": "4df1dbfa546c7a94382da368a1539b69788d65008f9c504aee0be2383557e0d9",
+    "__init__.py": "a7ad2138b180f6196a1c5dbacf200c09ffe5a51e2abc60efde8418a27821d8ca",
+    "sdf_mapping.py": "9a7de630db7a93a1bb773e4c651498f7b4495189c120c082d687bca068ab73fe",
+    "service.py": "ac9cad181d45ecf251b80c376ee952e6b7c669597b0ed9c7f94636a6752a7981",
+    "geometry_observations.py": "c2775d5a97f52dc06d0712b9646106fc27f4602be1d01fe7fc04a3d2e898010d",
+    "sdf_model.py": "f074f699660354fa09d9ba45aaa516c306f1b4e9b9cfffdffd7f58a5f8873be8",
+    "guidance.py": "7c5bf72232e9e59431ee1817ed9008844bb116af3daf8901666699c9036f4033",
+    "sdf_runtime.py": "665958f35b5e86e8e1e9cb4334a46349aab5aef626734a4193812e61c3966750",
+    "temporal_trajectory.py": "a00c604955693dff6296cb52f8f87ee334fd2b47b45d680eb273912e3afd246a",
+    "sdf_evaluation.py": "b7325cfb09e8bfa67890fa5102db5b50101339408b3ff512578c18501d9425f1",
+    "factory_tour.py": "f498932d241c89399e48ea3ab80da9e77b2eed18dd42bb0e38dd3eaa24ce117a",
+    "geometry_evaluation.py": "4388fe4fa8de74df66f3835f7d6502057f3397d470ed264b8d08bf4bd7f5331a",
+    "evaluate_models.py": "e07021cac9a7a7602ae84f202859791cea55985d597000f8edfa1eb8c1f79a7d",
+    "sdf_worker.py": "efe56752fcd341e1554e953222b56bffd07068c703fff033f2289e0acca86e39",
+    "flight_video.py": "059f8f3f1842c1f470a4e5c4346f3da64274229938e9c2f7acb293b8bdd01578"
+  },
+  "recording_perception_barrier": {
+    "enabled": true,
+    "waits": [
+      {
+        "step": 700,
+        "sim_time": 0.7000000000000001,
+        "wall_seconds": 0.01295994899555808
+      },
+      {
+        "step": 800,
+        "sim_time": 0.8,
+        "wall_seconds": 0.013029649002419319
+      },
+      {
+        "step": 900,
+        "sim_time": 0.9,
+        "wall_seconds": 0.01288988900341792
+      },
+      {
+        "step": 1000,
+        "sim_time": 1.0,
+        "wall_seconds": 0.012928931995702442
+      },
+      {
+        "step": 1100,
+        "sim_time": 1.1,
+        "wall_seconds": 0.012894257000880316
+      },
+      {
+        "step": 1200,
+        "sim_time": 1.2,
+        "wall_seconds": 0.012950841999554541
+      },
+      {
+        "step": 1300,
+        "sim_time": 1.3,
+        "wall_seconds": 0.012924864000524394
+      },
+      {
+        "step": 1400,
+        "sim_time": 1.4000000000000001,
+        "wall_seconds": 0.012928110001666937
+      },
+      {
+        "step": 1500,
+        "sim_time": 1.5,
+        "wall_seconds": 0.012878698005806655
+      },
+      {
+        "step": 1600,
+        "sim_time": 1.6,
+        "wall_seconds": 0.012943989000632428
+      },
+      {
+        "step": 1700,
+        "sim_time": 1.7,
+        "wall_seconds": 0.012859110996942036
+      },
+      {
+        "step": 1800,
+        "sim_time": 1.8,
+        "wall_seconds": 0.0129612519958755
+      },
+      {
+        "step": 1900,
+        "sim_time": 1.9000000000000001,
+        "wall_seconds": 0.013404629004071467
+      },
+      {
+        "step": 2000,
+        "sim_time": 2.0,
+        "wall_seconds": 0.01283817300281953
+      },
+      {
+        "step": 2100,
+        "sim_time": 2.1,
+        "wall_seconds": 0.012849513994297013
+      },
+      {
+        "step": 2200,
+        "sim_time": 2.2,
+        "wall_seconds": 0.012917399995785672
+      },
+      {
+        "step": 2300,
+        "sim_time": 2.3000000000000003,
+        "wall_seconds": 0.012857838999480009
+      },
+      {
+        "step": 2400,
+        "sim_time": 2.4,
+        "wall_seconds": 0.012904426002933178
+      },
+      {
+        "step": 2500,
+        "sim_time": 2.5,
+        "wall_seconds": 0.012863388998084702
+      },
+      {
+        "step": 2600,
+        "sim_time": 2.6,
+        "wall_seconds": 0.01289854400238255
+      },
+      {
+        "step": 2700,
+        "sim_time": 2.7,
+        "wall_seconds": 0.01288504999683937
+      },
+      {
+        "step": 2800,
+        "sim_time": 2.8000000000000003,
+        "wall_seconds": 0.012883718001830857
+      },
+      {
+        "step": 2900,
+        "sim_time": 2.9,
+        "wall_seconds": 0.012854351996793412
+      },
+      {
+        "step": 3000,
+        "sim_time": 3.0,
+        "wall_seconds": 0.012880661997769494
+      },
+      {
+        "step": 3100,
+        "sim_time": 3.1,
+        "wall_seconds": 0.012863108000601642
+      },
+      {
+        "step": 3200,
+        "sim_time": 3.2,
+        "wall_seconds": 0.012885830998129677
+      },
+      {
+        "step": 3300,
+        "sim_time": 3.3000000000000003,
+        "wall_seconds": 0.012858219000918325
+      },
+      {
+        "step": 3400,
+        "sim_time": 3.4,
+        "wall_seconds": 0.012938810003106482
+      },
+      {
+        "step": 3500,
+        "sim_time": 3.5,
+        "wall_seconds": 0.012889757999801077
+      },
+      {
+        "step": 3600,
+        "sim_time": 3.6,
+        "wall_seconds": 0.012821541000448633
+      },
+      {
+        "step": 3700,
+        "sim_time": 3.7,
+        "wall_seconds": 0.012903324000944849
+      },
+      {
+        "step": 3800,
+        "sim_time": 3.8000000000000003,
+        "wall_seconds": 0.012870152000687085
+      },
+      {
+        "step": 3900,
+        "sim_time": 3.9,
+        "wall_seconds": 0.013362860998313408
+      },
+      {
+        "step": 4000,
+        "sim_time": 4.0,
+        "wall_seconds": 0.012908322998555377
+      },
+      {
+        "step": 4100,
+        "sim_time": 4.1,
+        "wall_seconds": 0.012909115001093596
+      },
+      {
+        "step": 4200,
+        "sim_time": 4.2,
+        "wall_seconds": 0.012255383997398894
+      },
+      {
+        "step": 4300,
+        "sim_time": 4.3,
+        "wall_seconds": 0.012938820000272244
+      },
+      {
+        "step": 4400,
+        "sim_time": 4.4,
+        "wall_seconds": 0.012972792996151838
+      },
+      {
+        "step": 4500,
+        "sim_time": 4.5,
+        "wall_seconds": 0.013033106006332673
+      },
+      {
+        "step": 4600,
+        "sim_time": 4.6000000000000005,
+        "wall_seconds": 0.012896722000732552
+      },
+      {
+        "step": 4700,
+        "sim_time": 4.7,
+        "wall_seconds": 0.012885850999737158
+      },
+      {
+        "step": 4800,
+        "sim_time": 4.8,
+        "wall_seconds": 0.012837711998145096
+      },
+      {
+        "step": 4900,
+        "sim_time": 4.9,
+        "wall_seconds": 0.012915136001538485
+      },
+      {
+        "step": 5000,
+        "sim_time": 5.0,
+        "wall_seconds": 0.012898955996206496
+      },
+      {
+        "step": 5100,
+        "sim_time": 5.1000000000000005,
+        "wall_seconds": 0.012970869000128005
+      },
+      {
+        "step": 5200,
+        "sim_time": 5.2,
+        "wall_seconds": 0.012892302998807281
+      },
+      {
+        "step": 5300,
+        "sim_time": 5.3,
+        "wall_seconds": 0.012891913000203203
+      },
+      {
+        "step": 5400,
+        "sim_time": 5.4,
+        "wall_seconds": 0.012861274997703731
+      },
+      {
+        "step": 5500,
+        "sim_time": 5.5,
+        "wall_seconds": 0.012948037001478951
+      },
+      {
+        "step": 5600,
+        "sim_time": 5.6000000000000005,
+        "wall_seconds": 0.012896842003101483
+      },
+      {
+        "step": 5700,
+        "sim_time": 5.7,
+        "wall_seconds": 0.012877194996690378
+      },
+      {
+        "step": 5800,
+        "sim_time": 5.8,
+        "wall_seconds": 0.012887744000181556
+      },
+      {
+        "step": 5900,
+        "sim_time": 5.9,
+        "wall_seconds": 0.02942454000003636
+      },
+      {
+        "step": 6000,
+        "sim_time": 6.0,
+        "wall_seconds": 0.012903704002383165
+      },
+      {
+        "step": 6100,
+        "sim_time": 6.1000000000000005,
+        "wall_seconds": 0.013161836002836935
+      },
+      {
+        "step": 6200,
+        "sim_time": 6.2,
+        "wall_seconds": 0.026652685999579262
+      },
+      {
+        "step": 6300,
+        "sim_time": 6.3,
+        "wall_seconds": 0.012813294997613411
+      },
+      {
+        "step": 6400,
+        "sim_time": 6.4,
+        "wall_seconds": 0.012918772001285106
+      },
+      {
+        "step": 6500,
+        "sim_time": 6.5,
+        "wall_seconds": 0.01284741899871733
+      },
+      {
+        "step": 6600,
+        "sim_time": 6.6000000000000005,
+        "wall_seconds": 0.012951272998179775
+      },
+      {
+        "step": 6700,
+        "sim_time": 6.7,
+        "wall_seconds": 0.012865532997238915
+      },
+      {
+        "step": 6800,
+        "sim_time": 6.8,
+        "wall_seconds": 0.012983011998585425
+      },
+      {
+        "step": 6900,
+        "sim_time": 6.9,
+        "wall_seconds": 0.012877606000984088
+      },
+      {
+        "step": 7000,
+        "sim_time": 7.0,
+        "wall_seconds": 0.012902362002932932
+      },
+      {
+        "step": 7100,
+        "sim_time": 7.1000000000000005,
+        "wall_seconds": 0.025498932001937646
+      },
+      {
+        "step": 7200,
+        "sim_time": 7.2,
+        "wall_seconds": 0.01285133599594701
+      },
+      {
+        "step": 7300,
+        "sim_time": 7.3,
+        "wall_seconds": 0.012923921996844001
+      },
+      {
+        "step": 7400,
+        "sim_time": 7.4,
+        "wall_seconds": 0.012906538999231998
+      },
+      {
+        "step": 7500,
+        "sim_time": 7.5,
+        "wall_seconds": 0.012921367000672035
+      },
+      {
+        "step": 7600,
+        "sim_time": 7.6000000000000005,
+        "wall_seconds": 0.012818754999898374
+      },
+      {
+        "step": 7700,
+        "sim_time": 7.7,
+        "wall_seconds": 0.012918863001686987
+      },
+      {
+        "step": 7800,
+        "sim_time": 7.8,
+        "wall_seconds": 0.013216667997767217
+      },
+      {
+        "step": 7900,
+        "sim_time": 7.9,
+        "wall_seconds": 0.012888646000646986
+      },
+      {
+        "step": 8000,
+        "sim_time": 8.0,
+        "wall_seconds": 0.012961320993781555
+      },
+      {
+        "step": 8100,
+        "sim_time": 8.1,
+        "wall_seconds": 0.013001797000470106
+      },
+      {
+        "step": 8200,
+        "sim_time": 8.2,
+        "wall_seconds": 0.02763719299400691
+      },
+      {
+        "step": 8300,
+        "sim_time": 8.3,
+        "wall_seconds": 0.01284951299749082
+      },
+      {
+        "step": 8400,
+        "sim_time": 8.4,
+        "wall_seconds": 0.01283954499376705
+      },
+      {
+        "step": 8500,
+        "sim_time": 8.5,
+        "wall_seconds": 0.012896349995571654
+      },
+      {
+        "step": 8600,
+        "sim_time": 8.6,
+        "wall_seconds": 0.012905987998237833
+      },
+      {
+        "step": 8700,
+        "sim_time": 8.700000000000001,
+        "wall_seconds": 0.012968044000444934
+      },
+      {
+        "step": 8800,
+        "sim_time": 8.8,
+        "wall_seconds": 0.012893384999188129
+      },
+      {
+        "step": 8900,
+        "sim_time": 8.9,
+        "wall_seconds": 0.012811772998247761
+      },
+      {
+        "step": 9000,
+        "sim_time": 9.0,
+        "wall_seconds": 0.012844343000324443
+      },
+      {
+        "step": 9100,
+        "sim_time": 9.1,
+        "wall_seconds": 0.012898594002763275
+      },
+      {
+        "step": 9200,
+        "sim_time": 9.200000000000001,
+        "wall_seconds": 0.013041832004091702
+      },
+      {
+        "step": 9300,
+        "sim_time": 9.3,
+        "wall_seconds": 0.012949841002409812
+      },
+      {
+        "step": 9400,
+        "sim_time": 9.4,
+        "wall_seconds": 0.026857368000491988
+      },
+      {
+        "step": 9500,
+        "sim_time": 9.5,
+        "wall_seconds": 0.012935222999658436
+      },
+      {
+        "step": 9600,
+        "sim_time": 9.6,
+        "wall_seconds": 0.012982139996893238
+      },
+      {
+        "step": 9700,
+        "sim_time": 9.700000000000001,
+        "wall_seconds": 0.012905548006528988
+      },
+      {
+        "step": 9800,
+        "sim_time": 9.8,
+        "wall_seconds": 0.01445255500584608
+      },
+      {
+        "step": 9900,
+        "sim_time": 9.9,
+        "wall_seconds": 0.012906399002531543
+      },
+      {
+        "step": 10000,
+        "sim_time": 10.0,
+        "wall_seconds": 0.012875011001597159
+      },
+      {
+        "step": 10100,
+        "sim_time": 10.1,
+        "wall_seconds": 0.012965378999069799
+      },
+      {
+        "step": 10200,
+        "sim_time": 10.200000000000001,
+        "wall_seconds": 0.012975969002582133
+      },
+      {
+        "step": 10300,
+        "sim_time": 10.3,
+        "wall_seconds": 0.012924131995532662
+      },
+      {
+        "step": 10400,
+        "sim_time": 10.4,
+        "wall_seconds": 0.012901460002467502
+      },
+      {
+        "step": 10500,
+        "sim_time": 10.5,
+        "wall_seconds": 0.013970946005429141
+      },
+      {
+        "step": 10600,
+        "sim_time": 10.6,
+        "wall_seconds": 0.012944570000399835
+      },
+      {
+        "step": 10700,
+        "sim_time": 10.700000000000001,
+        "wall_seconds": 0.012814807996619493
+      },
+      {
+        "step": 10800,
+        "sim_time": 10.8,
+        "wall_seconds": 0.012904265000543091
+      },
+      {
+        "step": 10900,
+        "sim_time": 10.9,
+        "wall_seconds": 0.012927779003803153
+      },
+      {
+        "step": 11000,
+        "sim_time": 11.0,
+        "wall_seconds": 0.012931236000440549
+      },
+      {
+        "step": 11100,
+        "sim_time": 11.1,
+        "wall_seconds": 0.012952113997016568
+      },
+      {
+        "step": 11200,
+        "sim_time": 11.200000000000001,
+        "wall_seconds": 0.012866244003816973
+      },
+      {
+        "step": 11300,
+        "sim_time": 11.3,
+        "wall_seconds": 0.012946093003847636
+      },
+      {
+        "step": 11400,
+        "sim_time": 11.4,
+        "wall_seconds": 0.012927908996061888
+      },
+      {
+        "step": 11500,
+        "sim_time": 11.5,
+        "wall_seconds": 0.012855914996180218
+      },
+      {
+        "step": 11600,
+        "sim_time": 11.6,
+        "wall_seconds": 0.0128962099988712
+      },
+      {
+        "step": 11700,
+        "sim_time": 11.700000000000001,
+        "wall_seconds": 0.012856254994403571
+      },
+      {
+        "step": 11800,
+        "sim_time": 11.8,
+        "wall_seconds": 0.01288677300181007
+      },
+      {
+        "step": 11900,
+        "sim_time": 11.9,
+        "wall_seconds": 0.01287513100396609
+      },
+      {
+        "step": 12000,
+        "sim_time": 12.0,
+        "wall_seconds": 0.013039146004302893
+      },
+      {
+        "step": 12100,
+        "sim_time": 12.1,
+        "wall_seconds": 0.012878867994004395
+      },
+      {
+        "step": 12200,
+        "sim_time": 12.200000000000001,
+        "wall_seconds": 0.012848080004914664
+      },
+      {
+        "step": 12300,
+        "sim_time": 12.3,
+        "wall_seconds": 0.012853489999542944
+      },
+      {
+        "step": 12400,
+        "sim_time": 12.4,
+        "wall_seconds": 0.012927608004247304
+      },
+      {
+        "step": 12500,
+        "sim_time": 12.5,
+        "wall_seconds": 0.012910707002447452
+      },
+      {
+        "step": 12600,
+        "sim_time": 12.6,
+        "wall_seconds": 0.012902892995043658
+      },
+      {
+        "step": 12700,
+        "sim_time": 12.700000000000001,
+        "wall_seconds": 0.012937897998199333
+      },
+      {
+        "step": 12800,
+        "sim_time": 12.8,
+        "wall_seconds": 0.017094465998525266
+      },
+      {
+        "step": 12900,
+        "sim_time": 12.9,
+        "wall_seconds": 0.01285415099846432
+      },
+      {
+        "step": 13000,
+        "sim_time": 13.0,
+        "wall_seconds": 0.012882593997346703
+      },
+      {
+        "step": 13100,
+        "sim_time": 13.1,
+        "wall_seconds": 0.012964648005436175
+      },
+      {
+        "step": 13200,
+        "sim_time": 13.200000000000001,
+        "wall_seconds": 0.01294209499610588
+      },
+      {
+        "step": 13300,
+        "sim_time": 13.3,
+        "wall_seconds": 0.012992329000553582
+      },
+      {
+        "step": 13400,
+        "sim_time": 13.4,
+        "wall_seconds": 0.01283870200131787
+      },
+      {
+        "step": 13500,
+        "sim_time": 13.5,
+        "wall_seconds": 0.012882513998192735
+      },
+      {
+        "step": 13600,
+        "sim_time": 13.6,
+        "wall_seconds": 0.012989533999643754
+      },
+      {
+        "step": 13700,
+        "sim_time": 13.700000000000001,
+        "wall_seconds": 0.012966340997081716
+      },
+      {
+        "step": 13800,
+        "sim_time": 13.8,
+        "wall_seconds": 0.01287624199903803
+      },
+      {
+        "step": 13900,
+        "sim_time": 13.9,
+        "wall_seconds": 0.024769960997218732
+      },
+      {
+        "step": 14000,
+        "sim_time": 14.0,
+        "wall_seconds": 0.012935041995660868
+      },
+      {
+        "step": 14100,
+        "sim_time": 14.1,
+        "wall_seconds": 0.012984193999727722
+      },
+      {
+        "step": 14200,
+        "sim_time": 14.200000000000001,
+        "wall_seconds": 0.012947144998179283
+      },
+      {
+        "step": 14300,
+        "sim_time": 14.3,
+        "wall_seconds": 0.012960811000084504
+      },
+      {
+        "step": 14400,
+        "sim_time": 14.4,
+        "wall_seconds": 0.01299524400383234
+      },
+      {
+        "step": 14500,
+        "sim_time": 14.5,
+        "wall_seconds": 0.01295386700076051
+      },
+      {
+        "step": 14600,
+        "sim_time": 14.6,
+        "wall_seconds": 0.01300106500275433
+      },
+      {
+        "step": 14700,
+        "sim_time": 14.700000000000001,
+        "wall_seconds": 0.012916969004436396
+      },
+      {
+        "step": 14800,
+        "sim_time": 14.8,
+        "wall_seconds": 0.01292474300134927
+      },
+      {
+        "step": 14900,
+        "sim_time": 14.9,
+        "wall_seconds": 0.01290848300413927
+      },
+      {
+        "step": 15000,
+        "sim_time": 15.0,
+        "wall_seconds": 0.012867074998212047
+      },
+      {
+        "step": 15100,
+        "sim_time": 15.1,
+        "wall_seconds": 0.013089721003780141
+      },
+      {
+        "step": 15200,
+        "sim_time": 15.200000000000001,
+        "wall_seconds": 0.012796904004062526
+      },
+      {
+        "step": 15300,
+        "sim_time": 15.3,
+        "wall_seconds": 0.012852999003371224
+      },
+      {
+        "step": 15400,
+        "sim_time": 15.4,
+        "wall_seconds": 0.012959446998138446
+      },
+      {
+        "step": 15500,
+        "sim_time": 15.5,
+        "wall_seconds": 0.01289231199916685
+      },
+      {
+        "step": 15600,
+        "sim_time": 15.6,
+        "wall_seconds": 0.012934291000419762
+      },
+      {
+        "step": 15700,
+        "sim_time": 15.700000000000001,
+        "wall_seconds": 0.012930654003866948
+      },
+      {
+        "step": 15800,
+        "sim_time": 15.8,
+        "wall_seconds": 0.012862465999205597
+      },
+      {
+        "step": 15900,
+        "sim_time": 15.9,
+        "wall_seconds": 0.012930794000567403
+      },
+      {
+        "step": 16000,
+        "sim_time": 16.0,
+        "wall_seconds": 0.012936835999425966
+      },
+      {
+        "step": 16100,
+        "sim_time": 16.1,
+        "wall_seconds": 0.012928400006785523
+      },
+      {
+        "step": 16200,
+        "sim_time": 16.2,
+        "wall_seconds": 0.023620485000719782
+      },
+      {
+        "step": 16300,
+        "sim_time": 16.3,
+        "wall_seconds": 0.012860233000537846
+      },
+      {
+        "step": 16400,
+        "sim_time": 16.4,
+        "wall_seconds": 0.012871943996287882
+      },
+      {
+        "step": 16500,
+        "sim_time": 16.5,
+        "wall_seconds": 0.012871473001723643
+      },
+      {
+        "step": 16600,
+        "sim_time": 16.6,
+        "wall_seconds": 0.01285736700083362
+      },
+      {
+        "step": 16700,
+        "sim_time": 16.7,
+        "wall_seconds": 0.012897682005132083
+      },
+      {
+        "step": 16800,
+        "sim_time": 16.8,
+        "wall_seconds": 0.01301340800273465
+      },
+      {
+        "step": 16900,
+        "sim_time": 16.9,
+        "wall_seconds": 0.012881220995041076
+      },
+      {
+        "step": 17000,
+        "sim_time": 17.0,
+        "wall_seconds": 0.012935913997353055
+      },
+      {
+        "step": 17100,
+        "sim_time": 17.1,
+        "wall_seconds": 0.012875280001026113
+      },
+      {
+        "step": 17200,
+        "sim_time": 17.2,
+        "wall_seconds": 0.012897471999167465
+      },
+      {
+        "step": 17300,
+        "sim_time": 17.3,
+        "wall_seconds": 0.02368427499459358
+      },
+      {
+        "step": 17400,
+        "sim_time": 17.400000000000002,
+        "wall_seconds": 0.012237900999025442
+      },
+      {
+        "step": 17500,
+        "sim_time": 17.5,
+        "wall_seconds": 0.012955851001606788
+      },
+      {
+        "step": 17600,
+        "sim_time": 17.6,
+        "wall_seconds": 0.012905886993394233
+      },
+      {
+        "step": 17700,
+        "sim_time": 17.7,
+        "wall_seconds": 0.012882203001936432
+      },
+      {
+        "step": 17800,
+        "sim_time": 17.8,
+        "wall_seconds": 0.0129132110014325
+      },
+      {
+        "step": 17900,
+        "sim_time": 17.900000000000002,
+        "wall_seconds": 0.023510330000135582
+      },
+      {
+        "step": 18000,
+        "sim_time": 18.0,
+        "wall_seconds": 0.012894175000838004
+      },
+      {
+        "step": 18100,
+        "sim_time": 18.1,
+        "wall_seconds": 0.012923831003718078
+      },
+      {
+        "step": 18200,
+        "sim_time": 18.2,
+        "wall_seconds": 0.012926085000799503
+      },
+      {
+        "step": 18300,
+        "sim_time": 18.3,
+        "wall_seconds": 0.012869448997662403
+      },
+      {
+        "step": 18400,
+        "sim_time": 18.400000000000002,
+        "wall_seconds": 0.012808544997824356
+      },
+      {
+        "step": 18500,
+        "sim_time": 18.5,
+        "wall_seconds": 0.026634982001269236
+      },
+      {
+        "step": 18600,
+        "sim_time": 18.6,
+        "wall_seconds": 0.01297925499966368
+      },
+      {
+        "step": 18700,
+        "sim_time": 18.7,
+        "wall_seconds": 0.012881041002401616
+      },
+      {
+        "step": 18800,
+        "sim_time": 18.8,
+        "wall_seconds": 0.01292763899982674
+      },
+      {
+        "step": 18900,
+        "sim_time": 18.900000000000002,
+        "wall_seconds": 0.012918040003569331
+      },
+      {
+        "step": 19000,
+        "sim_time": 19.0,
+        "wall_seconds": 0.012855212997237686
+      },
+      {
+        "step": 19100,
+        "sim_time": 19.1,
+        "wall_seconds": 0.01284301999839954
+      },
+      {
+        "step": 19200,
+        "sim_time": 19.2,
+        "wall_seconds": 0.01298898299864959
+      },
+      {
+        "step": 19300,
+        "sim_time": 19.3,
+        "wall_seconds": 0.012935974002175499
+      },
+      {
+        "step": 19400,
+        "sim_time": 19.400000000000002,
+        "wall_seconds": 0.012897100998088717
+      },
+      {
+        "step": 19500,
+        "sim_time": 19.5,
+        "wall_seconds": 0.012939129002916161
+      },
+      {
+        "step": 19600,
+        "sim_time": 19.6,
+        "wall_seconds": 0.013167034994694404
+      },
+      {
+        "step": 19700,
+        "sim_time": 19.7,
+        "wall_seconds": 0.012913862003188115
+      },
+      {
+        "step": 19800,
+        "sim_time": 19.8,
+        "wall_seconds": 0.012893915001768619
+      },
+      {
+        "step": 19900,
+        "sim_time": 19.900000000000002,
+        "wall_seconds": 0.01292446200386621
+      },
+      {
+        "step": 20000,
+        "sim_time": 20.0,
+        "wall_seconds": 0.012875610002083704
+      },
+      {
+        "step": 20100,
+        "sim_time": 20.1,
+        "wall_seconds": 0.012892421997094061
+      },
+      {
+        "step": 20200,
+        "sim_time": 20.2,
+        "wall_seconds": 0.01338376899366267
+      },
+      {
+        "step": 20300,
+        "sim_time": 20.3,
+        "wall_seconds": 0.012934350001160055
+      },
+      {
+        "step": 20400,
+        "sim_time": 20.400000000000002,
+        "wall_seconds": 0.012994894001167268
+      },
+      {
+        "step": 20500,
+        "sim_time": 20.5,
+        "wall_seconds": 0.0129249620003975
+      },
+      {
+        "step": 20600,
+        "sim_time": 20.6,
+        "wall_seconds": 0.012900517001980916
+      },
+      {
+        "step": 21900,
+        "sim_time": 21.900000000000002,
+        "wall_seconds": 0.012897691995021887
+      },
+      {
+        "step": 22000,
+        "sim_time": 22.0,
+        "wall_seconds": 0.01296362500579562
+      },
+      {
+        "step": 22100,
+        "sim_time": 22.1,
+        "wall_seconds": 0.026582903999951668
+      },
+      {
+        "step": 22200,
+        "sim_time": 22.2,
+        "wall_seconds": 0.012888935001683421
+      },
+      {
+        "step": 22300,
+        "sim_time": 22.3,
+        "wall_seconds": 0.01284681699326029
+      },
+      {
+        "step": 22400,
+        "sim_time": 22.400000000000002,
+        "wall_seconds": 0.012929712000186555
+      },
+      {
+        "step": 22500,
+        "sim_time": 22.5,
+        "wall_seconds": 0.012875159998657182
+      },
+      {
+        "step": 22600,
+        "sim_time": 22.6,
+        "wall_seconds": 0.013001785999222193
+      },
+      {
+        "step": 22700,
+        "sim_time": 22.7,
+        "wall_seconds": 0.012863298004958779
+      },
+      {
+        "step": 22800,
+        "sim_time": 22.8,
+        "wall_seconds": 0.012855582994234283
+      },
+      {
+        "step": 22900,
+        "sim_time": 22.900000000000002,
+        "wall_seconds": 0.01286664400686277
+      },
+      {
+        "step": 23000,
+        "sim_time": 23.0,
+        "wall_seconds": 0.01301772599981632
+      },
+      {
+        "step": 23100,
+        "sim_time": 23.1,
+        "wall_seconds": 0.01297414500004379
+      },
+      {
+        "step": 23200,
+        "sim_time": 23.2,
+        "wall_seconds": 0.012867615994764492
+      },
+      {
+        "step": 23300,
+        "sim_time": 23.3,
+        "wall_seconds": 0.012877444001787808
+      },
+      {
+        "step": 23400,
+        "sim_time": 23.400000000000002,
+        "wall_seconds": 0.01295225400099298
+      },
+      {
+        "step": 23500,
+        "sim_time": 23.5,
+        "wall_seconds": 0.012846847006585449
+      },
+      {
+        "step": 23600,
+        "sim_time": 23.6,
+        "wall_seconds": 0.012978712999029085
+      },
+      {
+        "step": 23700,
+        "sim_time": 23.7,
+        "wall_seconds": 0.01283028600300895
+      },
+      {
+        "step": 23800,
+        "sim_time": 23.8,
+        "wall_seconds": 0.012851915998908225
+      },
+      {
+        "step": 23900,
+        "sim_time": 23.900000000000002,
+        "wall_seconds": 0.012908623000839725
+      },
+      {
+        "step": 24000,
+        "sim_time": 24.0,
+        "wall_seconds": 0.012959867999597918
+      },
+      {
+        "step": 24100,
+        "sim_time": 24.1,
+        "wall_seconds": 0.014727977999427821
+      },
+      {
+        "step": 24200,
+        "sim_time": 24.2,
+        "wall_seconds": 0.012844382006733213
+      },
+      {
+        "step": 24300,
+        "sim_time": 24.3,
+        "wall_seconds": 0.012959056002728175
+      },
+      {
+        "step": 24400,
+        "sim_time": 24.400000000000002,
+        "wall_seconds": 0.027733080001780763
+      },
+      {
+        "step": 24500,
+        "sim_time": 24.5,
+        "wall_seconds": 0.012951081997016445
+      },
+      {
+        "step": 24600,
+        "sim_time": 24.6,
+        "wall_seconds": 0.012854440996306948
+      },
+      {
+        "step": 24700,
+        "sim_time": 24.7,
+        "wall_seconds": 0.013117001995851751
+      },
+      {
+        "step": 24800,
+        "sim_time": 24.8,
+        "wall_seconds": 0.012950600998010486
+      },
+      {
+        "step": 24900,
+        "sim_time": 24.900000000000002,
+        "wall_seconds": 0.012866432996816002
+      },
+      {
+        "step": 25000,
+        "sim_time": 25.0,
+        "wall_seconds": 0.012950200005434453
+      },
+      {
+        "step": 25100,
+        "sim_time": 25.1,
+        "wall_seconds": 0.012944139001774602
+      },
+      {
+        "step": 25200,
+        "sim_time": 25.2,
+        "wall_seconds": 0.014341987000079826
+      },
+      {
+        "step": 25300,
+        "sim_time": 25.3,
+        "wall_seconds": 0.012909534001664724
+      },
+      {
+        "step": 25400,
+        "sim_time": 25.400000000000002,
+        "wall_seconds": 0.01288910600123927
+      },
+      {
+        "step": 25500,
+        "sim_time": 25.5,
+        "wall_seconds": 0.012888415003544651
+      },
+      {
+        "step": 25600,
+        "sim_time": 25.6,
+        "wall_seconds": 0.027585996002017055
+      },
+      {
+        "step": 25700,
+        "sim_time": 25.7,
+        "wall_seconds": 0.012833893000788521
+      },
+      {
+        "step": 25800,
+        "sim_time": 25.8,
+        "wall_seconds": 0.012937105995661113
+      },
+      {
+        "step": 25900,
+        "sim_time": 25.900000000000002,
+        "wall_seconds": 0.012865962999057956
+      },
+      {
+        "step": 26000,
+        "sim_time": 26.0,
+        "wall_seconds": 0.012961872002051678
+      },
+      {
+        "step": 26100,
+        "sim_time": 26.1,
+        "wall_seconds": 0.012880730995675549
+      },
+      {
+        "step": 26200,
+        "sim_time": 26.2,
+        "wall_seconds": 0.012933489000715781
+      },
+      {
+        "step": 26300,
+        "sim_time": 26.3,
+        "wall_seconds": 0.01292776800255524
+      },
+      {
+        "step": 26400,
+        "sim_time": 26.400000000000002,
+        "wall_seconds": 0.01281101000495255
+      },
+      {
+        "step": 26500,
+        "sim_time": 26.5,
+        "wall_seconds": 0.012883614996098913
+      },
+      {
+        "step": 26600,
+        "sim_time": 26.6,
+        "wall_seconds": 0.012914112005091738
+      },
+      {
+        "step": 26700,
+        "sim_time": 26.7,
+        "wall_seconds": 0.012944698995852377
+      },
+      {
+        "step": 26800,
+        "sim_time": 26.8,
+        "wall_seconds": 0.0128867919993354
+      },
+      {
+        "step": 26900,
+        "sim_time": 26.900000000000002,
+        "wall_seconds": 0.012952623997989576
+      },
+      {
+        "step": 27000,
+        "sim_time": 27.0,
+        "wall_seconds": 0.012971219002793077
+      },
+      {
+        "step": 27100,
+        "sim_time": 27.1,
+        "wall_seconds": 0.012866343000496272
+      },
+      {
+        "step": 27200,
+        "sim_time": 27.2,
+        "wall_seconds": 0.01286542099842336
+      },
+      {
+        "step": 27300,
+        "sim_time": 27.3,
+        "wall_seconds": 0.01291000500350492
+      },
+      {
+        "step": 27400,
+        "sim_time": 27.400000000000002,
+        "wall_seconds": 0.014281133000622503
+      },
+      {
+        "step": 27500,
+        "sim_time": 27.5,
+        "wall_seconds": 0.012931024000863545
+      },
+      {
+        "step": 27600,
+        "sim_time": 27.6,
+        "wall_seconds": 0.012893584003904834
+      },
+      {
+        "step": 27700,
+        "sim_time": 27.7,
+        "wall_seconds": 0.012903451999591198
+      },
+      {
+        "step": 27800,
+        "sim_time": 27.8,
+        "wall_seconds": 0.012364286005322356
+      },
+      {
+        "step": 27900,
+        "sim_time": 27.900000000000002,
+        "wall_seconds": 0.02557949099718826
+      },
+      {
+        "step": 28000,
+        "sim_time": 28.0,
+        "wall_seconds": 0.012905897994642146
+      },
+      {
+        "step": 28100,
+        "sim_time": 28.1,
+        "wall_seconds": 0.012883654999313876
+      },
+      {
+        "step": 28200,
+        "sim_time": 28.2,
+        "wall_seconds": 0.012928459000249859
+      },
+      {
+        "step": 28300,
+        "sim_time": 28.3,
+        "wall_seconds": 0.012928238997119479
+      },
+      {
+        "step": 28400,
+        "sim_time": 28.400000000000002,
+        "wall_seconds": 0.012907029005873483
+      },
+      {
+        "step": 28500,
+        "sim_time": 28.5,
+        "wall_seconds": 0.012844672004575841
+      },
+      {
+        "step": 28600,
+        "sim_time": 28.6,
+        "wall_seconds": 0.012870931001089048
+      },
+      {
+        "step": 28700,
+        "sim_time": 28.7,
+        "wall_seconds": 0.012893854996946175
+      },
+      {
+        "step": 28800,
+        "sim_time": 28.8,
+        "wall_seconds": 0.02305498899659142
+      },
+      {
+        "step": 28900,
+        "sim_time": 28.900000000000002,
+        "wall_seconds": 0.012933759004226886
+      },
+      {
+        "step": 29000,
+        "sim_time": 29.0,
+        "wall_seconds": 0.01293389900092734
+      },
+      {
+        "step": 29100,
+        "sim_time": 29.1,
+        "wall_seconds": 0.027741556004912127
+      },
+      {
+        "step": 29200,
+        "sim_time": 29.2,
+        "wall_seconds": 0.012848559999838471
+      },
+      {
+        "step": 29300,
+        "sim_time": 29.3,
+        "wall_seconds": 0.012924701994052157
+      },
+      {
+        "step": 29400,
+        "sim_time": 29.400000000000002,
+        "wall_seconds": 0.012913370002934244
+      },
+      {
+        "step": 29500,
+        "sim_time": 29.5,
+        "wall_seconds": 0.012856504996307194
+      },
+      {
+        "step": 29600,
+        "sim_time": 29.6,
+        "wall_seconds": 0.012912378995679319
+      },
+      {
+        "step": 29700,
+        "sim_time": 29.7,
+        "wall_seconds": 0.01281882500188658
+      },
+      {
+        "step": 29800,
+        "sim_time": 29.8,
+        "wall_seconds": 0.012912129001051653
+      },
+      {
+        "step": 29900,
+        "sim_time": 29.900000000000002,
+        "wall_seconds": 0.012894305000372697
+      },
+      {
+        "step": 30000,
+        "sim_time": 30.0,
+        "wall_seconds": 0.012873707004473545
+      },
+      {
+        "step": 30100,
+        "sim_time": 30.1,
+        "wall_seconds": 0.012932396995893214
+      },
+      {
+        "step": 30200,
+        "sim_time": 30.2,
+        "wall_seconds": 0.013041250000242144
+      },
+      {
+        "step": 30300,
+        "sim_time": 30.3,
+        "wall_seconds": 0.02673797200259287
+      },
+      {
+        "step": 30400,
+        "sim_time": 30.400000000000002,
+        "wall_seconds": 0.012914662998809945
+      },
+      {
+        "step": 30500,
+        "sim_time": 30.5,
+        "wall_seconds": 0.012947184004588053
+      },
+      {
+        "step": 30600,
+        "sim_time": 30.6,
+        "wall_seconds": 0.012891259997559246
+      },
+      {
+        "step": 30700,
+        "sim_time": 30.7,
+        "wall_seconds": 0.012930813005368691
+      },
+      {
+        "step": 30800,
+        "sim_time": 30.8,
+        "wall_seconds": 0.012875460997747723
+      },
+      {
+        "step": 30900,
+        "sim_time": 30.900000000000002,
+        "wall_seconds": 0.012943818001076579
+      },
+      {
+        "step": 31000,
+        "sim_time": 31.0,
+        "wall_seconds": 0.012901058005809318
+      },
+      {
+        "step": 31100,
+        "sim_time": 31.1,
+        "wall_seconds": 0.012899965993710794
+      },
+      {
+        "step": 31200,
+        "sim_time": 31.2,
+        "wall_seconds": 0.012944839996634983
+      },
+      {
+        "step": 31300,
+        "sim_time": 31.3,
+        "wall_seconds": 0.012913341000967193
+      },
+      {
+        "step": 31400,
+        "sim_time": 31.400000000000002,
+        "wall_seconds": 0.012896499996713828
+      },
+      {
+        "step": 31500,
+        "sim_time": 31.5,
+        "wall_seconds": 0.031872896004642826
+      },
+      {
+        "step": 31600,
+        "sim_time": 31.6,
+        "wall_seconds": 0.012965629000973422
+      },
+      {
+        "step": 31700,
+        "sim_time": 31.7,
+        "wall_seconds": 0.01295617099822266
+      },
+      {
+        "step": 31800,
+        "sim_time": 31.8,
+        "wall_seconds": 0.013038655000855215
+      },
+      {
+        "step": 31900,
+        "sim_time": 31.900000000000002,
+        "wall_seconds": 0.012907861004350707
+      },
+      {
+        "step": 32000,
+        "sim_time": 32.0,
+        "wall_seconds": 0.012904022994916886
+      },
+      {
+        "step": 32100,
+        "sim_time": 32.1,
+        "wall_seconds": 0.012862957002653275
+      },
+      {
+        "step": 32200,
+        "sim_time": 32.2,
+        "wall_seconds": 0.01288067000132287
+      },
+      {
+        "step": 32300,
+        "sim_time": 32.3,
+        "wall_seconds": 0.012853549000283238
+      },
+      {
+        "step": 32400,
+        "sim_time": 32.4,
+        "wall_seconds": 0.013022974999330472
+      },
+      {
+        "step": 32500,
+        "sim_time": 32.5,
+        "wall_seconds": 0.012927737996506039
+      },
+      {
+        "step": 32600,
+        "sim_time": 32.6,
+        "wall_seconds": 0.012997607998840977
+      },
+      {
+        "step": 32700,
+        "sim_time": 32.7,
+        "wall_seconds": 0.029909561999375
+      },
+      {
+        "step": 32800,
+        "sim_time": 32.8,
+        "wall_seconds": 0.012990554998395965
+      },
+      {
+        "step": 32900,
+        "sim_time": 32.9,
+        "wall_seconds": 0.012914653001644183
+      },
+      {
+        "step": 33000,
+        "sim_time": 33.0,
+        "wall_seconds": 0.012948725998285227
+      },
+      {
+        "step": 33101,
+        "sim_time": 33.101,
+        "wall_seconds": 0.020620865994715132
+      },
+      {
+        "step": 33200,
+        "sim_time": 33.2,
+        "wall_seconds": 0.01288931599992793
+      },
+      {
+        "step": 33300,
+        "sim_time": 33.3,
+        "wall_seconds": 0.012955760001204908
+      },
+      {
+        "step": 33400,
+        "sim_time": 33.4,
+        "wall_seconds": 0.012826838996261358
+      },
+      {
+        "step": 33500,
+        "sim_time": 33.5,
+        "wall_seconds": 0.012933467995026149
+      },
+      {
+        "step": 33600,
+        "sim_time": 33.6,
+        "wall_seconds": 0.02553354400151875
+      },
+      {
+        "step": 33700,
+        "sim_time": 33.7,
+        "wall_seconds": 0.012932856996485498
+      },
+      {
+        "step": 33800,
+        "sim_time": 33.8,
+        "wall_seconds": 0.012905135001346935
+      },
+      {
+        "step": 33900,
+        "sim_time": 33.9,
+        "wall_seconds": 0.021366907996707596
+      },
+      {
+        "step": 34000,
+        "sim_time": 34.0,
+        "wall_seconds": 0.017229917000804562
+      },
+      {
+        "step": 34100,
+        "sim_time": 34.1,
+        "wall_seconds": 0.01287985900125932
+      },
+      {
+        "step": 34200,
+        "sim_time": 34.2,
+        "wall_seconds": 0.012870741004007868
+      },
+      {
+        "step": 34300,
+        "sim_time": 34.300000000000004,
+        "wall_seconds": 0.013179708003008272
+      },
+      {
+        "step": 34400,
+        "sim_time": 34.4,
+        "wall_seconds": 0.012954206998983864
+      },
+      {
+        "step": 34500,
+        "sim_time": 34.5,
+        "wall_seconds": 0.012834352994104847
+      },
+      {
+        "step": 34600,
+        "sim_time": 34.6,
+        "wall_seconds": 0.012872163999418262
+      },
+      {
+        "step": 34700,
+        "sim_time": 34.7,
+        "wall_seconds": 0.012916195999423508
+      },
+      {
+        "step": 34800,
+        "sim_time": 34.800000000000004,
+        "wall_seconds": 0.01296520799951395
+      },
+      {
+        "step": 34900,
+        "sim_time": 34.9,
+        "wall_seconds": 0.012965768000867683
+      },
+      {
+        "step": 35000,
+        "sim_time": 35.0,
+        "wall_seconds": 0.012898122004116885
+      },
+      {
+        "step": 35100,
+        "sim_time": 35.1,
+        "wall_seconds": 0.012900125999294687
+      },
+      {
+        "step": 35200,
+        "sim_time": 35.2,
+        "wall_seconds": 0.014039301997399889
+      },
+      {
+        "step": 35300,
+        "sim_time": 35.300000000000004,
+        "wall_seconds": 0.0129800750000868
+      },
+      {
+        "step": 35400,
+        "sim_time": 35.4,
+        "wall_seconds": 0.012987367997993715
+      },
+      {
+        "step": 35500,
+        "sim_time": 35.5,
+        "wall_seconds": 0.012985644993023016
+      },
+      {
+        "step": 35600,
+        "sim_time": 35.6,
+        "wall_seconds": 0.0128931229992304
+      },
+      {
+        "step": 35700,
+        "sim_time": 35.7,
+        "wall_seconds": 0.012910576006106567
+      },
+      {
+        "step": 35800,
+        "sim_time": 35.800000000000004,
+        "wall_seconds": 0.012977209997188766
+      },
+      {
+        "step": 35900,
+        "sim_time": 35.9,
+        "wall_seconds": 0.013026833003095817
+      },
+      {
+        "step": 36000,
+        "sim_time": 36.0,
+        "wall_seconds": 0.01312467500247294
+      },
+      {
+        "step": 36100,
+        "sim_time": 36.1,
+        "wall_seconds": 0.012866652999946382
+      },
+      {
+        "step": 36200,
+        "sim_time": 36.2,
+        "wall_seconds": 0.013014268995902967
+      },
+      {
+        "step": 36300,
+        "sim_time": 36.300000000000004,
+        "wall_seconds": 0.012952632998349145
+      },
+      {
+        "step": 36400,
+        "sim_time": 36.4,
+        "wall_seconds": 0.012979184000869282
+      },
+      {
+        "step": 36500,
+        "sim_time": 36.5,
+        "wall_seconds": 0.022592935994907748
+      },
+      {
+        "step": 36600,
+        "sim_time": 36.6,
+        "wall_seconds": 0.012909603996376973
+      },
+      {
+        "step": 36700,
+        "sim_time": 36.7,
+        "wall_seconds": 0.012808885003323667
+      },
+      {
+        "step": 36800,
+        "sim_time": 36.800000000000004,
+        "wall_seconds": 0.012888545003079344
+      },
+      {
+        "step": 36900,
+        "sim_time": 36.9,
+        "wall_seconds": 0.012964796005690005
+      },
+      {
+        "step": 37000,
+        "sim_time": 37.0,
+        "wall_seconds": 0.012873565996414982
+      },
+      {
+        "step": 37100,
+        "sim_time": 37.1,
+        "wall_seconds": 0.013168417004635558
+      },
+      {
+        "step": 37200,
+        "sim_time": 37.2,
+        "wall_seconds": 0.012859549999120645
+      },
+      {
+        "step": 37300,
+        "sim_time": 37.300000000000004,
+        "wall_seconds": 0.01218610299838474
+      },
+      {
+        "step": 37400,
+        "sim_time": 37.4,
+        "wall_seconds": 0.012081497996405233
+      },
+      {
+        "step": 37500,
+        "sim_time": 37.5,
+        "wall_seconds": 0.013004009997530375
+      },
+      {
+        "step": 37600,
+        "sim_time": 37.6,
+        "wall_seconds": 0.030916160001652315
+      },
+      {
+        "step": 37700,
+        "sim_time": 37.7,
+        "wall_seconds": 0.012895558000309393
+      },
+      {
+        "step": 37800,
+        "sim_time": 37.800000000000004,
+        "wall_seconds": 0.013018186000408605
+      },
+      {
+        "step": 37900,
+        "sim_time": 37.9,
+        "wall_seconds": 0.012096285005100071
+      },
+      {
+        "step": 38000,
+        "sim_time": 38.0,
+        "wall_seconds": 0.012948096002219245
+      },
+      {
+        "step": 38100,
+        "sim_time": 38.1,
+        "wall_seconds": 0.01298852100444492
+      },
+      {
+        "step": 38200,
+        "sim_time": 38.2,
+        "wall_seconds": 0.01304432499455288
+      },
+      {
+        "step": 38300,
+        "sim_time": 38.300000000000004,
+        "wall_seconds": 0.012861453004006762
+      },
+      {
+        "step": 38400,
+        "sim_time": 38.4,
+        "wall_seconds": 0.012980826002603862
+      },
+      {
+        "step": 38500,
+        "sim_time": 38.5,
+        "wall_seconds": 0.012952402998053003
+      },
+      {
+        "step": 38600,
+        "sim_time": 38.6,
+        "wall_seconds": 0.012865320000855718
+      },
+      {
+        "step": 38700,
+        "sim_time": 38.7,
+        "wall_seconds": 0.012922688001708593
+      },
+      {
+        "step": 38800,
+        "sim_time": 38.800000000000004,
+        "wall_seconds": 0.034093399000994395
+      },
+      {
+        "step": 38900,
+        "sim_time": 38.9,
+        "wall_seconds": 0.012905605995911174
+      },
+      {
+        "step": 39000,
+        "sim_time": 39.0,
+        "wall_seconds": 0.01400590900448151
+      },
+      {
+        "step": 39100,
+        "sim_time": 39.1,
+        "wall_seconds": 0.013286327004607301
+      },
+      {
+        "step": 39202,
+        "sim_time": 39.202,
+        "wall_seconds": 0.02903809399867896
+      },
+      {
+        "step": 39300,
+        "sim_time": 39.300000000000004,
+        "wall_seconds": 0.012066579998645466
+      },
+      {
+        "step": 39400,
+        "sim_time": 39.4,
+        "wall_seconds": 0.012264788994798437
+      },
+      {
+        "step": 39500,
+        "sim_time": 39.5,
+        "wall_seconds": 0.01301950899505755
+      },
+      {
+        "step": 39600,
+        "sim_time": 39.6,
+        "wall_seconds": 0.012926224000693765
+      },
+      {
+        "step": 39700,
+        "sim_time": 39.7,
+        "wall_seconds": 0.01290255999629153
+      },
+      {
+        "step": 39800,
+        "sim_time": 39.800000000000004,
+        "wall_seconds": 0.012970987998414785
+      },
+      {
+        "step": 39900,
+        "sim_time": 39.9,
+        "wall_seconds": 0.013024578001932241
+      },
+      {
+        "step": 40000,
+        "sim_time": 40.0,
+        "wall_seconds": 0.021244638999633025
+      },
+      {
+        "step": 40100,
+        "sim_time": 40.1,
+        "wall_seconds": 0.013793912999972235
+      },
+      {
+        "step": 40200,
+        "sim_time": 40.2,
+        "wall_seconds": 0.012930703000165522
+      },
+      {
+        "step": 40300,
+        "sim_time": 40.300000000000004,
+        "wall_seconds": 0.012880428999778815
+      },
+      {
+        "step": 40400,
+        "sim_time": 40.4,
+        "wall_seconds": 0.01289094800449675
+      },
+      {
+        "step": 40500,
+        "sim_time": 40.5,
+        "wall_seconds": 0.012903702001494821
+      },
+      {
+        "step": 40600,
+        "sim_time": 40.6,
+        "wall_seconds": 0.012935863000166137
+      },
+      {
+        "step": 40700,
+        "sim_time": 40.7,
+        "wall_seconds": 0.013013648000196554
+      },
+      {
+        "step": 40800,
+        "sim_time": 40.800000000000004,
+        "wall_seconds": 0.012888203003967647
+      },
+      {
+        "step": 40900,
+        "sim_time": 40.9,
+        "wall_seconds": 0.012953434998053126
+      },
+      {
+        "step": 41000,
+        "sim_time": 41.0,
+        "wall_seconds": 0.012837369002227206
+      },
+      {
+        "step": 41100,
+        "sim_time": 41.1,
+        "wall_seconds": 0.012846174999140203
+      },
+      {
+        "step": 41200,
+        "sim_time": 41.2,
+        "wall_seconds": 0.03193461999762803
+      },
+      {
+        "step": 41300,
+        "sim_time": 41.300000000000004,
+        "wall_seconds": 0.013015591997827869
+      },
+      {
+        "step": 41400,
+        "sim_time": 41.4,
+        "wall_seconds": 0.012934819998918101
+      },
+      {
+        "step": 41500,
+        "sim_time": 41.5,
+        "wall_seconds": 0.012122495005314704
+      },
+      {
+        "step": 41600,
+        "sim_time": 41.6,
+        "wall_seconds": 0.013143208998371847
+      },
+      {
+        "step": 41700,
+        "sim_time": 41.7,
+        "wall_seconds": 0.012091737000446301
+      },
+      {
+        "step": 41800,
+        "sim_time": 41.800000000000004,
+        "wall_seconds": 0.01285228600318078
+      },
+      {
+        "step": 43103,
+        "sim_time": 43.103,
+        "wall_seconds": 0.01942368099844316
+      },
+      {
+        "step": 43200,
+        "sim_time": 43.2,
+        "wall_seconds": 0.012899405002826825
+      },
+      {
+        "step": 43300,
+        "sim_time": 43.300000000000004,
+        "wall_seconds": 0.012979904997337144
+      },
+      {
+        "step": 43400,
+        "sim_time": 43.4,
+        "wall_seconds": 0.012957121994986665
+      },
+      {
+        "step": 43500,
+        "sim_time": 43.5,
+        "wall_seconds": 0.012978953003766946
+      },
+      {
+        "step": 43600,
+        "sim_time": 43.6,
+        "wall_seconds": 0.012918460000946652
+      },
+      {
+        "step": 43700,
+        "sim_time": 43.7,
+        "wall_seconds": 0.03080479100026423
+      },
+      {
+        "step": 43800,
+        "sim_time": 43.800000000000004,
+        "wall_seconds": 0.012944428002811037
+      },
+      {
+        "step": 43900,
+        "sim_time": 43.9,
+        "wall_seconds": 0.013114806002704427
+      },
+      {
+        "step": 44000,
+        "sim_time": 44.0,
+        "wall_seconds": 0.012935771999764256
+      },
+      {
+        "step": 44100,
+        "sim_time": 44.1,
+        "wall_seconds": 0.012876149994553998
+      },
+      {
+        "step": 44200,
+        "sim_time": 44.2,
+        "wall_seconds": 0.012255010995431803
+      },
+      {
+        "step": 44300,
+        "sim_time": 44.300000000000004,
+        "wall_seconds": 0.013107652994222008
+      },
+      {
+        "step": 44400,
+        "sim_time": 44.4,
+        "wall_seconds": 0.012867505000031088
+      },
+      {
+        "step": 44500,
+        "sim_time": 44.5,
+        "wall_seconds": 0.01297869200061541
+      },
+      {
+        "step": 44600,
+        "sim_time": 44.6,
+        "wall_seconds": 0.012911827005154919
+      },
+      {
+        "step": 44700,
+        "sim_time": 44.7,
+        "wall_seconds": 0.012907128002552781
+      },
+      {
+        "step": 44800,
+        "sim_time": 44.800000000000004,
+        "wall_seconds": 0.012884916999610141
+      },
+      {
+        "step": 44900,
+        "sim_time": 44.9,
+        "wall_seconds": 0.01296190099674277
+      },
+      {
+        "step": 45000,
+        "sim_time": 45.0,
+        "wall_seconds": 0.012897490996692795
+      },
+      {
+        "step": 45100,
+        "sim_time": 45.1,
+        "wall_seconds": 0.012963384004251566
+      },
+      {
+        "step": 45200,
+        "sim_time": 45.2,
+        "wall_seconds": 0.012968524002644699
+      },
+      {
+        "step": 45300,
+        "sim_time": 45.300000000000004,
+        "wall_seconds": 0.013017334000323899
+      },
+      {
+        "step": 45400,
+        "sim_time": 45.4,
+        "wall_seconds": 0.012889575002191123
+      },
+      {
+        "step": 45500,
+        "sim_time": 45.5,
+        "wall_seconds": 0.013126748999638949
+      },
+      {
+        "step": 45600,
+        "sim_time": 45.6,
+        "wall_seconds": 0.013102953998895828
+      },
+      {
+        "step": 45700,
+        "sim_time": 45.7,
+        "wall_seconds": 0.012961469998117536
+      },
+      {
+        "step": 45800,
+        "sim_time": 45.800000000000004,
+        "wall_seconds": 0.012991246003366541
+      },
+      {
+        "step": 45900,
+        "sim_time": 45.9,
+        "wall_seconds": 0.016178853999008425
+      },
+      {
+        "step": 46000,
+        "sim_time": 46.0,
+        "wall_seconds": 0.012991185998544097
+      },
+      {
+        "step": 46100,
+        "sim_time": 46.1,
+        "wall_seconds": 0.032941568999376614
+      },
+      {
+        "step": 46200,
+        "sim_time": 46.2,
+        "wall_seconds": 0.012892309998278506
+      },
+      {
+        "step": 46300,
+        "sim_time": 46.300000000000004,
+        "wall_seconds": 0.012964003995875828
+      },
+      {
+        "step": 46400,
+        "sim_time": 46.4,
+        "wall_seconds": 0.023424195998813957
+      },
+      {
+        "step": 46500,
+        "sim_time": 46.5,
+        "wall_seconds": 0.012878043999080546
+      },
+      {
+        "step": 46600,
+        "sim_time": 46.6,
+        "wall_seconds": 0.013591966999229044
+      },
+      {
+        "step": 46700,
+        "sim_time": 46.7,
+        "wall_seconds": 0.03315738200035412
+      },
+      {
+        "step": 46800,
+        "sim_time": 46.800000000000004,
+        "wall_seconds": 0.017278625993640162
+      },
+      {
+        "step": 46900,
+        "sim_time": 46.9,
+        "wall_seconds": 0.012894856001366861
+      },
+      {
+        "step": 47000,
+        "sim_time": 47.0,
+        "wall_seconds": 0.012858848000178114
+      },
+      {
+        "step": 47100,
+        "sim_time": 47.1,
+        "wall_seconds": 0.01298923099966487
+      },
+      {
+        "step": 47200,
+        "sim_time": 47.2,
+        "wall_seconds": 0.01290186799451476
+      },
+      {
+        "step": 47300,
+        "sim_time": 47.300000000000004,
+        "wall_seconds": 0.032925038001849316
+      },
+      {
+        "step": 47400,
+        "sim_time": 47.4,
+        "wall_seconds": 0.013037001001066528
+      },
+      {
+        "step": 47500,
+        "sim_time": 47.5,
+        "wall_seconds": 0.012877934001153335
+      },
+      {
+        "step": 47601,
+        "sim_time": 47.601,
+        "wall_seconds": 0.020372942002722993
+      },
+      {
+        "step": 47700,
+        "sim_time": 47.7,
+        "wall_seconds": 0.012859069000114687
+      },
+      {
+        "step": 47800,
+        "sim_time": 47.800000000000004,
+        "wall_seconds": 0.012876059998234268
+      },
+      {
+        "step": 47900,
+        "sim_time": 47.9,
+        "wall_seconds": 0.012881201000709552
+      },
+      {
+        "step": 48000,
+        "sim_time": 48.0,
+        "wall_seconds": 0.012994491997233126
+      },
+      {
+        "step": 48100,
+        "sim_time": 48.1,
+        "wall_seconds": 0.012913491002109367
+      },
+      {
+        "step": 48200,
+        "sim_time": 48.2,
+        "wall_seconds": 0.012928939002449624
+      },
+      {
+        "step": 48300,
+        "sim_time": 48.300000000000004,
+        "wall_seconds": 0.012903702001494821
+      },
+      {
+        "step": 48400,
+        "sim_time": 48.4,
+        "wall_seconds": 0.012917988002300262
+      },
+      {
+        "step": 48500,
+        "sim_time": 48.5,
+        "wall_seconds": 0.029931850993307307
+      },
+      {
+        "step": 48600,
+        "sim_time": 48.6,
+        "wall_seconds": 0.012948155002959538
+      },
+      {
+        "step": 48700,
+        "sim_time": 48.7,
+        "wall_seconds": 0.013003157000639476
+      },
+      {
+        "step": 48800,
+        "sim_time": 48.800000000000004,
+        "wall_seconds": 0.012887170996691566
+      },
+      {
+        "step": 48900,
+        "sim_time": 48.9,
+        "wall_seconds": 0.012819604999094736
+      },
+      {
+        "step": 49000,
+        "sim_time": 49.0,
+        "wall_seconds": 0.01283542400051374
+      },
+      {
+        "step": 49100,
+        "sim_time": 49.1,
+        "wall_seconds": 0.013077946998237167
+      },
+      {
+        "step": 49200,
+        "sim_time": 49.2,
+        "wall_seconds": 0.012929630000144243
+      },
+      {
+        "step": 49300,
+        "sim_time": 49.300000000000004,
+        "wall_seconds": 0.01294997800141573
+      },
+      {
+        "step": 49400,
+        "sim_time": 49.4,
+        "wall_seconds": 0.012869137004599907
+      },
+      {
+        "step": 49501,
+        "sim_time": 49.501,
+        "wall_seconds": 0.019375750001927372
+      },
+      {
+        "step": 49600,
+        "sim_time": 49.6,
+        "wall_seconds": 0.01204763499845285
+      },
+      {
+        "step": 49700,
+        "sim_time": 49.7,
+        "wall_seconds": 0.023556944004667457
+      },
+      {
+        "step": 49800,
+        "sim_time": 49.800000000000004,
+        "wall_seconds": 0.012913079001009464
+      },
+      {
+        "step": 49904,
+        "sim_time": 49.904,
+        "wall_seconds": 0.0235856379949837
+      },
+      {
+        "step": 50000,
+        "sim_time": 50.0,
+        "wall_seconds": 0.013069111002550926
+      },
+      {
+        "step": 50100,
+        "sim_time": 50.1,
+        "wall_seconds": 0.012889154997537844
+      },
+      {
+        "step": 50200,
+        "sim_time": 50.2,
+        "wall_seconds": 0.013069300999632105
+      },
+      {
+        "step": 50300,
+        "sim_time": 50.300000000000004,
+        "wall_seconds": 0.014255023997975513
+      },
+      {
+        "step": 50400,
+        "sim_time": 50.4,
+        "wall_seconds": 0.012900636000267696
+      },
+      {
+        "step": 50500,
+        "sim_time": 50.5,
+        "wall_seconds": 0.012958172999788076
+      },
+      {
+        "step": 50600,
+        "sim_time": 50.6,
+        "wall_seconds": 0.012850922998040915
+      },
+      {
+        "step": 50700,
+        "sim_time": 50.7,
+        "wall_seconds": 0.012874116997409146
+      },
+      {
+        "step": 50800,
+        "sim_time": 50.800000000000004,
+        "wall_seconds": 0.0129125280000153
+      },
+      {
+        "step": 50900,
+        "sim_time": 50.9,
+        "wall_seconds": 0.012922126006742474
+      },
+      {
+        "step": 51001,
+        "sim_time": 51.001,
+        "wall_seconds": 0.040778294001938775
+      },
+      {
+        "step": 51100,
+        "sim_time": 51.1,
+        "wall_seconds": 0.013005933004023973
+      },
+      {
+        "step": 51206,
+        "sim_time": 51.206,
+        "wall_seconds": 0.02041776499390835
+      },
+      {
+        "step": 51303,
+        "sim_time": 51.303000000000004,
+        "wall_seconds": 0.02467334699758794
+      },
+      {
+        "step": 51404,
+        "sim_time": 51.404,
+        "wall_seconds": 0.024571376998210326
+      },
+      {
+        "step": 51505,
+        "sim_time": 51.505,
+        "wall_seconds": 0.02147609999519773
+      },
+      {
+        "step": 51607,
+        "sim_time": 51.607,
+        "wall_seconds": 0.016346327000064775
+      },
+      {
+        "step": 52400,
+        "sim_time": 52.4,
+        "wall_seconds": 0.012998909995076247
+      },
+      {
+        "step": 52503,
+        "sim_time": 52.503,
+        "wall_seconds": 0.014132085001619998
+      },
+      {
+        "step": 52606,
+        "sim_time": 52.606,
+        "wall_seconds": 0.01832770500186598
+      },
+      {
+        "step": 52701,
+        "sim_time": 52.701,
+        "wall_seconds": 0.030044670995266642
+      },
+      {
+        "step": 52801,
+        "sim_time": 52.801,
+        "wall_seconds": 0.019274641999800224
+      },
+      {
+        "step": 52904,
+        "sim_time": 52.904,
+        "wall_seconds": 0.023712674003036227
+      },
+      {
+        "step": 53005,
+        "sim_time": 53.005,
+        "wall_seconds": 0.02044859300076496
+      },
+      {
+        "step": 53207,
+        "sim_time": 53.207,
+        "wall_seconds": 0.01737056799902348
+      },
+      {
+        "step": 64458,
+        "sim_time": 64.458,
+        "wall_seconds": 0.01300970000011148
+      },
+      {
+        "step": 71907,
+        "sim_time": 71.907,
+        "wall_seconds": 0.01840531899506459
+      },
+      {
+        "step": 75600,
+        "sim_time": 75.60000000000001,
+        "wall_seconds": 0.02270344999851659
+      },
+      {
+        "step": 75706,
+        "sim_time": 75.706,
+        "wall_seconds": 0.04361226999753853
+      },
+      {
+        "step": 75805,
+        "sim_time": 75.805,
+        "wall_seconds": 0.021608445997117087
+      },
+      {
+        "step": 76000,
+        "sim_time": 76.0,
+        "wall_seconds": 0.012880267000582535
+      },
+      {
+        "step": 76200,
+        "sim_time": 76.2,
+        "wall_seconds": 0.016189763002330437
+      },
+      {
+        "step": 76312,
+        "sim_time": 76.312,
+        "wall_seconds": 0.019321066996781155
+      },
+      {
+        "step": 77500,
+        "sim_time": 77.5,
+        "wall_seconds": 0.012854449996666517
+      },
+      {
+        "step": 77700,
+        "sim_time": 77.7,
+        "wall_seconds": 0.012901317000796553
+      },
+      {
+        "step": 77807,
+        "sim_time": 77.807,
+        "wall_seconds": 0.016448406997369602
+      },
+      {
+        "step": 82600,
+        "sim_time": 82.60000000000001,
+        "wall_seconds": 0.012903379996714648
+      },
+      {
+        "step": 82800,
+        "sim_time": 82.8,
+        "wall_seconds": 0.012880066999059636
+      },
+      {
+        "step": 83504,
+        "sim_time": 83.504,
+        "wall_seconds": 0.024030335000134073
+      },
+      {
+        "step": 85800,
+        "sim_time": 85.8,
+        "wall_seconds": 0.02364064800349297
+      },
+      {
+        "step": 85900,
+        "sim_time": 85.9,
+        "wall_seconds": 0.022767579001083504
+      },
+      {
+        "step": 86002,
+        "sim_time": 86.002,
+        "wall_seconds": 0.01840162099688314
+      },
+      {
+        "step": 86106,
+        "sim_time": 86.10600000000001,
+        "wall_seconds": 0.01966739299678011
+      },
+      {
+        "step": 86209,
+        "sim_time": 86.209,
+        "wall_seconds": 0.014021016002516262
+      },
+      {
+        "step": 86409,
+        "sim_time": 86.409,
+        "wall_seconds": 0.015499224995437544
+      },
+      {
+        "step": 86604,
+        "sim_time": 86.604,
+        "wall_seconds": 0.02396774900262244
+      },
+      {
+        "step": 86704,
+        "sim_time": 86.70400000000001,
+        "wall_seconds": 0.022548689994437154
+      },
+      {
+        "step": 86802,
+        "sim_time": 86.802,
+        "wall_seconds": 0.017527900999994017
+      },
+      {
+        "step": 86908,
+        "sim_time": 86.908,
+        "wall_seconds": 0.015342601996962912
+      },
+      {
+        "step": 89400,
+        "sim_time": 89.4,
+        "wall_seconds": 0.012859003996709362
+      },
+      {
+        "step": 102900,
+        "sim_time": 102.9,
+        "wall_seconds": 0.01289976899715839
+      },
+      {
+        "step": 103300,
+        "sim_time": 103.3,
+        "wall_seconds": 0.012929124000947922
+      },
+      {
+        "step": 103407,
+        "sim_time": 103.407,
+        "wall_seconds": 0.01822778500354616
+      },
+      {
+        "step": 103609,
+        "sim_time": 103.60900000000001,
+        "wall_seconds": 0.013107520004268736
+      },
+      {
+        "step": 104605,
+        "sim_time": 104.605,
+        "wall_seconds": 0.02246672699402552
+      },
+      {
+        "step": 104704,
+        "sim_time": 104.70400000000001,
+        "wall_seconds": 0.025253295003494713
+      },
+      {
+        "step": 104803,
+        "sim_time": 104.803,
+        "wall_seconds": 0.01623322600062238
+      },
+      {
+        "step": 104905,
+        "sim_time": 104.905,
+        "wall_seconds": 0.022619153001869563
+      },
+      {
+        "step": 105002,
+        "sim_time": 105.002,
+        "wall_seconds": 0.026949047998641618
+      },
+      {
+        "step": 105103,
+        "sim_time": 105.10300000000001,
+        "wall_seconds": 0.025782879994949326
+      },
+      {
+        "step": 105201,
+        "sim_time": 105.20100000000001,
+        "wall_seconds": 0.019200283000827767
+      },
+      {
+        "step": 105304,
+        "sim_time": 105.304,
+        "wall_seconds": 0.022422882000682876
+      },
+      {
+        "step": 105404,
+        "sim_time": 105.404,
+        "wall_seconds": 0.024620430995128118
+      }
+    ],
+    "scope": "Offline recording pacing only; physics stays fixed until a new current-state map arrives. Normal 400 ms freshness guard unchanged."
+  },
+  "factory_mission": {
+    "schema": "hnuter_factory_mission_v1",
+    "start_position": [
+      16.5,
+      7.0,
+      13.0
+    ],
+    "waypoints": [
+      [
+        16.5,
+        11.4,
+        13.0
+      ],
+      [
+        16.5,
+        15.8,
+        13.0
+      ],
+      [
+        16.5,
+        20.2,
+        13.0
+      ],
+      [
+        12.1,
+        20.2,
+        13.0
+      ],
+      [
+        7.7,
+        20.2,
+        13.0
+      ]
+    ],
+    "goal_yaws": [
+      0.3,
+      0.6,
+      0.9,
+      1.2,
+      1.5
+    ],
+    "nominal_distance_m": 22.0,
+    "minimum_centerline_surface_distance_m": 2.81111478805542,
+    "per_segment_minimum_centerline_distance_m": [
+      3.299236536026001,
+      3.1979517936706543,
+      3.7737908363342285,
+      3.4554522037506104,
+      2.81111478805542
+    ],
+    "maximum_verification_spacing_m": 0.044,
+    "mesh_sha256": "48e0ed42efe592cc7df759ef9e04aa800df26ae50649092dc50a71cb550cf9b4",
+    "scope": "Surveyed high-level waypoint mission; no local path or obstacle truth is supplied to DiT. Centerline clearance is not a learned-path collision certificate."
+  },
+  "initialization_scope": "Start pose authored before Newton initialization; no runtime robot pose writes",
+  "sdf_checkpoint": "/temporal-checkpoint.pt",
+  "sensor_startup_warmup_seconds": 1.155455202999292,
+  "demo_camera": {
+    "local_position": [
+      -2.0,
+      0.0,
+      1.4
+    ],
+    "look_at": [
+      0,
+      0,
+      0
+    ],
+    "focal_length_mm": 18.0,
+    "scope": "session-only visualization; no physical pose writes"
+  },
+  "initial_position": [
+    16.5,
+    7.0,
+    13.0
+  ],
+  "goal_position": [
+    7.7,
+    20.2,
+    13.0
+  ],
+  "engine": "newton",
+  "mujoco_version": "3.8.0",
+  "newton_version": "1.2.0",
+  "torch_version": "2.10.0+cu128",
+  "mujoco_cpu": false,
+  "lidar": {
+    "backend": "Newton 1.2 / Warp live collision raycast",
+    "model": "MID-360 envelope approximation",
+    "scan_pattern": "non-repeating low-discrepancy solid-angle coverage; not Livox firing sequence",
+    "scan_timing": "instantaneous snapshot; all hit timestamps equal simulation capture time",
+    "frame_rate_hz": 10.0,
+    "rays_per_frame": 20000,
+    "nominal_points_per_second": 200000.0,
+    "fov_degrees": [
+      360.0,
+      -7.0,
+      52.0
+    ],
+    "range_m": [
+      0.1,
+      40.0
+    ],
+    "mount_body_flu_m": [
+      0.0,
+      0.0,
+      0.13
+    ],
+    "collision_shapes": 154,
+    "robot_self_returns": "excluded",
+    "limitations": [
+      "no optical intensity/noise/reflectivity model",
+      "no measured Livox scan sequence",
+      "no rolling-scan motion distortion or IMU",
+      "collision geometry only; visual-only, particle and deformable obstacles unsupported"
+    ]
+  },
+  "actuator_mapping": {
+    "tilt_rj2": {
+      "array": "joint_target_pos",
+      "index": 10,
+      "runtime_index": 2,
+      "target": "/World/HNUTER/Geometry/drone/r2/rj2",
+      "ctrl_range": [
+        -2.7,
+        2.7
+      ]
+    },
+    "tilt_lj2": {
+      "array": "joint_target_pos",
+      "index": 6,
+      "runtime_index": 0,
+      "target": "/World/HNUTER/Geometry/drone/l2/lj2",
+      "ctrl_range": [
+        -2.7,
+        2.7
+      ]
+    },
+    "tilt_rj1": {
+      "array": "joint_target_pos",
+      "index": 11,
+      "runtime_index": 3,
+      "target": "/World/HNUTER/Geometry/drone/r2/r1/rj1",
+      "ctrl_range": [
+        -2.7,
+        2.7
+      ]
+    },
+    "tilt_lj1": {
+      "array": "joint_target_pos",
+      "index": 7,
+      "runtime_index": 1,
+      "target": "/World/HNUTER/Geometry/drone/l2/l1/lj1",
+      "ctrl_range": [
+        -2.7,
+        2.7
+      ]
+    },
+    "motor_xy1": {
+      "array": "mujoco.ctrl",
+      "index": 0,
+      "runtime_index": 4,
+      "target": "/World/HNUTER/Geometry/drone/r2/r1/xy1/motor_xy1",
+      "ctrl_range": [
+        0.0,
+        50.0
+      ]
+    },
+    "motor_xy2": {
+      "array": "mujoco.ctrl",
+      "index": 1,
+      "runtime_index": 5,
+      "target": "/World/HNUTER/Geometry/drone/r2/r1/xy2/motor_xy2",
+      "ctrl_range": [
+        0.0,
+        50.0
+      ]
+    },
+    "motor_xy3": {
+      "array": "mujoco.ctrl",
+      "index": 2,
+      "runtime_index": 6,
+      "target": "/World/HNUTER/Geometry/drone/l2/l1/xy3/motor_xy3",
+      "ctrl_range": [
+        0.0,
+        50.0
+      ]
+    },
+    "motor_xy4": {
+      "array": "mujoco.ctrl",
+      "index": 3,
+      "runtime_index": 7,
+      "target": "/World/HNUTER/Geometry/drone/l2/l1/xy4/motor_xy4",
+      "ctrl_range": [
+        0.0,
+        50.0
+      ]
+    },
+    "motor_xy5": {
+      "array": "mujoco.ctrl",
+      "index": 4,
+      "runtime_index": 8,
+      "target": "/World/HNUTER/Geometry/drone/xy5/motor_xy5",
+      "ctrl_range": [
+        -20.0,
+        20.0
+      ]
+    }
+  },
+  "stop_reason": "factory_mission_complete_and_held",
+  "steps": 108000,
+  "simulation_seconds": 108.0,
+  "actual_integrated_seconds": 108.00000512972474,
+  "loop_wall_seconds": 480.25086863800243,
+  "final_position": [
+    7.685940265655518,
+    20.200408935546875,
+    12.990997314453125
+  ],
+  "final_quaternion": [
+    0.7324938713330149,
+    -0.00697808753496926,
+    0.006675949264803363,
+    0.680705124452094
+  ],
+  "final_velocity": [
+    -0.00010079040783172998,
+    0.0003434220406577814,
+    0.0001923574852488412
+  ],
+  "position_tracking_rmse_m": 0.01628156675360636,
+  "position_tracking_max_error_m": 0.01686678461734322,
+  "attitude_tracking_max_error_rad": 0.01968216666469153,
+  "collision": {
+    "backend": "MuJoCo Warp GPU contacts",
+    "samples": 108000,
+    "collision_detected": false,
+    "contact_steps": 0,
+    "penetration_steps": 0,
+    "first_collision": null,
+    "max_penetration_m": 0.0,
+    "minimum_contact_distance_m": null,
+    "overflow_steps": 0,
+    "unmapped_contacts": 0,
+    "complete": true,
+    "scope": "Robot versus environment only; self contacts excluded; evaluator-only truth"
+  },
+  "lidar_frames": 3213,
+  "first_goal_time": 104.48400000000001,
+  "goal_settled_seconds": 4.015999999999991,
+  "final_goal_distance_m": 0.01670005105306071,
+  "final_speed_mps": 0.00040632352436414444,
+  "minimum_goal_distance_m": 0.015178803274199492,
+  "goal_distance_tolerance_m": 0.35,
+  "goal_speed_tolerance_mps": 0.1,
+  "goal_settle_required_seconds": 0.5,
+  "final_goal_angle_rad": 0.019471256478368268,
+  "goal_rpy": [
+    0.0,
+    0.0,
+    1.5
+  ],
+  "pose_goal_reached": true,
+  "raycast_seconds": {
+    "median": 0.003585922000638675,
+    "p95": 0.004257320999749935,
+    "maximum": 0.006865611998364329
+  },
+  "sensing_schedule": "every 0.1 simulation seconds or 0.1 wall seconds, whichever comes first; timestamped actual physics state",
+  "sensing_wall_intervals_all_seconds": {
+    "median": 0.10154845700162696,
+    "p95": 0.2898769387531502,
+    "maximum": 3.9126588930012076
+  },
+  "sensing_wall_intervals_after_history_warmup_seconds": {
+    "median": 0.10154772399982903,
+    "p95": 0.28973027024803744,
+    "maximum": 0.6196264949976467
+  },
+  "loop_profile": {
+    "all": {
+      "state_read_and_loop_checks": {
+        "count": 108000,
+        "total_seconds": 33.634492683486314,
+        "percent_of_profiled_wall": 7.0093885405568095,
+        "median_ms": 0.29478499709512107,
+        "p95_ms": 0.39635044886381354,
+        "maximum_ms": 4.65844500286039
+      },
+      "sensor_capture_and_submission": {
+        "count": 108000,
+        "total_seconds": 13.193321804639709,
+        "percent_of_profiled_wall": 2.7494726779311227,
+        "median_ms": 0.002806002157740295,
+        "p95_ms": 0.004398003511596471,
+        "maximum_ms": 28.916763003508095
+      },
+      "recording_perception_wait": {
+        "count": 108000,
+        "total_seconds": 7.941168569188449,
+        "percent_of_profiled_wall": 1.6549301483839067,
+        "median_ms": 0.0013030003174208105,
+        "p95_ms": 0.0021239975467324257,
+        "maximum_ms": 43.61669799982337
+      },
+      "planner_poll_controller_and_actuation": {
+        "count": 108000,
+        "total_seconds": 91.49639880421455,
+        "percent_of_profiled_wall": 19.06774141996665,
+        "median_ms": 0.8259159985755105,
+        "p95_ms": 1.0762384972622383,
+        "maximum_ms": 3.0213790014386177
+      },
+      "telemetry": {
+        "count": 108000,
+        "total_seconds": 1.4477757439090055,
+        "percent_of_profiled_wall": 0.30171475467606257,
+        "median_ms": 0.007423994247801602,
+        "p95_ms": 0.06045205263944808,
+        "maximum_ms": 0.14593500236514956
+      },
+      "physics_step_and_validation": {
+        "count": 108000,
+        "total_seconds": 19.360761374176946,
+        "percent_of_profiled_wall": 4.03475979821273,
+        "median_ms": 0.13352899986784905,
+        "p95_ms": 0.18687919873627828,
+        "maximum_ms": 3881.945867004106
+      },
+      "contact_readback": {
+        "count": 108000,
+        "total_seconds": 82.96729116869392,
+        "percent_of_profiled_wall": 17.290285464730964,
+        "median_ms": 0.713260997144971,
+        "p95_ms": 0.9842769944953035,
+        "maximum_ms": 590.8517249990837
+      },
+      "fabric_render_and_recording": {
+        "count": 108000,
+        "total_seconds": 229.66665625148016,
+        "percent_of_profiled_wall": 47.86225984218598,
+        "median_ms": 0.0018640057533048093,
+        "p95_ms": 0.003125001967418939,
+        "maximum_ms": 328.72034100000747
+      },
+      "progress_and_pacing": {
+        "count": 108000,
+        "total_seconds": 0.141302880452713,
+        "percent_of_profiled_wall": 0.02944735335577693,
+        "median_ms": 0.0009920040611177683,
+        "p95_ms": 0.0017030033632181585,
+        "maximum_ms": 0.20424099784577265
+      }
+    },
+    "after_first_simulation_second": {
+      "state_read_and_loop_checks": {
+        "count": 107000,
+        "total_seconds": 33.32300411847973,
+        "percent_of_profiled_wall": 7.072428773339159,
+        "median_ms": 0.29479099612217396,
+        "p95_ms": 0.39632999687455595,
+        "maximum_ms": 4.65844500286039
+      },
+      "sensor_capture_and_submission": {
+        "count": 107000,
+        "total_seconds": 13.06516735045443,
+        "percent_of_profiled_wall": 2.7729332316290836,
+        "median_ms": 0.0028149952413514256,
+        "p95_ms": 0.004408000677358359,
+        "maximum_ms": 7.1862350014271215
+      },
+      "recording_perception_wait": {
+        "count": 107000,
+        "total_seconds": 7.9011165822303155,
+        "percent_of_profiled_wall": 1.676922166410674,
+        "median_ms": 0.0013030003174208105,
+        "p95_ms": 0.0021239975467324257,
+        "maximum_ms": 43.61669799982337
+      },
+      "planner_poll_controller_and_actuation": {
+        "count": 107000,
+        "total_seconds": 90.78466781634052,
+        "percent_of_profiled_wall": 19.26801360884076,
+        "median_ms": 0.8260940012405626,
+        "p95_ms": 1.0769510001409797,
+        "maximum_ms": 3.0213790014386177
+      },
+      "telemetry": {
+        "count": 107000,
+        "total_seconds": 1.4352017207929748,
+        "percent_of_profiled_wall": 0.3046052483621393,
+        "median_ms": 0.007424001523759216,
+        "p95_ms": 0.06047305105312261,
+        "maximum_ms": 0.14593500236514956
+      },
+      "physics_step_and_validation": {
+        "count": 107000,
+        "total_seconds": 15.288029606257624,
+        "percent_of_profiled_wall": 3.2447104735973062,
+        "median_ms": 0.1335320012003649,
+        "p95_ms": 0.18695000071602386,
+        "maximum_ms": 2.1691479996661656
+      },
+      "contact_readback": {
+        "count": 107000,
+        "total_seconds": 82.19026827452035,
+        "percent_of_profiled_wall": 17.443950016223866,
+        "median_ms": 0.7132739992812276,
+        "p95_ms": 0.9834567972575312,
+        "maximum_ms": 590.8517249990837
+      },
+      "fabric_render_and_recording": {
+        "count": 107000,
+        "total_seconds": 227.04014181750244,
+        "percent_of_profiled_wall": 48.186688870666096,
+        "median_ms": 0.00187299883691594,
+        "p95_ms": 0.003125998773612082,
+        "maximum_ms": 268.15990100294584
+      },
+      "progress_and_pacing": {
+        "count": 107000,
+        "total_seconds": 0.14016115161211928,
+        "percent_of_profiled_wall": 0.029747610930917746,
+        "median_ms": 0.001000997144728899,
+        "p95_ms": 0.0017030033632181585,
+        "maximum_ms": 0.20424099784577265
+      }
+    },
+    "scope": "Host wall phases, including CUDA waits; no extra synchronization. Worker runs concurrently.",
+    "caveat": "Physics launch and later readback waits can fall in different phases; not pure solver kernel time."
+  },
+  "video": {
+    "schema": "hnuter_actual_flight_video_v1",
+    "camera": "follow",
+    "width": 960,
+    "height": 540,
+    "fps": 10,
+    "physics_dt": 0.001,
+    "step_interval": 100,
+    "frame_count": 1081,
+    "first_simulation_time": 0.0,
+    "last_simulation_time": 108.0,
+    "complete_sequence": true,
+    "source": "Actual actuator-driven Newton/MuJoCo flight; RGB rendered during the controlled run.",
+    "playback": "One video second equals one simulation second; not a wall-clock real-time claim.",
+    "pose_replay": false,
+    "directory": "/dit/results/factory_weave/recording_synchronized/video",
+    "manifest": "/dit/results/factory_weave/recording_synchronized/video/manifest.json",
+    "manifest_sha256": "cfd3e2bc66d9f2df173767fc496daf2cdb9ea3708dbec753840efb8608b71a4f"
+  },
+  "perception_video": {
+    "manifest": "/dit/results/factory_weave/recording_synchronized/perception_video/manifest.json",
+    "manifest_sha256": "9f709a6636a37a16b7a7c27b5e2efd5b1e0422bfb04dca8bb24f2e7d42cafdc5",
+    "camera": {
+      "schema": "hnuter_actual_flight_video_v1",
+      "camera": "fpv",
+      "width": 960,
+      "height": 540,
+      "fps": 10,
+      "physics_dt": 0.001,
+      "step_interval": 100,
+      "frame_count": 1081,
+      "first_simulation_time": 0.0,
+      "last_simulation_time": 108.0,
+      "complete_sequence": true,
+      "source": "Actual actuator-driven Newton/MuJoCo flight; RGB rendered during the controlled run.",
+      "playback": "One video second equals one simulation second; not a wall-clock real-time claim.",
+      "pose_replay": false,
+      "directory": "/dit/results/factory_weave/recording_synchronized/perception_video/fpv",
+      "manifest": "/dit/results/factory_weave/recording_synchronized/perception_video/fpv/manifest.json",
+      "manifest_sha256": "5d9d5327ee1c54698ff96ffb1c9bc8d54645d91d019f45bd47908ca17d025845"
+    }
+  },
+  "wall_seconds_including_cleanup": 482.0414796920013,
+  "planner": {
+    "mode": "factory_sdf",
+    "failed": false,
+    "failure_reason": null,
+    "checkpoint": {
+      "schema": "hnuter_static_sdf_pose_v1",
+      "checkpoint_sha256": "6e0da29b562b433bc1813b2f632cdd1f0a420705b003767ae32ce31e94745192",
+      "selected_step": 2000,
+      "mapper": {
+        "native": {
+          "nvblox_version": "0.0.10.dev1+cu12ubuntu24",
+          "torch_version": "2.9.1+cu128",
+          "cuda_version": "12.8",
+          "gpu": "NVIDIA GeForce RTX 4080 Laptop GPU",
+          "esdf_max_distance_m": 5.0,
+          "esdf_min_weight": 0.001,
+          "lidar_factory_argument_swap_compensated": true,
+          "esdf_unknown_sentinel": 100.0
+        },
+        "config": {
+          "voxel_size": 0.15,
+          "max_range": 20.0,
+          "esdf_max_distance": 5.0,
+          "width": 720,
+          "height": 128,
+          "vertical_fov_degrees": 104.0
+        },
+        "grid": 32,
+        "cell": 0.25,
+        "local_bounds": [
+          [
+            -2,
+            6
+          ],
+          [
+            -4,
+            4
+          ],
+          [
+            -4,
+            4
+          ]
+        ],
+        "channels": [
+          "tsdf_clipped",
+          "weight_log",
+          "esdf_clipped",
+          "esdf_known",
+          "tsdf_known",
+          "latest_hits"
+        ],
+        "unknown_policy": "zero-valued distance with separate explicit known flags; never certified free",
+        "history": "four cumulative causal snapshots, nominal 0.2 s apart; actual ages retained under bounded asynchronous jitter, common planning-anchor coordinates"
+      },
+      "pose_output": true,
+      "factory_map_policy": "World-aligned static measured map, retained for <=120 s and sensor displacement <=28 m; reanchor resets local four-snapshot history. No obstacle truth integration.",
+      "input_scope": "measured historical scans, measured start pose and requested goal; no obstacle truth",
+      "process_isolated": true,
+      "worker_directory": "/dit/results/factory_weave/recording_synchronized/planner_worker/dit-planner-bl8jvg9e"
+    },
+    "mission": {
+      "schema": "hnuter_factory_mission_v1",
+      "start_position": [
+        16.5,
+        7.0,
+        13.0
+      ],
+      "waypoints": [
+        [
+          16.5,
+          11.4,
+          13.0
+        ],
+        [
+          16.5,
+          15.8,
+          13.0
+        ],
+        [
+          16.5,
+          20.2,
+          13.0
+        ],
+        [
+          12.1,
+          20.2,
+          13.0
+        ],
+        [
+          7.7,
+          20.2,
+          13.0
+        ]
+      ],
+      "goal_yaws": [
+        0.3,
+        0.6,
+        0.9,
+        1.2,
+        1.5
+      ],
+      "nominal_distance_m": 22.0,
+      "minimum_centerline_surface_distance_m": 2.81111478805542,
+      "per_segment_minimum_centerline_distance_m": [
+        3.299236536026001,
+        3.1979517936706543,
+        3.7737908363342285,
+        3.4554522037506104,
+        2.81111478805542
+      ],
+      "maximum_verification_spacing_m": 0.044,
+      "mesh_sha256": "48e0ed42efe592cc7df759ef9e04aa800df26ae50649092dc50a71cb550cf9b4",
+      "scope": "Surveyed high-level waypoint mission; no local path or obstacle truth is supplied to DiT. Centerline clearance is not a learned-path collision certificate."
+    },
+    "mission_completed": true,
+    "completed_time": 106.0,
+    "plans": [
+      {
+        "status": "segment_started",
+        "segment": 0,
+        "sim_time": 0.0,
+        "measured_origin": [
+          16.5,
+          7.0,
+          13.0
+        ],
+        "goal": [
+          16.5,
+          11.4,
+          13.0
+        ],
+        "world_frame": [
+          [
+            2.220446049250313e-16,
+            -1.0,
+            0.0
+          ],
+          [
+            1.0,
+            2.220446049250313e-16,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      {
+        "status": "accepted",
+        "scan_time": 0.651,
+        "activation_time": 0.6910000000000001,
+        "fresh": true,
+        "feasible": true,
+        "observed_clearance": {
+          "minimum_known_m": 3.14914870262146,
+          "known_fraction": 0.051146384328603745,
+          "observed_violation": false,
+          "minimum_observed_support": true,
+          "collision_certified": false,
+          "unknown_policy": "unknown is not free; partial observed guard only"
+        },
+        "controls": [
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.43974798917770386,
+            -0.3934064209461212,
+            -0.00015855912351980805,
+            0.000303195440210402,
+            -0.00027473137015476823,
+            0.030031893402338028
+          ],
+          [
+            1.100118637084961,
+            -0.7776198387145996,
+            -0.00010844753705896437,
+            8.486158913001418e-05,
+            -0.00027777787181548774,
+            0.07511287182569504
+          ],
+          [
+            1.7597428560256958,
+            -0.8752619028091431,
+            -0.00014420715160667896,
+            8.822920790407807e-05,
+            -0.00016699997649993747,
+            0.1200392097234726
+          ],
+          [
+            2.6398160457611084,
+            -0.8706780672073364,
+            -0.00019859774329233915,
+            8.144964522216469e-05,
+            -0.0002070219343295321,
+            0.18009789288043976
+          ],
+          [
+            3.2999396324157715,
+            -0.79168301820755,
+            8.586662443121895e-05,
+            0.00034265214344486594,
+            -0.0004887279937975109,
+            0.2250756472349167
+          ],
+          [
+            3.9599404335021973,
+            -0.39888232946395874,
+            -6.0087993915658444e-05,
+            0.0002536907559260726,
+            -0.0003080746973864734,
+            0.27007031440734863
+          ],
+          [
+            4.4,
+            9.769962616701378e-16,
+            0.0,
+            0.0,
+            0.0,
+            0.3
+          ],
+          [
+            4.4,
+            9.769962616701378e-16,
+            0.0,
+            0.0,
+            0.0,
+            0.3
+          ],
+          [
+            4.4,
+            9.769962616701378e-16,
+            0.0,
+            0.0,
+            0.0,
+            0.3
+          ]
+        ],
+        "segment": 0,
+        "world_origin": [
+          16.5,
+          7.0,
+          13.0
+        ],
+        "world_frame": [
+          [
+            2.220446049250313e-16,
+            -1.0,
+            0.0
+          ],
+          [
+            1.0,
+            2.220446049250313e-16,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "segment_start": 0.0,
+        "local_origin": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "start_rotation": [
+          [
+            2.220446049250313e-16,
+            1.0,
+            0.0
+          ],
+          [
+            -1.0,
+            2.220446049250313e-16,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      {
+        "status": "segment_started",
+        "segment": 1,
+        "sim_time": 21.2,
+        "measured_origin": [
+          16.495710372924805,
+          11.41327953338623,
+          12.991080284118652
+        ],
+        "goal": [
+          16.5,
+          15.8,
+          13.0
+        ],
+        "world_frame": [
+          [
+            0.0009778660520824989,
+            -0.9999995218888779,
+            0.0
+          ],
+          [
+            0.9999995218888779,
+            0.0009778660520824989,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      {
+        "status": "accepted",
+        "scan_time": 21.853,
+        "activation_time": 21.888,
+        "fresh": true,
+        "feasible": true,
+        "observed_clearance": {
+          "minimum_known_m": 3.111154079437256,
+          "known_fraction": 0.391828328371048,
+          "observed_violation": false,
+          "minimum_observed_support": true,
+          "collision_certified": false,
+          "unknown_policy": "unknown is not free; partial observed guard only"
+        },
+        "controls": [
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.43854618072509766,
+            -0.18267428874969482,
+            0.0003083279589191079,
+            5.9095240430906415e-05,
+            -0.002243193332105875,
+            0.03062250465154648
+          ],
+          [
+            1.0966423749923706,
+            -0.3625563979148865,
+            0.001770227449014783,
+            -0.0007009577821008861,
+            -0.005061645992100239,
+            0.0759613886475563
+          ],
+          [
+            1.7545968294143677,
+            -0.40589606761932373,
+            0.003086268901824951,
+            -0.0014976991806179285,
+            -0.007795622572302818,
+            0.12135905027389526
+          ],
+          [
+            2.631986618041992,
+            -0.398152619600296,
+            0.00472553726285696,
+            -0.002390313893556595,
+            -0.01163277868181467,
+            0.18193939328193665
+          ],
+          [
+            3.2900350093841553,
+            -0.36469149589538574,
+            0.006268042139708996,
+            -0.0030830414034426212,
+            -0.01449563167989254,
+            0.22731246054172516
+          ],
+          [
+            3.94812273979187,
+            -0.18358995020389557,
+            0.0075592524372041225,
+            -0.0037109768018126488,
+            -0.017264289781451225,
+            0.2726101875305176
+          ],
+          [
+            4.386722563954619,
+            2.0661500489942054e-16,
+            0.008919715881347656,
+            -0.004663768554836106,
+            -0.01874406214198343,
+            0.3025062444536747
+          ],
+          [
+            4.386722563954619,
+            2.0661500489942054e-16,
+            0.008919715881347656,
+            -0.004663768554836106,
+            -0.01874406214198343,
+            0.3025062444536747
+          ],
+          [
+            4.386722563954619,
+            2.0661500489942054e-16,
+            0.008919715881347656,
+            -0.004663768554836106,
+            -0.01874406214198343,
+            0.3025062444536747
+          ]
+        ],
+        "segment": 1,
+        "world_origin": [
+          16.495710372924805,
+          11.41327953338623,
+          12.991080284118652
+        ],
+        "world_frame": [
+          [
+            0.0009778660520824989,
+            -0.9999995218888779,
+            0.0
+          ],
+          [
+            0.9999995218888779,
+            0.0009778660520824989,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "segment_start": 21.2,
+        "local_origin": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "start_rotation": [
+          [
+            0.29403642221974835,
+            0.95577036416486,
+            0.006752287936752868
+          ],
+          [
+            -0.9555997182827495,
+            0.2941117647270901,
+            -0.01809553168731883
+          ],
+          [
+            -0.019281100231569304,
+            -0.0011317390546217321,
+            0.999813461772031
+          ]
+        ]
+      },
+      {
+        "status": "segment_started",
+        "segment": 2,
+        "sim_time": 42.4,
+        "measured_origin": [
+          16.491849899291992,
+          15.811333656311035,
+          12.990921020507812
+        ],
+        "goal": [
+          16.5,
+          20.2,
+          13.0
+        ],
+        "world_frame": [
+          [
+            0.0018570759351444477,
+            -0.9999982756329988,
+            0.0
+          ],
+          [
+            0.9999982756329988,
+            0.0018570759351444477,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      {
+        "status": "accepted",
+        "scan_time": 43.051,
+        "activation_time": 43.085,
+        "fresh": true,
+        "feasible": true,
+        "observed_clearance": {
+          "minimum_known_m": 3.635080099105835,
+          "known_fraction": 0.1213991716504097,
+          "observed_violation": false,
+          "minimum_observed_support": true,
+          "collision_certified": false,
+          "unknown_policy": "unknown is not free; partial observed guard only"
+        },
+        "controls": [
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.43883320689201355,
+            -0.14445045590400696,
+            0.00030690740095451474,
+            -8.168927161023021e-05,
+            -0.0022430880926549435,
+            0.03062213957309723
+          ],
+          [
+            1.0971158742904663,
+            -0.285055547952652,
+            0.0016979161882773042,
+            -0.0007426143856719136,
+            -0.005054794251918793,
+            0.0759262815117836
+          ],
+          [
+            1.755450963973999,
+            -0.3223758637905121,
+            0.003044082783162594,
+            -0.0015626945532858372,
+            -0.007809754461050034,
+            0.1213877946138382
+          ],
+          [
+            2.6331605911254883,
+            -0.3133648633956909,
+            0.004715310875326395,
+            -0.002425563056021929,
+            -0.011635955423116684,
+            0.1819266974925995
+          ],
+          [
+            3.291513442993164,
+            -0.2851523458957672,
+            0.006261318456381559,
+            -0.0031346501782536507,
+            -0.014477664604783058,
+            0.22725482285022736
+          ],
+          [
+            3.949828624725342,
+            -0.14322274923324585,
+            0.0075621348805725574,
+            -0.0037742434069514275,
+            -0.017262225970625877,
+            0.2725680470466614
+          ],
+          [
+            4.388673911373436,
+            5.256098570111495e-17,
+            0.0090789794921875,
+            -0.004663538270890499,
+            -0.018742133708888886,
+            0.3025065436984757
+          ],
+          [
+            4.388673911373436,
+            5.256098570111495e-17,
+            0.0090789794921875,
+            -0.004663538270890499,
+            -0.018742133708888886,
+            0.3025065436984757
+          ],
+          [
+            4.388673911373436,
+            5.256098570111495e-17,
+            0.0090789794921875,
+            -0.004663538270890499,
+            -0.018742133708888886,
+            0.3025065436984757
+          ]
+        ],
+        "segment": 2,
+        "world_origin": [
+          16.491849899291992,
+          15.811333656311035,
+          12.990921020507812
+        ],
+        "world_frame": [
+          [
+            0.0018570759351444477,
+            -0.9999982756329988,
+            0.0
+          ],
+          [
+            0.9999982756329988,
+            0.0018570759351444477,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "segment_start": 42.4,
+        "local_origin": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "start_rotation": [
+          [
+            0.5640285542117996,
+            0.8256708212908461,
+            0.011810372671785968
+          ],
+          [
+            -0.8255301949877379,
+            0.5641510567436607,
+            -0.01528012887766836
+          ],
+          [
+            -0.01927919078317892,
+            -0.001131390255576065,
+            0.999813498988104
+          ]
+        ]
+      },
+      {
+        "status": "segment_started",
+        "segment": 3,
+        "sim_time": 63.6,
+        "measured_origin": [
+          16.488828659057617,
+          20.208166122436523,
+          12.990926742553711
+        ],
+        "goal": [
+          12.1,
+          20.2,
+          13.0
+        ],
+        "world_frame": [
+          [
+            -0.9999982689747676,
+            0.001860657805336657,
+            0.0
+          ],
+          [
+            -0.001860657805336657,
+            -0.9999982689747676,
+            -0.0
+          ],
+          [
+            -0.0,
+            0.0,
+            1.0000000000000002
+          ]
+        ]
+      },
+      {
+        "status": "accepted",
+        "scan_time": 64.251,
+        "activation_time": 64.286,
+        "fresh": true,
+        "feasible": true,
+        "observed_clearance": {
+          "minimum_known_m": 3.268787145614624,
+          "known_fraction": 0.8345090746879578,
+          "observed_violation": false,
+          "minimum_observed_support": true,
+          "collision_certified": false,
+          "unknown_policy": "unknown is not free; partial observed guard only"
+        },
+        "controls": [
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.4394191801548004,
+            0.7007718086242676,
+            0.002857043407857418,
+            -0.0010958572383970022,
+            -0.002324426546692848,
+            0.030882688239216805
+          ],
+          [
+            1.09408438205719,
+            1.2578203678131104,
+            0.002835034392774105,
+            0.000766684883274138,
+            -0.0042395745404064655,
+            0.07507474720478058
+          ],
+          [
+            1.7562259435653687,
+            1.5193760395050049,
+            0.004736221395432949,
+            -0.0005700838519260287,
+            -0.00863501988351345,
+            0.12153252959251404
+          ],
+          [
+            2.6325225830078125,
+            1.5073212385177612,
+            0.006280198227614164,
+            -0.001445806585252285,
+            -0.011646167375147343,
+            0.1813250333070755
+          ],
+          [
+            3.2892274856567383,
+            1.3285279273986816,
+            0.003972006496042013,
+            -0.004392636939883232,
+            -0.01078537292778492,
+            0.22707751393318176
+          ],
+          [
+            3.9456980228424072,
+            0.7129592895507812,
+            0.006640338804572821,
+            -0.004394755698740482,
+            -0.016617871820926666,
+            0.2721741497516632
+          ],
+          [
+            4.388836256243919,
+            -6.107594611344484e-16,
+            0.009073257446289064,
+            -0.00466158268395922,
+            -0.0187436589169363,
+            0.30251206723190127
+          ],
+          [
+            4.388836256243919,
+            -6.107594611344484e-16,
+            0.009073257446289064,
+            -0.00466158268395922,
+            -0.0187436589169363,
+            0.30251206723190127
+          ],
+          [
+            4.388836256243919,
+            -6.107594611344484e-16,
+            0.009073257446289064,
+            -0.00466158268395922,
+            -0.0187436589169363,
+            0.30251206723190127
+          ]
+        ],
+        "segment": 3,
+        "world_origin": [
+          16.488828659057617,
+          20.208166122436523,
+          12.990926742553711
+        ],
+        "world_frame": [
+          [
+            -0.9999982689747676,
+            0.001860657805336657,
+            0.0
+          ],
+          [
+            -0.001860657805336657,
+            -0.9999982689747676,
+            -0.0
+          ],
+          [
+            -0.0,
+            0.0,
+            1.0000000000000002
+          ]
+        ],
+        "segment_start": 63.6,
+        "local_origin": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "start_rotation": [
+          [
+            -0.6248875448149693,
+            0.7806349354220842,
+            -0.011164852604424543
+          ],
+          [
+            -0.7804766721096288,
+            -0.6249862494932246,
+            -0.01575919531803966
+          ],
+          [
+            -0.019280057774785857,
+            -0.0011338178652535718,
+            0.9998134795196801
+          ]
+        ]
+      },
+      {
+        "status": "segment_started",
+        "segment": 4,
+        "sim_time": 84.8,
+        "measured_origin": [
+          12.086780548095703,
+          20.20429039001465,
+          12.990966796875
+        ],
+        "goal": [
+          7.7,
+          20.2,
+          13.0
+        ],
+        "world_frame": [
+          [
+            -0.9999995217318932,
+            0.0009780265768150687,
+            0.0
+          ],
+          [
+            -0.0009780265768150687,
+            -0.9999995217318932,
+            -0.0
+          ],
+          [
+            -0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      {
+        "status": "accepted",
+        "scan_time": 85.45100000000001,
+        "activation_time": 85.485,
+        "fresh": true,
+        "feasible": true,
+        "observed_clearance": {
+          "minimum_known_m": 2.0207724571228027,
+          "known_fraction": 0.9999999403953552,
+          "observed_violation": false,
+          "minimum_observed_support": true,
+          "collision_certified": false,
+          "unknown_policy": "unknown is not free; partial observed guard only"
+        },
+        "controls": [
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.4414480924606323,
+            0.8527296185493469,
+            0.006382237188518047,
+            -0.00465277349576354,
+            -0.0027125629130750895,
+            0.03149573877453804
+          ],
+          [
+            1.087716817855835,
+            1.2919546365737915,
+            0.0019502314971759915,
+            0.003122651483863592,
+            -0.004452085122466087,
+            0.07408440113067627
+          ],
+          [
+            1.7581331729888916,
+            1.8163728713989258,
+            0.006628234405070543,
+            0.00031768472399562597,
+            -0.010767001658678055,
+            0.12181475013494492
+          ],
+          [
+            2.6302883625030518,
+            1.8381273746490479,
+            0.007197164930403233,
+            -3.369082696735859e-05,
+            -0.013117560185492039,
+            0.1801687330007553
+          ],
+          [
+            3.28389310836792,
+            1.4246037006378174,
+            -0.002167121507227421,
+            -0.006198890972882509,
+            -0.007050969172269106,
+            0.22741062939167023
+          ],
+          [
+            3.9359142780303955,
+            0.8697162866592407,
+            0.00216086907312274,
+            -0.005083099938929081,
+            -0.017166143283247948,
+            0.27135056257247925
+          ],
+          [
+            4.386782646153935,
+            -5.326529853042963e-16,
+            0.009033203125,
+            -0.004662711533977987,
+            -0.018743797017322983,
+            0.30250769684504897
+          ],
+          [
+            4.386782646153935,
+            -5.326529853042963e-16,
+            0.009033203125,
+            -0.004662711533977987,
+            -0.018743797017322983,
+            0.30250769684504897
+          ],
+          [
+            4.386782646153935,
+            -5.326529853042963e-16,
+            0.009033203125,
+            -0.004662711533977987,
+            -0.018743797017322983,
+            0.30250769684504897
+          ]
+        ],
+        "segment": 4,
+        "world_origin": [
+          12.086780548095703,
+          20.20429039001465,
+          12.990966796875
+        ],
+        "world_frame": [
+          [
+            -0.9999995217318932,
+            0.0009780265768150687,
+            0.0
+          ],
+          [
+            -0.0009780265768150687,
+            -0.9999995217318932,
+            -0.0
+          ],
+          [
+            -0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "segment_start": 84.8,
+        "local_origin": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "start_rotation": [
+          [
+            -0.36550591351593953,
+            0.9307897182446748,
+            -0.005993963202885394
+          ],
+          [
+            -0.9306093102474998,
+            -0.3655533030998527,
+            -0.018360127272434152
+          ],
+          [
+            -0.01928053073831908,
+            -0.0011326971290938868,
+            0.9998134716694221
+          ]
+        ]
+      }
+    ],
+    "accepted_plans": 5,
+    "guard_interventions": 0,
+    "position_only": false,
+    "executed_model_reference": true,
+    "contract": "Surveyed mission goals; bounded measured world nvblox map, fresh local history and frozen DiT per 20-second stationary-start leg. Rigid coordinate changes only; no local path repair or expert fallback.",
+    "legs": [
+      {
+        "mode": "sdf_pose",
+        "failed": false,
+        "failure_reason": null,
+        "accepted_plans": 1,
+        "guard_interventions": 0,
+        "submitted_scans": 627,
+        "dropped_scans": 0,
+        "deadline_misses_100ms": 30,
+        "plan_attempts": 1,
+        "max_stationary_plan_attempts": 3,
+        "response_seconds": {
+          "median": 0.01944984200235922,
+          "p95": 0.05018393700229229,
+          "maximum": 3.9164795739998226
+        },
+        "map_seconds": {
+          "median": 0.005864416001713835,
+          "p95": 0.009527881002577487,
+          "maximum": 0.04880166800285224
+        },
+        "goal_rpy": [
+          0.0,
+          0.0,
+          -1.2707963267948963
+        ],
+        "executed_model_reference": true,
+        "position_only": false,
+        "contract": "static environment; stationary-start full 20s position and attitude spline; continued measured-map monitoring; no geometric path repair",
+        "safety_scope": "Observed ESDF only, unknown space is not certified free; actual contacts evaluated independently"
+      },
+      {
+        "mode": "sdf_pose",
+        "failed": false,
+        "failure_reason": null,
+        "accepted_plans": 1,
+        "guard_interventions": 0,
+        "submitted_scans": 626,
+        "dropped_scans": 2,
+        "deadline_misses_100ms": 25,
+        "plan_attempts": 1,
+        "max_stationary_plan_attempts": 3,
+        "response_seconds": {
+          "median": 0.019676608499139547,
+          "p95": 0.03797152524930425,
+          "maximum": 0.2819020430033561
+        },
+        "map_seconds": {
+          "median": 0.006073489999835147,
+          "p95": 0.009824891249081702,
+          "maximum": 0.014593856998544652
+        },
+        "goal_rpy": [
+          0.0,
+          0.0,
+          -0.9698184605869712
+        ],
+        "executed_model_reference": true,
+        "position_only": false,
+        "contract": "static environment; stationary-start full 20s position and attitude spline; continued measured-map monitoring; no geometric path repair",
+        "safety_scope": "Observed ESDF only, unknown space is not certified free; actual contacts evaluated independently"
+      },
+      {
+        "mode": "sdf_pose",
+        "failed": false,
+        "failure_reason": null,
+        "accepted_plans": 1,
+        "guard_interventions": 0,
+        "submitted_scans": 644,
+        "dropped_scans": 17,
+        "deadline_misses_100ms": 94,
+        "plan_attempts": 1,
+        "max_stationary_plan_attempts": 3,
+        "response_seconds": {
+          "median": 0.021053686999948695,
+          "p95": 0.2160875233501429,
+          "maximum": 0.29432667000219226
+        },
+        "map_seconds": {
+          "median": 0.006564611499925377,
+          "p95": 0.009218436599621783,
+          "maximum": 0.02595291599573102
+        },
+        "goal_rpy": [
+          0.0,
+          0.0,
+          -0.6689392497923246
+        ],
+        "executed_model_reference": true,
+        "position_only": false,
+        "contract": "static environment; stationary-start full 20s position and attitude spline; continued measured-map monitoring; no geometric path repair",
+        "safety_scope": "Observed ESDF only, unknown space is not certified free; actual contacts evaluated independently"
+      },
+      {
+        "mode": "sdf_pose",
+        "failed": false,
+        "failure_reason": null,
+        "accepted_plans": 1,
+        "guard_interventions": 0,
+        "submitted_scans": 632,
+        "dropped_scans": 6,
+        "deadline_misses_100ms": 135,
+        "plan_attempts": 1,
+        "max_stationary_plan_attempts": 3,
+        "response_seconds": {
+          "median": 0.0291851410001982,
+          "p95": 0.21355763605206446,
+          "maximum": 0.623563583001669
+        },
+        "map_seconds": {
+          "median": 0.006951618499442702,
+          "p95": 0.009619307100729202,
+          "maximum": 0.016043129995523486
+        },
+        "goal_rpy": [
+          0.0,
+          0.0,
+          -1.9434533124687459
+        ],
+        "executed_model_reference": true,
+        "position_only": false,
+        "contract": "static environment; stationary-start full 20s position and attitude spline; continued measured-map monitoring; no geometric path repair",
+        "safety_scope": "Observed ESDF only, unknown space is not certified free; actual contacts evaluated independently"
+      },
+      {
+        "mode": "sdf_pose",
+        "failed": false,
+        "failure_reason": null,
+        "accepted_plans": 1,
+        "guard_interventions": 0,
+        "submitted_scans": 684,
+        "dropped_scans": 19,
+        "deadline_misses_100ms": 134,
+        "plan_attempts": 1,
+        "max_stationary_plan_attempts": 3,
+        "response_seconds": {
+          "median": 0.02974342100060312,
+          "p95": 0.2115936679947481,
+          "maximum": 0.24076976400101557
+        },
+        "map_seconds": {
+          "median": 0.007401275001029717,
+          "p95": 0.009867943351127905,
+          "maximum": 0.022269834000326227
+        },
+        "goal_rpy": [
+          0.0,
+          0.0,
+          -1.6425706803225282
+        ],
+        "executed_model_reference": true,
+        "position_only": false,
+        "contract": "static environment; stationary-start full 20s position and attitude spline; continued measured-map monitoring; no geometric path repair",
+        "safety_scope": "Observed ESDF only, unknown space is not certified free; actual contacts evaluated independently"
+      }
+    ]
+  },
+  "scan_summary": {
+    "count": 3213,
+    "retained_map_scans": 2586,
+    "segments": [
+      {
+        "segment": 0,
+        "scans": 627,
+        "map_retained": false
+      },
+      {
+        "segment": 1,
+        "scans": 626,
+        "map_retained": true
+      },
+      {
+        "segment": 2,
+        "scans": 644,
+        "map_retained": true
+      },
+      {
+        "segment": 3,
+        "scans": 632,
+        "map_retained": true
+      },
+      {
+        "segment": 4,
+        "scans": 684,
+        "map_retained": true
+      }
+    ]
+  },
+  "raw_report": {
+    "path": "results/factory_weave/recording_synchronized/report.json",
+    "sha256": "5a68e00deff009a73aca943e57785caba04c7302878abe23b7d47fc1178eb11f",
+    "scans_omitted_from_compact_copy": true
+  },
+  "measured_distance_m": 25.512300302090736
+}

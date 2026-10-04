@@ -212,6 +212,7 @@ def arguments(argv=None):
     parser.add_argument("--scene", default="scene_hnuter.usda")
     parser.add_argument("--mode", choices=("baseline", "online", "temporal", "sdf"), default="online")
     parser.add_argument("--sdf-checkpoint", type=Path)
+    parser.add_argument("--factory-mission", type=Path, help="Surveyed waypoint mission executed by stationary-start local SDF DiT plans")
     parser.add_argument("--sdf-goal-rpy", type=float, nargs=3, default=(.08,-.06,.25))
     parser.add_argument("--sdf-scene-index", type=int, help="Author two static evaluation obstacles; goal is set from this held-out scenario")
     parser.add_argument("--temporal-checkpoint", type=Path,
@@ -231,12 +232,22 @@ def arguments(argv=None):
     parser.add_argument("--capture-views", action="store_true")
     parser.add_argument("--record-video", action="store_true", help="Record actual rendered frames and a physics-clock manifest")
     parser.add_argument("--demo-perception", action="store_true", help="Record both cameras and timestamped measured LiDAR/nvblox visualization data")
+    parser.add_argument("--recording-perception-barrier", action="store_true", help="Offline SDF recording only: hold physics fixed after wall stalls until a fresh current-state map arrives (max 300 ms)")
     parser.add_argument("--profile-loop", action="store_true", help="Measure host wall time of each loop phase, including synchronization waits")
     parser.add_argument("--video-fps", type=int, choices=(10, 20), default=10, help="Frames per simulation second")
     parser.add_argument("--real-time", action="store_true", help="Throttle only when simulation is faster than wall time")
     args = parser.parse_args(argv)
+    if args.factory_mission:
+        if args.mode!='sdf' or args.sdf_scene_index is not None or args.goal is not None or args.dynamic_obstacle:
+            parser.error('factory mission requires sdf mode without fixture, goal override or dynamic obstacles')
+        from hnuter_dit.factory_tour import load_mission
+        args.factory_data=load_mission(args.factory_mission)
+        args.goal=args.factory_data['waypoints'][-1]
+        args.sdf_goal_rpy=[0.,0.,args.factory_data['goal_yaws'][-1]]
     if args.demo_perception and (not args.record_video or args.mode != "sdf"):
         parser.error("--demo-perception requires --record-video --mode sdf")
+    if args.recording_perception_barrier and (not args.demo_perception or not args.headless):
+        parser.error('--recording-perception-barrier requires headless SDF perception recording')
     if not math.isfinite(args.duration) or args.duration < DT:
         parser.error("duration must be finite and at least 0.001 seconds")
     if not np.isfinite([args.max_speed,args.max_acceleration]).all() or min(args.max_speed,args.max_acceleration)<=0:
@@ -283,6 +294,8 @@ def main(argv=None):
         for path in (root/'hnuter_dit').glob('*.py')}
     app = planner = bridge = capture = video = contacts = obstacle = ns = timeline = last_frame = goal_progress = None
     rows, lidar_summary = [], []
+    report['recording_perception_barrier']=dict(enabled=args.recording_perception_barrier,waits=[],
+        scope='Offline recording pacing only; physics stays fixed until a new current-state map arrives. Normal 400 ms freshness guard unchanged.')
     demo = profiler = None
     if args.profile_loop:
         from hnuter_dit.demo_capture import LoopProfiler
@@ -327,6 +340,14 @@ def main(argv=None):
         robot.GetVariantSet("Physics").SetVariantSelection("mujoco")
         authored_origin = np.asarray(UsdGeom.XformCache().GetLocalToWorldTransform(
             usd_stage.GetPrimAtPath(ROBOT_PATH + "/Geometry/drone")).ExtractTranslation(), dtype=float)
+        if args.factory_mission:
+            from pxr import Gf
+            requested_start=np.asarray(args.factory_data['start_position'])
+            translation=robot.GetAttribute('xformOp:translate')
+            translation.Set(Gf.Vec3d(*(np.asarray(translation.Get())+requested_start-authored_origin)))
+            authored_origin=requested_start
+            report['factory_mission']=args.factory_data
+            report['initialization_scope']='Start pose authored before Newton initialization; no runtime robot pose writes'
         if args.sdf_scene_index is not None:
             from hnuter_dit.sdf_data import scenario
             from pxr import Gf, UsdPhysics
@@ -385,7 +406,11 @@ def main(argv=None):
                                max_acceleration=args.max_acceleration)
         if args.mode == 'sdf':
             from hnuter_dit.sdf_online import SDFOnlinePlanner
-            planner = SDFOnlinePlanner(checkpoint=args.sdf_checkpoint, goal_rpy=args.sdf_goal_rpy, **planner_options)
+            if args.factory_mission:
+                from hnuter_dit.factory_tour import FactorySDFPlanner
+                planner=FactorySDFPlanner(mission=args.factory_data,checkpoint=args.sdf_checkpoint,**planner_options)
+            else:
+                planner = SDFOnlinePlanner(checkpoint=args.sdf_checkpoint, goal_rpy=args.sdf_goal_rpy, **planner_options)
             planner.record_visualization = args.demo_perception
             report['sdf_checkpoint'] = str(args.sdf_checkpoint)
         elif args.mode == 'temporal':
@@ -407,7 +432,7 @@ def main(argv=None):
             capture = ViewCapture()
         if args.demo_perception:
             from hnuter_dit.demo_capture import configure_demo_camera
-            report["demo_camera"] = configure_demo_camera(usd_stage)
+            report["demo_camera"] = configure_demo_camera(usd_stage, factory=bool(args.factory_mission))
         if args.record_video:
             from hnuter_dit.flight_video import FlightVideoCapture
             video = FlightVideoCapture(output / 'video', fps=args.video_fps, physics_dt=DT, camera=args.camera)
@@ -463,7 +488,8 @@ def main(argv=None):
             # Keep the standard 10 Hz simulation cadence. SDF also refreshes
             # after 100 ms wall time if physics/rendering runs slower, so a
             # nominal simulated rate cannot silently become stale sensing.
-            if step % 100 == 0 or (args.mode == 'sdf' and time.monotonic()-last_sensor_wall >= .1):
+            recording_refresh=args.recording_perception_barrier and planner.recording_refresh_required()
+            if step % 100 == 0 or (args.mode == 'sdf' and time.monotonic()-last_sensor_wall >= .1) or recording_refresh:
                 capture_wall = time.perf_counter()
                 last_sensor_wall = time.monotonic()
                 frame = lidar.capture(state, sim_time)
@@ -480,6 +506,15 @@ def main(argv=None):
                                       "capture_wall_seconds": capture_wall-wall_start,
                                       "capture_seconds": raycast_seconds[-1]})
             if profiler: profiler.mark("sensor_capture_and_submission")
+            # If age crosses the threshold after a skipped sensor check, the
+            # next loop captures a new frame; never reuse an earlier pose here.
+            if (args.recording_perception_barrier and last_frame is not None
+                    and abs(last_frame.sim_time-sim_time)<1e-8 and planner.recording_refresh_required()):
+                began=time.perf_counter()
+                planner.wait_for_recorded_observation(frame,state,sim_time,capture_wall)
+                if ns.simulation_step_count!=step:raise RuntimeError('Recording barrier advanced physics')
+                report['recording_perception_barrier']['waits'].append(dict(step=step,sim_time=sim_time,wall_seconds=time.perf_counter()-began))
+            if profiler:profiler.mark('recording_perception_wait')
             desired = planner.command(state, sim_time)
             controller.set_desired_state(desired)
             if obstacle:
@@ -548,6 +583,13 @@ def main(argv=None):
                 if delay > 0:
                     time.sleep(delay)
             if profiler: profiler.mark("progress_and_pacing")
+            if args.factory_mission:
+                if planner.failed or contacts.first_collision is not None:
+                    report['stop_reason']='factory_planning_or_contact_failure'
+                    break
+                if planner.completed_time is not None and step*DT-planner.completed_time>=2. and step%100==0:
+                    report['stop_reason']='factory_mission_complete_and_held'
+                    break
         if ns.simulation_step_count != step:
             raise RuntimeError("Final physics step count differs from controlled steps")
         final = bridge.read_state()
@@ -556,7 +598,7 @@ def main(argv=None):
             goal_progress.observe(final, step * DT, collided=contacts.first_collision is not None)
         errors = np.array([row["tracking_error_m"] for row in rows])
         collision = contacts.report()
-        report.update(completed=step == target_steps, steps=step, simulation_seconds=step * DT,
+        report.update(completed=(planner.completed_time is not None and not planner.failed) if args.factory_mission else step == target_steps, steps=step, simulation_seconds=step * DT,
                       actual_integrated_seconds=ns.sim_time, loop_wall_seconds=time.monotonic() - wall_start,
                       final_position=final["position"].tolist(), final_quaternion=final["quaternion"].tolist(),
                       final_velocity=final["velocity"].tolist(),

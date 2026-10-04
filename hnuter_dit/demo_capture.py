@@ -71,7 +71,8 @@ class PerceptionDemoCapture:
             sensor_response_seconds=last.get('sensor_to_response_wall_seconds') if last else None,
             map_seconds=last.get('map_seconds') if last else None,
             observed_clearance=last.get('observed_clearance') if last else None,
-            accepted_plans=len(planner.raw_paths), guard_interventions=planner.guard_interventions))
+            accepted_plans=len(planner.raw_paths), guard_interventions=planner.guard_interventions,
+            mapping_context={key:last[key] for key in ('segment','world_origin','world_frame','segment_start','map_local_scan_time') if key in last} if last else None))
 
     def close(self):
         camera=self.video.close()
@@ -82,8 +83,8 @@ class PerceptionDemoCapture:
         return dict(manifest=str(path),manifest_sha256=hashlib.sha256(path.read_bytes()).hexdigest(),camera=camera)
 
 
-def configure_demo_camera(stage):
-    """Session-only camera framing on the clear side of static fixture 100.
+def configure_demo_camera(stage, factory=False):
+    """Session-only camera framing for the static fixture or factory aisle.
 
     The original forward/right camera can sit inside a test obstacle. Only a
     camera child transform and lens are overridden; robot/obstacle poses and
@@ -91,10 +92,10 @@ def configure_demo_camera(stage):
     """
     from pxr import Gf, Usd, UsdGeom
     from tools.viewport_camera import FOLLOW_CAMERA
-    position=(-3.,1.5,2.2)
+    position=(-2.,0.,1.4) if factory else (-3.,1.5,2.2)
     with Usd.EditContext(stage, stage.GetSessionLayer()):
         camera=UsdGeom.Camera(stage.GetPrimAtPath(FOLLOW_CAMERA))
         transform=Gf.Matrix4d().SetLookAt(Gf.Vec3d(*position),Gf.Vec3d(0,0,0),Gf.Vec3d(0,0,1)).GetInverse()
         camera.GetPrim().GetAttribute('xformOp:transform').Set(transform)
-        camera.GetFocalLengthAttr().Set(24.)
-    return dict(local_position=position,look_at=[0,0,0],focal_length_mm=24.,scope='session-only visualization; no physical pose writes')
+        camera.GetFocalLengthAttr().Set(18. if factory else 24.)
+    return dict(local_position=position,look_at=[0,0,0],focal_length_mm=18. if factory else 24.,scope='session-only visualization; no physical pose writes')

@@ -1,0 +1,30 @@
+{
+  "schema": "hnuter_factory_video_qa_v1",
+  "passed": true,
+  "report_sha256": "5a68e00deff009a73aca943e57785caba04c7302878abe23b7d47fc1178eb11f",
+  "manifest_sha256": "cfd3e2bc66d9f2df173767fc496daf2cdb9ea3708dbec753840efb8608b71a4f",
+  "checked_frames": 1081,
+  "steps": 108000,
+  "simulation_seconds": 108.0,
+  "measured_distance_m": 25.512300302090736,
+  "accepted_legs": 5,
+  "rejected_attempts": 0,
+  "segment_activation_times": [
+    0.6910000000000001,
+    21.888,
+    43.085,
+    64.286,
+    85.485
+  ],
+  "final_goal_distance_m": 0.01670005105306071,
+  "final_goal_angle_rad": 0.019471256478368268,
+  "recording_perception_wait_count": 532,
+  "recording_perception_wait_seconds": 7.785249207954621,
+  "checkpoint_sha256": "6e0da29b562b433bc1813b2f632cdd1f0a420705b003767ae32ce31e94745192",
+  "checks": "Every camera state equals the physical log exactly; both cameras synchronized; perception timestamps causal; complete physical contact checks; all mission legs accepted without execution guard intervention.",
+  "mp4": {
+    "sha256": "f9e9c4df4f6bc9c642d6489c40978200c3f08899fa86ea933a047739245e4f14",
+    "decoded_frames": 1081,
+    "decode_exit_code": 0
+  }
+}
