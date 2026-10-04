@@ -1,5 +1,7 @@
 # Static obstacles: GPU distance-field history and learned pose trajectories
 
+录像与分段性能分析追加见 [STATIC_SDF_DEMO.md](STATIC_SDF_DEMO.md)。
+
 ## 本轮最终实测（2026-10-04）
 
 已实现 **MID-360 实测回波 → 官方 nvblox GPU TSDF/ESDF → 局部距离场与短期观测历史编码 →

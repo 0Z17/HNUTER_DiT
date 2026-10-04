@@ -1,0 +1,29 @@
+{
+  "passed": true,
+  "physics_steps": 24000,
+  "zero_contact_steps": 24000,
+  "frame_count": 241,
+  "first_simulation_time": 0,
+  "last_simulation_time": 24,
+  "maximum_frame_physics_position_difference_m": 0.0,
+  "unique_rgb_frames": 241,
+  "final_goal_distance_m": 0.015730931874587517,
+  "final_goal_angle_rad": 0.017531031393805185,
+  "loop_wall_seconds": 92.96442667899828,
+  "checkpoint_sha256": "6e0da29b562b433bc1813b2f632cdd1f0a420705b003767ae32ce31e94745192",
+  "tests": "22 targeted tests passed",
+  "sensor_timestamps_causal": true,
+  "pose_replay": false,
+  "mp4_sha256": "9a1e548a370200924828df8214bf2c95fc783d9f8242208174dc89454f6feed4",
+  "full_mp4_decode_exit_code": 0,
+  "decoded_frames": 241,
+  "visually_inspected_frames": [
+    0,
+    50,
+    80,
+    150,
+    240
+  ],
+  "visual_findings": "Clear drone/red propellers in rear/upper views; synchronized FPV, measured point returns and nvblox observed/unknown slice; full warmup and terminal hold retained.",
+  "test_log_sha256": "5256bde336ef308ac6e13f8b1953da378fbf7cab7583c1474ee49a99657d1d49"
+}

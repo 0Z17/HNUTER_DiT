@@ -230,9 +230,13 @@ def arguments(argv=None):
     parser.add_argument("--camera", choices=("follow", "fpv"), default="follow")
     parser.add_argument("--capture-views", action="store_true")
     parser.add_argument("--record-video", action="store_true", help="Record actual rendered frames and a physics-clock manifest")
+    parser.add_argument("--demo-perception", action="store_true", help="Record both cameras and timestamped measured LiDAR/nvblox visualization data")
+    parser.add_argument("--profile-loop", action="store_true", help="Measure host wall time of each loop phase, including synchronization waits")
     parser.add_argument("--video-fps", type=int, choices=(10, 20), default=10, help="Frames per simulation second")
     parser.add_argument("--real-time", action="store_true", help="Throttle only when simulation is faster than wall time")
     args = parser.parse_args(argv)
+    if args.demo_perception and (not args.record_video or args.mode != "sdf"):
+        parser.error("--demo-perception requires --record-video --mode sdf")
     if not math.isfinite(args.duration) or args.duration < DT:
         parser.error("duration must be finite and at least 0.001 seconds")
     if not np.isfinite([args.max_speed,args.max_acceleration]).all() or min(args.max_speed,args.max_acceleration)<=0:
@@ -279,6 +283,10 @@ def main(argv=None):
         for path in (root/'hnuter_dit').glob('*.py')}
     app = planner = bridge = capture = video = contacts = obstacle = ns = timeline = last_frame = goal_progress = None
     rows, lidar_summary = [], []
+    demo = profiler = None
+    if args.profile_loop:
+        from hnuter_dit.demo_capture import LoopProfiler
+        profiler = LoopProfiler()
     step = 0
     exit_code = 1
     wall_start = time.monotonic()
@@ -378,6 +386,7 @@ def main(argv=None):
         if args.mode == 'sdf':
             from hnuter_dit.sdf_online import SDFOnlinePlanner
             planner = SDFOnlinePlanner(checkpoint=args.sdf_checkpoint, goal_rpy=args.sdf_goal_rpy, **planner_options)
+            planner.record_visualization = args.demo_perception
             report['sdf_checkpoint'] = str(args.sdf_checkpoint)
         elif args.mode == 'temporal':
             from hnuter_dit.temporal_online import TemporalOnlinePlanner
@@ -396,9 +405,15 @@ def main(argv=None):
         if args.capture_views:
             from tools.capture_views import ViewCapture
             capture = ViewCapture()
+        if args.demo_perception:
+            from hnuter_dit.demo_capture import configure_demo_camera
+            report["demo_camera"] = configure_demo_camera(usd_stage)
         if args.record_video:
             from hnuter_dit.flight_video import FlightVideoCapture
             video = FlightVideoCapture(output / 'video', fps=args.video_fps, physics_dt=DT, camera=args.camera)
+            if args.demo_perception:
+                from hnuter_dit.demo_capture import PerceptionDemoCapture
+                demo = PerceptionDemoCapture(output / 'perception_video', fps=args.video_fps, primary_camera=args.camera)
         if not args.headless and not bind_camera(usd_stage, args.camera):
             raise RuntimeError(f"Could not bind {args.camera} camera")
         if not np.isclose(SimulationManager.get_physics_dt(), DT) or not np.isclose(ns.sim_dt, DT):
@@ -418,6 +433,9 @@ def main(argv=None):
                     raise RuntimeError("Video warmup unexpectedly advanced physics")
             video.save(physics_step=0, simulation_time=0., state=initial,
                        planner_status='history_warmup', goal_distance_m=float(np.linalg.norm(origin-goal)))
+            if demo:
+                demo.save(physics_step=0, simulation_time=0., state=initial, planner=planner,
+                          frame=None, goal=goal, collision_detected=False)
         report.update(initial_position=origin.tolist(), goal_position=goal.tolist(),
                       engine=SimulationManager.get_active_physics_engine(),
                       mujoco_version=mujoco.__version__, newton_version=newton.__version__,
@@ -432,6 +450,7 @@ def main(argv=None):
         last_sensor_wall = -np.inf
         raycast_seconds = []
         while app.is_running() and step < target_steps:
+            if profiler: profiler.begin(step * DT)
             if not timeline.is_playing():
                 report["stop_reason"] = "timeline_paused_or_stopped"
                 break
@@ -440,6 +459,7 @@ def main(argv=None):
             state = bridge.read_state()
             sim_time = step * DT
             goal_progress.observe(state, sim_time, collided=contacts.first_collision is not None)
+            if profiler: profiler.mark("state_read_and_loop_checks")
             # Keep the standard 10 Hz simulation cadence. SDF also refreshes
             # after 100 ms wall time if physics/rendering runs slower, so a
             # nominal simulated rate cannot silently become stale sensing.
@@ -459,11 +479,13 @@ def main(argv=None):
                                       "hits": len(frame.points), "rays": frame.rays_count,
                                       "capture_wall_seconds": capture_wall-wall_start,
                                       "capture_seconds": raycast_seconds[-1]})
+            if profiler: profiler.mark("sensor_capture_and_submission")
             desired = planner.command(state, sim_time)
             controller.set_desired_state(desired)
             if obstacle:
                 obstacle.apply(sim_time)
             bridge.apply(controller.command(state))
+            if profiler: profiler.mark("planner_poll_controller_and_actuation")
             goal_distance = float(np.linalg.norm(state["position"] - goal))
             if step % 10 == 0:
                 row = {"t": sim_time, "position": state["position"].tolist(),
@@ -482,12 +504,15 @@ def main(argv=None):
                 rows.append(row)
             if ns.simulation_step_count != step:
                 raise RuntimeError("Physics advanced outside the controlled loop")
+            if profiler: profiler.mark("telemetry")
             previous_time = ns.sim_time
             SimulationManager.step(steps=1)
             step += 1
             if ns.simulation_step_count != step or not np.isclose(ns.sim_time - previous_time, DT):
                 raise RuntimeError("Physics did not advance exactly one 1 ms step")
+            if profiler: profiler.mark("physics_step_and_validation")
             last_contact = contacts.sample(step * DT)
+            if profiler: profiler.mark("contact_readback")
             if video and video.due(step):
                 ns.update_fabric()
                 # Flush render readback while holding the integrated physical
@@ -502,11 +527,16 @@ def main(argv=None):
                                planner.events[-1]['status'] if planner.events else 'initializing'),
                            goal_distance_m=float(np.linalg.norm(video_state['position']-goal)),
                            collision_detected=contacts.first_collision is not None)
+                if demo:
+                    demo.save(physics_step=step, simulation_time=step*DT, state=video_state,
+                              planner=planner, frame=last_frame, goal=goal,
+                              collision_detected=contacts.first_collision is not None)
             elif not args.headless and step % 33 == 0:
                 ns.update_fabric()
                 app.update()
                 if ns.simulation_step_count != step:
                     raise RuntimeError("Viewport rendering unexpectedly advanced physics")
+            if profiler: profiler.mark("fabric_render_and_recording")
             if step % 1000 == 0:
                 print("INDUSTRIAL_PROGRESS " + json.dumps({"t": step * DT, "position": state["position"].tolist(),
                                                           "goal_distance_m": goal_distance,
@@ -517,6 +547,7 @@ def main(argv=None):
                 delay = wall_start + step * DT - time.monotonic()
                 if delay > 0:
                     time.sleep(delay)
+            if profiler: profiler.mark("progress_and_pacing")
         if ns.simulation_step_count != step:
             raise RuntimeError("Final physics step count differs from controlled steps")
         final = bridge.read_state()
@@ -569,12 +600,14 @@ def main(argv=None):
         exit_code = 1
         traceback.print_exc()
     finally:
-        for name, resource in (("planner", planner), ("capture", capture), ("video", video)):
+        if profiler is not None:
+            report["loop_profile"] = profiler.describe()
+        for name, resource in (("planner", planner), ("capture", capture), ("video", video), ("perception_video", demo)):
             if resource is None:
                 continue
             try:
                 result = resource.close()
-                if name in ("planner", "video"):
+                if name in ("planner", "video", "perception_video"):
                     report[name] = result
             except BaseException as exc:
                 report.setdefault("cleanup_errors", []).append(f"{name}: {exc}")

@@ -43,6 +43,7 @@ class SDFOnlinePlanner:
         self.last_command_category='history_warmup';self.pending=None;self.guard_interventions=0
         self.last_map_time=None;self.last_map_wall=None;self.deadline_misses=0
         self.plan_attempts=0;self.last_plan_request=-np.inf
+        self.record_visualization=False
 
     def _stop(self,state,sim_time,reason):
         if self.brake is None:
@@ -71,6 +72,7 @@ class SDFOnlinePlanner:
         payload=dict(points=np.array(frame.points),pose=np.array(frame.world_T_sensor),stamp=np.float64(sim_time),
             reset=np.bool_(self.submitted==0),origin=self.origin,start_rotation=self.rotation,target=self.target,
             plan=np.bool_(plan),seed=np.int64(self.seed),elapsed=np.float64(max(0,sim_time-self.path_start) if self.path else 0))
+        if self.record_visualization:payload["record_visualization"]=np.bool_(True)
         began=time.perf_counter() if capture_wall_time is None else float(capture_wall_time)
         if not np.isfinite(began) or began>time.perf_counter():raise ValueError('invalid wall-clock scan timestamp')
         self.pending=dict(stamp=sim_time,plan=plan,started=began)

@@ -30,6 +30,16 @@ def run(directory):
                         bool(values['plan']),int(values['seed']),float(values['elapsed']))
                 except Exception as exc:
                     traceback.print_exc();controls=np.zeros((0,6));metadata=dict(error=f'{type(exc).__name__}: {exc}')
+                if bool(values.get('record_visualization', False)) and 'error' not in metadata:
+                    # Optional diagnostic snapshot, never a planner input. Keep
+                    # its scan timestamp and report its additional readback cost.
+                    began=time.perf_counter()
+                    folder=directory/'visualization';folder.mkdir(exist_ok=True)
+                    field=runtime.map.latest_features[[2,3],:,:,16].detach().cpu().numpy()
+                    np.savez_compressed(folder/f'{sequence:06d}.npz', esdf_m=field[0]*3,
+                        known=field[1].astype(bool), stamp=values['stamp'], origin=runtime.origin,
+                        z_world=np.float64(runtime.origin[2]+.125), sequence=np.int64(sequence))
+                    metadata['visualization_export_seconds']=time.perf_counter()-began
                 metadata['sequence']=sequence
                 with (directory/'response.tmp').open('wb') as stream:
                     np.savez(stream,sequence=np.int64(sequence),controls=controls,metadata=json.dumps(metadata,allow_nan=False))

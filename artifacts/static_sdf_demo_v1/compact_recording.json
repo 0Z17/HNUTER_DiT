@@ -1,0 +1,721 @@
+{
+  "passed": true,
+  "completed": true,
+  "mode": "sdf",
+  "seed": 23,
+  "scene": "scene_hnuter.usda",
+  "sim_root": "/sim",
+  "physics_dt": 0.001,
+  "requested_duration": 24.0,
+  "dynamic_obstacle": false,
+  "dynamic_profile": "legacy",
+  "goal_reached": true,
+  "nonfinite_state": false,
+  "implementation_sha256": {
+    "planner_process.py": "18e87ed143eb8b62ff2008d607cec4cac60fb599c9a85c37cbf10105be96a61d",
+    "temporal_evaluation.py": "4151cb05586fcc093036643787216711f027302c69f9eda2df83fb4ee0821fa7",
+    "sdf_data.py": "fad13b69ceaac2707ea683ca3d6db5395c0014ac8b468eb83df302fe075b357a",
+    "sdf_online.py": "e4f3d6f611d816d8c97e1c7eb29f713d1b2716a629bb037cf4e1a18887422a0b",
+    "lidar_condition.py": "a4943f26240dadaf3eeb718b89476a192ae6ad17c8015cf20bb38d7b11cb57bb",
+    "industrial_runner.py": "75d6e5e5f06fc894d477e6969d139d9b12a42a806506a59492fb1f173993ae55",
+    "observation_guard.py": "ae107faf19c57d2d136844bf5d633e8931948b73ec4716dff71aee57838a3a21",
+    "web.py": "65436ead410a87bd2199b5c03d781834d63503f1d30d1218a7f3a3c2f915e80d",
+    "industrial_obstacle.py": "17c0869e88bf3e10586f446ff44b6982beddffb28997eac9e9b29bff7eeb9242",
+    "demo_capture.py": "561c87dd8a4bcaeea42a64cf6d2d0da4ded127633c2496254ff72719a01c73ef",
+    "temporal_training.py": "6f942531ab299c50118b2c3bf0e8bf0d2775d712b92a1aff401edcfbd55b30cd",
+    "sdf_live.py": "b20df769c703ed34794b128258e0a10a2cf872f546de38728264fb06785fef19",
+    "evaluate_v003.py": "ea6777e38621be4e19f722d8fe3c039269d3c133c73a7052153cff7df9207466",
+    "model.py": "06866dd8b7f0ea1806a9c29b3d2e2adec265b331536ba6192c448dc6e334d3ed",
+    "online_diffusion.py": "7c7e661961fac20d9ccefcd6f11fee859fb74957a5675d6373adb28bceee4be5",
+    "temporal_inference.py": "9bfb5a8fe54be9d95956f302186b9a60dfbc9a3c4ab429ffe1064ba687dc3694",
+    "tune_guidance.py": "fdd3f04f9a4f437db10865157693490d446c9df432feddb097d4a4798a3dc61f",
+    "sdf_pose.py": "3ad2e729b8256489a88987e0aa2ca54679d9946366bac68d7be651ebc095e766",
+    "collision_loss.py": "42da73bf7fa061c6d346866c646db10c9c6c0cbe177a6e462878a936a62cd2be",
+    "temporal_model.py": "d4684454b2e4676624d4eca6b0b4a14d29db66494a9448d648c2c5521a37fa05",
+    "path_validation.py": "aa2cbbc87689f86f12e9da53da4795b7fff324e0b6079e509b12c9ea34af6baf",
+    "__main__.py": "dc5fadec60ea288f2446329c8ea1620a8d9eb8ca9ddade1b54d8d38e9f659f99",
+    "training.py": "ec9226917717fd12b45d1b6f27c5cfd0ded7a0682b6d9fb9df12e8d0ec353e13",
+    "online.py": "1b2c3934c8c2eeaa67510c3bde0557f6dd49c76fdf8332a34b43f15db02b124f",
+    "geometry.py": "68d2197da96eb23490a36995b20c1aa055ad9dcb93ab316fef7055315ec1d9d8",
+    "evaluate_obstacle_shift.py": "fcc4b9da32f346f9062fca5692c70e28f43b724f40f9f3bb4759439cdcda84bc",
+    "sdf_training.py": "d75e98a7a93defb1ea557c3b7d5d65cb0fee9b748cbfa6a55266e8b746af0790",
+    "temporal_online.py": "24054be278d06e4c93277aa30f67d89b5c121c81d9c677fd2b8d0ff13db550e3",
+    "temporal_observations.py": "7a259a170f30ac58a00fe243711ba4e3f5113a01aa2cc891a07ecaad70ac0fce",
+    "timed_trajectory.py": "a9cf7f20acd30148ca05ea6015129466b38775248782518d8e013dc12056ad1c",
+    "planner_worker.py": "f129ac16bc6417d5f464302b85c6c783b5a9845cb41962a9fd39740bab4f22bc",
+    "temporal_data.py": "4df1dbfa546c7a94382da368a1539b69788d65008f9c504aee0be2383557e0d9",
+    "__init__.py": "a7ad2138b180f6196a1c5dbacf200c09ffe5a51e2abc60efde8418a27821d8ca",
+    "sdf_mapping.py": "162a56fcd006e705ba6524da9f4ca622af7fc3e239068c64f2ca392bdb769e55",
+    "service.py": "ac9cad181d45ecf251b80c376ee952e6b7c669597b0ed9c7f94636a6752a7981",
+    "geometry_observations.py": "c2775d5a97f52dc06d0712b9646106fc27f4602be1d01fe7fc04a3d2e898010d",
+    "sdf_model.py": "f074f699660354fa09d9ba45aaa516c306f1b4e9b9cfffdffd7f58a5f8873be8",
+    "guidance.py": "7c5bf72232e9e59431ee1817ed9008844bb116af3daf8901666699c9036f4033",
+    "sdf_runtime.py": "846881c4bc5cd0b11437341068a35158df76be9202719f5845e258a023116271",
+    "temporal_trajectory.py": "a00c604955693dff6296cb52f8f87ee334fd2b47b45d680eb273912e3afd246a",
+    "sdf_evaluation.py": "b7325cfb09e8bfa67890fa5102db5b50101339408b3ff512578c18501d9425f1",
+    "geometry_evaluation.py": "4388fe4fa8de74df66f3835f7d6502057f3397d470ed264b8d08bf4bd7f5331a",
+    "evaluate_models.py": "e07021cac9a7a7602ae84f202859791cea55985d597000f8edfa1eb8c1f79a7d",
+    "sdf_worker.py": "0deb1fc23134024de7d37e4b29f98727e7709d153c99b13f35f3cef54c6ee1ca",
+    "flight_video.py": "059f8f3f1842c1f470a4e5c4346f3da64274229938e9c2f7acb293b8bdd01578"
+  },
+  "static_sdf_fixture": {
+    "index": 100,
+    "seed": 811,
+    "origin": [
+      0.0,
+      0.0,
+      2.3
+    ],
+    "target": [
+      4.237582261845243,
+      0.0,
+      -0.06669234197855159,
+      -0.07453406072364205,
+      0.1061100112761394,
+      0.13372073191836392
+    ],
+    "boxes": [
+      [
+        2.156446584296176,
+        -0.4965697950439832,
+        2.3,
+        0.7586552118720078,
+        0.754492859469068,
+        3.2
+      ],
+      [
+        2.156446584296176,
+        -1.8,
+        2.3,
+        1.0,
+        0.65,
+        3.2
+      ],
+      [
+        6.0,
+        0.0,
+        2.5,
+        0.2,
+        14.0,
+        5.0
+      ],
+      [
+        0.0,
+        6.0,
+        2.5,
+        16.0,
+        0.2,
+        5.0
+      ],
+      [
+        0.0,
+        -6.0,
+        2.5,
+        16.0,
+        0.2,
+        5.0
+      ],
+      [
+        0.0,
+        0.0,
+        -0.05,
+        16.0,
+        16.0,
+        0.1
+      ]
+    ],
+    "side": -1,
+    "background_randomization": false,
+    "split": 2
+  },
+  "sdf_checkpoint": "/temporal-checkpoint.pt",
+  "sensor_startup_warmup_seconds": 1.1881868229975225,
+  "initial_position": [
+    -25.0,
+    -35.0,
+    2.200000047683716
+  ],
+  "goal_position": [
+    -20.762417738154756,
+    -35.0,
+    2.1333076580214487
+  ],
+  "engine": "newton",
+  "mujoco_version": "3.8.0",
+  "newton_version": "1.2.0",
+  "torch_version": "2.10.0+cu128",
+  "mujoco_cpu": false,
+  "lidar": {
+    "backend": "Newton 1.2 / Warp live collision raycast",
+    "model": "MID-360 envelope approximation",
+    "scan_pattern": "non-repeating low-discrepancy solid-angle coverage; not Livox firing sequence",
+    "scan_timing": "instantaneous snapshot; all hit timestamps equal simulation capture time",
+    "frame_rate_hz": 10.0,
+    "rays_per_frame": 20000,
+    "nominal_points_per_second": 200000.0,
+    "fov_degrees": [
+      360.0,
+      -7.0,
+      52.0
+    ],
+    "range_m": [
+      0.1,
+      40.0
+    ],
+    "mount_body_flu_m": [
+      0.0,
+      0.0,
+      0.13
+    ],
+    "collision_shapes": 156,
+    "robot_self_returns": "excluded",
+    "limitations": [
+      "no optical intensity/noise/reflectivity model",
+      "no measured Livox scan sequence",
+      "no rolling-scan motion distortion or IMU",
+      "collision geometry only; visual-only, particle and deformable obstacles unsupported"
+    ]
+  },
+  "actuator_mapping": {
+    "tilt_rj2": {
+      "array": "joint_target_pos",
+      "index": 10,
+      "runtime_index": 2,
+      "target": "/World/HNUTER/Geometry/drone/r2/rj2",
+      "ctrl_range": [
+        -2.7,
+        2.7
+      ]
+    },
+    "tilt_lj2": {
+      "array": "joint_target_pos",
+      "index": 6,
+      "runtime_index": 0,
+      "target": "/World/HNUTER/Geometry/drone/l2/lj2",
+      "ctrl_range": [
+        -2.7,
+        2.7
+      ]
+    },
+    "tilt_rj1": {
+      "array": "joint_target_pos",
+      "index": 11,
+      "runtime_index": 3,
+      "target": "/World/HNUTER/Geometry/drone/r2/r1/rj1",
+      "ctrl_range": [
+        -2.7,
+        2.7
+      ]
+    },
+    "tilt_lj1": {
+      "array": "joint_target_pos",
+      "index": 7,
+      "runtime_index": 1,
+      "target": "/World/HNUTER/Geometry/drone/l2/l1/lj1",
+      "ctrl_range": [
+        -2.7,
+        2.7
+      ]
+    },
+    "motor_xy1": {
+      "array": "mujoco.ctrl",
+      "index": 0,
+      "runtime_index": 4,
+      "target": "/World/HNUTER/Geometry/drone/r2/r1/xy1/motor_xy1",
+      "ctrl_range": [
+        0.0,
+        50.0
+      ]
+    },
+    "motor_xy2": {
+      "array": "mujoco.ctrl",
+      "index": 1,
+      "runtime_index": 5,
+      "target": "/World/HNUTER/Geometry/drone/r2/r1/xy2/motor_xy2",
+      "ctrl_range": [
+        0.0,
+        50.0
+      ]
+    },
+    "motor_xy3": {
+      "array": "mujoco.ctrl",
+      "index": 2,
+      "runtime_index": 6,
+      "target": "/World/HNUTER/Geometry/drone/l2/l1/xy3/motor_xy3",
+      "ctrl_range": [
+        0.0,
+        50.0
+      ]
+    },
+    "motor_xy4": {
+      "array": "mujoco.ctrl",
+      "index": 3,
+      "runtime_index": 7,
+      "target": "/World/HNUTER/Geometry/drone/l2/l1/xy4/motor_xy4",
+      "ctrl_range": [
+        0.0,
+        50.0
+      ]
+    },
+    "motor_xy5": {
+      "array": "mujoco.ctrl",
+      "index": 4,
+      "runtime_index": 8,
+      "target": "/World/HNUTER/Geometry/drone/xy5/motor_xy5",
+      "ctrl_range": [
+        -20.0,
+        20.0
+      ]
+    }
+  },
+  "steps": 24000,
+  "simulation_seconds": 24.0,
+  "actual_integrated_seconds": 24.00000113993883,
+  "loop_wall_seconds": 100.43057383799896,
+  "final_position": [
+    -20.766571044921875,
+    -34.98709487915039,
+    2.125328302383423
+  ],
+  "final_quaternion": [
+    0.9950652045798646,
+    -0.04027489541719843,
+    0.05913257180768961,
+    0.06874962098058852
+  ],
+  "final_velocity": [
+    0.0004826560876920883,
+    -0.0008395956447204924,
+    -9.848814063551494e-06
+  ],
+  "position_tracking_rmse_m": 0.01591342728016934,
+  "position_tracking_max_error_m": 0.017273095082748054,
+  "attitude_tracking_max_error_rad": 0.01970265805144804,
+  "collision": {
+    "backend": "MuJoCo Warp GPU contacts",
+    "samples": 24000,
+    "collision_detected": false,
+    "contact_steps": 0,
+    "penetration_steps": 0,
+    "first_collision": null,
+    "max_penetration_m": 0.0,
+    "minimum_contact_distance_m": null,
+    "overflow_steps": 0,
+    "unmapped_contacts": 0,
+    "complete": true,
+    "scope": "Robot versus environment only; self contacts excluded; evaluator-only truth"
+  },
+  "lidar_frames": 482,
+  "first_goal_time": 19.426000000000002,
+  "goal_settled_seconds": 5.073999999999998,
+  "final_goal_distance_m": 0.015730931874587517,
+  "final_speed_mps": 0.0009684909626621771,
+  "minimum_goal_distance_m": 0.015730931874587517,
+  "goal_distance_tolerance_m": 0.35,
+  "goal_speed_tolerance_mps": 0.1,
+  "goal_settle_required_seconds": 0.5,
+  "final_goal_angle_rad": 0.017531011045417988,
+  "goal_rpy": [
+    -0.07453406072364205,
+    0.1061100112761394,
+    0.13372073191836392
+  ],
+  "pose_goal_reached": true,
+  "raycast_seconds": {
+    "median": 0.0046088169983704574,
+    "p95": 0.005284887101879576,
+    "maximum": 0.0061117670047678985
+  },
+  "sensing_schedule": "every 0.1 simulation seconds or 0.1 wall seconds, whichever comes first; timestamped actual physics state",
+  "sensing_wall_intervals_all_seconds": {
+    "median": 0.10236131100100465,
+    "p95": 0.3302212700000382,
+    "maximum": 4.0338753380056005
+  },
+  "sensing_wall_intervals_after_history_warmup_seconds": {
+    "median": 0.10236131100100465,
+    "p95": 0.3297843616979662,
+    "maximum": 0.34296440400066786
+  },
+  "loop_profile": {
+    "all": {
+      "state_read_and_loop_checks": {
+        "count": 24000,
+        "total_seconds": 7.402770084619988,
+        "percent_of_profiled_wall": 7.376962763617655,
+        "median_ms": 0.29227599588921294,
+        "p95_ms": 0.3918109945516335,
+        "maximum_ms": 2.077507997455541
+      },
+      "sensor_capture_and_submission": {
+        "count": 24000,
+        "total_seconds": 2.3443716775800567,
+        "percent_of_profiled_wall": 2.3361987974634926,
+        "median_ms": 0.0015230034478008747,
+        "p95_ms": 0.0022239983081817627,
+        "maximum_ms": 25.338081999507267
+      },
+      "planner_poll_controller_and_actuation": {
+        "count": 24000,
+        "total_seconds": 12.896190266896156,
+        "percent_of_profiled_wall": 12.851231944792325,
+        "median_ms": 0.5464749992825091,
+        "p95_ms": 0.7230309991427929,
+        "maximum_ms": 2.6328140011173673
+      },
+      "telemetry": {
+        "count": 24000,
+        "total_seconds": 0.309267816846841,
+        "percent_of_profiled_wall": 0.30818965641043367,
+        "median_ms": 0.007083006494212896,
+        "p95_ms": 0.059251454149489284,
+        "maximum_ms": 0.14218499563867226
+      },
+      "physics_step_and_validation": {
+        "count": 24000,
+        "total_seconds": 7.413078313911683,
+        "percent_of_profiled_wall": 7.387235056661263,
+        "median_ms": 0.13125500117894262,
+        "p95_ms": 0.1691275036137085,
+        "maximum_ms": 4007.3427769966656
+      },
+      "contact_readback": {
+        "count": 24000,
+        "total_seconds": 18.05914585800201,
+        "percent_of_profiled_wall": 17.996188590809062,
+        "median_ms": 0.7035629969323054,
+        "p95_ms": 0.994878002165933,
+        "maximum_ms": 2.660656005900819
+      },
+      "fabric_render_and_recording": {
+        "count": 24000,
+        "total_seconds": 51.895844564423896,
+        "percent_of_profiled_wall": 51.71492678580157,
+        "median_ms": 0.0017839993233792484,
+        "p95_ms": 0.002894994759117253,
+        "maximum_ms": 301.3500489978469
+      },
+      "progress_and_pacing": {
+        "count": 24000,
+        "total_seconds": 0.029168089386075735,
+        "percent_of_profiled_wall": 0.02906640444419498,
+        "median_ms": 0.0009310024324804544,
+        "p95_ms": 0.0015830009942874312,
+        "maximum_ms": 0.1719110005069524
+      }
+    },
+    "after_first_simulation_second": {
+      "state_read_and_loop_checks": {
+        "count": 23000,
+        "total_seconds": 7.090129795629764,
+        "percent_of_profiled_wall": 7.684251859761144,
+        "median_ms": 0.29227599952719174,
+        "p95_ms": 0.3911535524821374,
+        "maximum_ms": 2.077507997455541
+      },
+      "sensor_capture_and_submission": {
+        "count": 23000,
+        "total_seconds": 2.221916910530126,
+        "percent_of_profiled_wall": 2.408103891483036,
+        "median_ms": 0.0015329933376051486,
+        "p95_ms": 0.0022239983081817627,
+        "maximum_ms": 6.181366996315774
+      },
+      "planner_poll_controller_and_actuation": {
+        "count": 23000,
+        "total_seconds": 12.474351956778264,
+        "percent_of_profiled_wall": 13.519648438914686,
+        "median_ms": 0.5473210039781407,
+        "p95_ms": 0.7244004973472328,
+        "maximum_ms": 2.6328140011173673
+      },
+      "telemetry": {
+        "count": 23000,
+        "total_seconds": 0.29719656207453227,
+        "percent_of_profiled_wall": 0.32210034240043073,
+        "median_ms": 0.007093003659974784,
+        "p95_ms": 0.05929100007051602,
+        "maximum_ms": 0.14218499563867226
+      },
+      "physics_step_and_validation": {
+        "count": 23000,
+        "total_seconds": 3.208008532761596,
+        "percent_of_profiled_wall": 3.476825706237065,
+        "median_ms": 0.1312949971179478,
+        "p95_ms": 0.16915949563554017,
+        "maximum_ms": 1.9542169975466095
+      },
+      "contact_readback": {
+        "count": 23000,
+        "total_seconds": 17.302788760018302,
+        "percent_of_profiled_wall": 18.752687262534817,
+        "median_ms": 0.7035380003799219,
+        "p95_ms": 0.9951175521564436,
+        "maximum_ms": 2.660656005900819
+      },
+      "fabric_render_and_recording": {
+        "count": 23000,
+        "total_seconds": 49.64580403059517,
+        "percent_of_profiled_wall": 53.80590665442863,
+        "median_ms": 0.0017929996829479933,
+        "p95_ms": 0.0028950016712769866,
+        "maximum_ms": 251.92706700181589
+      },
+      "progress_and_pacing": {
+        "count": 23000,
+        "total_seconds": 0.028119548296672292,
+        "percent_of_profiled_wall": 0.030475844240190637,
+        "median_ms": 0.0009319992386735976,
+        "p95_ms": 0.0015929981600493193,
+        "maximum_ms": 0.1719110005069524
+      }
+    },
+    "scope": "Host wall phases, including CUDA waits; no extra synchronization. Worker runs concurrently.",
+    "caveat": "Physics launch and later readback waits can fall in different phases; not pure solver kernel time."
+  },
+  "video": {
+    "schema": "hnuter_actual_flight_video_v1",
+    "camera": "follow",
+    "width": 960,
+    "height": 540,
+    "fps": 10,
+    "physics_dt": 0.001,
+    "step_interval": 100,
+    "frame_count": 241,
+    "first_simulation_time": 0.0,
+    "last_simulation_time": 24.0,
+    "complete_sequence": true,
+    "source": "Actual actuator-driven Newton/MuJoCo flight; RGB rendered during the controlled run.",
+    "playback": "One video second equals one simulation second; not a wall-clock real-time claim.",
+    "pose_replay": false,
+    "directory": "/dit/results/static_sdf_demo/recording/video",
+    "manifest": "/dit/results/static_sdf_demo/recording/video/manifest.json",
+    "manifest_sha256": "864c29d89cd105629993b6136222c2c9073a8507ec0195c0218b2f37e2aaf67f"
+  },
+  "perception_video": {
+    "manifest": "/dit/results/static_sdf_demo/recording/perception_video/manifest.json",
+    "manifest_sha256": "3d8e79ebfdcd166feb16111d96045fc07e5725cfadf8b2396919480b9df3c664",
+    "camera": {
+      "schema": "hnuter_actual_flight_video_v1",
+      "camera": "fpv",
+      "width": 960,
+      "height": 540,
+      "fps": 10,
+      "physics_dt": 0.001,
+      "step_interval": 100,
+      "frame_count": 241,
+      "first_simulation_time": 0.0,
+      "last_simulation_time": 24.0,
+      "complete_sequence": true,
+      "source": "Actual actuator-driven Newton/MuJoCo flight; RGB rendered during the controlled run.",
+      "playback": "One video second equals one simulation second; not a wall-clock real-time claim.",
+      "pose_replay": false,
+      "directory": "/dit/results/static_sdf_demo/recording/perception_video/fpv",
+      "manifest": "/dit/results/static_sdf_demo/recording/perception_video/fpv/manifest.json",
+      "manifest_sha256": "d6339346ac82659b0d10226269f37c7ada69e2cf7e30990ab6b686b0be5d67d6"
+    }
+  },
+  "wall_seconds_including_cleanup": 101.06750871700206,
+  "planner": {
+    "mode": "sdf_pose",
+    "failed": false,
+    "failure_reason": null,
+    "checkpoint": {
+      "schema": "hnuter_static_sdf_pose_v1",
+      "checkpoint_sha256": "6e0da29b562b433bc1813b2f632cdd1f0a420705b003767ae32ce31e94745192",
+      "selected_step": 2000,
+      "mapper": {
+        "native": {
+          "nvblox_version": "0.0.10.dev1+cu12ubuntu24",
+          "torch_version": "2.9.1+cu128",
+          "cuda_version": "12.8",
+          "gpu": "NVIDIA GeForce RTX 4080 Laptop GPU",
+          "esdf_max_distance_m": 5.0,
+          "esdf_min_weight": 0.001,
+          "lidar_factory_argument_swap_compensated": true,
+          "esdf_unknown_sentinel": 100.0
+        },
+        "config": {
+          "voxel_size": 0.15,
+          "max_range": 20.0,
+          "esdf_max_distance": 5.0,
+          "width": 720,
+          "height": 128,
+          "vertical_fov_degrees": 104.0
+        },
+        "grid": 32,
+        "cell": 0.25,
+        "local_bounds": [
+          [
+            -2,
+            6
+          ],
+          [
+            -4,
+            4
+          ],
+          [
+            -4,
+            4
+          ]
+        ],
+        "channels": [
+          "tsdf_clipped",
+          "weight_log",
+          "esdf_clipped",
+          "esdf_known",
+          "tsdf_known",
+          "latest_hits"
+        ],
+        "unknown_policy": "zero-valued distance with separate explicit known flags; never certified free",
+        "history": "four cumulative causal snapshots, nominal 0.2 s apart; actual ages retained under bounded asynchronous jitter, common planning-anchor coordinates"
+      },
+      "pose_output": true,
+      "input_scope": "measured historical scans, measured start pose and requested goal; no obstacle truth",
+      "process_isolated": true,
+      "worker_directory": "/dit/results/static_sdf_demo/recording/planner_worker/dit-planner-z6y4umu9"
+    },
+    "plans": [
+      {
+        "status": "accepted",
+        "scan_time": 0.6,
+        "activation_time": 0.649,
+        "fresh": true,
+        "feasible": true,
+        "observed_clearance": {
+          "minimum_known_m": 0.8108000755310059,
+          "known_fraction": 0.2818929851055145,
+          "observed_violation": false,
+          "minimum_observed_support": true,
+          "collision_certified": false,
+          "unknown_policy": "unknown is not free; partial observed guard only"
+        },
+        "controls": [
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.4233873188495636,
+            0.6108981370925903,
+            -0.006423963233828545,
+            -0.007435963489115238,
+            0.010542470030486584,
+            0.013100793585181236
+          ],
+          [
+            1.0589148998260498,
+            1.2195217609405518,
+            -0.016388334333896637,
+            -0.01857134886085987,
+            0.026456668972969055,
+            0.033202528953552246
+          ],
+          [
+            1.6946508884429932,
+            1.3590120077133179,
+            -0.026497412472963333,
+            -0.029821790754795074,
+            0.042352788150310516,
+            0.05323334410786629
+          ],
+          [
+            2.542198419570923,
+            1.3587231636047363,
+            -0.039854589849710464,
+            -0.04470137134194374,
+            0.06360308825969696,
+            0.07998986542224884
+          ],
+          [
+            3.177767038345337,
+            1.2223533391952515,
+            -0.04989074170589447,
+            -0.05594094097614288,
+            0.07959841936826706,
+            0.10015156120061874
+          ],
+          [
+            3.813380718231201,
+            0.6144876480102539,
+            -0.05984625592827797,
+            -0.06703130155801773,
+            0.09541001170873642,
+            0.12014970183372498
+          ],
+          [
+            4.237582261845244,
+            0.0,
+            -0.0666923896622671,
+            -0.07453406072364206,
+            0.1061100112761395,
+            0.13372073191836392
+          ],
+          [
+            4.237582261845244,
+            0.0,
+            -0.0666923896622671,
+            -0.07453406072364206,
+            0.1061100112761395,
+            0.13372073191836392
+          ],
+          [
+            4.237582261845244,
+            0.0,
+            -0.0666923896622671,
+            -0.07453406072364206,
+            0.1061100112761395,
+            0.13372073191836392
+          ]
+        ]
+      }
+    ],
+    "accepted_plans": 1,
+    "guard_interventions": 0,
+    "submitted_scans": 482,
+    "dropped_scans": 0,
+    "deadline_misses_100ms": 2,
+    "plan_attempts": 1,
+    "max_stationary_plan_attempts": 3,
+    "response_seconds": {
+      "median": 0.020177455502562225,
+      "p95": 0.031604080702891224,
+      "maximum": 4.038440018004621
+    },
+    "map_seconds": {
+      "median": 0.005666286502673756,
+      "p95": 0.008558312702007242,
+      "maximum": 0.049794477003160864
+    },
+    "goal_rpy": [
+      -0.07453406072364205,
+      0.1061100112761394,
+      0.13372073191836392
+    ],
+    "executed_model_reference": true,
+    "position_only": false,
+    "contract": "static environment; stationary-start full 20s position and attitude spline; continued measured-map monitoring; no geometric path repair",
+    "safety_scope": "Observed ESDF only, unknown space is not certified free; actual contacts evaluated independently"
+  },
+  "_original_report_sha256": "386155a31b87ecf552fb7606c7acff00564a10877ab12230318aa01ad54615ba"
+}
