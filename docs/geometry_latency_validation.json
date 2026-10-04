@@ -1,0 +1,280 @@
+{
+  "schema": "geometry_latency_benchmark_v1",
+  "date": "2026-10-04",
+  "protocol": {
+    "samples": 32,
+    "groups": 16,
+    "repeats": 3,
+    "warmup_windows_per_representation": 5,
+    "batch_size": 1,
+    "ddim_steps": 20,
+    "seed": 20404,
+    "interleave_seed": 4104,
+    "scope": "resident measured-return windows -> rebuilt CPU representation -> CUDA runtime -> CPU trajectory",
+    "exclusions": [
+      "sensor raycasting/acquisition",
+      "file loading",
+      "ray-range reconstruction",
+      "IPC",
+      "nvblox mapping",
+      "collision guard",
+      "controller",
+      "physics",
+      "rendering"
+    ],
+    "stages": "separately synchronized wall-clock durations; not additive percentiles",
+    "box_recomputed_from_raw_returns": true,
+    "no_training_or_model_selection": true
+  },
+  "environment": {
+    "python": "3.10.20",
+    "torch": "2.13.0+cu130",
+    "cuda": "13.0",
+    "gpu": "NVIDIA GeForce RTX 4080 Laptop GPU",
+    "torch_threads": 4,
+    "openblas_num_threads": "1",
+    "omp_num_threads": "2"
+  },
+  "dataset_sha256": "548ba16e446391e800e1081825b714b84448af6683ad71022cc0fde551a8aa35",
+  "script_sha256": "92dc9fbd9cb2a096409de517dbd01ceb8cea5edfe0b9ca5e17446648ac3deb7d",
+  "checkpoints": {
+    "box": "067b08e6cda8790599c13c05b9442ec8de91969ed5c452c67669076beaa9579e",
+    "point": "aa3955a7dd2b7c7b5af3fbd911203a35fac11f89d34925b97d78150b2f006cbd",
+    "voxel": "524c71e0f959e76b162e07630587fc09d2bc20c7dc5b79e802f0e97ce04289d2"
+  },
+  "source_sha256": {
+    "geometry_observations.py": "c2775d5a97f52dc06d0712b9646106fc27f4602be1d01fe7fc04a3d2e898010d",
+    "lidar_condition.py": "a4943f26240dadaf3eeb718b89476a192ae6ad17c8015cf20bb38d7b11cb57bb",
+    "temporal_observations.py": "7a259a170f30ac58a00fe243711ba4e3f5113a01aa2cc891a07ecaad70ac0fce",
+    "temporal_inference.py": "9bfb5a8fe54be9d95956f302186b9a60dfbc9a3c4ab429ffe1064ba687dc3694",
+    "temporal_model.py": "d4684454b2e4676624d4eca6b0b4a14d29db66494a9448d648c2c5521a37fa05"
+  },
+  "valid_returns_per_frame": {
+    "count": 128,
+    "mean": 7503.2109375,
+    "median": 7528.0,
+    "p95": 7833.25,
+    "max": 7883.0
+  },
+  "checks": {
+    "box": {
+      "cached_denoising_matches_production_max_abs_error": 0.0
+    },
+    "voxel": {
+      "cached_denoising_matches_production_max_abs_error": 0.0
+    },
+    "point": {
+      "cached_denoising_matches_production_max_abs_error": 0.0
+    }
+  },
+  "input_payload_bytes": {
+    "box": 5328,
+    "voxel": 4194384,
+    "point": 26704
+  },
+  "summaries": {
+    "box": {
+      "preprocess_ms": {
+        "count": 96,
+        "mean_ms": 57.60448146861563,
+        "median_ms": 57.8116830001818,
+        "p95_ms": 60.00981000033789,
+        "max_ms": 60.480808999272995
+      },
+      "runtime_ms": {
+        "count": 96,
+        "mean_ms": 34.4386677292429,
+        "median_ms": 34.153649998188484,
+        "p95_ms": 36.514490751869744,
+        "max_ms": 39.089575002435595
+      },
+      "total_ms": {
+        "count": 96,
+        "mean_ms": 92.04314919785854,
+        "median_ms": 92.13055799773429,
+        "p95_ms": 95.28707599929476,
+        "max_ms": 97.99334900162648
+      }
+    },
+    "point": {
+      "preprocess_ms": {
+        "count": 96,
+        "mean_ms": 10.535601197261713,
+        "median_ms": 10.617370004183613,
+        "p95_ms": 11.261704245043802,
+        "max_ms": 11.783431000367273
+      },
+      "runtime_ms": {
+        "count": 96,
+        "mean_ms": 34.4579867817932,
+        "median_ms": 34.332159000769025,
+        "p95_ms": 35.930437752540456,
+        "max_ms": 37.86730499996338
+      },
+      "total_ms": {
+        "count": 96,
+        "mean_ms": 44.993587979054915,
+        "median_ms": 44.851123999251286,
+        "p95_ms": 46.77561049902579,
+        "max_ms": 49.113835993921384
+      }
+    },
+    "voxel": {
+      "preprocess_ms": {
+        "count": 96,
+        "mean_ms": 118.68749728137118,
+        "median_ms": 118.60249749952345,
+        "p95_ms": 122.78836799850978,
+        "max_ms": 123.90890199458227
+      },
+      "runtime_ms": {
+        "count": 96,
+        "mean_ms": 38.49630765588093,
+        "median_ms": 38.523448500200175,
+        "p95_ms": 40.318637249583844,
+        "max_ms": 44.67066800134489
+      },
+      "total_ms": {
+        "count": 96,
+        "mean_ms": 157.18380493725212,
+        "median_ms": 156.98935450200224,
+        "p95_ms": 161.9551350013353,
+        "max_ms": 167.91320899938
+      }
+    }
+  },
+  "stage_summaries": {
+    "box": {
+      "cpu_validation_ms": {
+        "count": 96,
+        "mean_ms": 0.20887789598115583,
+        "median_ms": 0.12136599980294704,
+        "p95_ms": 0.7611489963892382,
+        "max_ms": 0.9041939993039705
+      },
+      "host_to_device_ms": {
+        "count": 96,
+        "mean_ms": 0.2612103228329943,
+        "median_ms": 0.1921875009429641,
+        "p95_ms": 0.6878557469462976,
+        "max_ms": 1.7028100046445616
+      },
+      "history_encoder_ms": {
+        "count": 96,
+        "mean_ms": 0.8979629478744755,
+        "median_ms": 0.876852500368841,
+        "p95_ms": 1.1019685025530634,
+        "max_ms": 1.48409199755406
+      },
+      "condition_mlp_ms": {
+        "count": 96,
+        "mean_ms": 0.08507938514412672,
+        "median_ms": 0.06488050348707475,
+        "p95_ms": 0.22511449787998572,
+        "max_ms": 0.49082299665315077
+      },
+      "cached_ddim_and_spline_ms": {
+        "count": 96,
+        "mean_ms": 33.04096300000007,
+        "median_ms": 32.950431002973346,
+        "p95_ms": 34.795082750861184,
+        "max_ms": 36.17455300263828
+      },
+      "device_to_host_ms": {
+        "count": 96,
+        "mean_ms": 0.05747440650338831,
+        "median_ms": 0.05663550109602511,
+        "p95_ms": 0.06170999949972611,
+        "max_ms": 0.0824129965621978
+      }
+    },
+    "point": {
+      "cpu_validation_ms": {
+        "count": 96,
+        "mean_ms": 0.19039032288977373,
+        "median_ms": 0.14871699750074185,
+        "p95_ms": 0.5366489967855159,
+        "max_ms": 0.9108349986490794
+      },
+      "host_to_device_ms": {
+        "count": 96,
+        "mean_ms": 0.18880196838229799,
+        "median_ms": 0.13948999912827276,
+        "p95_ms": 0.5047922531957738,
+        "max_ms": 0.9964549972210079
+      },
+      "history_encoder_ms": {
+        "count": 96,
+        "mean_ms": 0.9376574275847815,
+        "median_ms": 0.9008970009745099,
+        "p95_ms": 1.1750567482522456,
+        "max_ms": 1.5299380029318854
+      },
+      "condition_mlp_ms": {
+        "count": 96,
+        "mean_ms": 0.0863419058987347,
+        "median_ms": 0.06255699918256141,
+        "p95_ms": 0.17395575196132995,
+        "max_ms": 0.6930200033821166
+      },
+      "cached_ddim_and_spline_ms": {
+        "count": 96,
+        "mean_ms": 33.1593420524617,
+        "median_ms": 32.96314800172695,
+        "p95_ms": 35.19862749817548,
+        "max_ms": 36.67596500599757
+      },
+      "device_to_host_ms": {
+        "count": 96,
+        "mean_ms": 0.05647703126972677,
+        "median_ms": 0.05558900011237711,
+        "p95_ms": 0.06550724538101349,
+        "max_ms": 0.10263099829899147
+      }
+    },
+    "voxel": {
+      "cpu_validation_ms": {
+        "count": 96,
+        "mean_ms": 3.2639778335123992,
+        "median_ms": 3.253235001466237,
+        "p95_ms": 3.5336797482159454,
+        "max_ms": 3.747966002265457
+      },
+      "host_to_device_ms": {
+        "count": 96,
+        "mean_ms": 0.701410531367704,
+        "median_ms": 0.6425160026992671,
+        "p95_ms": 1.1553375006769784,
+        "max_ms": 1.4437069985433482
+      },
+      "history_encoder_ms": {
+        "count": 96,
+        "mean_ms": 1.1532733539449207,
+        "median_ms": 1.0961805019178428,
+        "p95_ms": 1.408925003488548,
+        "max_ms": 1.789161004126072
+      },
+      "condition_mlp_ms": {
+        "count": 96,
+        "mean_ms": 0.10969309338785631,
+        "median_ms": 0.0731209984223824,
+        "p95_ms": 0.33822499790403526,
+        "max_ms": 0.6821599963586777
+      },
+      "cached_ddim_and_spline_ms": {
+        "count": 96,
+        "mean_ms": 33.28431323954343,
+        "median_ms": 33.03775350286742,
+        "p95_ms": 35.15924925159197,
+        "max_ms": 39.03058900323231
+      },
+      "device_to_host_ms": {
+        "count": 96,
+        "mean_ms": 0.05806914547671719,
+        "median_ms": 0.057111497881123796,
+        "p95_ms": 0.06578499960596673,
+        "max_ms": 0.07267599721672013
+      }
+    }
+  }
+}

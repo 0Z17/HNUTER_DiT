@@ -1,0 +1,108 @@
+{
+  "schema": "nvblox_dense_roi_latency_probe_v1",
+  "date": "2026-10-04",
+  "config": {
+    "voxel_size": 0.25,
+    "max_range": 20.0,
+    "esdf_max_distance": 5.0,
+    "width": 720,
+    "height": 128,
+    "vertical_fov_degrees": 104.0
+  },
+  "environment": {
+    "nvblox_version": "0.0.10.dev1+cu12ubuntu24",
+    "torch_version": "2.9.1+cu128",
+    "cuda_version": "12.8",
+    "gpu": "NVIDIA GeForce RTX 4080 Laptop GPU",
+    "esdf_max_distance_m": 5.0,
+    "esdf_min_weight": 0.001,
+    "lidar_factory_argument_swap_compensated": true,
+    "esdf_unknown_sentinel": 100.0
+  },
+  "dataset_sha256": "548ba16e446391e800e1081825b714b84448af6683ad71022cc0fde551a8aa35",
+  "script_sha256": "d16178cca669b9770c60771d72302b45dea05405244e0eca421f2d11d480c769",
+  "simulation_worker_sha256": "d6edab20560399489634c57dc777037ec47cc52ca395319c6565370267f12951",
+  "protocol": {
+    "windows": 8,
+    "frames_per_window": 4,
+    "repeats": 3,
+    "warmup_frames": 8,
+    "grid_shape": [
+      64,
+      64,
+      64
+    ],
+    "query_count": 262144,
+    "output_device": "cuda",
+    "output_semantics": [
+      "clipped_tsdf_distance",
+      "tsdf_weight",
+      "esdf_distance_unknown_zero",
+      "known_mask"
+    ],
+    "scope": "CPU spherical projection + transfer + incremental TSDF + ESDF + full ROI TSDF/ESDF queries + GPU feature packing",
+    "exclusions": [
+      "ray acquisition",
+      "grid creation",
+      "map reset",
+      "CPU export",
+      "IPC",
+      "neural encoding",
+      "diffusion",
+      "physics",
+      "rendering"
+    ],
+    "limitation": "Four incrementally fused snapshots, not four independent occupancy scans. Static TSDF only: no dynamic separation, field accuracy or learned-policy behavior validated. Do not rank this as an equivalent fourth encoder."
+  },
+  "summary": {
+    "projection_ms": {
+      "count": 96,
+      "median_ms": 0.49319849858875386,
+      "p95_ms": 0.5761210013588425,
+      "mean_ms": 0.5015485831639429,
+      "max_ms": 0.7194209974841215
+    },
+    "transfer_tsdf_integration_ms": {
+      "count": 96,
+      "median_ms": 0.2825359988491982,
+      "p95_ms": 0.987373998214025,
+      "mean_ms": 0.389869822735515,
+      "max_ms": 3.319765004562214
+    },
+    "esdf_update_ms": {
+      "count": 96,
+      "median_ms": 0.6380390004778747,
+      "p95_ms": 1.3605300009658094,
+      "mean_ms": 0.7225117085454258,
+      "max_ms": 4.21635499515105
+    },
+    "dense_query_ms": {
+      "count": 96,
+      "median_ms": 0.055042997701093554,
+      "p95_ms": 0.07624224781466182,
+      "mean_ms": 0.060694697822327726,
+      "max_ms": 0.18829100008588284
+    },
+    "pack_gpu_features_ms": {
+      "count": 96,
+      "median_ms": 0.12874999811174348,
+      "p95_ms": 0.30139649970806204,
+      "mean_ms": 0.16020198897119067,
+      "max_ms": 0.6338410021271557
+    },
+    "total_ms": {
+      "count": 96,
+      "median_ms": 1.6472494971822016,
+      "p95_ms": 2.5656652487668907,
+      "mean_ms": 1.8348268012384021,
+      "max_ms": 8.376967001822777
+    }
+  },
+  "checks": {
+    "measured_frames": 96,
+    "all_outputs_finite": true,
+    "known_query_count_min": 2888,
+    "known_query_count_max": 10029
+  },
+  "raw_report_sha256": "c49366a6dca22c6e5910b46af08a86fe50e1164addd37860a15486713578b108"
+}
