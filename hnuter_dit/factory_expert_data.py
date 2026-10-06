@@ -151,7 +151,8 @@ def collect(args):
                 goal=points[waypoint_index]
                 windows.append(dict(time=float(world.data.time),ids=ids,position=state['position'].copy(),
                     quaternion=state['quaternion'].copy(),velocity=state['velocity'].copy(),omega=state['angular_velocity'].copy(),
-                    acc=desired['acc'],goal=goal,
+                    acc=desired['acc'],goal=goal,snapshot=world.snapshot(),
+                    bridge=np.concatenate([ref.sample(t+np.linspace(0,.1,101))[k] for k in ('pos','quaternion','vel','acc','angular_velocity','angular_acceleration')],axis=1),
                     future=np.concatenate([future[k] for k in ('pos','quaternion','vel','acc','angular_velocity','angular_acceleration')],axis=1)))
             if step<count and world.step(desired):raise RuntimeError('native robot contact')
         report.update(stage='rollout_complete',geometry=geometry,physics_steps=count,actual_mesh_checks=mesh_checks,
@@ -168,6 +169,11 @@ def collect(args):
             quaternions=np.stack([w['quaternion'] for w in windows]),velocities=np.stack([w['velocity'] for w in windows]),
             angular_velocities=np.stack([w['omega'] for w in windows]),reference_accelerations=np.stack([w['acc'] for w in windows]),
             goals=np.stack([w['goal'] for w in windows]),future=np.stack([w['future'] for w in windows]),future_times=.1+np.linspace(0,4,81),
+            teacher_native_qpos=np.stack([w['snapshot']['teacher_native_qpos'] for w in windows]),
+            teacher_native_qvel=np.stack([w['snapshot']['teacher_native_qvel'] for w in windows]),
+            teacher_native_act=np.stack([w['snapshot']['teacher_native_act'] for w in windows]),
+            teacher_native_time=np.array([w['snapshot']['teacher_native_time'] for w in windows]),
+            previous_reference_bridge=np.stack([w['bridge'] for w in windows]),
             trace=np.array(traces),split=np.int64(args.split),accepted=np.bool_(report['accepted']))
         report['episode_sha256']=sha(output/'episode.npz')
     except Exception as exc:

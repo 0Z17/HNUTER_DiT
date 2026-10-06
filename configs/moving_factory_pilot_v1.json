@@ -1,0 +1,204 @@
+{
+  "schema": "within_factory_route_holdout_v1",
+  "roles": {
+    "0": "train",
+    "1": "train",
+    "2": "train",
+    "3": "train",
+    "4": "train",
+    "5": "train",
+    "6": "validation",
+    "7": "validation",
+    "8": "test",
+    "9": "test",
+    "10": "test",
+    "11": "test"
+  },
+  "routes": [
+    [
+      [
+        16.5,
+        7,
+        13
+      ],
+      [
+        16.5,
+        11.4,
+        13.4
+      ]
+    ],
+    [
+      [
+        16.5,
+        10,
+        13.4
+      ],
+      [
+        16.5,
+        14.4,
+        13
+      ]
+    ],
+    [
+      [
+        16.5,
+        20.2,
+        13
+      ],
+      [
+        12.1,
+        20.2,
+        13.5
+      ]
+    ],
+    [
+      [
+        13,
+        20.2,
+        13.5
+      ],
+      [
+        8.6,
+        20.2,
+        13
+      ]
+    ],
+    [
+      [
+        16.5,
+        17,
+        13
+      ],
+      [
+        16.5,
+        20.2,
+        13.8
+      ],
+      [
+        13.3,
+        20.2,
+        13
+      ]
+    ],
+    [
+      [
+        13.3,
+        20.2,
+        13
+      ],
+      [
+        16.5,
+        20.2,
+        13.5
+      ],
+      [
+        16.5,
+        17,
+        13
+      ]
+    ],
+    [
+      [
+        16.5,
+        12,
+        13.2
+      ],
+      [
+        16.5,
+        16.4,
+        13.7
+      ]
+    ],
+    [
+      [
+        15,
+        20.2,
+        13.7
+      ],
+      [
+        10.6,
+        20.2,
+        13.2
+      ]
+    ],
+    [
+      [
+        16.5,
+        15.8,
+        13
+      ],
+      [
+        16.5,
+        20.2,
+        13.8
+      ]
+    ],
+    [
+      [
+        12.1,
+        20.2,
+        13.8
+      ],
+      [
+        7.7,
+        20.2,
+        13
+      ]
+    ],
+    [
+      [
+        16.5,
+        16,
+        13
+      ],
+      [
+        16.5,
+        20.2,
+        13.5
+      ],
+      [
+        12.3,
+        20.2,
+        13
+      ]
+    ],
+    [
+      [
+        12.3,
+        20.2,
+        13
+      ],
+      [
+        16.5,
+        20.2,
+        13.7
+      ],
+      [
+        16.5,
+        16,
+        13
+      ]
+    ]
+  ],
+  "seed": 20261007,
+  "steps": 2000,
+  "validation_every": 250,
+  "sample_seed": 23,
+  "ddim_steps": 20,
+  "comparison": [
+    "legacy_frozen",
+    "constant_velocity",
+    "moving_finetuned",
+    "moving_finetuned_empty_map"
+  ],
+  "scope": "Same factory and potentially overlapping observations; held-out route tasks, NOT unseen scene or spatially disjoint generalization.",
+  "physics_test": "For every held-out route: decision windows nearest flight times 4 s, midpoint, and end-minus-6 s; equal saved native states and 100 ms previous-reference bridge; all outcomes retained.",
+  "budget": "12 attempted routes, 2 CPU subprocesses, max90s simulation per route; no failed-route redraw; 2000 updates",
+  "short_horizon_pass_gate": {
+    "teacher_final_error_m": 0.25,
+    "tracking_model_reference_max_m": 0.15,
+    "actual_speed_max_mps": 0.8,
+    "reference_acceleration_max_mps2": 1.5,
+    "mesh_margin_m": 0.15
+  }
+}

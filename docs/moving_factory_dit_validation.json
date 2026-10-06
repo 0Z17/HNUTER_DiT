@@ -1,0 +1,1024 @@
+{
+  "date": "2026-10-06",
+  "schema": "moving_factory_dit_pilot_v1",
+  "protocol": {
+    "schema": "within_factory_route_holdout_v1",
+    "roles": {
+      "0": "train",
+      "1": "train",
+      "2": "train",
+      "3": "train",
+      "4": "train",
+      "5": "train",
+      "6": "validation",
+      "7": "validation",
+      "8": "test",
+      "9": "test",
+      "10": "test",
+      "11": "test"
+    },
+    "routes": [
+      [
+        [
+          16.5,
+          7,
+          13
+        ],
+        [
+          16.5,
+          11.4,
+          13.4
+        ]
+      ],
+      [
+        [
+          16.5,
+          10,
+          13.4
+        ],
+        [
+          16.5,
+          14.4,
+          13
+        ]
+      ],
+      [
+        [
+          16.5,
+          20.2,
+          13
+        ],
+        [
+          12.1,
+          20.2,
+          13.5
+        ]
+      ],
+      [
+        [
+          13,
+          20.2,
+          13.5
+        ],
+        [
+          8.6,
+          20.2,
+          13
+        ]
+      ],
+      [
+        [
+          16.5,
+          17,
+          13
+        ],
+        [
+          16.5,
+          20.2,
+          13.8
+        ],
+        [
+          13.3,
+          20.2,
+          13
+        ]
+      ],
+      [
+        [
+          13.3,
+          20.2,
+          13
+        ],
+        [
+          16.5,
+          20.2,
+          13.5
+        ],
+        [
+          16.5,
+          17,
+          13
+        ]
+      ],
+      [
+        [
+          16.5,
+          12,
+          13.2
+        ],
+        [
+          16.5,
+          16.4,
+          13.7
+        ]
+      ],
+      [
+        [
+          15,
+          20.2,
+          13.7
+        ],
+        [
+          10.6,
+          20.2,
+          13.2
+        ]
+      ],
+      [
+        [
+          16.5,
+          15.8,
+          13
+        ],
+        [
+          16.5,
+          20.2,
+          13.8
+        ]
+      ],
+      [
+        [
+          12.1,
+          20.2,
+          13.8
+        ],
+        [
+          7.7,
+          20.2,
+          13
+        ]
+      ],
+      [
+        [
+          16.5,
+          16,
+          13
+        ],
+        [
+          16.5,
+          20.2,
+          13.5
+        ],
+        [
+          12.3,
+          20.2,
+          13
+        ]
+      ],
+      [
+        [
+          12.3,
+          20.2,
+          13
+        ],
+        [
+          16.5,
+          20.2,
+          13.7
+        ],
+        [
+          16.5,
+          16,
+          13
+        ]
+      ]
+    ],
+    "seed": 20261007,
+    "steps": 2000,
+    "validation_every": 250,
+    "sample_seed": 23,
+    "ddim_steps": 20,
+    "comparison": [
+      "legacy_frozen",
+      "constant_velocity",
+      "moving_finetuned",
+      "moving_finetuned_empty_map"
+    ],
+    "scope": "Same factory and potentially overlapping observations; held-out route tasks, NOT unseen scene or spatially disjoint generalization.",
+    "physics_test": "For every held-out route: decision windows nearest flight times 4 s, midpoint, and end-minus-6 s; equal saved native states and 100 ms previous-reference bridge; all outcomes retained.",
+    "budget": "12 attempted routes, 2 CPU subprocesses, max90s simulation per route; no failed-route redraw; 2000 updates",
+    "short_horizon_pass_gate": {
+      "teacher_final_error_m": 0.25,
+      "tracking_model_reference_max_m": 0.15,
+      "actual_speed_max_mps": 0.8,
+      "reference_acceleration_max_mps2": 1.5,
+      "mesh_margin_m": 0.15
+    }
+  },
+  "collection": [
+    {
+      "route": 1,
+      "role": "train",
+      "returncode": 0,
+      "accepted": true,
+      "windows": 15,
+      "error": null
+    },
+    {
+      "route": 0,
+      "role": "train",
+      "returncode": 0,
+      "accepted": true,
+      "windows": 15,
+      "error": null
+    },
+    {
+      "route": 2,
+      "role": "train",
+      "returncode": 0,
+      "accepted": true,
+      "windows": 15,
+      "error": null
+    },
+    {
+      "route": 3,
+      "role": "train",
+      "returncode": 0,
+      "accepted": true,
+      "windows": 15,
+      "error": null
+    },
+    {
+      "route": 4,
+      "role": "train",
+      "returncode": 0,
+      "accepted": true,
+      "windows": 22,
+      "error": null
+    },
+    {
+      "route": 5,
+      "role": "train",
+      "returncode": 0,
+      "accepted": true,
+      "windows": 21,
+      "error": null
+    },
+    {
+      "route": 6,
+      "role": "validation",
+      "returncode": 0,
+      "accepted": true,
+      "windows": 15,
+      "error": null
+    },
+    {
+      "route": 7,
+      "role": "validation",
+      "returncode": 0,
+      "accepted": true,
+      "windows": 15,
+      "error": null
+    },
+    {
+      "route": 8,
+      "role": "test",
+      "returncode": 0,
+      "accepted": true,
+      "windows": 15,
+      "error": null
+    },
+    {
+      "route": 9,
+      "role": "test",
+      "returncode": 0,
+      "accepted": true,
+      "windows": 15,
+      "error": null
+    },
+    {
+      "route": 10,
+      "role": "test",
+      "returncode": 0,
+      "accepted": true,
+      "windows": 29,
+      "error": null
+    },
+    {
+      "route": 11,
+      "role": "test",
+      "returncode": 0,
+      "accepted": true,
+      "windows": 30,
+      "error": null
+    }
+  ],
+  "windows_by_role": {
+    "train": 103,
+    "validation": 30,
+    "test": 89
+  },
+  "optimization_log": [
+    {
+      "step": 250,
+      "loss": 0.29075998067855835,
+      "validation_control_mse": 0.0036271298304200172,
+      "elapsed_seconds": 2.16128685700005
+    },
+    {
+      "step": 500,
+      "loss": 0.14199405908584595,
+      "validation_control_mse": 0.002326951129361987,
+      "elapsed_seconds": 4.125512796999828
+    },
+    {
+      "step": 750,
+      "loss": 0.10055605322122574,
+      "validation_control_mse": 0.0018259865464642644,
+      "elapsed_seconds": 6.103644279999571
+    },
+    {
+      "step": 1000,
+      "loss": 0.13983477652072906,
+      "validation_control_mse": 0.0015785214491188526,
+      "elapsed_seconds": 8.076253865999206
+    },
+    {
+      "step": 1250,
+      "loss": 0.05267534404993057,
+      "validation_control_mse": 0.001309418585151434,
+      "elapsed_seconds": 10.076027184999475
+    },
+    {
+      "step": 1500,
+      "loss": 0.030510513111948967,
+      "validation_control_mse": 0.0010991992894560099,
+      "elapsed_seconds": 12.102571167999486
+    },
+    {
+      "step": 1750,
+      "loss": 0.10861258208751678,
+      "validation_control_mse": 0.0007551150629296899,
+      "elapsed_seconds": 14.081720743000005
+    },
+    {
+      "step": 2000,
+      "loss": 0.04271111637353897,
+      "validation_control_mse": 0.0006571565172635019,
+      "elapsed_seconds": 16.08086488599929
+    }
+  ],
+  "model_parameters": 1681094,
+  "trainable_parameters": 1498118,
+  "metrics": {
+    "legacy_frozen": {
+      "windows": 89,
+      "ade_m": 0.5242579275946155,
+      "fde_m": 0.9275002603684952,
+      "compute_p50_ms": 33.7437680000221,
+      "compute_p95_ms": 34.828989000379806,
+      "reference_acceleration_over_1_5": 0,
+      "physical_passes": 1,
+      "physical_trials": 12,
+      "mesh_violations": 0,
+      "native_contacts": 0,
+      "physical_teacher_fde_mean_m": 0.8100217864797451,
+      "physical_failures": [
+        {
+          "route": 8,
+          "window": 3,
+          "method": "legacy_frozen",
+          "passed": false,
+          "steps": 4100,
+          "mesh_violation": false,
+          "native_contact": false,
+          "teacher_final_error_m": 0.7748076986068543,
+          "tracking_reference_max_m": 0.04090109996720198,
+          "speed_max_mps": 0.23319245206610684,
+          "reference_acceleration_max_mps2": 0.09079238568748353,
+          "reference_switch_jump_m": 0.012431217962107187,
+          "wall_seconds": 2.2540013290008574
+        },
+        {
+          "route": 8,
+          "window": 9,
+          "method": "legacy_frozen",
+          "passed": false,
+          "steps": 4100,
+          "mesh_violation": false,
+          "native_contact": false,
+          "teacher_final_error_m": 1.2630157905586794,
+          "tracking_reference_max_m": 0.09310653839284734,
+          "speed_max_mps": 0.41926773258669564,
+          "reference_acceleration_max_mps2": 0.0568781320098133,
+          "reference_switch_jump_m": 0.031231570154463404,
+          "wall_seconds": 2.2629814279998755
+        },
+        {
+          "route": 8,
+          "window": 13,
+          "method": "legacy_frozen",
+          "passed": false,
+          "steps": 4100,
+          "mesh_violation": false,
+          "native_contact": false,
+          "teacher_final_error_m": 0.6516615209640834,
+          "tracking_reference_max_m": 0.06471131324160316,
+          "speed_max_mps": 0.2958111234847343,
+          "reference_acceleration_max_mps2": 0.05719237202299453,
+          "reference_switch_jump_m": 0.020114375156264054,
+          "wall_seconds": 2.262730465000459
+        },
+        {
+          "route": 9,
+          "window": 3,
+          "method": "legacy_frozen",
+          "passed": false,
+          "steps": 4100,
+          "mesh_violation": false,
+          "native_contact": false,
+          "teacher_final_error_m": 0.8181879989783761,
+          "tracking_reference_max_m": 0.03898792024123367,
+          "speed_max_mps": 0.22397865126800057,
+          "reference_acceleration_max_mps2": 0.08696755067440745,
+          "reference_switch_jump_m": 0.022577564798367897,
+          "wall_seconds": 2.263690379999389
+        },
+        {
+          "route": 9,
+          "window": 9,
+          "method": "legacy_frozen",
+          "passed": false,
+          "steps": 4100,
+          "mesh_violation": false,
+          "native_contact": false,
+          "teacher_final_error_m": 1.3342761233067544,
+          "tracking_reference_max_m": 0.0919331126904891,
+          "speed_max_mps": 0.41927112409879086,
+          "reference_acceleration_max_mps2": 0.05453743991148833,
+          "reference_switch_jump_m": 0.04274500085671887,
+          "wall_seconds": 2.274566189000325
+        },
+        {
+          "route": 9,
+          "window": 13,
+          "method": "legacy_frozen",
+          "passed": false,
+          "steps": 4100,
+          "mesh_violation": false,
+          "native_contact": false,
+          "teacher_final_error_m": 0.640812516602545,
+          "tracking_reference_max_m": 0.06314390016622146,
+          "speed_max_mps": 0.29581268968468355,
+          "reference_acceleration_max_mps2": 0.057192372022995985,
+          "reference_switch_jump_m": 0.0316473357632157,
+          "wall_seconds": 2.2945831479992194
+        },
+        {
+          "route": 10,
+          "window": 16,
+          "method": "legacy_frozen",
+          "passed": false,
+          "steps": 4100,
+          "mesh_violation": false,
+          "native_contact": false,
+          "teacher_final_error_m": 1.3546070305574107,
+          "tracking_reference_max_m": 0.07391834017144862,
+          "speed_max_mps": 0.33076411690498875,
+          "reference_acceleration_max_mps2": 0.25698078755988457,
+          "reference_switch_jump_m": 0.026745852605793877,
+          "wall_seconds": 2.2510648110001057
+        },
+        {
+          "route": 10,
+          "window": 27,
+          "method": "legacy_frozen",
+          "passed": false,
+          "steps": 4100,
+          "mesh_violation": false,
+          "native_contact": false,
+          "teacher_final_error_m": 0.3117007440502484,
+          "tracking_reference_max_m": 0.03260678404438025,
+          "speed_max_mps": 0.15471923638554833,
+          "reference_acceleration_max_mps2": 0.04135644459226805,
+          "reference_switch_jump_m": 0.021551909147171505,
+          "wall_seconds": 2.2775667670002804
+        },
+        {
+          "route": 11,
+          "window": 3,
+          "method": "legacy_frozen",
+          "passed": false,
+          "steps": 4100,
+          "mesh_violation": false,
+          "native_contact": false,
+          "teacher_final_error_m": 0.3028326187297597,
+          "tracking_reference_max_m": 0.019513238918551525,
+          "speed_max_mps": 0.2246433412424135,
+          "reference_acceleration_max_mps2": 0.08776146148197936,
+          "reference_switch_jump_m": 0.019414618834807308,
+          "wall_seconds": 2.2701246160004303
+        },
+        {
+          "route": 11,
+          "window": 16,
+          "method": "legacy_frozen",
+          "passed": false,
+          "steps": 4100,
+          "mesh_violation": false,
+          "native_contact": false,
+          "teacher_final_error_m": 1.4587739141294263,
+          "tracking_reference_max_m": 0.07191312255145771,
+          "speed_max_mps": 0.32685836004643765,
+          "reference_acceleration_max_mps2": 0.25733126347178753,
+          "reference_switch_jump_m": 0.044482969289476364,
+          "wall_seconds": 2.2446992949999185
+        },
+        {
+          "route": 11,
+          "window": 27,
+          "method": "legacy_frozen",
+          "passed": false,
+          "steps": 4100,
+          "mesh_violation": false,
+          "native_contact": false,
+          "teacher_final_error_m": 0.6634210230800709,
+          "tracking_reference_max_m": 0.03321117538060788,
+          "speed_max_mps": 0.16166057247342233,
+          "reference_acceleration_max_mps2": 0.06972422285334298,
+          "reference_switch_jump_m": 0.030405326371323094,
+          "wall_seconds": 2.237291409000136
+        }
+      ],
+      "by_route": {
+        "8": {
+          "ade_m": 0.5062145110929357,
+          "fde_m": 0.873908672781696
+        },
+        "9": {
+          "ade_m": 0.5258769668592514,
+          "fde_m": 0.9206517419151214
+        },
+        "10": {
+          "ade_m": 0.50674291021564,
+          "fde_m": 0.8775024378958288
+        },
+        "11": {
+          "ade_m": 0.5494012996794806,
+          "fde_m": 1.0060515417788263
+        }
+      }
+    },
+    "constant_velocity": {
+      "windows": 89,
+      "ade_m": 0.1429929034931813,
+      "fde_m": 0.3992133043898331,
+      "compute_p50_ms": 0.032109999665408395,
+      "compute_p95_ms": 0.03750160030904226,
+      "reference_acceleration_over_1_5": 0,
+      "physical_passes": 2,
+      "physical_trials": 12,
+      "mesh_violations": 0,
+      "native_contacts": 0,
+      "physical_teacher_fde_mean_m": 0.49694337029005214,
+      "physical_failures": [
+        {
+          "route": 8,
+          "window": 3,
+          "method": "constant_velocity",
+          "passed": false,
+          "steps": 4100,
+          "mesh_violation": false,
+          "native_contact": false,
+          "teacher_final_error_m": 0.4711174003556957,
+          "tracking_reference_max_m": 0.016733064543518698,
+          "speed_max_mps": 0.19408987159957763,
+          "reference_acceleration_max_mps2": 0.0645021567159125,
+          "reference_switch_jump_m": 0.016627685479980683,
+          "wall_seconds": 1.817320216000553
+        },
+        {
+          "route": 8,
+          "window": 13,
+          "method": "constant_velocity",
+          "passed": false,
+          "steps": 4100,
+          "mesh_violation": false,
+          "native_contact": false,
+          "teacher_final_error_m": 0.5417194004143064,
+          "tracking_reference_max_m": 0.016731114684781747,
+          "speed_max_mps": 0.3222879132761443,
+          "reference_acceleration_max_mps2": 0.05719237202299453,
+          "reference_switch_jump_m": 0.017156542093187087,
+          "wall_seconds": 1.8195960339999147
+        },
+        {
+          "route": 9,
+          "window": 3,
+          "method": "constant_velocity",
+          "passed": false,
+          "steps": 4100,
+          "mesh_violation": false,
+          "native_contact": false,
+          "teacher_final_error_m": 0.4920456502580201,
+          "tracking_reference_max_m": 0.016664505520944863,
+          "speed_max_mps": 0.1812860560355719,
+          "reference_acceleration_max_mps2": 0.06450215671591247,
+          "reference_switch_jump_m": 0.016648042749410116,
+          "wall_seconds": 1.8099853029998485
+        },
+        {
+          "route": 9,
+          "window": 13,
+          "method": "constant_velocity",
+          "passed": false,
+          "steps": 4100,
+          "mesh_violation": false,
+          "native_contact": false,
+          "teacher_final_error_m": 0.5219906840252447,
+          "tracking_reference_max_m": 0.01675186153119409,
+          "speed_max_mps": 0.30404475346417054,
+          "reference_acceleration_max_mps2": 0.057192372022995985,
+          "reference_switch_jump_m": 0.016832527636659333,
+          "wall_seconds": 1.849844295999901
+        },
+        {
+          "route": 10,
+          "window": 3,
+          "method": "constant_velocity",
+          "passed": false,
+          "steps": 4100,
+          "mesh_violation": false,
+          "native_contact": false,
+          "teacher_final_error_m": 0.3064862551888068,
+          "tracking_reference_max_m": 0.016700768633929615,
+          "speed_max_mps": 0.1056392062564567,
+          "reference_acceleration_max_mps2": 0.03560514574568313,
+          "reference_switch_jump_m": 0.016629685459300884,
+          "wall_seconds": 1.807486816999699
+        },
+        {
+          "route": 10,
+          "window": 16,
+          "method": "constant_velocity",
+          "passed": false,
+          "steps": 4100,
+          "mesh_violation": false,
+          "native_contact": false,
+          "teacher_final_error_m": 1.1068177509844386,
+          "tracking_reference_max_m": 0.016634232881800305,
+          "speed_max_mps": 0.3461429863025504,
+          "reference_acceleration_max_mps2": 0.25698078755988457,
+          "reference_switch_jump_m": 0.01746192435756162,
+          "wall_seconds": 1.8108298040006048
+        },
+        {
+          "route": 10,
+          "window": 27,
+          "method": "constant_velocity",
+          "passed": false,
+          "steps": 4100,
+          "mesh_violation": false,
+          "native_contact": false,
+          "teacher_final_error_m": 0.3132102523499015,
+          "tracking_reference_max_m": 0.016737270981767777,
+          "speed_max_mps": 0.16204346952171927,
+          "reference_acceleration_max_mps2": 0.04135644459226805,
+          "reference_switch_jump_m": 0.016772201967262007,
+          "wall_seconds": 1.8361092249997455
+        },
+        {
+          "route": 11,
+          "window": 3,
+          "method": "constant_velocity",
+          "passed": false,
+          "steps": 4100,
+          "mesh_violation": false,
+          "native_contact": false,
+          "teacher_final_error_m": 0.3350536219155986,
+          "tracking_reference_max_m": 0.016735468116254086,
+          "speed_max_mps": 0.08818860785670944,
+          "reference_acceleration_max_mps2": 0.03531089581249129,
+          "reference_switch_jump_m": 0.016746128370412665,
+          "wall_seconds": 1.8231388869999137
+        },
+        {
+          "route": 11,
+          "window": 16,
+          "method": "constant_velocity",
+          "passed": false,
+          "steps": 4100,
+          "mesh_violation": false,
+          "native_contact": false,
+          "teacher_final_error_m": 1.187543833309022,
+          "tracking_reference_max_m": 0.016631204495187853,
+          "speed_max_mps": 0.3269307106652808,
+          "reference_acceleration_max_mps2": 0.25733126347178753,
+          "reference_switch_jump_m": 0.01699708704972061,
+          "wall_seconds": 1.7958539769997515
+        },
+        {
+          "route": 11,
+          "window": 27,
+          "method": "constant_velocity",
+          "passed": false,
+          "steps": 4100,
+          "mesh_violation": false,
+          "native_contact": false,
+          "teacher_final_error_m": 0.28826252922413825,
+          "tracking_reference_max_m": 0.01674311510539405,
+          "speed_max_mps": 0.16166057247342233,
+          "reference_acceleration_max_mps2": 0.04140889561716207,
+          "reference_switch_jump_m": 0.016473509343182743,
+          "wall_seconds": 1.7920750900002531
+        }
+      ],
+      "by_route": {
+        "8": {
+          "ade_m": 0.12726227453761887,
+          "fde_m": 0.3629162551446808
+        },
+        "9": {
+          "ade_m": 0.12940420415567588,
+          "fde_m": 0.36394265921049523
+        },
+        "10": {
+          "ade_m": 0.1507779095523504,
+          "fde_m": 0.4196813893436328
+        },
+        "11": {
+          "ade_m": 0.15012706178251845,
+          "fde_m": 0.4152113361467384
+        }
+      }
+    },
+    "moving_finetuned": {
+      "windows": 89,
+      "ade_m": 0.07784073437410578,
+      "fde_m": 0.1969560000115614,
+      "compute_p50_ms": 33.4683330002008,
+      "compute_p95_ms": 34.635689399874536,
+      "reference_acceleration_over_1_5": 16,
+      "physical_passes": 8,
+      "physical_trials": 12,
+      "mesh_violations": 0,
+      "native_contacts": 0,
+      "physical_teacher_fde_mean_m": 0.22048553494081502,
+      "physical_failures": [
+        {
+          "route": 8,
+          "window": 9,
+          "method": "moving_finetuned",
+          "passed": false,
+          "steps": 4100,
+          "mesh_violation": false,
+          "native_contact": false,
+          "teacher_final_error_m": 0.5103649767895106,
+          "tracking_reference_max_m": 0.02074407939951058,
+          "speed_max_mps": 0.6215110717548322,
+          "reference_acceleration_max_mps2": 0.5521892613079957,
+          "reference_switch_jump_m": 0.01691194600192828,
+          "wall_seconds": 2.1071871189997182
+        },
+        {
+          "route": 8,
+          "window": 13,
+          "method": "moving_finetuned",
+          "passed": false,
+          "steps": 4100,
+          "mesh_violation": false,
+          "native_contact": false,
+          "teacher_final_error_m": 0.9345714336946345,
+          "tracking_reference_max_m": 0.036370519499567225,
+          "speed_max_mps": 0.7008513724304316,
+          "reference_acceleration_max_mps2": 1.831525309303317,
+          "reference_switch_jump_m": 0.017028258683224703,
+          "wall_seconds": 2.0962281160000202
+        },
+        {
+          "route": 10,
+          "window": 16,
+          "method": "moving_finetuned",
+          "passed": false,
+          "steps": 4100,
+          "mesh_violation": false,
+          "native_contact": false,
+          "teacher_final_error_m": 0.2640749668736473,
+          "tracking_reference_max_m": 0.05814662996602689,
+          "speed_max_mps": 1.1851741572384142,
+          "reference_acceleration_max_mps2": 3.298888408250822,
+          "reference_switch_jump_m": 0.01700187519911811,
+          "wall_seconds": 2.0958528249993833
+        },
+        {
+          "route": 11,
+          "window": 16,
+          "method": "moving_finetuned",
+          "passed": false,
+          "steps": 4100,
+          "mesh_violation": false,
+          "native_contact": false,
+          "teacher_final_error_m": 0.23615332076508433,
+          "tracking_reference_max_m": 0.03286740220336466,
+          "speed_max_mps": 1.1628767716738968,
+          "reference_acceleration_max_mps2": 1.7696798221716405,
+          "reference_switch_jump_m": 0.01631000947053357,
+          "wall_seconds": 2.090324610000607
+        }
+      ],
+      "by_route": {
+        "8": {
+          "ade_m": 0.1396582869910266,
+          "fde_m": 0.3986752484861607
+        },
+        "9": {
+          "ade_m": 0.02427357186039904,
+          "fde_m": 0.059392652483041056
+        },
+        "10": {
+          "ade_m": 0.06207099454781862,
+          "fde_m": 0.17518049517741682
+        },
+        "11": {
+          "ade_m": 0.08895962115457635,
+          "fde_m": 0.1859277042115285
+        }
+      }
+    },
+    "moving_finetuned_empty_map": {
+      "windows": 89,
+      "ade_m": 0.17047742729738727,
+      "fde_m": 0.49801689351685646,
+      "compute_p50_ms": 33.208508999450714,
+      "compute_p95_ms": 34.80419119987346,
+      "reference_acceleration_over_1_5": 0,
+      "physical_passes": 4,
+      "physical_trials": 12,
+      "mesh_violations": 0,
+      "native_contacts": 0,
+      "physical_teacher_fde_mean_m": 0.5716310206849132,
+      "physical_failures": [
+        {
+          "route": 8,
+          "window": 9,
+          "method": "moving_finetuned_empty_map",
+          "passed": false,
+          "steps": 4100,
+          "mesh_violation": false,
+          "native_contact": false,
+          "teacher_final_error_m": 0.682044882393031,
+          "tracking_reference_max_m": 0.017783845406715793,
+          "speed_max_mps": 0.6610969482973694,
+          "reference_acceleration_max_mps2": 0.21642140285237216,
+          "reference_switch_jump_m": 0.016924649367903583,
+          "wall_seconds": 2.1034475080004995
+        },
+        {
+          "route": 8,
+          "window": 13,
+          "method": "moving_finetuned_empty_map",
+          "passed": false,
+          "steps": 4100,
+          "mesh_violation": false,
+          "native_contact": false,
+          "teacher_final_error_m": 0.9991974667699476,
+          "tracking_reference_max_m": 0.019009335401858674,
+          "speed_max_mps": 0.5269648999063753,
+          "reference_acceleration_max_mps2": 0.45557601688344457,
+          "reference_switch_jump_m": 0.016842438855592962,
+          "wall_seconds": 2.1048250820003886
+        },
+        {
+          "route": 9,
+          "window": 9,
+          "method": "moving_finetuned_empty_map",
+          "passed": false,
+          "steps": 4100,
+          "mesh_violation": false,
+          "native_contact": false,
+          "teacher_final_error_m": 0.5466863137351912,
+          "tracking_reference_max_m": 0.019063057198020456,
+          "speed_max_mps": 0.5838748621149771,
+          "reference_acceleration_max_mps2": 0.29594808042594706,
+          "reference_switch_jump_m": 0.016573703589188218,
+          "wall_seconds": 2.1306624199996804
+        },
+        {
+          "route": 9,
+          "window": 13,
+          "method": "moving_finetuned_empty_map",
+          "passed": false,
+          "steps": 4100,
+          "mesh_violation": false,
+          "native_contact": false,
+          "teacher_final_error_m": 0.8117949033003767,
+          "tracking_reference_max_m": 0.019882306719910963,
+          "speed_max_mps": 0.49266416234640714,
+          "reference_acceleration_max_mps2": 0.4673523887959871,
+          "reference_switch_jump_m": 0.01662121263155416,
+          "wall_seconds": 2.1349569659996632
+        },
+        {
+          "route": 10,
+          "window": 16,
+          "method": "moving_finetuned_empty_map",
+          "passed": false,
+          "steps": 4100,
+          "mesh_violation": false,
+          "native_contact": false,
+          "teacher_final_error_m": 0.9761136866776138,
+          "tracking_reference_max_m": 0.01832281066424937,
+          "speed_max_mps": 0.533163015331901,
+          "reference_acceleration_max_mps2": 0.30888054183996183,
+          "reference_switch_jump_m": 0.016801600746378917,
+          "wall_seconds": 2.08889558699957
+        },
+        {
+          "route": 10,
+          "window": 27,
+          "method": "moving_finetuned_empty_map",
+          "passed": false,
+          "steps": 4100,
+          "mesh_violation": false,
+          "native_contact": false,
+          "teacher_final_error_m": 0.6475606369158522,
+          "tracking_reference_max_m": 0.02001003477009083,
+          "speed_max_mps": 0.37694652032361764,
+          "reference_acceleration_max_mps2": 0.5128055972913921,
+          "reference_switch_jump_m": 0.016575557412472682,
+          "wall_seconds": 2.1180948010005523
+        },
+        {
+          "route": 11,
+          "window": 3,
+          "method": "moving_finetuned_empty_map",
+          "passed": false,
+          "steps": 4100,
+          "mesh_violation": false,
+          "native_contact": false,
+          "teacher_final_error_m": 0.5503569057973459,
+          "tracking_reference_max_m": 0.018620597368881293,
+          "speed_max_mps": 0.2667109767348734,
+          "reference_acceleration_max_mps2": 0.4468035237886576,
+          "reference_switch_jump_m": 0.01652027770819572,
+          "wall_seconds": 2.1049415120005506
+        },
+        {
+          "route": 11,
+          "window": 16,
+          "method": "moving_finetuned_empty_map",
+          "passed": false,
+          "steps": 4100,
+          "mesh_violation": false,
+          "native_contact": false,
+          "teacher_final_error_m": 1.0707091864053964,
+          "tracking_reference_max_m": 0.022161733185876793,
+          "speed_max_mps": 0.43643289651794354,
+          "reference_acceleration_max_mps2": 0.7399890669753282,
+          "reference_switch_jump_m": 0.01630615147010805,
+          "wall_seconds": 2.074187610000081
+        }
+      ],
+      "by_route": {
+        "8": {
+          "ade_m": 0.15179802065098189,
+          "fde_m": 0.45792749978591857
+        },
+        "9": {
+          "ade_m": 0.13659874314649484,
+          "fde_m": 0.4054237263405528
+        },
+        "10": {
+          "ade_m": 0.18956773877718405,
+          "fde_m": 0.5523193545317565
+        },
+        "11": {
+          "ade_m": 0.1783025049322326,
+          "fde_m": 0.5118657949894072
+        }
+      }
+    }
+  },
+  "physical_gate": {
+    "teacher_final_error_m": 0.25,
+    "tracking_model_reference_max_m": 0.15,
+    "actual_speed_max_mps": 0.8,
+    "reference_acceleration_max_mps2": 1.5,
+    "mesh_margin_m": 0.15
+  },
+  "physics_steps": 196800,
+  "checkpoint_sha256": "21cbb45df1ca301b027a372a587779983c7d772ef8ab795b0771794451d87a42",
+  "base_sha256": "6e0da29b562b433bc1813b2f632cdd1f0a420705b003767ae32ce31e94745192",
+  "prediction_manifest_sha256": "ecd39d71ac779dd6d94cf3d5c0b4318de93a88e11d606a4ec41aa8a4db165d27",
+  "physical_manifest_sha256": "502e488c0db3a6ece5cd0c69296256840b2c1aa17e79a26d0c2f1aa0956e1f5d",
+  "source_hashes": {
+    "moving_sdf_model.py": "758106d6b54932f025597fdb26f8f21ae952cae4d5c763c45b9c1f3c343999f0",
+    "moving_pose.py": "fd4ca6a241db7c55d06206e8393dfa6b44a3ce4b4520c8b0417da07d5a108c0d",
+    "moving_sdf_evaluation.py": "ecb2510268e491304f0a4445ed50f67b50a591330de4dac48ed90a61aef4e38c",
+    "moving_sdf_training.py": "b2610bbbc232533fe96c47883278ebb81eef91d09383c26b5b3d6a8cbd637570"
+  },
+  "conclusion": "Improved same-factory short-horizon position prediction and paired execution gate; no collision-rate improvement established; dynamics outliers remain. Not full mission replanning or unseen scene validation.",
+  "initialization": "transfer frozen SDF encoder and compatible DiT weights; new motion condition/order; train-only normalization; test excluded",
+  "seed": 77,
+  "selection": "minimum validation coefficient MSE; no test tuning",
+  "timing_scope": "Warm-up excluded; per-sample encode + 20 DDIM + CPU spline decoding and synchronization; excludes LiDAR, nvblox, IPC and physics",
+  "raw_results": "results/factory_dit_pilot_v1",
+  "related_tests_passed": 21,
+  "stricter_runtime_envelope_diagnostic": {
+    "note": "Post-hoc check only; selected model unchanged. Additional speed<=0.65 and reference acceleration<=0.9 on previously passing physical trials.",
+    "legacy_frozen": 1,
+    "constant_velocity": 2,
+    "moving_finetuned": 8,
+    "moving_finetuned_empty_map": 4
+  }
+}
