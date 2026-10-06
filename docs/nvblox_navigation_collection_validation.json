@@ -1,0 +1,488 @@
+{
+  "date": "2026-10-06",
+  "schema": "nvblox_continuous_navigation_v1",
+  "episodes": 6,
+  "accepted": 6,
+  "windows": 78,
+  "physics_steps": 180000,
+  "scans": 906,
+  "rays_per_scan": 20000,
+  "contacts": 0,
+  "tracking_max_m": 0.016806572619061513,
+  "window_speed_min_mps": 0.02372412760527211,
+  "known_fraction_min": 0.04974365234375,
+  "known_fraction_max": 0.1669921875,
+  "unknown_voxels_preserved": 9573602,
+  "tests": 6,
+  "checks": [
+    "all mapped file hashes",
+    "finite 4x6x32x32x32 fields",
+    "causal ages",
+    "unknown masks and distances",
+    "whole scene split consistency",
+    "nonzero measured velocity at every window"
+  ],
+  "scene_splits": {
+    "0": 1,
+    "1": 2,
+    "2": 0,
+    "3": 0,
+    "4": 2,
+    "5": 0
+  },
+  "reports": [
+    {
+      "index": 0,
+      "config": {
+        "index": 0,
+        "seed": 20261006,
+        "kind": "open",
+        "origin": [
+          0.0,
+          0.0,
+          3.0
+        ],
+        "target": [
+          6.124504892409864,
+          0.0,
+          -0.0710299379768641,
+          0.0,
+          0.0,
+          0.11863066644700979
+        ],
+        "boxes": [
+          [
+            3.0,
+            0.0,
+            -0.1,
+            18.0,
+            18.0,
+            0.2
+          ],
+          [
+            9.0,
+            0.0,
+            3.0,
+            0.2,
+            14.0,
+            6.0
+          ]
+        ],
+        "split": 1
+      },
+      "accepted": true,
+      "expert": {
+        "clearance_m": 2.4823706578926585,
+        "length_m": 6.124916769168485,
+        "speed_max_mps": 0.38280729807303054,
+        "acceleration_max_mps2": 0.039291359343103405,
+        "jerk_mean_square": 3.715036478943986e-05,
+        "duration_s": 30.0,
+        "lateral_m": 0.0,
+        "vertical_m": 0.0
+      },
+      "contact_steps": 0,
+      "completed": true,
+      "tracking_max_m": 0.016718701111258765,
+      "final_error_m": 0.016718701111258765,
+      "windows": 13,
+      "scans": 151,
+      "file": "episode_00000.npz",
+      "sha256": "5596110614553c80c8759bca1abe9edddfb58dd4e0da3b29da9c99d47545207f",
+      "wall_seconds": 22.249842941000225
+    },
+    {
+      "index": 1,
+      "config": {
+        "index": 1,
+        "seed": 20261006,
+        "kind": "left",
+        "origin": [
+          0.0,
+          0.0,
+          3.0
+        ],
+        "target": [
+          6.1521286748141915,
+          0.0,
+          -0.18482062519591846,
+          0.0,
+          0.0,
+          -0.07582071549802018
+        ],
+        "boxes": [
+          [
+            3.0,
+            0.0,
+            -0.1,
+            18.0,
+            18.0,
+            0.2
+          ],
+          [
+            9.0,
+            0.0,
+            3.0,
+            0.2,
+            14.0,
+            6.0
+          ],
+          [
+            3.1935763582494068,
+            -0.65,
+            3.0,
+            0.5361466352796956,
+            2.1,
+            8.0
+          ]
+        ],
+        "split": 2
+      },
+      "accepted": true,
+      "expert": {
+        "clearance_m": 0.5348216571826266,
+        "length_m": 7.187950239892057,
+        "speed_max_mps": 0.38468151343315427,
+        "acceleration_max_mps2": 0.04836859968829768,
+        "jerk_mean_square": 0.00011178526269398075,
+        "duration_s": 30.0,
+        "lateral_m": 1.6,
+        "vertical_m": 0.0
+      },
+      "contact_steps": 0,
+      "completed": true,
+      "tracking_max_m": 0.016806572619061513,
+      "final_error_m": 0.01680636457065471,
+      "windows": 13,
+      "scans": 151,
+      "file": "episode_00001.npz",
+      "sha256": "884d699a6df2c5553c29faaa3c48563bbdf452f88a3858e127fbb758610a14c7",
+      "wall_seconds": 22.2958036670002
+    },
+    {
+      "index": 2,
+      "config": {
+        "index": 2,
+        "seed": 20261006,
+        "kind": "right",
+        "origin": [
+          0.0,
+          0.0,
+          3.0
+        ],
+        "target": [
+          5.8720680019154665,
+          0.0,
+          0.044625293538050365,
+          0.0,
+          0.0,
+          0.08436862440714102
+        ],
+        "boxes": [
+          [
+            3.0,
+            0.0,
+            -0.1,
+            18.0,
+            18.0,
+            0.2
+          ],
+          [
+            9.0,
+            0.0,
+            3.0,
+            0.2,
+            14.0,
+            6.0
+          ],
+          [
+            2.825713827564269,
+            0.65,
+            3.0,
+            0.5876694498783639,
+            2.1,
+            8.0
+          ]
+        ],
+        "split": 0
+      },
+      "accepted": true,
+      "expert": {
+        "clearance_m": 0.5085952484297842,
+        "length_m": 6.942165825189527,
+        "speed_max_mps": 0.36701484789842187,
+        "acceleration_max_mps2": 0.04714884384117336,
+        "jerk_mean_square": 0.00010841859927630392,
+        "duration_s": 30.0,
+        "lateral_m": -1.6,
+        "vertical_m": 0.0
+      },
+      "contact_steps": 0,
+      "completed": true,
+      "tracking_max_m": 0.016722463599964734,
+      "final_error_m": 0.016616606632363747,
+      "windows": 13,
+      "scans": 151,
+      "file": "episode_00002.npz",
+      "sha256": "c3f33432e32759d4bd8d6271e9ffa25fea6b46aa97efc6201c659dfb915e6cb4",
+      "wall_seconds": 22.119973831999687
+    },
+    {
+      "index": 3,
+      "config": {
+        "index": 3,
+        "seed": 20261006,
+        "kind": "over",
+        "origin": [
+          0.0,
+          0.0,
+          3.0
+        ],
+        "target": [
+          5.910276819298681,
+          0.0,
+          0.1543714668513031,
+          0.0,
+          0.0,
+          -0.0030846454416287583
+        ],
+        "boxes": [
+          [
+            3.0,
+            0.0,
+            -0.1,
+            18.0,
+            18.0,
+            0.2
+          ],
+          [
+            9.0,
+            0.0,
+            3.0,
+            0.2,
+            14.0,
+            6.0
+          ],
+          [
+            2.96372075160594,
+            0.0,
+            1.5,
+            0.5145460991418777,
+            14.0,
+            3.0
+          ]
+        ],
+        "split": 0
+      },
+      "accepted": true,
+      "expert": {
+        "clearance_m": 0.5299785729677992,
+        "length_m": 6.211766993581927,
+        "speed_max_mps": 0.36954728541303633,
+        "acceleration_max_mps2": 0.03983766052885676,
+        "jerk_mean_square": 5.318337020504779e-05,
+        "duration_s": 30.0,
+        "lateral_m": 0.0,
+        "vertical_m": 0.8
+      },
+      "contact_steps": 0,
+      "completed": true,
+      "tracking_max_m": 0.016756217868597427,
+      "final_error_m": 0.016718705323488847,
+      "windows": 13,
+      "scans": 151,
+      "file": "episode_00003.npz",
+      "sha256": "dad690055919dadf98762e1733f741ecadce9d0fe3c02ad52473ddb960bda435",
+      "wall_seconds": 21.770446515000003
+    },
+    {
+      "index": 4,
+      "config": {
+        "index": 4,
+        "seed": 20261006,
+        "kind": "under",
+        "origin": [
+          0.0,
+          0.0,
+          3.0
+        ],
+        "target": [
+          5.893189035364916,
+          0.0,
+          0.14075315484445217,
+          0.0,
+          0.0,
+          -0.02459104446282985
+        ],
+        "boxes": [
+          [
+            3.0,
+            0.0,
+            -0.1,
+            18.0,
+            18.0,
+            0.2
+          ],
+          [
+            9.0,
+            0.0,
+            3.0,
+            0.2,
+            14.0,
+            6.0
+          ],
+          [
+            3.0028914040645374,
+            0.0,
+            5.0,
+            0.620357914557485,
+            14.0,
+            4.0
+          ]
+        ],
+        "split": 2
+      },
+      "accepted": true,
+      "expert": {
+        "clearance_m": 0.43968528540068064,
+        "length_m": 6.195167386707399,
+        "speed_max_mps": 0.3684537109456811,
+        "acceleration_max_mps2": 0.03970649174085226,
+        "jerk_mean_square": 5.2979653372743965e-05,
+        "duration_s": 30.0,
+        "lateral_m": 0.0,
+        "vertical_m": -0.8
+      },
+      "contact_steps": 0,
+      "completed": true,
+      "tracking_max_m": 0.016762869140889643,
+      "final_error_m": 0.01670126555399698,
+      "windows": 13,
+      "scans": 151,
+      "file": "episode_00004.npz",
+      "sha256": "e3447ffd8df3eab398eb1b59dbb995bd08d08cb739bdd0abce19031823d5cd13",
+      "wall_seconds": 21.901438255999892
+    },
+    {
+      "index": 5,
+      "config": {
+        "index": 5,
+        "seed": 20261006,
+        "kind": "height_change",
+        "origin": [
+          0.0,
+          0.0,
+          3.0
+        ],
+        "target": [
+          6.088989435529091,
+          0.0,
+          1.0276798565582934,
+          0.0,
+          0.0,
+          0.03748690850844713
+        ],
+        "boxes": [
+          [
+            3.0,
+            0.0,
+            -0.1,
+            18.0,
+            18.0,
+            0.2
+          ],
+          [
+            9.0,
+            0.0,
+            3.0,
+            0.2,
+            14.0,
+            6.0
+          ]
+        ],
+        "split": 0
+      },
+      "accepted": true,
+      "expert": {
+        "clearance_m": 2.5216627443890522,
+        "length_m": 6.175104714380193,
+        "speed_max_mps": 0.38594404464876236,
+        "acceleration_max_mps2": 0.039613315161332915,
+        "jerk_mean_square": 3.776168391721013e-05,
+        "duration_s": 30.0,
+        "lateral_m": 0.0,
+        "vertical_m": 0.0
+      },
+      "contact_steps": 0,
+      "completed": true,
+      "tracking_max_m": 0.01673217837404325,
+      "final_error_m": 0.016711689919092852,
+      "windows": 13,
+      "scans": 151,
+      "file": "episode_00005.npz",
+      "sha256": "70f326d4a67ec95980d2abff794d052ae4242e08fa514430841270536aa3d5be",
+      "wall_seconds": 21.29778046499996
+    }
+  ],
+  "mapper": {
+    "native": {
+      "nvblox_version": "0.0.10.dev1+cu12ubuntu24",
+      "torch_version": "2.9.1+cu128",
+      "cuda_version": "12.8",
+      "gpu": "NVIDIA GeForce RTX 4080 Laptop GPU",
+      "esdf_max_distance_m": 5.0,
+      "esdf_min_weight": 0.001,
+      "lidar_factory_argument_swap_compensated": true,
+      "esdf_unknown_sentinel": 100.0
+    },
+    "config": {
+      "voxel_size": 0.15,
+      "max_range": 20.0,
+      "esdf_max_distance": 5.0,
+      "width": 720,
+      "height": 128,
+      "vertical_fov_degrees": 104.0
+    },
+    "grid": 32,
+    "cell": 0.25,
+    "local_bounds": [
+      [
+        -2,
+        6
+      ],
+      [
+        -4,
+        4
+      ],
+      [
+        -4,
+        4
+      ]
+    ],
+    "channels": [
+      "tsdf_clipped",
+      "weight_log",
+      "esdf_clipped",
+      "esdf_known",
+      "tsdf_known",
+      "latest_hits"
+    ],
+    "unknown_policy": "zero-valued distance with separate explicit known flags; never certified free",
+    "history": "four cumulative causal snapshots, nominal 0.2 s apart; actual ages retained under bounded asynchronous jitter, common planning-anchor coordinates"
+  },
+  "source_hashes": {
+    "sdf_navigation_data.py": "66573c5e4f45749e7309af9f8b13317480c90f133952234feb5625c161e52b71",
+    "sdf_data.py": "fad13b69ceaac2707ea683ca3d6db5395c0014ac8b468eb83df302fe075b357a",
+    "temporal_data.py": "4df1dbfa546c7a94382da368a1539b69788d65008f9c504aee0be2383557e0d9",
+    "sdf_mapping.py": "9a7de630db7a93a1bb773e4c651498f7b4495189c120c082d687bca068ab73fe",
+    "sdf_pose.py": "3ad2e729b8256489a88987e0aa2ca54679d9946366bac68d7be651ebc095e766",
+    "collision_loss.py": "42da73bf7fa061c6d346866c646db10c9c6c0cbe177a6e462878a936a62cd2be",
+    "controller": "6b56d4ca7c9a0403a5eca68edb50fb932e26add990b110f3f563747f96c23001",
+    "mjcf": "99f616758a3e6596b72db64eb8ee061bf7c92fb430b6aaa7ea81b92c59ecf8db"
+  },
+  "collection_sha256": "808b571e44e1ecae9ad24ce618c2be5df3ad38cbac3faff5f6fdd97033851884",
+  "mapping_sha256": "fa689464db54ac38fcfdd524b30387bd399f95fcdcb792cd6e0ac3f727fd3820",
+  "scope": "native actuator physics and actual nvblox GPU smoke test; no DiT retraining or Isaac industrial navigation validation",
+  "local_results": "results/navigation_collection/validated_v1",
+  "mapped_results": "results/navigation_collection/mapped_v1"
+}
