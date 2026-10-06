@@ -1,0 +1,196 @@
+{
+  "date": "2026-10-06",
+  "rollout": {
+    "schema": "factory_causal_navigation_v1",
+    "accepted": true,
+    "stage": "rollout_complete",
+    "geometry": {
+      "schema": "factory_causal_navigation_v1",
+      "mesh_sha256": "48e0ed42efe592cc7df759ef9e04aa800df26ae50649092dc50a71cb550cf9b4",
+      "urdf_sha256": "8f83b32c5ecce5634cefa726e3682f58c644f686ad24313e40503de1726f015c",
+      "mission_sha256": "c042686022d0d9837ca57e60b19b2358adc271c57ea559e2d46940ffc2543ef0",
+      "collector_sources": {
+        "coal_collision.py": "b3849e9736cf60d6605ff8d201ab17f78fd991bc117f36d3f2c27bde218633ab",
+        "ompl_se3_planner.py": "c2f22ccaf2059a981b80c5fe407be88b907655e465449b624c912c9e0197cb48"
+      },
+      "geometry_sha256": "e11f1cfb5dac720ea596782e700198d2dfca9e191bab829fb9930f1e8474d015",
+      "source_sha256": "da3eddb95020c64313e250d5b48a2213ccf240bb1a40394c066568822f715f0f",
+      "triangles": 2501013,
+      "vertices": 3173244,
+      "segments": [
+        {
+          "planner": "OMPL RRTConnect (bidirectional RRT)",
+          "seconds": 0.015052981999360782,
+          "raw_states": 10
+        },
+        {
+          "planner": "OMPL RRTConnect (bidirectional RRT)",
+          "seconds": 0.02121108500068658,
+          "raw_states": 11
+        }
+      ],
+      "geometry_wall_seconds": 1.571958858000471,
+      "reference_duration": 39.6,
+      "reference_min_clearance_m": 2.75105277761087,
+      "trajectory_length_m": 8.944271909999157,
+      "speed_max_mps": 0.504449316212385,
+      "acceleration_max_mps2": 0.5987613607346151,
+      "stage": "full mesh OMPL/COAL geometry and sampled retiming audit; not rollout",
+      "mission": {
+        "start_position": [
+          16.5,
+          15.8,
+          13.0
+        ],
+        "waypoints": [
+          [
+            16.5,
+            20.2,
+            13.8
+          ],
+          [
+            12.1,
+            20.2,
+            13.0
+          ]
+        ],
+        "scope": "Small actual-factory pilot with height change and continuous turn; public mission waypoints, not supplied local paths"
+      }
+    },
+    "physics_steps": 39600,
+    "actual_mesh_checks": 39601,
+    "tracking_max_m": 0.01806303262612181,
+    "attitude_tracking_max_rad": 0.019847576180853053,
+    "windows": 35,
+    "scans": 397,
+    "final_error_m": 0.0167126323130607,
+    "scan_wall_p50_s": 0.015952346000631223,
+    "scan_wall_p95_s": 0.02115202959994349,
+    "source_sha256": "da3eddb95020c64313e250d5b48a2213ccf240bb1a40394c066568822f715f0f",
+    "sensor_source_sha256": "e21e471c61ce0aaaa6d186ef0c13aea75a49f68e1a209ea6bffb04dd836bec18",
+    "physics": "native unchanged actuator dynamics; external full-URDF COAL mesh query every 1 ms; no factory contact response",
+    "seed": 20261006,
+    "split": 0,
+    "split_group": "48e0ed42efe592cc7df759ef9e04aa800df26ae50649092dc50a71cb550cf9b4",
+    "episode_sha256": "fb03495d5a6b1578f03c88b163425699207105bbe2093a43c27cc05232e6d444",
+    "wall_seconds": 41.609519870999975
+  },
+  "windows_checked": 35,
+  "known_fraction_range": [
+    0.24688720703125,
+    0.3262939453125
+  ],
+  "actual_distance_m": 8.991241047475647,
+  "moving_window_speed_range": [
+    0.004624549420915633,
+    0.500112374658745
+  ],
+  "checks": [
+    "all window hashes and finite tensors",
+    "input whitelist",
+    "past-only integration timestamps",
+    "ages",
+    "unknown preserved",
+    "local/world pose and velocity roundtrip",
+    "body angular derivative invariance"
+  ],
+  "unit_tests": 3,
+  "plane_sensor_test": {
+    "hits": 9461,
+    "max_plane_error_m": 1.1920928955078125e-05
+  },
+  "collector_revision": "b637a3a9d2a2252297748409cc5d77adb12dc487",
+  "initial_goal_failure": {
+    "schema": "factory_causal_navigation_v1",
+    "accepted": false,
+    "stage": "initialization",
+    "error": "ValueError: goal pose at [13.0, 14.0, 13.0] is outside the workspace or collides with an obstacle",
+    "wall_seconds": 7.643097808999755
+  },
+  "original_dense_spline_rollout": {
+    "schema": "factory_causal_navigation_v1",
+    "accepted": true,
+    "stage": "rollout_complete",
+    "geometry": {
+      "schema": "factory_causal_navigation_v1",
+      "mesh_sha256": "48e0ed42efe592cc7df759ef9e04aa800df26ae50649092dc50a71cb550cf9b4",
+      "urdf_sha256": "8f83b32c5ecce5634cefa726e3682f58c644f686ad24313e40503de1726f015c",
+      "mission_sha256": "c042686022d0d9837ca57e60b19b2358adc271c57ea559e2d46940ffc2543ef0",
+      "collector_sources": {
+        "coal_collision.py": "b3849e9736cf60d6605ff8d201ab17f78fd991bc117f36d3f2c27bde218633ab",
+        "ompl_se3_planner.py": "c2f22ccaf2059a981b80c5fe407be88b907655e465449b624c912c9e0197cb48"
+      },
+      "geometry_sha256": "e11f1cfb5dac720ea596782e700198d2dfca9e191bab829fb9930f1e8474d015",
+      "source_sha256": "6d43e3ddffd1bcb8f28e82f18fe49793a119c8242165cd7bb33072f2e6abfc2e",
+      "triangles": 2501013,
+      "vertices": 3173244,
+      "segments": [
+        {
+          "planner": "OMPL RRTConnect (bidirectional RRT)",
+          "seconds": 0.014948469000046316,
+          "raw_states": 10
+        },
+        {
+          "planner": "OMPL RRTConnect (bidirectional RRT)",
+          "seconds": 0.020157909000317886,
+          "raw_states": 11
+        }
+      ],
+      "geometry_wall_seconds": 1.593395006999799,
+      "reference_duration": 88.5,
+      "reference_min_clearance_m": 2.75105277761087,
+      "trajectory_length_m": 8.944271909999157,
+      "speed_max_mps": 0.2278487224998764,
+      "acceleration_max_mps2": 0.5994151569912239,
+      "stage": "full mesh OMPL/COAL geometry and sampled retiming audit; not rollout",
+      "mission": {
+        "start_position": [
+          16.5,
+          15.8,
+          13.0
+        ],
+        "waypoints": [
+          [
+            16.5,
+            20.2,
+            13.8
+          ],
+          [
+            12.1,
+            20.2,
+            13.0
+          ]
+        ],
+        "scope": "Small actual-factory pilot with height change and continuous turn; public mission waypoints, not supplied local paths"
+      }
+    },
+    "physics_steps": 88500,
+    "actual_mesh_checks": 88501,
+    "tracking_max_m": 0.019640148837180082,
+    "attitude_tracking_max_rad": 0.0198682681906219,
+    "windows": 84,
+    "scans": 886,
+    "final_error_m": 0.01671130758947033,
+    "scan_wall_p50_s": 0.015080820500088521,
+    "scan_wall_p95_s": 0.01960576174997186,
+    "source_sha256": "6d43e3ddffd1bcb8f28e82f18fe49793a119c8242165cd7bb33072f2e6abfc2e",
+    "sensor_source_sha256": "e21e471c61ce0aaaa6d186ef0c13aea75a49f68e1a209ea6bffb04dd836bec18",
+    "physics": "native unchanged actuator dynamics; external full-URDF COAL mesh query every 1 ms; no factory contact response",
+    "seed": 20261006,
+    "split": 0,
+    "split_group": "48e0ed42efe592cc7df759ef9e04aa800df26ae50649092dc50a71cb550cf9b4",
+    "episode_sha256": "cb2f40160696ef1d562978bcc39adb8c4ec95d5ce7ebed8043eb06f529e30571",
+    "wall_seconds": 79.46903404799968
+  },
+  "mapping_manifest_sha256": "c1bfba370fb257f134f01a824e8c9a088da0746226d5bd2eb91c7ea1c86cb706",
+  "final_code_sha256": {
+    "factory_expert_data.py": "01480bb69744596f59d826f0ae7ff6f41838a42be91c9f189a338bcb2252183f",
+    "factory_mesh_sensor.py": "e21e471c61ce0aaaa6d186ef0c13aea75a49f68e1a209ea6bffb04dd836bec18",
+    "factory_window_dataset.py": "f3669abb993f62fa0ee95473029deb59402d3127415476f281c1fb4d8f9cc61f"
+  },
+  "results": "results/factory_expert_v1",
+  "scope": "actual factory triangle geometry, native actuator dynamics and external COAL collision checking; offline nvblox preparation, no DiT training",
+  "related_regression_tests_passed": 18,
+  "offline_window_reconstruction_median_s": 0.20215414300037082,
+  "preparation_note": "Initial parallel runs interrupted; repeated NPZ decompression fixed by materializing members once. Final mapping reconstructed and validated; not online mapper latency."
+}
