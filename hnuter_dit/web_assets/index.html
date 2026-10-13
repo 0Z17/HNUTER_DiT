@@ -60,18 +60,33 @@
       <label class="field full"><span>推理 seed</span><input id="sampleSeed" type="number" value="20260828"></label>
       <button id="runModel" class="button infer full"><span>生成 DiT 轨迹</span><i>→</i></button>
       <div id="inferenceStatus" class="inference-status">等待场景</div>
+
+      <section id="executionPanel" class="execution-panel" hidden>
+        <div class="divider"></div>
+        <div class="section-heading"><h3>MuJoCo 动力学执行</h3><span class="tag">TOPP-RA → MPPI</span></div>
+        <p class="execution-help">TOPP-RA 生成连续参考，MPPI 闭环执行。白色为最终轨迹，橙色为实际飞行轨迹。</p>
+        <div id="finalSelection" class="final-selection">等待生成候选轨迹</div>
+        <button id="previewMujoco" class="button ghost full" disabled>在 MuJoCo 中预览当前场景</button>
+        <div class="execution-actions">
+          <button id="executeTrajectory" class="button primary" disabled>MPPI 执行最终轨迹</button>
+          <button id="stopExecution" class="button danger" disabled>停止</button>
+        </div>
+        <div id="executionStatus" class="execution-status" role="status" aria-live="polite">尚未连接 MuJoCo</div>
+        <div class="execution-metrics"><span>仿真时间 <b id="executionElapsed">—</b></span><span>跟踪误差 <b id="executionError">—</b></span></div>
+        <div id="executionReference" class="execution-help">参考速度上限 1.0 m/s；起终点静止，中间持续飞行。</div>
+      </section>
     </aside>
 
     <section class="workspace">
       <div class="viewport-toolbar">
         <div class="view-tabs"><button data-view="iso" class="active">透视</button><button data-view="top">顶视</button><button data-view="front">前视</button><button id="resetCamera">复位</button></div>
-        <div class="view-options"><label><input id="showAll" type="checkbox" checked> 全部候选</label><label><input id="animateVehicle" type="checkbox"> 轨迹动画</label></div>
+        <div class="view-options"><label><input id="showAll" type="checkbox" checked> 全部候选</label><label title="沿几何候选移动的标记，不是动力学仿真"><input id="animateVehicle" type="checkbox"> 几何轨迹动画</label></div>
       </div>
       <div id="viewport" class="viewport">
         <canvas id="sceneCanvas"></canvas>
         <div class="canvas-hint">拖动 BOX / START / GOAL 直接移动 · Alt+拖动调高度 · 双击空白处放置 BOX · 空白处左键旋转 · 右键/Shift 平移</div>
         <div class="axis"><b class="x">X</b><b class="y">Y</b><b class="z">Z</b></div>
-        <div class="legend"><span><i class="obstacle"></i>OBB</span><span><i class="valid"></i>有效轨迹</span><span><i class="invalid"></i>碰撞/越界</span><span><i class="start"></i>START</span><span><i class="goal"></i>GOAL</span></div>
+        <div class="legend"><span><i class="obstacle"></i>OBB</span><span><i class="valid"></i>候选轨迹</span><span><i class="invalid"></i>碰撞/越界</span><span class="execution-only" hidden><i class="final"></i>最终轨迹</span><span class="execution-only" hidden><i class="executed"></i>实际飞行</span><span><i class="start"></i>START</span><span><i class="goal"></i>GOAL</span></div>
         <div id="emptyState" class="empty-state"><b>NO SCENE</b><span>生成随机场景开始测试 DiT</span></div>
       </div>
       <div class="workspace-footer"><span id="sceneLabel">—</span><span id="cameraLabel">ISO · 100%</span></div>

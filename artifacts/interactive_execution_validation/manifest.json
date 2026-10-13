@@ -1,0 +1,78 @@
+{
+  "schema_version": "hnuter_interactive_execution_publication_v001",
+  "measurement_date": "2026-10-12",
+  "publication_date": "2026-10-13",
+  "base_revision": "094eeab5f1740659da43663b3b236e39167e27c7",
+  "checkpoint_sha256": "301070cd16c847d749da548bca4d66e409e7ed698346c9b938f3ddf782936dad",
+  "external_repositories": {
+    "collector": {
+      "url": "https://github.com/0Z17/HNUTER_trajectory_collector",
+      "revision": "b637a3a9d2a2252297748409cc5d77adb12dc487"
+    },
+    "mujoco": {
+      "url": "https://github.com/0Z17/HNUTER_mujoco_test",
+      "revision": "0d431f833e211baaaac2cbb8b7e98a6a2003a8d2"
+    }
+  },
+  "tested_environment": {
+    "platform": "Linux",
+    "python": "3.10",
+    "numpy": "2.2.6",
+    "torch": "2.13.0+cu130",
+    "mujoco": "3.11.0",
+    "scipy": "1.15.3",
+    "toppra": "0.6.9",
+    "coal": "3.0.3"
+  },
+  "curation": "Original metric summaries and complete planning inputs are preserved; per-control-step records stay in the ignored local smoke archive. Metric source hashes refer to the measured code. Publication-only portability checks and documentation are tested separately.",
+  "files": {
+    "README.md": {
+      "bytes": 2703,
+      "sha256": "19c9b72cc30ed37bc22baf792fe000273381df27d64da5f6d7bbb023b5e796ad"
+    },
+    "after_default_ui_seed_42.json": {
+      "bytes": 4832,
+      "sha256": "6c7b876fb34e743ac4fc0fe01c5ee46cb1d148fed2d9d7f2869cec861dc2ee21"
+    },
+    "after_seed_123.json": {
+      "bytes": 6233,
+      "sha256": "dff248e611407c7425e8a59c4ef66a0f5ba4b7ccd42b8fab812914d6722bfa0a"
+    },
+    "after_seed_42.json": {
+      "bytes": 6208,
+      "sha256": "9e872349159c24ec30cefcd31ae26eadb30233ff4ee86b6847a9412438571253"
+    },
+    "before_seed_123.json": {
+      "bytes": 3460,
+      "sha256": "02f4126cadcde0fe020a23e324bc71937756c654c32a6a1a8fedac24b1616dd6"
+    },
+    "before_seed_42.json": {
+      "bytes": 3462,
+      "sha256": "8f24cf555b625a96745dbe53baf7dc4c979153375d1cd63e500d1ba35ef638e2"
+    },
+    "comparison.json": {
+      "bytes": 29603,
+      "sha256": "0fa59300a0aa93826cd558761959da0b34498157cd338f7d70db0c6ae2434638"
+    },
+    "legacy_mujoco_execution.py": {
+      "bytes": 40152,
+      "sha256": "8c502f8facdaa4862bf60fbbd4b3c3bf6f9770a9fbfe3d9717268049d866692c"
+    },
+    "plan_default_ui_seed_42.json": {
+      "bytes": 199420,
+      "sha256": "9638342bb1b8a0a48f305803db018fe552e581a41765a08eceeb82182c7e0a49"
+    },
+    "plan_seed_123.json": {
+      "bytes": 195543,
+      "sha256": "f7035e2b5ac442655a50498bbb86684ac46411f0de1f7ba92a0101b125909ed7"
+    },
+    "plan_seed_42.json": {
+      "bytes": 196230,
+      "sha256": "4dc5c24911307cdb26316fbf846ff82123f9eb3b31d5d3309ab9415ad348a484"
+    },
+    "webui_toppra.jpg": {
+      "bytes": 181359,
+      "sha256": "a4b62e6e6488bd67890b6cc194ba280b4a5566887d86a42fb3869dc930bbc6b8"
+    }
+  }
+}

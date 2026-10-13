@@ -1,14 +1,36 @@
 # HNUTER DiT 项目现状与后续讨论上下文
 
-> 更新时间：2026-09-08
+> 更新时间：2026-10-13
 >
 > 用途：将本文档直接提供给新的 GPT/研究合作者，使其在讨论下一阶段方案前准确了解当前实现、实验结果与限制。
 >
-> 项目阶段：free-flight Base DiT v003 已完成训练；平滑多目标 inference guidance 已完成实现和冻结测试；v003 尚未提交到 GitHub。
+> 项目阶段：Base DiT v003 与 smooth guidance 已发布；交互规划、TOPP-RA、MPPI 与完整 MuJoCo 动力学已经接通。本次交互系统发布分支为 `codex/interactive-mujoco-toppra`。
+
+## 0. 新会话先读：交互执行系统
+
+完整工程交接见 [docs/INTERACTIVE_SYSTEM.md](docs/INTERACTIVE_SYSTEM.md)，该文件覆盖模块边界、
+外部仓库固定版本、状态/坐标约定、API、运行方式、验证证据与后续限制。
+
+- 入口是 `run_interactive_demo.sh` / `python -m hnuter_dit.interactive`；启动后访问
+  <http://127.0.0.1:8791/>。`run_webui.sh` 的 8790 是原来的纯几何规划界面。
+- 交互执行固定 Base DiT v003、smooth guidance 最后 8 步、每批 8 条候选；默认 DDIM 25 步。
+- 链路是几何候选与加密验碰 → 服务端不可变 `plan_id` 快照 → 连续 SE(3) 平滑 → TOPP-RA
+  → 实际平滑曲线 COAL 复检 → 13D 参考与 6D 加速度前馈 → 残差 MPPI → 真实执行器 → MuJoCo。
+- TOPP-RA 仅首尾静止，中间点连续通过；默认速度上限 1.0 m/s。禁止将旧版逐 waypoint 停顿
+  参考误认作当前流程。执行器分配使用真实旋翼位置/推力轴/质心，包含配平、滤波、限速和阻尼。
+- 世界位置是无人机 body-origin / base_link；四元数 wxyz；线速度在世界系，角速度/角加速度在机体系。
+- 旧/新两个固定条件的完整物理仿真分别为 56.25 → 10.70 s、60.45 → 12.45 s，0 次接触；
+  倾转关节速度 RMS 分别下降 63.6%、76.5%。这是整条执行链与速度上限一起改变的对照，不能只归因于 TOPP-RA。
+- 公开复现资料位于 [artifacts/interactive_execution_validation](artifacts/interactive_execution_validation)，
+  包含 3 份完整规划、指标摘要、旧版测量快照、截图与依赖/文件哈希。逐步原始日志留在本地被忽略的 smoke 目录。
+- 2026-10-13 用户已要求关闭程序，当前交互服务和 MuJoCo 窗口已关闭；发布代码和文档不会自动重新启动。
+- 本机还有独立 contact 实验的未提交文件。它们不属于这次交互系统发布，不是运行本系统的依赖。
+
+这些工程进展没有改变后文关于 Base DiT 泛化能力的结论，也没有给出连续碰撞、全场景动力学或实机安全保证。
 
 ## 1. 一句话摘要
 
-当前系统是一个面向 UAM 自由飞行几何轨迹生成的 environment-conditioned DiT：输入起点、终点和最多 32 个 OBB 障碍物，生成 128 个 SE(3) waypoint。坐标系对齐已经解决世界方向旋转导致的失效，但仅靠 Cross-Attention、relative geometry 和训练期 collision loss，尚未让模型学会在 OOD 障碍变化下可靠切换同伦路径。后期可微碰撞 guidance 能显著提高避障率；新版平滑 guidance 又明显缓解了旧版 guidance 在障碍物附近产生尖折、抖动和回退的问题，但仍存在避障率、平滑度和推理耗时之间的权衡。
+当前系统的规划层是面向 UAM 自由飞行的 environment-conditioned DiT：输入起点、终点和最多 32 个 OBB 障碍物，生成 128 个 SE(3) waypoint。执行层已接入 TOPP-RA、MPPI 与完整 MuJoCo 仿真。坐标系对齐解决了世界方向旋转导致的失效，但仅靠 Cross-Attention、relative geometry 和训练期 collision loss，尚未让模型学会在 OOD 障碍变化下可靠切换同伦路径。后期可微碰撞 guidance 能显著提高避障率；新版平滑 guidance 缓解了局部尖折、抖动和回退，仍存在避障率、平滑度和推理耗时的权衡。
 
 ## 2. 最终目标
 
@@ -18,7 +40,8 @@
 2. 障碍物移动、删除或新增后，轨迹能够根据当前几何重新决策，而不是复现训练模板；
 3. 对训练分布外的障碍布局具有一定泛化能力；
 4. 轨迹不仅离散 waypoint 无碰撞，还应平滑、少回退、便于后续时间参数化和控制；
-5. 通过 WebUI 交互编辑障碍物与起终点，直观看到模型响应。
+5. 通过 WebUI 交互编辑障碍物与起终点，直观看到模型响应；
+6. 将选出的路径转为可跟踪参考，并在同一环境中进行完整动力学与闭环执行验证。
 
 当前只处理 `free_flight`。未来的 `inspection` 和 `surface` 任务必须使用各自的 task plugin 和 validity checker，不能直接复用 free-flight 规则。
 
@@ -41,18 +64,22 @@ DiT 代码和模型：
 
 验证过的 Python/OMPL/COAL ABI：
 /home/z017/research/curobo_env/bin/python
+
+MuJoCo 模型、meshes 与外部 MPPI/几何反馈：
+/home/z017/research/MuJoCo-for-HNUTER
 ```
 
 ### 3.2 Git 状态
 
 - GitHub：`git@github.com:0Z17/HNUTER_DiT.git`
-- 当前分支：`main`
-- GitHub/本地 HEAD：`52378bb Add canonical relative-geometry DiT v002`
-- v001 和 v002 的 `best.pt` 已通过 Git LFS 管理。
-- **v003 模型、guidance、最新评测、WebUI 和文档当前仍是本地未提交改动。**
+- v003 基线：`094eeab Add canonical DiT v003 with smooth collision guidance`，已位于 GitHub 默认 `main`。
+- 交互执行发布分支：`codex/interactive-mujoco-toppra`，从该 v003 基线建立。
+- v001、v002、v003 的 `best.pt` 已通过 Git LFS 管理；克隆后应执行 `git lfs pull`，避免把 LFS 指针当权重。
+- 本机共享工作目录可能仍位于其他研究分支；实际状态以 `git status`、`git branch --show-current` 为准。
+- 本次通过独立 worktree 发布明确的交互文件清单，保留其他会话的 contact 实验改动。
 - Hugging Face 发布状态没有记录在仓库元数据中，继续操作前应先核对远端仓库。
 
-这意味着：新的 GPT 如果只查看 GitHub，会看到 v002，而不是本文所述的完整 v003 工作区。
+新的会话应先核对所检出的分支：v003 在 `main`；交互执行的新代码和完整交接文档在上述发布分支。
 
 ## 4. 冻结数据集
 
@@ -407,7 +434,7 @@ cd /home/z017/research/HNUTER_DiT
 默认地址：<http://127.0.0.1:8790>。如果端口被占用：
 
 ```bash
-./run_webui.sh --device cuda --port 8791
+./run_webui.sh --device cuda --port 8792
 ```
 
 主要能力：
@@ -425,6 +452,10 @@ cd /home/z017/research/HNUTER_DiT
 - 最终使用完整 URDF + COAL 审核 128 个 waypoint。
 
 WebUI 当前默认是 smooth guidance：8 steps、0.12 m。
+
+以上是基础几何 WebUI。新增的完整执行界面用 `./run_interactive_demo.sh --device auto` 启动，
+默认端口 8791，并固定每批 8 条 smooth-guidance 候选。TOPP-RA、MPPI、实际轨迹显示和停止
+控制见 [交互系统交接](docs/INTERACTIVE_SYSTEM.md)，运行时需外部 MuJoCo 模型/控制库和真实 COAL 距离后端。
 
 ## 11. 关键文件索引
 
@@ -456,6 +487,21 @@ hnuter_dit/service.py
 hnuter_dit/web_assets/
   可交互 WebUI
 
+hnuter_dit/interactive.py / run_interactive_demo.sh
+  best-of-8 规划、快照与执行 API、启动入口
+
+hnuter_dit/retiming.py
+  连续 SE(3) 平滑、TOPP-RA、时间进度平滑和运动学/jerk 检查
+
+hnuter_dit/mujoco_execution.py / hnuter_dit/flight_control.py
+  MuJoCo 工作线程、残差 MPPI、原生 viewer 生命周期、物理执行器配平与分配
+
+hnuter_dit/benchmark_interactive_flight.py
+  固定规划的完整物理基准、关节运动指标与前后对照
+
+docs/INTERACTIVE_SYSTEM.md / artifacts/interactive_execution_validation/
+  工程交接、公开复现输入和指标证据
+
 artifacts/base_free_flight_159103traj_dit_canonical_cross_v003/
   v003 checkpoint、配置、validation tuning、完整测试结果和报告
 ```
@@ -479,8 +525,10 @@ artifacts/base_free_flight_159103traj_dit_canonical_cross_v003/
 - frozen test 上完成 100 conditions × 8 candidates × 3 scenarios 的统一对照；
 - Python 模块可编译；
 - WebUI JavaScript 语法检查通过；
-- 当前 11 项 pytest 全部通过；
-- v003 尚未提交/推送，因此继续开发前必须保护当前 dirty worktree。
+- 交互系统的回归覆盖快照失效、密集曲线复检、TOPP-RA 运动学、真实执行器、原点速度、停止确认和渲染线程关闭；
+- 2026-10-13 独立发布 worktree 完整测试 62 passed、没有 skip，并重跑 seed 42 完整 headless 飞行：10.70 s、0 接触、终点位置误差 1.404 mm；2026-10-12 本地工作区的 324 项测试包含独立 contact 实验，不是本次发布包的测试数量；
+- 两个冻结条件和默认 UI 场景已完成全部 MuJoCo 闭环运动；原生窗口执行与正常退出也已验证；
+- GitHub 发布前增加了外部 collector 路径可配置和 COAL 占位净空拒绝检查；不覆盖其他会话的工作区改动。
 
 ## 13. 不能过度声称的内容
 
@@ -489,8 +537,8 @@ artifacts/base_free_flight_159103traj_dit_canonical_cross_v003/
 3. Training collision loss 改善的是几何一致性信号，不提供 OOD collision-free guarantee。
 4. Guidance 只对当前 OBB proxy 可微，最终 COAL 结果可能与 proxy 不完全一致。
 5. 128 个离散 waypoint 全部通过 COAL，不等于相邻 waypoint 之间连续无碰撞。
-6. 当前轨迹按归一化弧长参数化，没有速度、加速度或真实时间，不能直接执行。
-7. WebUI 中的绿色轨迹仍需连续碰撞检测、时间参数化、动力学和闭环控制验证。
+6. Base DiT 原始输出仍按归一化弧长表示，不含物理时间；交互执行层通过 TOPP-RA 生成时间参考，二者不能混淆。
+7. 绿色几何候选不是完整执行保证；新链路已提供加密复检、TOPP-RA 和若干闭环验证，但仍没有连续碰撞证书或全场景成功保证。
 8. 当前结果只针对 free-flight，不能外推到 inspection 或 surface 任务。
 
 ## 14. 后续最值得讨论的方向
@@ -551,6 +599,10 @@ artifacts/base_free_flight_159103traj_dit_canonical_cross_v003/
 
 ```text
 请阅读随附的 PROJECT_STATUS_FOR_GPT.md，并把它视为当前项目的事实基线。
+涉及交互规划和控制时，同时阅读 docs/INTERACTIVE_SYSTEM.md 与
+artifacts/interactive_execution_validation/comparison.json；核对当前分支和本机服务运行状态。
+Base DiT 只生成几何，当前执行链已经包含 TOPP-RA、残差 MPPI 和物理执行器，
+修改控制时应以固定规划做完整闭环对照，不退回逐 waypoint 停顿的参考。
 
 我的目标是提升 UAM free-flight DiT 在障碍物移动、新增或删除后的 OOD 避障和
 同伦切换能力，同时保持轨迹平滑与较低推理延迟。请不要重复建议已经验证无明显

@@ -5,6 +5,10 @@
 移动和缩放障碍物，编辑起终点 XYZ/roll/pitch/yaw，并一次生成多条 SE(3)
 轨迹进行三维对比。
 
+交互执行系统的架构、数据约定、依赖、API 和会话接续信息见
+[docs/INTERACTIVE_SYSTEM.md](docs/INTERACTIVE_SYSTEM.md)。研究背景及当前实现状态见
+[PROJECT_STATUS_FOR_GPT.md](PROJECT_STATUS_FOR_GPT.md)。
+
 ## 模型
 
 当前默认模型为 v003：
@@ -139,6 +143,106 @@ cd /home/z017/research/HNUTER_DiT
 ```
 
 要关闭 guidance，在 WebUI 中把 `Guidance 后期步数` 设为 `0`。
+
+## 交互规划与 MuJoCo / MPPI 执行
+
+新增一键启动脚本，使用当前 Base DiT v003、smooth guidance（最后 8 步），
+**固定一次并行生成 8 条候选**：
+
+```bash
+./run_interactive_demo.sh --device auto --open-browser
+```
+
+浏览器打开 <http://127.0.0.1:8791>。操作流程：
+
+1. 指定场景 seed，点击「生成随机场景与端点」。相同场景族、seed 和障碍数量范围
+   可重复生成相同环境；推理 seed 单独控制 8 条候选，execution seed 控制 MPPI 采样。
+2. 在左侧输入期望起点、终点的 XYZ 和姿态，也可在画布拖动 START / GOAL。
+   点击「MuJoCo 场景预览」可查看同一份场景 JSON 生成的物理环境和端点。
+3. 点击「生成 DiT 轨迹」，查看全部 8 条候选。服务端先进行原有 URDF / COAL
+   waypoint 验碰，再以平移间距不超过 2 cm、旋转间距不超过 3° 复检插值轨迹。
+   默认要求额外净空大于 2 cm，并综合路径长度、转角、回退和净空选择最终轨迹。
+   最终轨迹单独加粗标记；也可将通过复检的其他候选设为最终轨迹。
+4. 点击「MPPI 执行最终轨迹」。MuJoCo 使用同一份障碍物位置、尺寸、四元数和
+   collision 标志，运行完整 HNUTER 机体、关节、执行器和接触动力学。
+   TOPP-RA 生成连续时间参数化的 SE(3) 参考，MPPI 闭环跟踪，MuJoCo 显示完整运动过程，
+   WebUI 同时显示实际飞行轨迹、仿真时间和跟踪误差。可以随时停止。
+
+执行流程为：`DiT + smooth guidance → 候选验碰与选择 → 连续 SE(3) 曲线 → TOPP-RA → MPPI → 真实执行器 → MuJoCo`。
+连续曲线保留起终点，并限制对原几何路径的偏离不超过 1 cm；SO(3) 姿态使用连续旋转样条。
+TOPP-RA 同时限制线速度、线加速度、机体系角速度和角加速度，随后平滑路径进度速度并独立
+密集验证运动学和 jerk。仅起终点速度归零，中间 waypoint 连续通过。执行前对实际平滑曲线
+再次进行完整 URDF / COAL 净空检查；原候选合格不能替代这次检查。
+
+MPPI 接收 `[位置、速度、四元数、机体系角速度]` 参考，以及线/角加速度前馈。
+低层控制在物理步长上连续更新参考，MPPI 只在外环周期更新修正量。
+分配器根据 MuJoCo 模型的旋翼位置、推力轴、传动参数及整机质心求解推力和倾转角，
+并包含启动配平、关节载荷补偿、倾转限速滤波、电机滤波和惯量匹配的角速度阻尼。
+飞行过程中所有关节和执行器均参加真实动力学。
+`--speed` 是参考速度上限，默认 **1.0 m/s**；完整时长还受加速度、曲率和姿态变化影响。
+
+整批无合格轨迹时禁止执行，并保留候选供检查。修改场景或端点后必须重新规划；
+执行期间锁定场景编辑。插值复检属于加密离散检查，执行结果仍以实际闭环仿真
+的碰撞、终点误差和完成状态为准。
+
+该脚本复用本机的采集仓库及 MuJoCo 控制仓库，不修改它们：
+
+```bash
+./run_interactive_demo.sh \
+  --collector-root /home/z017/research/HNUTER_trajectory_collector \
+  --mujoco-root /home/z017/research/MuJoCo-for-HNUTER \
+  --scene-seed 42 --execution-seed 1 \
+  --speed 1.0 --max-accel 1.5 --angular-speed 0.7 --angular-accel 1.5 \
+  --mppi-samples 192 --mppi-horizon 32 --control-dt 0.05
+```
+
+Python 环境需要原有 NumPy / PyTorch / COAL，以及 MuJoCo、SciPy、TOPP-RA 和控制仓库依赖；
+默认仍使用已安装这些依赖的 `curobo_env`，也可设置 `HNUTER_DIT_PYTHON`。
+CPU 模式默认使用 4 个推理线程，可用 `--cpu-threads` 调整。
+没有桌面显示时使用 `--headless`：保留真实动力学和 WebUI 的实际运动显示，
+不打开原生 MuJoCo 窗口。`--no-realtime` 取消墙钟限速，便于验证。
+
+其他机器的克隆、Git LFS 权重获取、外部仓库固定 revision 与安装步骤见
+[交互系统部署说明](docs/INTERACTIVE_SYSTEM.md)。执行模式要求 COAL 真实净空后端，
+不会把 OBB 后备后端的占位距离当成可执行的净空证书。
+
+新增 API：
+
+```text
+POST /api/plan/select          {plan_id, candidate_id}
+POST /api/execution/preview    {scene, start_pose, goal_pose}
+POST /api/execution/start      {plan_id, candidate_id?}
+POST /api/execution/stop       {}
+GET  /api/execution/status
+```
+
+`/api/sample` 返回 `plan_id`、`final_candidate_id`、完整场景与候选复检记录。
+执行使用服务端保存的规划快照，可通过现有「导出轨迹」按钮保存复现条件。
+原来的 `run_webui.sh` 继续提供纯几何规划界面。
+
+同场景、同候选、同 MPPI seed 的完整动力学对比（默认速度上限由 0.6 改为 1.0 m/s，
+同时更换连续参考及执行器控制）：
+
+| 场景 seed | 原执行时长 → 新执行时长 | 倾转关节速度 RMS 降低 | 舵机指令变化量/秒降低 | 新终点误差 |
+|---|---:|---:|---:|---:|
+| 42 | 56.25 → 10.70 s | 63.6% | 79.1% | 1.40 mm |
+| 123 | 60.45 → 12.45 s | 76.5% | 88.4% | 0.80 mm |
+
+两次均无环境接触；时长为仿真时间。归一化的指令变化量和实际关节 qvel 指标可避免把
+「飞行时间变短」误算为振荡减小。seed 42 的终点最后一秒关节速度 RMS 仅改善 10.6%，
+上述飞行全程指标不等于所有场景的静止振荡完全消失。复现记录与输入校验哈希保存在
+[artifacts/interactive_execution_validation/comparison.json](artifacts/interactive_execution_validation/comparison.json)。
+这个目录随 Git 发布完整规划输入、指标摘要、旧版基准快照和 UI 截图；原始逐步记录留在本地 smoke 目录。
+
+```bash
+MPLCONFIGDIR=/tmp/hnuter_benchmark_matplotlib \
+/home/z017/research/curobo_env/bin/python -m hnuter_dit.benchmark_interactive_flight \
+  --plan artifacts/interactive_execution_validation/plan_seed_42.json \
+  --baseline artifacts/interactive_execution_validation/before_seed_42.json \
+  --collector-root /home/z017/research/HNUTER_trajectory_collector \
+  --mujoco-root /home/z017/research/MuJoCo-for-HNUTER \
+  --output /tmp/hnuter_after_seed_42.json
+```
 
 ## 训练与对照评测
 

@@ -19,6 +19,14 @@ const state = {
   camera: { yaw: -0.72, pitch: 0.58, zoom: 72, panX: 0, panY: 20, view: "iso" },
   drag: null,
   animationStart: performance.now(),
+  revision: 0,
+  validationRequest: 0,
+  execution: { state: "idle", executed_poses: [] },
+  executionPending: false,
+  executionTimer: null,
+  executionRequest: 0,
+  executionDisplayRevision: null,
+  invalidatedPlanId: null,
 };
 
 async function post(url, payload) {
@@ -45,18 +53,42 @@ function randomSeed() {
 }
 
 function format(value, digits = 2) {
-  return Number.isFinite(Number(value)) ? Number(value).toFixed(digits) : "—";
+  return value != null && value !== "" && Number.isFinite(Number(value)) ? Number(value).toFixed(digits) : "—";
 }
 
 function setBusy(busy, message = "") {
   state.busy = busy;
-  $("#randomScene").disabled = busy;
-  $("#randomEndpoints").disabled = busy || !state.scene;
-  $("#runModel").disabled = busy || !state.scene;
+  refreshControls();
   if (message) {
     $("#inferenceStatus").textContent = message;
     $("#inferenceStatus").className = `inference-status${busy ? " busy" : ""}`;
   }
+}
+
+function executionEnabled() { return Boolean(state.catalog?.execution?.enabled); }
+function executionActive() { return ["starting", "running", "stopping", "initializing"].includes(state.execution?.state); }
+function editsLocked() { return state.busy || state.executionPending || executionActive(); }
+function candidateId(trajectory) { return trajectory?.id ?? trajectory?.index; }
+function sameId(left, right) { return left != null && right != null && String(left) === String(right); }
+function isFinal(trajectory) { return sameId(candidateId(trajectory), state.predictions?.final_candidate_id); }
+function selectionFor(trajectory) { return state.predictions?.selection?.candidates?.find((item) => sameId(item.id, candidateId(trajectory))); }
+
+function refreshControls() {
+  const locked = editsLocked();
+  $("#randomScene").disabled = locked;
+  $("#randomEndpoints").disabled = locked || !state.scene;
+  $("#runModel").disabled = locked || !state.scene;
+  $("#addObstacle").disabled = locked || !state.scene;
+  $("#deleteObstacle").disabled = locked;
+  $$(".left-panel input, .left-panel select, [data-obstacle]").forEach((input) => { input.disabled = locked; });
+  if (executionEnabled()) {
+    $("#sampleCount").disabled = true;
+    $("#guidanceSteps").disabled = true;
+    $("#previewMujoco").disabled = locked || !state.scene;
+    $("#executeTrajectory").disabled = locked || !state.predictions?.plan_id || state.predictions?.final_candidate_id == null;
+    $("#stopExecution").disabled = state.executionPending || !(executionActive() || state.execution?.state === "preview");
+  }
+  $$(".choose-final").forEach((button) => { button.disabled = locked; });
 }
 
 function quaternionToRpy(q) {
@@ -115,11 +147,19 @@ function activeObstacles() {
 }
 
 function invalidatePredictions() {
+  if (state.predictions?.plan_id) state.invalidatedPlanId = state.predictions.plan_id;
+  state.revision += 1;
   state.predictions = null;
   state.selectedTrajectory = 0;
   $("#downloadPredictions").disabled = true;
   renderTrajectoryRail();
   renderMetrics();
+  renderFinalSelection();
+  refreshControls();
+  if (executionEnabled() && state.executionDisplayRevision != null) {
+    $("#executionStatus").textContent = "场景或端点已修改，请重新预览 MuJoCo 场景或规划后执行";
+    $("#executionElapsed").textContent = $("#executionError").textContent = "—";
+  }
 }
 
 function applyScene(payload) {
@@ -141,6 +181,7 @@ function applyScene(payload) {
 }
 
 async function generateScene() {
+  if (editsLocked()) return;
   try {
     setBusy(true, "正在生成 URDF 可行场景与随机端点…");
     const payload = await post("/api/scene/random", {
@@ -159,7 +200,7 @@ async function generateScene() {
 }
 
 async function randomizeEndpoints() {
-  if (!state.scene) return;
+  if (!state.scene || editsLocked()) return;
   try {
     setBusy(true, "正在当前场景区域内拒绝采样新端点…");
     const payload = await post("/api/endpoints/random", {
@@ -177,6 +218,7 @@ async function randomizeEndpoints() {
 }
 
 function scheduleValidation() {
+  if (editsLocked()) return;
   if (state.scene) {
     state.startPose = readPoseEditor("start");
     state.goalPose = readPoseEditor("goal");
@@ -189,8 +231,13 @@ function scheduleValidation() {
 
 async function validateCurrent() {
   if (!state.scene) return;
-  try { renderValidation(await post("/api/validate", endpointPayload())); }
-  catch (error) { renderValidation({ valid: false, issues: [error.message], warnings: [] }); }
+  const revision = state.revision, request = ++state.validationRequest;
+  try {
+    const validation = await post("/api/validate", { ...endpointPayload(), invalidate_plan_id: state.invalidatedPlanId });
+    if (revision === state.revision && request === state.validationRequest) renderValidation(validation);
+  } catch (error) {
+    if (revision === state.revision && request === state.validationRequest) renderValidation({ valid: false, issues: [error.message], warnings: [] });
+  }
 }
 
 function renderValidation(validation) {
@@ -212,19 +259,24 @@ function renderValidation(validation) {
 }
 
 async function runModel() {
-  if (!state.scene) return;
+  if (!state.scene || editsLocked()) return;
+  const revision = state.revision;
+  clearTimeout(state.validationTimer);
+  state.executionDisplayRevision = null;
   try {
     setBusy(true, "DiT 正在从高斯噪声生成 SE(3) 轨迹…");
     const result = await post("/api/sample", {
       ...endpointPayload(),
-      count: Number($("#sampleCount").value),
+      count: executionEnabled() ? 8 : Number($("#sampleCount").value),
       sampling_steps: Number($("#ddimSteps").value),
       seed: Number($("#sampleSeed").value),
       guidance_steps: Number($("#guidanceSteps").value),
       guidance_step_size_m: Number($("#guidanceStepSize").value),
     });
+    if (revision !== state.revision) return;
     state.predictions = result;
-    state.selectedTrajectory = Math.max(0, result.trajectories.findIndex((item) => item.metrics.valid));
+    state.invalidatedPlanId = null;
+    state.selectedTrajectory = Math.max(0, result.trajectories.findIndex((item) => executionEnabled() ? isFinal(item) : item.metrics.valid));
     $("#downloadPredictions").disabled = false;
     const guidance = result.summary.collision_guidance;
     const guidanceLabel = guidance?.enabled ? ` · ${guidance.mode} guidance ${guidance.late_ddim_steps} steps` : "";
@@ -232,6 +284,7 @@ async function runModel() {
     $("#inferenceStatus").className = "inference-status";
     renderTrajectoryRail();
     renderMetrics();
+    renderFinalSelection();
     state.animationStart = performance.now();
     draw();
     toast(`生成完成：${result.summary.valid_count}/${result.summary.requested_count} 有效`);
@@ -240,6 +293,102 @@ async function runModel() {
     $("#inferenceStatus").className = "inference-status error";
     toast(error.message, true);
   } finally { setBusy(false); }
+}
+
+function renderFinalSelection() {
+  if (!executionEnabled()) return;
+  const predictions = state.predictions;
+  const final = predictions?.trajectories?.find(isFinal);
+  const label = final ? `最终轨迹 PATH ${String(predictions.trajectories.indexOf(final) + 1).padStart(2, "0")}` : predictions ? "没有可执行的最终轨迹" : "等待生成 8 条候选轨迹";
+  const message = predictions?.selection?.message || (final ? "可以直接执行，也可以在候选卡片中更换最终轨迹。" : "修改起终点、场景或推理 seed 后重新生成。");
+  $("#finalSelection").className = `final-selection${final ? " ready" : ""}`;
+  $("#finalSelection").innerHTML = `<b>${escapeHtml(label)}</b><span>${escapeHtml(message)}</span>`;
+  refreshControls();
+}
+
+async function chooseFinal(trajectory) {
+  if (editsLocked() || !state.predictions?.plan_id) return;
+  const revision = state.revision;
+  const planId = state.predictions.plan_id;
+  try {
+    setBusy(true, "正在检查并更换最终轨迹…");
+    const result = await post("/api/plan/select", { plan_id: planId, candidate_id: candidateId(trajectory) });
+    if (revision !== state.revision || planId !== state.predictions?.plan_id) return;
+    state.predictions = result;
+    state.selectedTrajectory = Math.max(0, result.trajectories.findIndex(isFinal));
+    state.animationStart = performance.now();
+    state.executionDisplayRevision = null;
+    renderTrajectoryRail(); renderMetrics(); renderFinalSelection(); draw();
+    setBusy(false, "已更新最终轨迹，可开始 MPPI 执行");
+  } catch (error) { toast(error.message, true); }
+  finally { setBusy(false); }
+}
+
+function renderExecutionStatus() {
+  if (!executionEnabled()) return;
+  const status = state.execution || {};
+  const labels = { idle: "就绪", preview: "场景预览", starting: "正在启动", running: "正在执行", stopping: "正在停止", completed: "执行完成", stopped: "已停止", failed: "执行失败" };
+  const stale = state.executionDisplayRevision != null && state.executionDisplayRevision !== state.revision;
+  const node = $("#executionStatus");
+  node.className = `execution-status${status.state === "failed" || status.error ? " error" : ""}${executionActive() ? " running" : ""}`;
+  node.textContent = stale ? "场景或端点已修改，请重新预览 MuJoCo 场景或规划后执行" : `${labels[status.state] || status.state || "就绪"} · ${status.message || "先预览场景，或生成候选后执行最终轨迹"}${status.error ? ` · ${status.error}` : ""}`;
+  $("#executionElapsed").textContent = stale ? "—" : `${format(status.simulation_time_s ?? status.elapsed_s, 1)} s`;
+  $("#executionError").textContent = stale ? "—" : `${format(status.tracking_error_m, 3)} m`;
+  if (status.retiming && !stale) {
+    $("#executionReference").textContent = `TOPP-RA 连续参考 ${format(status.retiming.duration_s, 1)} s · 速度上限 ${format(status.retiming.speed_mps, 1)} m/s · ${status.reference_audit?.checked ? "平滑曲线已通过净空复检" : "连续通过中间 waypoint"}`;
+  } else {
+    $("#executionReference").textContent = "TOPP-RA 连续参考；起终点静止，中间持续飞行。";
+  }
+  refreshControls();
+  draw();
+}
+
+async function pollExecution() {
+  if (!executionEnabled() || state.executionPending) return;
+  const request = state.executionRequest;
+  try {
+    const response = await fetch("/api/execution/status", { cache: "no-store" });
+    const status = await response.json();
+    if (!response.ok) throw new Error(status.error || `HTTP ${response.status}`);
+    if (request !== state.executionRequest || state.executionPending) return;
+    state.execution = status;
+    renderExecutionStatus();
+  } catch (error) {
+    if (request !== state.executionRequest) return;
+    $("#executionStatus").textContent = `无法读取 MuJoCo 状态 · ${error.message}`;
+    $("#executionStatus").className = "execution-status error";
+  } finally {
+    clearTimeout(state.executionTimer);
+    state.executionTimer = setTimeout(pollExecution, 500);
+  }
+}
+
+async function executionAction(action) {
+  if (!executionEnabled() || state.executionPending) return;
+  if (action !== "stop" && editsLocked()) return;
+  if (action === "start" && (!state.predictions?.plan_id || state.predictions.final_candidate_id == null)) return;
+  if (action === "preview" && !state.scene) return;
+  const revision = state.revision;
+  const request = ++state.executionRequest;
+  state.executionPending = true;
+  state.executionDisplayRevision = revision;
+  state.execution = { ...state.execution, state: action === "stop" ? "stopping" : "starting", message: action === "preview" ? "同步当前场景与起终点到 MuJoCo…" : action === "start" ? "加载最终轨迹并启动 MPPI…" : "等待仿真退出…" };
+  renderExecutionStatus();
+  try {
+    const payload = action === "preview" ? endpointPayload() : action === "start" ? { plan_id: state.predictions.plan_id, candidate_id: state.predictions.final_candidate_id } : {};
+    const status = await post(`/api/execution/${action}`, payload);
+    if (request !== state.executionRequest || revision !== state.revision) return;
+    state.execution = status;
+    if (status.state === "failed") toast(status.error || status.message || "MuJoCo 执行失败", true);
+  } catch (error) {
+    state.execution = { ...state.execution, error: error.message, message: error.message };
+    toast(error.message, true);
+  } finally {
+    state.executionPending = false;
+    renderExecutionStatus();
+    clearTimeout(state.executionTimer);
+    state.executionTimer = setTimeout(pollExecution, 500);
+  }
 }
 
 function renderObstacles() {
@@ -274,6 +423,7 @@ function renderObstacleEditor() {
 }
 
 function updateObstacle(input) {
+  if (editsLocked()) return;
   const obstacle = activeObstacles()[state.selectedObstacle];
   if (!obstacle || !Number.isFinite(Number(input.value))) return;
   const field = input.dataset.obstacle;
@@ -284,7 +434,7 @@ function updateObstacle(input) {
 }
 
 function addObstacle(position = [0, 0, 0.5]) {
-  if (!state.scene || activeObstacles().length >= 32) return;
+  if (!state.scene || editsLocked() || activeObstacles().length >= 32) return;
   const id = `manual_box_${Date.now().toString(36)}`;
   state.scene.obstacles.push({
     id, type: "box", collision: true, role: "obstacle",
@@ -297,6 +447,7 @@ function addObstacle(position = [0, 0, 0.5]) {
 }
 
 function deleteObstacle() {
+  if (editsLocked()) return;
   const target = activeObstacles()[state.selectedObstacle];
   if (!target) return;
   const actualIndex = state.scene.obstacles.indexOf(target);
@@ -315,9 +466,25 @@ function renderTrajectoryRail() {
   }
   trajectories.forEach((trajectory, index) => {
     const metric = trajectory.metrics;
+    const final = executionEnabled() && isFinal(trajectory);
+    const selection = selectionFor(trajectory);
     const card = document.createElement("div");
-    card.className = `trajectory-card${metric.valid ? "" : " invalid"}${index === state.selectedTrajectory ? " selected" : ""}`;
-    card.innerHTML = `<header><b>PATH ${String(index + 1).padStart(2, "0")}</b><span>${metric.valid ? "VALID" : "REJECT"}</span></header><dl><dt>CLEARANCE</dt><dd>${format(metric.minimum_clearance_m, 3)} m</dd><dt>LENGTH</dt><dd>${format(metric.path_length_m, 2)} m</dd><dt>COLLISIONS</dt><dd>${metric.collision_sample_count}</dd></dl>`;
+    card.className = `trajectory-card${metric.valid ? "" : " invalid"}${index === state.selectedTrajectory ? " selected" : ""}${final ? " final" : ""}`;
+    card.title = selection?.reason || (metric.valid ? "几何检查通过" : "几何检查未通过");
+    card.innerHTML = `<header><b>PATH ${String(index + 1).padStart(2, "0")}</b><span>${final ? "FINAL" : metric.valid ? "VALID" : "REJECT"}</span></header><dl><dt>CLEARANCE</dt><dd>${format(metric.minimum_clearance_m, 3)} m</dd><dt>LENGTH</dt><dd>${format(metric.path_length_m, 2)} m</dd><dt>COLLISIONS</dt><dd>${metric.collision_sample_count}</dd></dl>`;
+    if (executionEnabled()) {
+      const note = document.createElement("div");
+      note.className = "candidate-selection-note";
+      note.textContent = selection?.eligible ? `SCORE ${format(selection.score, 3)}` : selection?.reason || "未通过执行筛选";
+      card.appendChild(note);
+      if (selection?.eligible && !final) {
+        const button = document.createElement("button");
+        button.className = "choose-final"; button.textContent = "设为最终轨迹";
+        button.disabled = editsLocked();
+        button.addEventListener("click", (event) => { event.stopPropagation(); chooseFinal(trajectory); });
+        card.appendChild(button);
+      }
+    }
     card.addEventListener("click", () => {
       state.selectedTrajectory = index;
       state.animationStart = performance.now();
@@ -336,12 +503,14 @@ function renderMetrics() {
     return;
   }
   const metric = selected.metrics;
+  const selection = selectionFor(selected);
   $("#validMetric").textContent = `${summary.valid_count}/${summary.requested_count}`;
   $("#latencyMetric").textContent = format(summary.milliseconds_per_path, 1);
   $("#clearanceMetric").textContent = `${format(metric.minimum_clearance_m, 3)}m`;
   $("#lengthMetric").textContent = `${format(metric.path_length_m, 2)}m`;
   $("#selectedDetails").innerHTML = [
-    `PATH ${state.selectedTrajectory + 1} · ${metric.valid ? "VALID" : "REJECTED"}`,
+    `PATH ${state.selectedTrajectory + 1} · ${isFinal(selected) ? "FINAL · " : ""}${metric.valid ? "VALID" : "REJECTED"}`,
+    ...(selection ? [`执行筛选：${escapeHtml(selection.reason || (selection.eligible ? "可执行" : "不可执行"))}${selection.score == null ? "" : ` · score ${format(selection.score, 3)}`}`] : []),
     `collision samples = ${metric.collision_sample_count}`,
     `bounds violations = ${metric.out_of_bounds_sample_count}`,
     `attitude violations = ${metric.attitude_violation_sample_count}`,
@@ -468,7 +637,7 @@ function drawTrajectories(rect) {
   if (!trajectories.length) return;
   const showAll = $("#showAll").checked;
   trajectories.forEach((trajectory, index) => {
-    if (!showAll && index !== state.selectedTrajectory) return;
+    if (!showAll && index !== state.selectedTrajectory && !isFinal(trajectory)) return;
     const selected = index === state.selectedTrajectory;
     const path = trajectory.poses_wxyz;
     const clearance = trajectory.clearance_m;
@@ -477,6 +646,14 @@ function drawTrajectories(rect) {
       drawLine([path[pointIndex - 1], path[pointIndex]], rect, collision ? "#ff5268" : colors[index % colors.length], selected ? 2.8 : 1.15);
     }
   });
+  const final = executionEnabled() ? trajectories.find(isFinal) : null;
+  if (final) {
+    drawLine(final.poses_wxyz, rect, "#060a0f", 6);
+    drawLine(final.poses_wxyz, rect, "#ffffff", 3.2);
+    const middle = project(final.poses_wxyz[Math.floor(final.poses_wxyz.length / 2)], rect);
+    context.font = "700 9px ui-monospace, monospace"; context.fillStyle = "#ffffff";
+    context.fillText("FINAL", middle[0] + 8, middle[1] - 8);
+  }
   if ($("#animateVehicle").checked) {
     const selected = trajectories[state.selectedTrajectory];
     if (selected) {
@@ -485,6 +662,31 @@ function drawTrajectories(rect) {
       context.beginPath(); context.arc(p[0], p[1], 5, 0, Math.PI * 2); context.fillStyle = "#ffffff"; context.shadowColor = colors[state.selectedTrajectory % colors.length]; context.shadowBlur = 14; context.fill(); context.shadowBlur = 0;
     }
   }
+}
+
+function drawExecution(rect) {
+  if (!executionEnabled() || state.executionDisplayRevision !== state.revision) return;
+  const status = state.execution;
+  if (status.plan_id && status.plan_id !== state.predictions?.plan_id) return;
+  const poses = status.executed_poses || [];
+  if (!poses.length) return;
+  drawLine(poses, rect, "#ffab52", 3);
+  const pose = poses[poses.length - 1];
+  if (pose.length < 7) return;
+  const rotation = quaternionMatrix(pose.slice(3, 7));
+  const worldPoint = (local) => pose.slice(0, 3).map((value, row) => value + rotation[row][0] * local[0] + rotation[row][1] * local[1] + rotation[row][2] * local[2]);
+  const arms = [[-.20, -.20, 0], [.20, .20, 0], [-.20, .20, 0], [.20, -.20, 0]].map(worldPoint);
+  drawLine(arms.slice(0, 2), rect, "#ffab52", 2.8);
+  drawLine(arms.slice(2), rect, "#ffab52", 2.8);
+  arms.forEach((arm) => {
+    const point = project(arm, rect);
+    context.beginPath(); context.arc(point[0], point[1], 4, 0, Math.PI * 2);
+    context.strokeStyle = "#ffab52"; context.lineWidth = 1.5; context.stroke();
+  });
+  const center = project(pose, rect);
+  context.beginPath(); context.arc(center[0], center[1], 4, 0, Math.PI * 2);
+  context.fillStyle = "#ffab52"; context.fill();
+  context.font = "700 9px ui-monospace, monospace"; context.fillText("MUJOCO · ACTUAL", center[0] + 10, center[1] + 16);
 }
 
 function draw() {
@@ -496,6 +698,7 @@ function draw() {
   drawTrajectories(rect);
   drawEndpoint(state.startPose, "START", "#68e6a5", rect);
   drawEndpoint(state.goalPose, "GOAL", "#bc8cff", rect);
+  drawExecution(rect);
   $("#cameraLabel").textContent = `${state.camera.view.toUpperCase()} · ${Math.round(state.camera.zoom / 72 * 100)}%`;
 }
 
@@ -575,13 +778,12 @@ function clampTargetPosition(target, position) {
 
 canvas.addEventListener("mousedown", (event) => {
   const point = canvasCoordinates(event);
-  const target = event.button === 0 ? hitTarget(point.x, point.y) : null;
+  const target = event.button === 0 && !editsLocked() ? hitTarget(point.x, point.y) : null;
   if (target) {
     if (target.kind === "obstacle") {
       state.selectedObstacle = target.index;
       renderObstacles(); renderObstacleEditor();
     }
-    invalidatePredictions();
     state.drag = {
       x: event.clientX, y: event.clientY, startX: event.clientX, startY: event.clientY,
       target, original: targetPosition(target), altitude: event.altKey, moved: false,
@@ -596,6 +798,9 @@ window.addEventListener("mousemove", (event) => {
   const dx = event.clientX - state.drag.x, dy = event.clientY - state.drag.y;
   if (Math.abs(dx) + Math.abs(dy) > 2) state.drag.moved = true;
   if (state.drag.target) {
+    if (editsLocked()) return;
+    if (!state.drag.moved) return;
+    if (!state.drag.invalidated) { invalidatePredictions(); state.drag.invalidated = true; }
     const point = canvasCoordinates(event);
     let position;
     if (state.drag.altitude || event.altKey) {
@@ -625,11 +830,11 @@ window.addEventListener("mouseup", (event) => {
 canvas.addEventListener("mousemove", (event) => {
   if (state.drag) return;
   const point = canvasCoordinates(event);
-  canvas.classList.toggle("drag-object", Boolean(hitTarget(point.x, point.y)));
+  canvas.classList.toggle("drag-object", !editsLocked() && Boolean(hitTarget(point.x, point.y)));
 });
 canvas.addEventListener("mouseleave", () => { if (!state.drag) canvas.classList.remove("drag-object"); });
 canvas.addEventListener("dblclick", (event) => {
-  if (!state.scene) return;
+  if (!state.scene || editsLocked()) return;
   const point = canvasCoordinates(event);
   if (hitTarget(point.x, point.y)) return;
   const world = screenToWorld(point.x, point.y, state.camera.view === "front" ? 0 : .5, point.rect);
@@ -647,10 +852,14 @@ canvas.addEventListener("contextmenu", (event) => event.preventDefault());
 $("#randomScene").addEventListener("click", generateScene);
 $("#randomEndpoints").addEventListener("click", randomizeEndpoints);
 $("#runModel").addEventListener("click", runModel);
+$("#previewMujoco").addEventListener("click", () => executionAction("preview"));
+$("#executeTrajectory").addEventListener("click", () => executionAction("start"));
+$("#stopExecution").addEventListener("click", () => executionAction("stop"));
 $("#addObstacle").addEventListener("click", () => addObstacle());
 $("#deleteObstacle").addEventListener("click", deleteObstacle);
 $$(`[data-obstacle]`).forEach((input) => input.addEventListener("input", () => updateObstacle(input)));
 $$(`[data-pose-editor] input`).forEach((input) => input.addEventListener("input", scheduleValidation));
+$$("#sampleCount, #ddimSteps, #guidanceSteps, #guidanceStepSize, #sampleSeed").forEach((input) => input.addEventListener("change", () => { if (!editsLocked()) { invalidatePredictions(); draw(); } }));
 $$(`[data-view]`).forEach((button) => button.addEventListener("click", () => resetCamera(button.dataset.view)));
 $("#resetCamera").addEventListener("click", () => resetCamera(state.camera.view));
 $("#showAll").addEventListener("change", draw);
@@ -679,9 +888,22 @@ async function initialize() {
     $("#modelDevice").classList.add("ready");
     $("#modelName").textContent = `${model.preset} · ${model.parameter_count.toLocaleString()} params`;
     $("#modelMeta").textContent = `step ${model.training_step.toLocaleString()} · val ${format(model.validation_loss, 5)} · ${model.checkpoint_sha256.slice(0, 12)}`;
-    $("#sceneSeed").value = randomSeed();
+    $("#sceneSeed").value = executionEnabled() ? state.catalog.initial_scene_seed ?? 42 : randomSeed();
+    if (executionEnabled()) {
+      document.body.classList.add("execution-enabled");
+      document.title = "Base DiT + MPPI · MuJoCo";
+      $(".brand h1").textContent = "Base DiT + MPPI";
+      $("#executionPanel").hidden = false;
+      $$(".execution-only").forEach((node) => { node.hidden = false; });
+      $("#sampleCount").value = state.catalog.execution.batch_size || 8;
+      $("#guidanceSteps").value = String(state.catalog.execution.guidance_steps || 8);
+      $("#runModel span").textContent = "生成 8 条候选并选择最终轨迹";
+      $(".safety-note").textContent = "先检查最终轨迹，再执行 MPPI。界面显示实际飞行轨迹；MuJoCo 窗口呈现完整动力学运动。";
+      renderFinalSelection();
+    }
     setBusy(false, "模型已加载，正在准备首个场景…");
     await generateScene();
+    if (executionEnabled()) pollExecution();
   } catch (error) {
     $("#modelDevice").textContent = "MODEL ERROR";
     $("#inferenceStatus").textContent = error.message;

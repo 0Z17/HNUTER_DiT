@@ -1,0 +1,102 @@
+{
+  "state": "completed",
+  "success": true,
+  "message": "MPPI 动力学执行完成，已到达期望终点",
+  "contact_count": 0,
+  "goal_error_m": 0.012371704714958262,
+  "attitude_error_deg": 0.9491200995949725,
+  "position_rmse_m": 0.019850221897125073,
+  "maximum_tracking_error_m": 0.08383762569955118,
+  "retiming": {
+    "method": "segment_minimum_jerk_exact_polyline_slerp",
+    "waypoint_count": 128,
+    "duration_s": 53.730409225003605,
+    "motion_duration_s": 53.230409225003605,
+    "initial_hold_s": 0.5,
+    "speed_mps": 0.6,
+    "max_acceleration_mps2": 1.5,
+    "max_angular_speed_rps": 0.7,
+    "max_angular_acceleration_rps2": 1.5,
+    "stops_at_waypoints": true
+  },
+  "options": {
+    "speed_mps": 0.6,
+    "max_acceleration_mps2": 1.5,
+    "max_angular_speed_rps": 0.7,
+    "max_angular_acceleration_rps2": 1.5,
+    "control_dt": 0.05,
+    "horizon": 32,
+    "num_samples": 192,
+    "settle_s": 2.5,
+    "initial_hold_s": 0.5,
+    "goal_tolerance_m": 0.2,
+    "attitude_tolerance_deg": 15.0,
+    "maximum_tracking_error_m": 0.75,
+    "stop_on_contact": true
+  },
+  "seed": 1,
+  "simulation_duration_s": 56.249999999959606,
+  "wall_runtime_s": 0.0,
+  "sample_count": 1125,
+  "roll_pitch_tracking_rmse_deg": [
+    0.469207612230655,
+    1.2024551029709913
+  ],
+  "body_angular_velocity_rms_rps": 0.06013645194079337,
+  "tilt_joint_velocity_rms_rps": 0.9287105693775787,
+  "tilt_joint_velocity_p95_rps": 1.8067680773207326,
+  "tilt_joint_position": {
+    "total_variation_per_channel": [
+      78.49241782235686,
+      76.71148515232557,
+      15.202370061059158,
+      15.053554519175474
+    ],
+    "mean_total_variation_per_second": 0.8249992328961314,
+    "rate_rms": 1.1427923322268423,
+    "rate_p95": 2.248827302153332,
+    "maximum_step": 0.33078164552874556
+  },
+  "tilt_command": {
+    "total_variation_per_channel": [
+      128.57820860409404,
+      123.63031849157065,
+      24.844978675776012,
+      24.320427030531587
+    ],
+    "mean_total_variation_per_second": 1.3406313736752173,
+    "rate_rms": 1.894894780771842,
+    "rate_p95": 4.139257023476761,
+    "maximum_step": 0.27597970919644155
+  },
+  "rotor_command": {
+    "total_variation_per_channel": [
+      231.5153778453253,
+      231.5153778453253,
+      236.35272250549096,
+      236.35272250549096
+    ],
+    "mean_total_variation_per_second": 4.162527583195307,
+    "rate_rms": 5.438143897802109,
+    "rate_p95": 11.657740555541336,
+    "maximum_step": 1.1228608922126497
+  },
+  "left_right_rotor_imbalance_mean_fraction": 0.01251842670297633,
+  "left_right_rotor_imbalance_p95_fraction": 0.02500968431014392,
+  "measurement_note": "50 ms control-boundary samples; tilt joint rates come from full MuJoCo qvel, not command differences. Absolute bank/pitch is expected to follow the planned pose; attitude RMSE measures tracking.",
+  "candidate_id": 3,
+  "scene_geometry_hash": "bc8dd6af116defe48af5fda530bad9a5331bcd0a099b7a655bec6d843ef3a21a",
+  "source": "/tmp/hnuter_baseline_mujoco_execution.py",
+  "reference_audit": null,
+  "terminal_1s_tilt_joint_velocity_rms_rps": 0.10688359839111737,
+  "terminal_1s_body_angular_velocity_rms_rps": 0.009908478202900488,
+  "source_sha256": "8c502f8facdaa4862bf60fbbd4b3c3bf6f9770a9fbfe3d9717268049d866692c",
+  "plan_sha256": "0490193d9a3b9cfc3bf9ee7fba76733f3f3eb0d87933e50f50523c46d4ffd0e8",
+  "joint_names": [
+    "rj2",
+    "lj2",
+    "rj1",
+    "lj1"
+  ],
+  "body_angular_rate_tracking_rmse_rps": 0.05281781636570546
+}
