@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HNUTER · Contact Adapter 轨迹实验室</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="Contact Adapter 首页"><span class="brand-mark">H</span><span>HNUTER <strong>Contact Adapter</strong></span></a>
+    <span class="header-note">冻结 Base v003 · 任务几何 · 完整 URDF 审核</span>
+    <button id="exportResult" class="quiet" disabled>导出完整 JSON</button>
+  </header>
+  <div class="workspace">
+    <aside class="controls panel">
+      <div class="section-heading"><span class="eyebrow">TASK INPUT</span><h1>任务与模型</h1></div>
+      <label>模型 / Adapter<select id="model" aria-label="模型"></select></label>
+      <p id="checkpoint" class="path-note">正在读取模型目录…</p>
+      <div class="divider"></div>
+      <label>场景族<select id="family"><option value="all">全部场景族</option></select></label>
+      <div class="two-columns">
+        <label>接触曲面<select id="kind"><option value="all">全部</option><option value="plane">平面</option><option value="cylinder">圆柱</option></select></label>
+        <label>任务难度<select id="difficulty"><option value="all">全部</option><option value="easy">简单接触</option><option value="detour">接触绕障</option></select></label>
+      </div>
+      <div class="condition-label"><span>独立测试条件</span><span id="conditionTotal" class="muted">—</span></div>
+      <select id="conditions" size="6" aria-label="测试条件列表"></select>
+      <p class="helper">保存轨迹可载入查看。正式评测失败的轨迹会显示失败原因；能否执行见右侧审核。</p>
+      <div class="pagination"><button id="previousPage" class="quiet">← 上一页</button><span id="pageLabel">—</span><button id="nextPage" class="quiet">下一页 →</button></div>
+      <label>Condition ID<input id="conditionId" type="text" autocomplete="off" spellcheck="false" placeholder="输入完整 condition_id"></label>
+      <label>场景<select id="scenario"><option value="original">原始场景</option><option value="obstacle_shift">障碍移动 0.30 m</option></select></label>
+      <button id="loadReplay" class="primary full">读取已保存轨迹</button>
+      <div class="divider"></div>
+      <div class="two-columns">
+        <label>在线候选数<select id="sampleCount"><option value="1">1</option><option value="8">8</option><option value="4">4</option><option value="2">2</option></select></label>
+        <label>DDIM 步数<input id="samplingSteps" type="number" value="25" min="1" max="100"></label>
+      </div>
+      <button id="sampleModel" class="secondary full">在线推理并审核</button>
+      <p class="helper">三个 decoder 复用同一 raw 输出。在线采样可能需要一些时间。</p>
+      <div id="requestStatus" class="request-status" role="status">正在连接服务…</div>
+    </aside>
+
+    <main class="main-panel">
+      <section class="scene-panel panel">
+        <div class="scene-header"><div><span class="eyebrow">SURFACE CONTACT</span><h2 id="sceneTitle">任务接触轨迹</h2></div><span id="provenance" class="tag">等待载入</span></div>
+        <div class="scene-toolbar">
+          <div class="segmented"><button data-view="iso" class="active">立体</button><button data-view="top">俯视</button><button data-view="front">正视</button><button id="fitCamera">适配</button></div>
+          <span id="cameraLabel" class="muted">拖拽旋转 · Shift 拖拽平移 · 滚轮缩放</span>
+        </div>
+        <div class="canvas-wrap"><canvas id="sceneCanvas" aria-label="三维曲面、机体与工具接触轨迹"></canvas><div id="emptyScene" class="empty-scene"><span class="empty-orbit">◎</span><strong>从测试条件载入任务</strong><span>对照 raw、接触投影与平滑投影，查看闭环执行</span></div><div class="scene-legend"><span class="off-dot">off</span><span class="on-dot">on</span><span class="smooth-dot">on_smooth</span><span class="actual-dot">MuJoCo 实际</span><span>实线：工具点 · 虚线：机体</span></div></div>
+        <div class="display-controls"><label class="checkbox"><input id="overlay" type="checkbox" checked>三 decoder 叠加</label><label class="checkbox"><input id="showBody" type="checkbox" checked>机体轨迹</label><label class="checkbox"><input id="showTip" type="checkbox" checked>工具轨迹</label><label class="checkbox"><input id="showMarkers" type="checkbox" checked>碰撞 / 曲率标记</label><label class="checkbox"><input id="showActual" type="checkbox" checked>实际执行遥测</label></div>
+        <div class="playback"><button id="playGeometry" class="play" disabled aria-label="播放几何轨迹">▶</button><input id="progress" type="range" value="0" min="0" max="1000" step="1" disabled aria-label="归一化几何进度"><output id="progressLabel">0.0%</output></div>
+        <p class="playback-note">几何播放采用服务端密集曲面 lift 结果，进度为归一化路径节点索引；不代表物理时间。</p>
+      </section>
+      <section class="charts panel">
+        <div class="chart-heading"><h2>128 节点诊断</h2><span id="chartScope" class="muted">—</span></div>
+        <div class="chart-grid">
+          <figure><figcaption>接触误差 <span>mm · 门限 1</span></figcaption><canvas id="contactChart" aria-label="接触误差图"></canvas></figure>
+          <figure><figcaption>法向误差 <span>° · 门限 1</span></figcaption><canvas id="normalChart" aria-label="法向误差图"></canvas></figure>
+          <figure><figcaption>机体曲率 <span>m⁻¹ · 门限 8</span></figcaption><canvas id="curvatureChart" aria-label="机体曲率图"></canvas></figure>
+          <figure><figcaption>完整 URDF 节点净空 <span>m · 已扣 margin</span></figcaption><canvas id="clearanceChart" aria-label="完整 URDF 净空图"></canvas></figure>
+        </div>
+        <p class="helper chart-note">节点净空不是连续段最小净空。失败候选可能未进入密集边审核，具体状态见右侧。</p>
+      </section>
+    </main>
+
+    <aside class="results">
+      <section class="panel result-panel">
+        <div class="section-heading"><span class="eyebrow">CANDIDATE REVIEW</span><h2>轨迹对照</h2></div>
+        <label>候选<select id="candidate" disabled><option>未载入</option></select></label>
+        <p id="candidateProtocol" class="helper"></p>
+        <label>当前播放 / 诊断 decoder<select id="decoder"><option value="on_smooth">on_smooth · 平滑投影</option><option value="on">on · 接触投影</option><option value="off">off · 原始输出</option></select></label>
+        <div id="variantCards" class="variant-cards"></div>
+        <div id="curvatureWarning" class="curvature-warning" role="status" hidden><strong>⚠ 机体曲率超过 8 m⁻¹</strong><p id="curvatureWarningDetail"></p><p>正式评测结果保留。通过其他执行审核后，可进行 MuJoCo 诊断飞行，观察实际影响。</p></div>
+        <div class="divider"></div>
+        <dl class="metrics"><div><dt>最大接触误差</dt><dd id="metricContact">—</dd></div><div><dt>最大法向误差</dt><dd id="metricNormal">—</dd></div><div><dt>最大机体曲率</dt><dd id="metricCurvature">—</dd></div><div><dt>128 节点最小净空</dt><dd id="metricClearance">—</dd></div><div><dt>密集边审核</dt><dd id="metricDense">—</dd></div><div><dt>几何播放样本</dt><dd id="metricSamples">—</dd></div></dl>
+        <p id="loadedState" class="helper"></p>
+        <div class="failure-heading">正式评测失败 gates / 解码错误</div><div id="failures" class="failures">等待载入</div>
+        <p class="helper marker-note">黄色三角：曲率超限，可做诊断飞行。红色碰撞标记：仍禁止执行。</p>
+      </section>
+      <section class="panel execution-panel">
+        <div class="section-heading"><span class="eyebrow">PHYSICS EXECUTION</span><h2>MuJoCo 闭环</h2></div>
+        <p id="executionAvailability" class="helper">正在检测执行环境…</p>
+        <label class="checkbox execution-policy"><input id="allowCurvatureFailure" type="checkbox" checked>曲率超标允许诊断飞行</label>
+        <div class="two-columns execution-options">
+          <label>参考速度上限 · m/s<input id="executionSpeed" type="number" value="0.35" min="0.05" max="2" step="0.05" inputmode="decimal"></label>
+          <label>参考加速度上限 · m/s²<input id="executionAcceleration" type="number" value="1" min="0.1" max="4" step="0.1" inputmode="decimal"></label>
+        </div>
+        <p class="helper">可改变上述上限后重跑同一轨迹作对照。速度为上限；转角停车与时间化减速仍生效。</p>
+        <div class="execution-actions"><button id="previewExecution" class="secondary" disabled>预览场景</button><button id="startExecution" class="primary" disabled>执行所选 decoder</button><button id="stopExecution" class="danger" disabled>停止</button></div>
+        <p id="eligibility" class="helper">载入轨迹后，执行当前选择的 decoder。</p>
+        <p id="executionGeometry" class="helper timing-note"></p>
+        <div id="executionStatus" class="execution-status" role="status">等待任务</div>
+        <progress id="executionProgress" max="1" value="0" aria-label="物理执行进度"></progress>
+        <dl class="metrics"><div><dt>执行 decoder / 模式</dt><dd id="executionDecoder">—</dd></div><div><dt>仿真时间 / 参考时长</dt><dd id="simulationTime">—</dd></div><div><dt>时间化方法</dt><dd id="timingMethod">—</dd></div><div><dt>速度上限 / 时间倍率</dt><dd id="timingScale">—</dd></div><div><dt>逐节点停车</dt><dd id="waypointStops">—</dd></div><div><dt>参考加速度 / jerk 峰值</dt><dd id="referenceAcceleration">—</dd></div><div><dt>实际加速度 / jerk 峰值</dt><dd id="actualAcceleration">—</dd></div><div><dt>实际角速 / 角加速峰值</dt><dd id="actualAngular">—</dd></div><div><dt>当前跟踪误差</dt><dd id="trackingError">—</dd></div><div><dt>跟踪误差 最大 / RMS</dt><dd id="trackingSummary">—</dd></div><div><dt>实际最大接触误差</dt><dd id="actualContact">—</dd></div><div><dt>实际最大法向误差</dt><dd id="actualNormal">—</dd></div><div><dt>飞行 / 任务结果</dt><dd id="executionResult">—</dd></div></dl>
+        <p id="executionTimingNote" class="helper timing-note">时间化会限制速度与加速度；需结合时间倍率、停车策略和实际遥测判断曲率对飞行的影响。</p>
+        <p class="helper">实际状态与橙色轨迹来自物理执行遥测。接触点与法向采用几何指标；接触力与摩擦尚未验证。</p>
+      </section>
+    </aside>
+  </div>
+  <div id="toast" class="toast" role="alert"></div>
+</body>
+</html>

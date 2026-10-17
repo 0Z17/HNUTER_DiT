@@ -1,0 +1,40 @@
+{
+  "schema_version": "contact_curvature_diagnostic_delivery_v002",
+  "date_singapore": "2026-10-13",
+  "regression": {
+    "passed": 442,
+    "skipped": 0,
+    "command": "PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 MPLCONFIGDIR=/tmp/hnuter-dit-mpl /home/z017/research/curobo_env/bin/python -m pytest -q"
+  },
+  "loading_check": {
+    "requests": 294,
+    "replay_errors": 0,
+    "old_no_formally_eligible_candidate_requests": 250,
+    "diagnosis_file": "replay_loading_diagnosis.json"
+  },
+  "physical_pair": "curvature_plane_pair/comparison.json",
+  "browser_checks": {
+    "selected_decoder": "on",
+    "source_curvature_inv_m": 15.422555166115878,
+    "over_threshold_nodes": 22,
+    "diagnostic_button_enabled": true,
+    "strict_checkbox_disabled_button": true,
+    "full_diagnostic_flight_completed": true,
+    "stop_test_confirmed": true,
+    "console_errors": 0,
+    "ready_screenshot": "curvature_warning_ready_ui.jpg",
+    "stopped_screenshot": "curvature_warning_ui.jpg"
+  },
+  "scope": "Curvature only changes from blocker to warning for diagnostic simulation; formal frozen scores unchanged; other constraint/collision gates stay enforced. Exact on path stops at every original node, so pair is not a fixed-speed curvature causality test.",
+  "delivery_sources_sha256": {
+    "hnuter_dit/contact_visualization.py": "e2152a341a0ebb4be5c9eac4a761eb1fcdcc61da537cc36d23c8f1d77267a3ba",
+    "hnuter_dit/contact_execution.py": "53522e5814b6c5f38f6e5f39e13afe3a0b0297cddb741e39c92b2738f767b68e",
+    "hnuter_dit/mujoco_execution.py": "c838a4c5718c0c96f3bf372f14bffec30b3aeeb2bad383ec5fffd33d61f47306",
+    "hnuter_dit/contact_web_assets/app.js": "d4c7b297602fa9cfaad3890eb11949171e03bae2d365ccc1c151628771daaa2b",
+    "hnuter_dit/contact_web_assets/index.html": "95e3fce99fc6bc5435caabee24319d1f9b70da036e4d86dddfb4474620fceef5",
+    "hnuter_dit/contact_web_assets/styles.css": "843165d5310efdc8251db5e080301ad9d8ef7c5c56a03832175bcb50a4a26f0b",
+    "tests/test_contact_visualization.py": "96e0599140ad982482cd229fa16cab27c9d2968c6004cf5ce8da19e6661094c4",
+    "tests/test_contact_execution.py": "336b35aa1b91c2de3e0e8271fd3a54beb64882227e19fdccebc7c5dfe0402faf",
+    "tests/test_execution_motion_metrics.py": "fbbda73547cad85843b61a2e05cf902a7c0ff2fefedbd6e1345a7ecc59b9426d"
+  }
+}

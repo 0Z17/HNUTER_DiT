@@ -1,0 +1,241 @@
+{
+  "schema_version": "contact_research_protocol_v001",
+  "base_checkpoint": "/home/z017/research/HNUTER_DiT/artifacts/base_free_flight_159103traj_dit_canonical_cross_v003/models/dit_cross/best.pt",
+  "base_sha256": "301070cd16c847d749da548bca4d66e409e7ed698346c9b938f3ddf782936dad",
+  "training_dataset": "/home/z017/research/HNUTER_datasets/surface_multifamily_contact_10000traj_v001",
+  "dataset_freeze_sha256": "60140df62fe2b8c13f84289770ba9b65730007535e8049888661056822936d37",
+  "budgets": [
+    500,
+    1000,
+    2000,
+    4000,
+    8000
+  ],
+  "model_seeds": [
+    17,
+    29,
+    43
+  ],
+  "data_subset_seed": 20261011,
+  "optimizer_updates": 8000,
+  "batch_size": 64,
+  "learning_rate": 0.0001,
+  "subset_policy": "nested whole source maps; paired expert trajectories stay together",
+  "baseline": "frozen v003 with identical obstacles/endpoints/DDIM/latents, projection off/on",
+  "variants": [
+    {
+      "id": "geometry_n0500_seed17",
+      "variant": "geometry",
+      "train_size": 500,
+      "seed": 17,
+      "extra_args": []
+    },
+    {
+      "id": "geometry_n0500_seed29",
+      "variant": "geometry",
+      "train_size": 500,
+      "seed": 29,
+      "extra_args": []
+    },
+    {
+      "id": "geometry_n0500_seed43",
+      "variant": "geometry",
+      "train_size": 500,
+      "seed": 43,
+      "extra_args": []
+    },
+    {
+      "id": "geometry_n1000_seed17",
+      "variant": "geometry",
+      "train_size": 1000,
+      "seed": 17,
+      "extra_args": []
+    },
+    {
+      "id": "geometry_n1000_seed29",
+      "variant": "geometry",
+      "train_size": 1000,
+      "seed": 29,
+      "extra_args": []
+    },
+    {
+      "id": "geometry_n1000_seed43",
+      "variant": "geometry",
+      "train_size": 1000,
+      "seed": 43,
+      "extra_args": []
+    },
+    {
+      "id": "geometry_n2000_seed17",
+      "variant": "geometry",
+      "train_size": 2000,
+      "seed": 17,
+      "extra_args": []
+    },
+    {
+      "id": "geometry_n2000_seed29",
+      "variant": "geometry",
+      "train_size": 2000,
+      "seed": 29,
+      "extra_args": []
+    },
+    {
+      "id": "geometry_n2000_seed43",
+      "variant": "geometry",
+      "train_size": 2000,
+      "seed": 43,
+      "extra_args": []
+    },
+    {
+      "id": "geometry_n4000_seed17",
+      "variant": "geometry",
+      "train_size": 4000,
+      "seed": 17,
+      "extra_args": []
+    },
+    {
+      "id": "geometry_n4000_seed29",
+      "variant": "geometry",
+      "train_size": 4000,
+      "seed": 29,
+      "extra_args": []
+    },
+    {
+      "id": "geometry_n4000_seed43",
+      "variant": "geometry",
+      "train_size": 4000,
+      "seed": 43,
+      "extra_args": []
+    },
+    {
+      "id": "geometry_n8000_seed17",
+      "variant": "geometry",
+      "train_size": 8000,
+      "seed": 17,
+      "extra_args": []
+    },
+    {
+      "id": "geometry_n8000_seed29",
+      "variant": "geometry",
+      "train_size": 8000,
+      "seed": 29,
+      "extra_args": []
+    },
+    {
+      "id": "geometry_n8000_seed43",
+      "variant": "geometry",
+      "train_size": 8000,
+      "seed": 43,
+      "extra_args": []
+    },
+    {
+      "id": "no_contact_loss_n8000_seed17",
+      "variant": "no_contact_loss",
+      "train_size": 8000,
+      "seed": 17,
+      "extra_args": [
+        "--contact-weight",
+        "0",
+        "--normal-weight",
+        "0",
+        "--smooth-weight",
+        "0"
+      ]
+    },
+    {
+      "id": "no_geometry_tokens_n8000_seed17",
+      "variant": "no_geometry_tokens",
+      "train_size": 8000,
+      "seed": 17,
+      "extra_args": [
+        "--task-conditioning",
+        "none"
+      ]
+    },
+    {
+      "id": "no_contact_loss_n8000_seed29",
+      "variant": "no_contact_loss",
+      "train_size": 8000,
+      "seed": 29,
+      "extra_args": [
+        "--contact-weight",
+        "0",
+        "--normal-weight",
+        "0",
+        "--smooth-weight",
+        "0"
+      ]
+    },
+    {
+      "id": "no_geometry_tokens_n8000_seed29",
+      "variant": "no_geometry_tokens",
+      "train_size": 8000,
+      "seed": 29,
+      "extra_args": [
+        "--task-conditioning",
+        "none"
+      ]
+    },
+    {
+      "id": "no_contact_loss_n8000_seed43",
+      "variant": "no_contact_loss",
+      "train_size": 8000,
+      "seed": 43,
+      "extra_args": [
+        "--contact-weight",
+        "0",
+        "--normal-weight",
+        "0",
+        "--smooth-weight",
+        "0"
+      ]
+    },
+    {
+      "id": "no_geometry_tokens_n8000_seed43",
+      "variant": "no_geometry_tokens",
+      "train_size": 8000,
+      "seed": 43,
+      "extra_args": [
+        "--task-conditioning",
+        "none"
+      ]
+    }
+  ],
+  "checkpoint_selection": "minimum common fixed-noise loss on all 1000 validation experts; never benchmark-tuned",
+  "new_test_conditions": 10000,
+  "new_source_maps": 1000,
+  "scene_families": 10,
+  "primary_candidates_per_condition": 1,
+  "multimodal_subset_conditions": 1000,
+  "multimodal_candidates_per_condition": 8,
+  "sampling_steps": 25,
+  "diffusion_steps": 100,
+  "clip_x0": 4.0,
+  "latent_seed": 20261011,
+  "scenarios": [
+    "original",
+    "obstacle_shift_0.30m"
+  ],
+  "projection": [
+    "off",
+    "on"
+  ],
+  "feasibility_selection": "all raw stress cases and a separately frozen witness-certified feasible subset",
+  "inference_inputs": "only requested geometry, endpoints, physical obstacles; oracle and route metadata excluded",
+  "uncertainty": "source-map cluster bootstrap; model seeds reported separately and mean/std across 3 seeds",
+  "projection_interpolation": "off: world XYZ+SO3 SLERP; on: unwrapped intrinsic linear lift",
+  "thermal": {
+    "cpu_pause_c": 90,
+    "cpu_resume_c": 80,
+    "gpu_pause_c": 83,
+    "gpu_resume_c": 75,
+    "stable_cool_seconds": 10
+  },
+  "limitations": [
+    "geometric continuous-contact paths; no approach/retreat, forces or dynamics",
+    "new-map IID within the same ten scene families, not semantic OOD",
+    "bounded feasibility solver failure is unknown, not a proof of infeasibility"
+  ],
+  "protocol_sha256": "ae5ef1b7cfc234680b5d2414426257657057bec7ca0d866dc9c150deac92d68c",
+  "created_utc": "2026-10-11T02:09:59.723650+00:00"
+}

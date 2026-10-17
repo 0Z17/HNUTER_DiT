@@ -140,6 +140,26 @@ cd /home/z017/research/HNUTER_DiT
 
 要关闭 guidance，在 WebUI 中把 `Guidance 后期步数` 设为 `0`。
 
+## Contact/Surface adapter 可视化与闭环执行
+
+```bash
+./run_contact_demo.sh --device auto --open-browser
+# 无图形显示的完整动力学执行
+./run_contact_demo.sh --device cpu --headless --no-realtime
+```
+
+访问 `http://127.0.0.1:8793/`，读取 Base/21 个 adapter 的冻结预测或在线推理，
+对照 raw、解析投影、平滑投影，查看机体/工具接触点、任务曲面和失败指标。
+`on` / `on_smooth` 可执行当前选中的 decoder；曲率超标显示警告，并可在其他约束通过后进行诊断飞行。
+`on` 保留原始边并逐节点停车，`on_smooth` 使用 TOPP-RA 连续参考；界面可调速度/加速度上限并比较实际跟踪与运动峰值。
+实际飞行成功与工具几何接触成功分别报告；当前理想工具模型未实现接触力/摩擦控制。
+数据路径、操作和限制见 [Contact 可视化说明](docs/CONTACT_VISUALIZATION.md)。
+
+冻结 v003 + 21 个 adapter 的训练、两场景三 decoder 评测及消融代码随本分支提供。
+[实验协议、完整中文报告与图表](artifacts/contact_adapter_multifamily_v001/README.md) 和
+[实验交接](docs/CONTACT_ADAPTER_HANDOFF_20261013.md) 记录结果与复现范围；
+adapter 权重、训练/测试数据和大规模预测产物需单独获取。
+
 ## 训练与对照评测
 
 重新训练或从 `last.pt` 恢复 v003：

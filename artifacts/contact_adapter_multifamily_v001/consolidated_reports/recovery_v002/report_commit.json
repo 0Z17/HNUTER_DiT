@@ -1,0 +1,15 @@
+{
+  "audited_input_files": 177262,
+  "failure_evidence_sha256": "dbbf6ee4f1ba0221d47de3db07b0b6b787974f1952620faeb032428b4891620c",
+  "output_files_sha256": {
+    "full_statistics.csv.gz": "c906f74b38c5650c69b9ce4e105e4552ca3ba1ae7e2d77ca82b4c6aea6130ca2",
+    "full_statistics.jsonl.gz": "e0e1e0090ee6d8217498e72ad24075c626ac780ab64c456c31a15eb57f53b723",
+    "research_report_zh.md": "16bd4eb4d2102d6fd87de22a09263965ee33abad3aa34183da496c11c80dc3c0"
+  },
+  "report": "/home/z017/research/HNUTER_DiT/artifacts/contact_adapter_multifamily_v001/consolidated_reports/recovery_v002/research_report_zh.md",
+  "report_sha256": "822003b4dd0951046ea568c61d01f2ff0c03d11abecd0304f2fdd6e0ea51a3b9",
+  "schema_version": "contact_ablation_report_recovery_commit_v002",
+  "source_contract_sha256": "adee8cb81f2e4f5ef485841552c6d7807939190406660f4de356ebb83b2bba78",
+  "statistics_rows": 2263800,
+  "upstream_reports_binding_sha256": "9a2568a370ed82b0aab82df4e262f1b2e02dd83bfb9b8c9a90383d39fd64320c"
+}

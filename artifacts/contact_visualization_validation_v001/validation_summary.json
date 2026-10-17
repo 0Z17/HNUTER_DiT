@@ -1,0 +1,99 @@
+{
+  "schema_version": "contact_visualization_validation_v001",
+  "date_singapore": "2026-10-13",
+  "full_regression": {
+    "passed": 405,
+    "skipped": 0,
+    "command": "PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 MPLCONFIGDIR=/tmp/hnuter-dit-mpl /home/z017/research/curobo_env/bin/python -m pytest -q"
+  },
+  "trials": [
+    {
+      "kind": "plane",
+      "condition_id": "surface_contact_adapter_benchmark_10000cond_v001/map_000527/condition_002",
+      "candidate_index": 7,
+      "state": "completed",
+      "flight_success": true,
+      "task_success": false,
+      "contact_count": 0,
+      "simulation_time_s": 14.64999999999732,
+      "goal_error_m": 0.0015784852784263125,
+      "max_contact_error_m": 0.004552779278378385,
+      "max_normal_error_deg": 1.8125021501958516,
+      "execution_config": {
+        "speed_mps": 0.35,
+        "max_acceleration_mps2": 1.5,
+        "max_angular_speed_rps": 0.7,
+        "max_angular_acceleration_rps2": 1.5,
+        "control_dt": 0.05,
+        "horizon": 32,
+        "num_samples": 192,
+        "settle_s": 2.5,
+        "initial_hold_s": 0.5,
+        "goal_tolerance_m": 0.2,
+        "attitude_tolerance_deg": 15.0,
+        "maximum_tracking_error_m": 0.75,
+        "stop_on_contact": true
+      },
+      "trial_file": "plane_trial.json"
+    },
+    {
+      "kind": "cylinder",
+      "condition_id": "surface_contact_adapter_benchmark_10000cond_v001/map_000001/condition_009",
+      "candidate_index": 0,
+      "state": "completed",
+      "flight_success": true,
+      "task_success": false,
+      "contact_count": 0,
+      "simulation_time_s": 7.8000000000009395,
+      "goal_error_m": 0.0039219742269831935,
+      "max_contact_error_m": 0.01282316975964079,
+      "max_normal_error_deg": 7.071707268846985,
+      "execution_config": {
+        "speed_mps": 0.35,
+        "max_acceleration_mps2": 1.0,
+        "max_angular_speed_rps": 0.5,
+        "max_angular_acceleration_rps2": 1.0,
+        "control_dt": 0.05,
+        "horizon": 32,
+        "num_samples": 192,
+        "settle_s": 2.5,
+        "initial_hold_s": 0.5,
+        "goal_tolerance_m": 0.2,
+        "attitude_tolerance_deg": 15.0,
+        "maximum_tracking_error_m": 0.75,
+        "stop_on_contact": true
+      },
+      "trial_file": "cylinder_trial.json"
+    }
+  ],
+  "browser_validation": {
+    "saved_screenshot": "browser_execution.jpg",
+    "preview": "native MuJoCo scene synchronized",
+    "execution": "completed",
+    "flight_success": true,
+    "task_success": false,
+    "simulation_time_s": 14.8,
+    "max_contact_error_m": 0.003162,
+    "max_normal_error_deg": 1.39,
+    "scope": "UI readings, rounded; exact headless trials in separate JSON files",
+    "service_running_at_delivery": false
+  },
+  "delivery_sources_sha256": {
+    "hnuter_dit/contact_visualization.py": "ef7d6725057bf1498b536675f32119471bce1274d75c00c61fbd779fc5833d0c",
+    "hnuter_dit/contact_execution.py": "45689f0c9b911c89e6973b96d92457077a62b573e5854f91c9d4e12316ce4a26",
+    "hnuter_dit/mujoco_execution.py": "6d1c270cc39a9a0e74609714f4a5a6a3a1dca4762cda501b7fb74888631dc148",
+    "hnuter_dit/retiming.py": "9e0ccefcfabad6af8e102aeae95b37145db5917f664f030be0bf441d4a982711",
+    "hnuter_dit/contact_web_assets/index.html": "0d6b0585412a7c9b234272cb140274cad4aab3dc64df9aed58eb8d000d178430",
+    "hnuter_dit/contact_web_assets/app.js": "affed2a858082e27ea0fa25e167a95371519c8bcc2263703ea5a044e27d89627",
+    "hnuter_dit/contact_web_assets/styles.css": "d43c3a64320efab1c6118f18f4edf4916d797d6534044cae07a3d9718b319d92",
+    "run_contact_demo.sh": "e262c3f9ceb6410432c9a1de3b4376c5f5a2267dbb0946999da3c7c6d01ca30e",
+    "tests/test_contact_visualization.py": "210243cbc5af3133ec7ebcffac800575b75922cbdb273981f3e9218605ce569c",
+    "tests/test_contact_execution.py": "d5059b7a97c7e611514b86f28d5f3e5f9c34997100aedb4b6d7e0f894f0333f1"
+  },
+  "frozen_experiment_modified": false,
+  "contact_force_control": false,
+  "final_targeted_regression": {
+    "passed": 53,
+    "skipped": 0
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "schema_version": "contact_report_delivery_validation_v002",
+  "test_command": "pytest -q -p no:cacheprovider artifacts/contact_adapter_multifamily_v001/test_report_delivery_v002.py",
+  "tests_passed": 16,
+  "pytest_elapsed_s": 0.81,
+  "test_source_sha256": "070a48befb1016a02f9dc1cc1b6f599171ed4716dc4e3bfff943f355a788555e",
+  "helper_source_sha256": "79e7c2d11706e87b59c212be70be168aa3d7596f34407643ba6e56974ae6a65b",
+  "test_scope": "synthetic integrity regressions; not research evaluation"
+}
